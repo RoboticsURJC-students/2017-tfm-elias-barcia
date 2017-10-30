@@ -5,14 +5,13 @@
 #include <sys/time.h>
 #include <iomanip>
 #include <cmath>
+
+#include "Point3D.h"
+#include "Transformador.h"
 //float traslacion [4] [4] = {0.0};
 
-/*float indentidad [4] [4] = {
-    {1.0, 0.0 , 0.0, 0.0},
-    {0.0, 1.0 , 0.0, 0.0},
-    {0.0, 0.0 , 1.0, 0.0},
-    {0.0, 0.0 , 0.0, 1.0}
-};*/
+Point3D myPoint3D (3.0,3.0,3.0);
+//Point3D myPoint3D ;
 
 double timestamp,rx,ry,rz,q1,q2,q3,q4;
 
@@ -28,7 +27,7 @@ double traslacion [4] [4] = {
 
     {1.0, 0.0 , 0.0, 0.0},
     {0.0, 1.0 , 0.0, 0.0},
-    {0.0, 0.0 , 1.0, 1.0},
+    {0.0, 0.0 , 1.0, 0.0},
     {0.0, 0.0 , 0.0, 1.0}
 
 };
@@ -62,13 +61,13 @@ void createMatRot ( char eje , float angulo) {
         matRot[0][3]=0.0;
 
         matRot[1][0]=0.0;
-        matRot[1][1]=cosf(angulo);
-        matRot[1][2]=sinf(angulo);
+        matRot[1][1]=cosf(anguloRad);
+        matRot[1][2]=sinf(anguloRad);
         matRot[1][3]=0.0;
 
         matRot[2][0]=0.0;
-        matRot[2][1]=-sinf(angulo);
-        matRot[2][2]=cosf(angulo);
+        matRot[2][1]=-sinf(anguloRad);
+        matRot[2][2]=cosf(anguloRad);
         matRot[2][3]=0.0;
 
         matRot[3][0]=0.0;
@@ -81,9 +80,9 @@ void createMatRot ( char eje , float angulo) {
 
     }if (eje == 'Y'){
         
-        matRot[0][0]=cosf(angulo);
+        matRot[0][0]=cosf(anguloRad);
         matRot[0][1]=0.0;
-        matRot[0][2]=-sinf(angulo);
+        matRot[0][2]=-sinf(anguloRad);
         matRot[0][3]=0.0;
 
         matRot[1][0]=0.0;
@@ -91,9 +90,9 @@ void createMatRot ( char eje , float angulo) {
         matRot[1][2]=0.0;
         matRot[1][3]=0.0;
 
-        matRot[2][0]=sinf(angulo);
+        matRot[2][0]=sinf(anguloRad);
         matRot[2][1]=0.0;
-        matRot[2][2]=cosf(angulo);
+        matRot[2][2]=cosf(anguloRad);
         matRot[2][3]=0.0;
 
         matRot[3][0]=0.0;
@@ -103,13 +102,13 @@ void createMatRot ( char eje , float angulo) {
 
     } else if (eje == 'Z') {
 
-        matRot[0][0]=cosf(angulo);
-        matRot[0][1]=sinf(angulo);
+        matRot[0][0]=cosf(anguloRad);
+        matRot[0][1]=sinf(anguloRad);
         matRot[0][2]=0.0;
         matRot[0][3]=0.0;
 
-        matRot[1][0]=-sinf(angulo);
-        matRot[1][1]=cosf(angulo);
+        matRot[1][0]=-sinf(anguloRad);
+        matRot[1][1]=cosf(anguloRad);
         matRot[1][2]=0.0;
         matRot[1][3]=0.0;
 
@@ -142,16 +141,6 @@ void displayMatriz (double unaMatriz [4] [4] ) {
 
 void multiplicaMatrizPunto (double matriz [4][4], double unPunto[4][1], int colsMatriz, int rowsMatriz, int colsUnPunto , int rowsUnPunto){
 
-        //int matriz_rows = sizeof(matriz)/sizeof(matriz[0]);
-        //int matriz_cols = sizeof(matriz[0])/sizeof(matriz[0][0]);
-        //std::cout << "Number of rows in array a = "<< matriz_rows << "\n";
-        //std::cout << "Number of cols in array a = "<<  matriz_cols<< "\n";
-        
-        
-        //int unPunto_rows = sizeof(unPunto)/sizeof(unPunto[0]);
-        //int unPunto_cols = sizeof(unPunto[0])/sizeof(unPunto[0][0]);
-        //std::cout << "Number of rows in array unPunto = "<<  unPunto_rows << "\n";
-        //std::cout << "Number of cols in array unPunto = "<<  unPunto_cols << "\n";
         
        int matriz_cols = colsMatriz;
        int unPunto_rows = rowsUnPunto;
@@ -201,17 +190,7 @@ void multiplicaMatrizPunto (double matriz [4][4], double unPunto[4][1], int cols
 };
 
 void multiplicaMatrizPorMatriz (double matrizA [4][4], double matrizB[4][4], int colsMatrizA, int rowsMatrizA, int colsMatrizB , int rowsMatrizB){
-    /*int a_rows = sizeof(a)/sizeof(a[0]);
-    int a_cols = sizeof(a[0])/sizeof(a[0][0]);
-    std::cout << "Number of rows in array a = "<< a_rows << "\n";
-    std::cout << "Number of cols in array a = "<<  a_cols<< "\n";
     
-    
-    int b_rows = sizeof(b)/sizeof(b[0]);
-    int b_cols = sizeof(b[0])/sizeof(b[0][0]);
-    std::cout << "Number of rows in array b = "<<  b_rows << "\n";
-    std::cout << "Number of cols in array b = "<<  b_cols << "\n";
-    */
     
     int a_cols=colsMatrizA;
     int b_rows=rowsMatrizB;
@@ -221,7 +200,7 @@ void multiplicaMatrizPorMatriz (double matrizA [4][4], double matrizB[4][4], int
     if (a_cols == b_rows){
        // std::cout << "\nThe number of cols in the first array is same as the number of rows in the second array, \nThe multiplication is possible\n";
         //initialize the final array
-        int c[a_rows][b_cols];
+        //int c[a_rows][b_cols];
         int i, j,k;
         for (i=0;i<a_rows; i++){
             for (j=0;j<b_cols;j++){
@@ -254,51 +233,53 @@ void multiplicaMatrizPorMatriz (double matrizA [4][4], double matrizB[4][4], int
 int main( int argc, char** argv )
 {  
    
-    std::cout << "Hello, World!\n";
-
-
-    float a[3][4] = {
-        {0, 1, 2, 3} ,
-        {4, 5, 6, 7} ,
-        {8, 9, 10, 11}
-    };
-    
-    float b[4][3] = {
-        {0, 1, 2} ,
-        {4, 5, 6} ,
-        {4, 5, 6} ,
-        {8, 9, 11}
-    };
-    
-    
-    
-    
-
-    
+        
     std::cout << std::setprecision(6) << std::fixed;
     std::ofstream out( "miEntradaModificada.txt" );
     out << std::setprecision(6) << std::fixed;
 
+
+
+    int contLin=0;
+    Transformador myTransformador;
+    for (contLin=0;contLin <50; contLin++  ){
     // FOR READING FILE AND DRAW CURVE
     std::ifstream infile("mientrada.txt");
     std::string line;
     infile >> std::setprecision(6) >> std::fixed;
-    int contLin=0;
-    createMatRot('X',0);
-    multiplicaMatrizPorMatriz (matRot,traslacion,4,4,4,4);// el resultado quedara en matRotTrasla
+
+    //createMatRot('Z',10*contLin);
+    //multiplicaMatrizPorMatriz (matRot,traslacion,4,4,4,4);// el resultado quedara en matRotTrasla
+    Point3D traslacion(0,0,0.2*contLin);
+    myTransformador.createMatRotTrasla('Z',10*contLin,traslacion);
+    myTransformador.displayMatrizRotTrasla();
+    std::cout << "beFORE WHILE";
     while ( infile >> timestamp >> rx >> ry >> rz >> q1 >> q2 >> q3 >> q4 ){
-        //std::cout << "You said, " << timestamp << " " << rx << " " << ry << " " << rz << " " << q1 << " " << q2 << " " << q3 << " " << q4 << "\n";
-        punto[0][0]=rx;
-        punto[1][0]=ry;
-        punto[2][0]=rz;
+        std::cout << "You said.... contLin"<< contLin << timestamp << " " << rx << " " << ry << " " << rz << " " << q1 << " " << q2 << " " << q3 << " " << q4 << "\n";
+    	myPoint3D.setX(rx);
+    	myPoint3D.setY(ry);
+    	myPoint3D.setZ(rz);
+
+    	myTransformador.setPoint3D(myPoint3D);
+
+        punto[0][0]=myPoint3D.getX();
+        punto[1][0]=myPoint3D.getY();
+        punto[2][0]=myPoint3D.getZ();
         punto[3][0]=1;
         
         //multiplicaMatrizPunto (traslacion,punto,4,4,1,4);
-        multiplicaMatrizPunto (matRotTrasla,punto,4,4,1,4);
-        contLin++;
+        //myPoint3D=myTransformador.multiplicaMatrizPunto(matRotTrasla,punto,4,4,1,4);
+        myPoint3D=myTransformador.multiplicaMatrizPunto(punto,1,4);
+        //multiplicaMatrizPunto (matRotTrasla,punto,4,4,1,4);
+        //contLin++;
         //out <<  timestamp <<" "<< rx <<" "<< ry <<" "<<rz<<"\n"<<std::endl;
-        out <<timestamp <<" "<< newPunto[0][0] <<" "<< newPunto[1][0] <<" "<< newPunto[2][0] <<std::endl;
 
+        //out <<timestamp <<" "<< newPunto[0][0] <<" "<< newPunto[1][0] <<" "<< newPunto[2][0] << q1 << q2 << q3 << q4<<std::endl;
+        out <<timestamp <<" "<< myPoint3D.getX() <<" "<< myPoint3D.getY() <<" "<< myPoint3D.getZ() << q1 << q2 << q3 << q4<<std::endl;
+
+    }
+    infile.close();
+    std::cout << ">>>>>>>CIERROR INFILE\n";
     }
 
     //multiplicaMatrizPunto (traslacion,punto,4,4,1,4);
@@ -306,7 +287,7 @@ int main( int argc, char** argv )
     
     //multiplicaMatrizPorMatriz (matRot,traslacion,4,4,4,4);
     out.close();
-    infile.close();
+    //infile.close();
 
     return 0;
 }
