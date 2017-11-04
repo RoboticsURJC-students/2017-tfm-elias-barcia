@@ -58,6 +58,7 @@ public:
 	void setTraslacion (Point3D aPoint3D);
 	void displayMatriz (double matriz [4][4], int matriz_rows, int matriz_cols);
 	void displayMatrizRotTrasla ();
+	double generateGaussianNoise(double mu, double sigma);
 
 
 

@@ -5,6 +5,9 @@
 #include <sys/time.h>
 #include <iomanip>
 #include <cmath>
+#include <cstdlib>
+#include <limits>
+
 #include "Point3D.h"
 #include "Transformador.h"
 
@@ -262,5 +265,31 @@ void Transformador::setTraslacion (Point3D aPoint3D){
 void Transformador::setPoint3D (Point3D aPoint3D){
 	this->myPoint3D.setXYZ(aPoint3D.getX(),aPoint3D.getY(),aPoint3D.getZ());
 
+}
+
+double Transformador::generateGaussianNoise(double mu, double sigma)
+{
+	static const double epsilon = std::numeric_limits<double>::min();
+	static const double two_pi = 2.0*3.14159265358979323846;
+
+	double z1;
+	bool generate;
+	generate = !generate;
+
+	if (!generate)
+	   return z1 * sigma + mu;
+
+	double u1, u2;
+	do
+	 {
+	   u1 = rand() * (1.0 / RAND_MAX);
+	   u2 = rand() * (1.0 / RAND_MAX);
+	 }
+	while ( u1 <= epsilon );
+
+	double z0;
+	z0 = sqrt(-2.0 * log(u1)) * cos(two_pi * u2);
+	z1 = sqrt(-2.0 * log(u1)) * sin(two_pi * u2);
+	return z0 * sigma + mu;
 }
 

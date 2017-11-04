@@ -3,7 +3,7 @@
 class Point3D {
 private:
    double x, y, z;  // Private data members
- 
+
 public:
    Point3D( double x = 0, double y = 0 , double z=0); // Constructor with default arguments
    double getX() const;  // Getter
