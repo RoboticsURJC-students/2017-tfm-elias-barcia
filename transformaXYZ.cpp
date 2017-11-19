@@ -284,9 +284,9 @@ int main( int argc, char** argv )
     //createMatRot('Z',10*contLin);
     //multiplicaMatrizPorMatriz (matRot,traslacion,4,4,4,4);// el resultado quedara en matRotTrasla
     //Point3D traslacion(0,0,0.2*contLin);
-    Point3D traslacion(0,1,0);
+    Point3D traslacion(0,2,2);
     //myTransformador.createMatRotTrasla('Z',10*contLin,traslacion);
-    myTransformador.createMatRotTrasla('Z',0,traslacion);
+    myTransformador.createMatRotTrasla('Z',20,traslacion);
     myTransformador.displayMatrizRotTrasla();
     std::cout << "beFORE WHILE";
     double gnoise; // variable to calculate Gaussian Noise
@@ -328,11 +328,11 @@ int main( int argc, char** argv )
         	break;
         }
 
-        out <<timestamp <<" "<< myPoint3D.getX() <<" "<< myPoint3D.getY() <<" "<< myPoint3D.getZ() << q1 << q2 << q3 << q4<<std::endl;
+        out <<timestamp <<" "<< myPoint3D.getX() <<" "<< myPoint3D.getY() <<" "<< myPoint3D.getZ() <<" "<< q1 <<" "<< q2 <<" "<<q3 <<" "<< q4<<std::endl;
 
     }
     infile.close();
-    std::cout << ">>>>>>>CIERROR INFILE\n";
+    std::cout << ">>>>>>>CIERRO INFILE\n";
     //}
 
     //multiplicaMatrizPunto (traslacion,punto,4,4,1,4);
