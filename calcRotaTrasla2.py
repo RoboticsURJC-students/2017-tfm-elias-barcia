@@ -104,6 +104,7 @@ print ("Reading "+args.orig_file)
 A = read_trajectory(args.orig_file,False) # reads trajectory from groundTruth and performs small changes
 B = read_trajectory(args.new_file,False) # reads trajectory from groundTruth and performs small changes
 # recover the transformation
+n=len(A)
 A = np.asmatrix(A)
 B = np.asmatrix(B)
 print "Points A"
