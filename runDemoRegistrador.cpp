@@ -15,14 +15,14 @@
 
 int main( int argc, char** argv )
 {
-	std::cout << std::setprecision(6) << std::fixed;
+	//std::cout << std::setprecision(6) << std::fixed;
     std::ofstream out( "miSalida.txt" );
-    out << std::setprecision(6) << std::fixed;
+    //out << std::setprecision(6) << std::fixed;
 
 
 	std::ifstream infile("/home/tfm3/workspace/Registrador/mientrada.txt");
 	//std::string line;
-    infile >> std::setprecision(6) >> std::fixed;
+    //infile >> std::setprecision(6) >> std::fixed;
 	MatrixXd A (4,3);
 	int contLin=0;
 	double timestamp,rx,ry,rz,q1,q2,q3,q4=0;
@@ -42,7 +42,7 @@ int main( int argc, char** argv )
 
 	std::ifstream infileB("/home/tfm3/workspace/Registrador/miEntradaModificada.txt");
 
-	    infileB >> std::setprecision(6) >> std::fixed;
+	    //infileB >> std::setprecision(6) >> std::fixed;
 		MatrixXd B (4,3);
 		int contLinB=0;
 		//double timestamp,rx,ry,rz,q1,q2,q3,q4=0;
@@ -75,7 +75,7 @@ int main( int argc, char** argv )
 
 	MatrixXd A2 = (ret_R * A.transpose());
 	std::cout << "A2"<<A2<< std::endl;
-	int N = A2.rows();
+	int N = A2.cols();
 	MatrixXd A3 (A2.rows(),A2.cols());
 	std::cout << "2- "<<std::endl;
 	for (int i=0; i< N; i++ ) {
@@ -83,6 +83,7 @@ int main( int argc, char** argv )
 				//A3.row(i) = VectorXd(A2.row(i)) + VectorXd( ret_t );
 		        //A3.row(i) = Vector3d( A2.row(i)) + Vector3d(ret_t);
 			    A3.col(i) =  A2.col(i) + ret_t ;
+
 		        std::cout << "4- "<<std::endl;
 
 			}
@@ -95,4 +96,11 @@ int main( int argc, char** argv )
 	// Find the error
 	MatrixXd err = A4 - B;
 	std::cout << "err "<<std::endl<< err <<std::endl;
+	MatrixXd err2 = err.array().pow(2);
+	double errorNumber = sqrt(err2.sum()/err2.rows());
+
+	std::cout << "err2 "<< err2 <<std::endl;
+	std::cout << "RMSE= "<< errorNumber <<std::endl;
+
+
 }

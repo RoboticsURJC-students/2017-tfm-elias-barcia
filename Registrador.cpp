@@ -46,40 +46,50 @@ Registrador::Registrador(){
 		}
         AA= A - mCentroidA;
         BB= B - mCentroidB;
-		std::cout << "A "<< A <<std:: endl;
+		std::cout << "A \n"<< A <<std:: endl;
 
 		std::cout <<centroidA <<std::endl;
-		std::cout << "AA "<< AA << std::endl;
+		std::cout << "AA \n"<< AA << std::endl;
 
-		std::cout << "B "<< B << std::endl;
+		std::cout << "B \n"<< B << std::endl;
 
 		std::cout <<centroidB <<std::endl;
-		std::cout << "BB "<< BB << std::endl;
+		std::cout << "BB \n"<< BB << std::endl;
 
 		H= AA.transpose() * BB;
 
 
 
-		std::cout << "H "<< H << std::endl;
+		std::cout << "H \n"<< H << std::endl;
 
 		//JacobiSVD<MatrixXd> svd(H, ComputeFullU | ComputeFullV);
-		BDCSVD<MatrixXd> svd(H, ComputeFullU | ComputeFullV);
+		JacobiSVD<MatrixXd> svd(H, ComputeFullU | ComputeFullV);
+		//BDCSVD<MatrixXd> svd(H, ComputeFullU | ComputeFullV);
 		U=svd.matrixU();
 		V=svd.matrixV();
 		S=svd.singularValues();
-		std::cout << "U: " << U << std::endl;;
-		std::cout << "V: " << V << std::endl;;
-		std::cout << "S: " << S << std::endl;
+		MatrixXd neoA = U*S.asDiagonal()*V.transpose();
+		//MatrixXd neoA = neoA * V;
+				//*V.transpose();
+		//MatrixXd neoA = U*S*V.transpose();
+		std::cout << "neoA: \n" << neoA << std::endl;
+		MatrixXd Vt = V.transpose();
+		std::cout << "U: \n" << U << std::endl;;
+		std::cout << "V: \n" << V << std::endl;;
+		std::cout << "Vt: \n" << Vt << std::endl;
+		std::cout << "S: \n" << S << std::endl;
 
-		R = V.transpose() * U.transpose();
-		std::cout << "R: " << R <<std::endl;
+		//R = V.transpose() * U.transpose();
+		R = Vt.transpose() * U.transpose();
+		std::cout << "R1: \n" << R <<std::endl;
 		std::cout << "centroidA: " << centroidA <<std::endl;
 		std::cout << "centroidB: " << centroidB <<std::endl;
 		if (R.determinant() < 0){
 			std::cout << "Detectadas reflections-------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>><"<<std::endl;
 		       //Vt[2,:] *= -1
-			    V.row(2) *= -1;
-			    R = V.transpose() * U.transpose();
+			    Vt.row(2) *= -1;
+			    R = Vt.transpose() * U.transpose();
+			    std::cout << "R2: \n" << R <<std::endl;
 		}
 		//t = -R * mCentroidA.transpose() + mCentroidB.transpose();
 		//t = -R * centroidA.transpose() + centroidB.transpose();
