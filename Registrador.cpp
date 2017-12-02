@@ -46,21 +46,21 @@ Registrador::Registrador(){
 		}
         AA= A - mCentroidA;
         BB= B - mCentroidB;
-		std::cout << "A \n"<< A <<std:: endl;
+		//std::cout << "A \n"<< A <<std:: endl;
 
 		std::cout <<centroidA <<std::endl;
-		std::cout << "AA \n"<< AA << std::endl;
+		//std::cout << "AA \n"<< AA << std::endl;
 
-		std::cout << "B \n"<< B << std::endl;
+		//std::cout << "B \n"<< B << std::endl;
 
 		std::cout <<centroidB <<std::endl;
-		std::cout << "BB \n"<< BB << std::endl;
+		//std::cout << "BB \n"<< BB << std::endl;
 
 		H= AA.transpose() * BB;
 
 
 
-		std::cout << "H \n"<< H << std::endl;
+		//std::cout << "H \n"<< H << std::endl;
 
 		//JacobiSVD<MatrixXd> svd(H, ComputeFullU | ComputeFullV);
 		JacobiSVD<MatrixXd> svd(H, ComputeFullU | ComputeFullV);
@@ -68,16 +68,16 @@ Registrador::Registrador(){
 		U=svd.matrixU();
 		V=svd.matrixV();
 		S=svd.singularValues();
-		MatrixXd neoA = U*S.asDiagonal()*V.transpose();
+		//MatrixXd neoA = U*S.asDiagonal()*V.transpose();
 		//MatrixXd neoA = neoA * V;
 				//*V.transpose();
 		//MatrixXd neoA = U*S*V.transpose();
-		std::cout << "neoA: \n" << neoA << std::endl;
+		//std::cout << "neoA: \n" << neoA << std::endl;
 		MatrixXd Vt = V.transpose();
-		std::cout << "U: \n" << U << std::endl;;
-		std::cout << "V: \n" << V << std::endl;;
-		std::cout << "Vt: \n" << Vt << std::endl;
-		std::cout << "S: \n" << S << std::endl;
+		//std::cout << "U: \n" << U << std::endl;;
+		//std::cout << "V: \n" << V << std::endl;;
+		//std::cout << "Vt: \n" << Vt << std::endl;
+		//std::cout << "S: \n" << S << std::endl;
 
 		//R = V.transpose() * U.transpose();
 		R = Vt.transpose() * U.transpose();
@@ -95,7 +95,7 @@ Registrador::Registrador(){
 		//t = -R * centroidA.transpose() + centroidB.transpose();
 		//t = -R * centroidA.transpose();
 		t = -R * centroidA + centroidB;
-		std::cout <<"t "<< t <<std:: endl;
+		std::cout <<"t \n"<< t <<std:: endl;
 
 		//return R, t
 
