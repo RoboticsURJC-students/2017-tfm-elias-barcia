@@ -130,7 +130,7 @@ int main( int argc, char** argv )
     contLin3=0;
     readFileAndDraw("miSalidaRegistro.txt",c3x,c3y,c3z,a2rx,a2ry,a2rz,contLin3);
     std::cout<< "c3x="<<c3x <<"c3y="<<c3y<<"c2z="<<c3z<<"\n";
-
+    bool points = false;
 
    
     while( !pangolin::ShouldQuit() )
@@ -174,7 +174,7 @@ int main( int argc, char** argv )
                 contLin++;
               */
             //} else if (contLin > 0 ) {// After reading all coordinates from file. Only have to paint the content of the arrays.
-               
+            if (points)   {
                 glBegin(GL_POINTS);
                     glColor3f(0,0,0);//white, original curve, ground trouth
                     for (int h=0; h < contLin1; h++){// Bucle for, important the < simbol instead of <=
@@ -202,8 +202,49 @@ int main( int argc, char** argv )
                     glVertex3f(c2x,c2y,c2z); 
                     glVertex3f(c3x,c3y,c3z); 
                 glEnd(); 
+            }
+            if (! points ) { // NOT POINTS , THEN PAINT LINES
+                glBegin(GL_LINES);
+                    glLineWidth(2.5);
+                    glColor3f(0,0,0);//white, original curve, ground trouth
+                    contLin1 --;
+                    for (int h=0; h < contLin1; h++){// Bucle for, important the < simbol instead of <=
+                       
+                        glVertex3f(arx[h],ary[h],arz[h]); // LINEA QUE DIBUJA UNA CURVA 
+                        glVertex3f(arx[h+1],ary[h+1],arz[h+1]);
+                    }
+                    contLin1 ++;
+                    glLineWidth(1.0);
+                    glColor3f(0,0,1);//BLUE, artificial data
+                    contLin2 --;
+                    for (int j=0; j < contLin2; j++){// Bucle for, important the < simbol instead of <=
+                       
+                        glVertex3f(brx[j],bry[j],brz[j]); // LINEA QUE DIBUJA UNA CURVA 
+                        glVertex3f(brx[j+1],bry[j+1],brz[j+1]);
+                    
+                    }
+                    contLin2 ++;
+                    glLineWidth(3.0);
+                    glColor3f(0,1,0);//GREEN, Estimated data using Rotation and Traslation calculated with SVD
+                    contLin3 --;
+                    for (int k=0; k < contLin3; k++){// Bucle for, important the < simbol instead of <=
+                       
+                        glVertex3f(a2rx[k],a2ry[k],a2rz[k]); // LINEA QUE DIBUJA UNA CURVA 
+                        glVertex3f(a2rx[k+1],a2ry[k+1],a2rz[k+1]);
+                    
+                    }
+                    contLin3 ++;
 
-                glLineWidth(2.5);
+
+
+                    //glColor3f(1,0,0);//RED, to display centroids
+                    //glVertex3f(c1x,c1y,c1z); 
+                    //glVertex3f(c2x,c2y,c2z); 
+                    //glVertex3f(c3x,c3y,c3z); 
+                glEnd(); 
+            }
+                
+                glLineWidth(1.0);
                 glColor3f(1.0, 0.0, 0.0);
                 glBegin(GL_LINES);
                 for (int l=0; l < contLin2; l++){// Bucle for, important the < simbol instead of <=
