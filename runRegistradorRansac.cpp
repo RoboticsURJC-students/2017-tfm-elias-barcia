@@ -87,19 +87,21 @@ while (iterations < maxIterations){
 	MatrixXd mData (nvalores,3);
 	int i=0;
 	bool visitados[contLin] ={ false};
-
+    int aInlierIdx =0;
 	while (i < nvalores) {
 
 		//get random value
-		srand(time(0));
-		int aInlierIdx = rand() % contLin;
-		if (visitados[aInlierIdx]==false) {
+		//srand(time(0));
+		//srand(aInlierIdx);
+		//aInlierIdx = rand() % contLin;
+		aInlierIdx=1+(int) (3000.0*rand()/(RAND_MAX+1.0));
+		//if (visitados[aInlierIdx]==false) {
 			visitados[aInlierIdx]=true;
-			//std::cout<<i << " aInlierIdx "<< aInlierIdx	<<std::endl;
+			std::cout<<i << " aInlierIdx "<< aInlierIdx	<<std::endl;
 			mInliers.row(i)= B.row(aInlierIdx);
 			mData.row(i)= A.row(aInlierIdx);
 			i++;
-		}
+		//}
 	}
 
 
@@ -184,7 +186,7 @@ while (iterations < maxIterations){
 
     second_xyz_aligned = ret_R * mFinalInliers.transpose();
 
-    MatrixXd mTransMatrixFinal (second_xyz_aligned.rows(),second_xyz_aligned.cols()), modelAligned_final;
+    MatrixXd mTransMatrixFinal (second_xyz_aligned.rows(),second_xyz_aligned.cols()), modelAligned_final, BestModelAligned;
     for (int h=0; h< second_xyz_aligned.cols(); h++ ) {
 
     	mTransMatrixFinal.col(h) << ret_t(0), ret_t(1), ret_t(2);
