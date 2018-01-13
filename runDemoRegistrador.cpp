@@ -80,11 +80,13 @@ int main( int argc, char** argv )
 	//std::cout << "B "<<B<<std::endl;
 	MatrixXd ret_R,ret_t;
 
-	miRegistrador.rigid_transform_3D( A, B, ret_R,ret_t);
+	//miRegistrador.rigid_transform_3D( A, B, ret_R,ret_t);
+	miRegistrador.rigid_transform_3D( B, A, ret_R,ret_t);
 
 	std::cout << "ret_R"<<ret_R << std::endl;
 	std::cout << "ret_t "<<ret_t << std::endl;
-
+    //--------------------------------------------- change transformation over A data, groundtruth-------------------
+    /*
 	MatrixXd A2 = (ret_R * A.transpose());
 	//std::cout << "A2"<<A2<< std::endl;
 	int N = A2.cols();
@@ -119,5 +121,44 @@ int main( int argc, char** argv )
 		out<<w <<" "<< A4(w,0) <<" "<< A4(w,1) <<" "<< A4(w,2) <<" "<< w <<" "<< w <<" "<<w <<" "<< w<<std::endl;
 	}
     out.close();
+    */
+
+
+	// Apply transformation over B Data-----------------------------------------------------
+
+	MatrixXd Final_xyz_aligned;
+	Final_xyz_aligned = ret_R * B.transpose() ;
+	MatrixXd mFinalTransMatrix (Final_xyz_aligned.rows(),Final_xyz_aligned.cols()),  Final_model_aligned2;
+	        for (int j=0; j< Final_xyz_aligned.cols(); j++ ) {
+
+	        	mFinalTransMatrix.col(j) << ret_t(0), ret_t(1), ret_t(2);
+
+	        }
+	        std::cout << "mFinalTransMatrix \n"<< mFinalTransMatrix <<std:: endl;
+	        Final_model_aligned2=Final_xyz_aligned+mFinalTransMatrix;
+
+	        //std::cout << "Final_model_aligned2 \n"<< Final_model_aligned2 <<std:: endl;
+	        std::cout << "Final_model_aligned2.rows() \n"<< Final_model_aligned2.rows() <<std:: endl;
+	        std::cout << "Final_model_aligned2.cols() \n"<< Final_model_aligned2.cols() <<std:: endl;
+	        //MatrixXd alignment_error = model_aligned - data
+
+	    int numCols = Final_model_aligned2.cols();
+
+	    for (int w=0;w<numCols; w++){
+	    	out<<w <<" "<< Final_model_aligned2(0,w) <<" "<< Final_model_aligned2(1,w) <<" "<< Final_model_aligned2(2,w) <<" "<< w <<" "<< w <<" "<< w <<" "<< w<<std:: endl;
+	    }
+	    out.close();
+
+	    // Find the error
+	    	MatrixXd err = Final_model_aligned2 - A;
+	    	//std::cout << "err "<<std::endl<< err <<std::endl;
+	    	MatrixXd err2 = err.array().pow(2);
+	    	double errorNumber = sqrt(err2.sum()/err2.rows());
+
+	    	//std::cout << "err2 "<< err2 <<std::endl;
+	    	std::cout << "RMSE= "<< errorNumber <<std::endl;
+
+
+
 
 }
