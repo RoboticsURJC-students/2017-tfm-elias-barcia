@@ -19,7 +19,7 @@ int main( int argc, char** argv )
 {
 	//std::cout << std::setprecision(6) << std::fixed;
 
-    std::ofstream out( "miSalidaRegistro.txt" );
+    std::ofstream out( "/home/tfm3/workspace/RegistradorRansac/miSalidaRegistro.txt" );
     out << std::setprecision(6) << std::fixed;
 	std::ifstream infile("/home/tfm3/workspace/RegistradorRansac/miEntrada.txt");
 	//std::string line;
@@ -78,7 +78,7 @@ MatrixXd FinalRotation;
 Vector3d FinalTraslation;
 double bestError = 99999;
 
-while (iterations < maxIterations){
+while (iterations < maxIterations){ // Comenzamos el bucle RANSANC
     iterations ++;
 	//std::cout << "B "<<B<<std::endl;
 	int nvalores = 20;
@@ -88,7 +88,7 @@ while (iterations < maxIterations){
 	int i=0;
 	bool visitados[contLin] ={ false};
     int aInlierIdx =0;
-	while (i < nvalores) {
+	while (i < nvalores) { // Seleccionamos aleatoriamente los primeros supuestos inliers
 
 		//get random value
 		//srand(time(0));
@@ -110,7 +110,7 @@ while (iterations < maxIterations){
 	RegistradorHorn miRegistradorHorn;
 	MatrixXd ret_R,ret_t,second_xyz_aligned;
 	//miRegistradorHorn.align(B.transpose(),A.transpose(),ret_R,ret_t);
-	miRegistradorHorn.align(mInliers.transpose(),mData.transpose(),ret_R,ret_t);
+	miRegistradorHorn.align(mInliers.transpose(),mData.transpose(),ret_R,ret_t); // Estimamos matriz rotacion traslacion
 
 	second_xyz_aligned = ret_R * mInliers.transpose();
 
@@ -130,10 +130,10 @@ while (iterations < maxIterations){
 	MatrixXd mErr = model_aligned2.transpose() - mData;
 	int numCols = model_aligned2.cols();
 
-	for (int w=0;w<numCols; w++){
-		out<<w <<" "<< model_aligned2(0,w) <<" "<< model_aligned2(1,w) <<" "<< model_aligned2(2,w) <<" "<< w <<" "<< w <<" "<< w <<" "<< w<<std:: endl;
-	}
-	out.close();
+	//for (int w=0;w<numCols; w++){
+	//	out<<w <<" "<< model_aligned2(0,w) <<" "<< model_aligned2(1,w) <<" "<< model_aligned2(2,w) <<" "<< w <<" "<< w <<" "<< w <<" "<< w<<std:: endl;
+	//}
+	//out.close();
 	// calculo la media del error de la diferencia entre los inliers y los datos originales
 	//std::cout << "mErr  \n"<< mErr <<std:: endl;
 	// calculo el valor absoluto
@@ -224,6 +224,31 @@ std::cout << "BestError= "<< bestError <<std::endl;
 std::cout << "FinalRotation= "<< FinalRotation <<std::endl;
 std::cout << "FinalTraslation= "<< FinalTraslation <<std::endl;
 
+
+// Una vez tenemos el mejor modelo, aplicamos a los puntos la mejor estimacion de la matriz de rotacion y traslacion a los
+//  y guardamos en un fichero la transformación resultante de dichos puntos
+MatrixXd Final_xyz_aligned;
+Final_xyz_aligned = FinalRotation * B.transpose() ;
+MatrixXd mFinalTransMatrix (Final_xyz_aligned.rows(),Final_xyz_aligned.cols()),  Final_model_aligned2;
+        for (int j=0; j< Final_xyz_aligned.cols(); j++ ) {
+
+        	mFinalTransMatrix.col(j) << FinalTraslation(0), FinalTraslation(1), FinalTraslation(2);
+
+        }
+        std::cout << "mFinalTransMatrix \n"<< mFinalTransMatrix <<std:: endl;
+        Final_model_aligned2=Final_xyz_aligned+mFinalTransMatrix;
+
+        //std::cout << "Final_model_aligned2 \n"<< Final_model_aligned2 <<std:: endl;
+        std::cout << "Final_model_aligned2.rows() \n"<< Final_model_aligned2.rows() <<std:: endl;
+        std::cout << "Final_model_aligned2.cols() \n"<< Final_model_aligned2.cols() <<std:: endl;
+        //MatrixXd alignment_error = model_aligned - data
+
+    int numCols = Final_model_aligned2.cols();
+
+    for (int w=0;w<numCols; w++){
+    	out<<w <<" "<< Final_model_aligned2(0,w) <<" "<< Final_model_aligned2(1,w) <<" "<< Final_model_aligned2(2,w) <<" "<< w <<" "<< w <<" "<< w <<" "<< w<<std:: endl;
+    }
+    out.close();
 
 
 
