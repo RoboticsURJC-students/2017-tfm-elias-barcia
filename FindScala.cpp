@@ -7,6 +7,7 @@
 #include <cmath>
 #include <cstdlib>
 #include "Eigen/Dense"
+#include "Eigen/SVD"
 using namespace Eigen;
 #include <limits>
 #include <stdbool.h>
@@ -61,8 +62,9 @@ int main( int argc, char** argv )
 	timestamp=0,rx=0,ry=0,rz=0,q1,q2,q3,q4=0;
 	std::cout <<"antes de leer el archivo"<<std::endl;
 	while ( infile2 >> timestamp >> rx >> ry >> rz >> q1 >> q2 >> q3 >> q4 ){
-	        readingB.row(contLin)<< 2*rx,10*ry,4*rz;// As example, when reading the second file, a scale (2,10,4) is applied over every x,y,z
-	        contLin ++;
+	        //readingB.row(contLin)<< 2*rx,10*ry,4*rz;// As example, when reading the second file, a scale (2,10,4) is applied over every x,y,z
+		    readingB.row(contLin)<< 120*rx,17*ry,11*rz;// As example, when reading the second file, a scale (2,10,4) is applied over every x,y,z
+		    contLin ++;
 
 
 	}
@@ -112,18 +114,18 @@ int main( int argc, char** argv )
 		AA= A - mCentroidA;
 		BB= B - mCentroidB;
 		//std::cout << "A \n"<< A <<std:: endl;
-
+		std::cout <<"centroidA" <<std::endl;
 		std::cout <<centroidA <<std::endl;
-		std::cout << "AA \n"<< AA << std::endl;
+		//std::cout << "AA \n"<< AA << std::endl;
 
 		//std::cout << "B \n"<< B << std::endl;
-
+		std::cout <<"centroidB" <<std::endl;
 		std::cout <<centroidB <<std::endl;
 		//std::cout << "BB \n"<< BB << std::endl;
 
 		// Hallar el cuadrado de las columnas
 
-
+        // METHOD 1
 		double scalaX = AA.col(0).norm() / BB.col(0).norm();
 		double scalaY = AA.col(1).norm() / BB.col(1).norm();
 		double scalaZ = AA.col(2).norm() / BB.col(2).norm();
@@ -154,6 +156,32 @@ int main( int argc, char** argv )
 	    //       scale = AA.norm() / BB.norm()
 		// else
 		//       scale = BB.norm() / AA.norm()
+
+
+		// METHOD 2, WITH SVD
+
+		//JacobiSVD<MatrixXd> svd(AA,ComputeThinV);
+		JacobiSVD<MatrixXd> svd(AA,ComputeFullU | ComputeFullV);
+		//MatrixXd W = svd.matrixV().leftCols(3);
+		MatrixXd V1 = svd.matrixV();
+		std::cout << "V1 \n"<< V1 << std::endl;
+		MatrixXd U1 = svd.matrixU();
+		//std::cout << "U1 \n"<< U1 << std::endl;
+		MatrixXd S1 = svd.singularValues();
+		std::cout << "S1 \n"<< S1 << std::endl;
+		//MatrixXd W = svd.matrixV().leftCols(3);
+		//std::cout << "W \n"<< W << std::endl;
+
+		JacobiSVD<MatrixXd> svd2(BB,ComputeFullU | ComputeFullV);
+		//MatrixXd Z = svd2.matrixV().leftCols(3);
+		MatrixXd V2 = svd2.matrixV();
+		std::cout << "V2 \n"<< V2 << std::endl;
+		MatrixXd U2 = svd2.matrixU();
+		//std::cout << "U2 \n"<< U2 << std::endl;
+		MatrixXd S2 = svd2.singularValues();
+		std::cout << "S2 \n"<< S2 << std::endl;
+		//MatrixXd Z = svd2.matrixV().leftCols(3);
+		//std::cout << "Z \n"<< Z << std::endl;
 
 	}
 }
