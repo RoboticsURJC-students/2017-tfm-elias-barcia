@@ -51,7 +51,8 @@ int main( int argc, char** argv )
 
 	std::cout << ">>>>>>>CIERRO INFILE\n"<<std::endl;
 
-	std::ifstream infile2("/home/tfm3/workspace/ModuloEscala/miEntradaModificada.txt");
+	//std::ifstream infile2("/home/tfm3/workspace/ModuloEscala/miEntradaModificada.txt");
+	std::ifstream infile2("/home/tfm3/workspace/ModuloEscala/miEntrada.txt");
 	//std::string line;
     //infile >> std::setprecision(6) >> std::fixed;
 	//MatrixXd A (3000,3);
@@ -63,7 +64,8 @@ int main( int argc, char** argv )
 	std::cout <<"antes de leer el archivo"<<std::endl;
 	while ( infile2 >> timestamp >> rx >> ry >> rz >> q1 >> q2 >> q3 >> q4 ){
 	        //readingB.row(contLin)<< 2*rx,10*ry,4*rz;// As example, when reading the second file, a scale (2,10,4) is applied over every x,y,z
-		    readingB.row(contLin)<< 120*rx,17*ry,11*rz;// As example, when reading the second file, a scale (2,10,4) is applied over every x,y,z
+		    //readingB.row(contLin)<< 120*rx,17*ry,11*rz;// As example, when reading the second file, a scale (2,10,4) is applied over every x,y,z
+		    readingB.row(contLin)<< 17*rx,17*ry,17*rz;// As example, when reading the second file, a scale (2,10,4) is applied over every x,y,z
 		    contLin ++;
 
 
@@ -160,6 +162,8 @@ int main( int argc, char** argv )
 
 		// METHOD 2, WITH SVD
 
+		AA = A.rowwise() - A.colwise().mean();
+		BB = B.rowwise() - B.colwise().mean();
 		//JacobiSVD<MatrixXd> svd(AA,ComputeThinV);
 		JacobiSVD<MatrixXd> svd(AA,ComputeFullU | ComputeFullV);
 		//MatrixXd W = svd.matrixV().leftCols(3);
@@ -171,6 +175,11 @@ int main( int argc, char** argv )
 		std::cout << "S1 \n"<< S1 << std::endl;
 		//MatrixXd W = svd.matrixV().leftCols(3);
 		//std::cout << "W \n"<< W << std::endl;
+		//MatrixXd R1 = V1*S1;
+		MatrixXd R1 = V1.transpose()*S1;
+		std::cout << "R1 \n"<< R1 << std::endl;
+		//MatrixXd X1 = U1*S1;
+		//std::cout << "X1 \n"<< X1 << std::endl;
 
 		JacobiSVD<MatrixXd> svd2(BB,ComputeFullU | ComputeFullV);
 		//MatrixXd Z = svd2.matrixV().leftCols(3);
@@ -182,6 +191,77 @@ int main( int argc, char** argv )
 		std::cout << "S2 \n"<< S2 << std::endl;
 		//MatrixXd Z = svd2.matrixV().leftCols(3);
 		//std::cout << "Z \n"<< Z << std::endl;
+
+		//MatrixXd R2 = V2*S2.transpose();
+		MatrixXd R2 = V2.transpose()*S2;
+		std::cout << "R2 \n"<< R2 << std::endl;
+
+		std::cout << "SCALE ESTIMATED WITH SDV \n"<<  std::endl;
+
+		scalaX = S2(0)  / S1(0) ;
+		scalaY = S2(1)  / S1(1) ;
+		scalaZ = S2(2)  / S1(2) ;
+
+		std::cout <<"scalaX="<<scalaX <<std::endl;
+		std::cout <<"scalaY="<<scalaY <<std::endl;
+		std::cout <<"scalaZ="<<scalaZ <<std::endl;
+
+
+
+
+		/// NUEVO INTENTO
+		Eigen::JacobiSVD<Eigen::MatrixXd> svd_1(AA, Eigen::ComputeThinV);
+
+		// and here is the question what is the basis matrix and how can i reduce it
+		// in my understanding it should be:
+		Eigen::MatrixXd W1 = svd_1.matrixV().leftCols(3);
+		std::cout << "W1 \n"<< W1 << std::endl;
+
+		MatrixXd S1_1 = svd.singularValues();
+		std::cout << "S1_1 \n"<< S1_1 << std::endl;
+
+		/// method eigen values
+
+		//MatrixXd centered = mat.rowwise() - mat.colwise().mean();
+		//MatrixXd cov = centered.adjoint() * centered;
+		MatrixXd AAcov = AA.adjoint() * AA;
+
+		//and then perform the eigendecomposition:
+
+		SelfAdjointEigenSolver<MatrixXd> eigA(AAcov);
+
+
+		//eigenvalues
+
+		std::cout << "eig.eigenvalues() \n"<< eigA.eigenvalues() << std::endl;
+		Vector3d eigenValuesA=eigA.eigenvalues() ;
+
+		MatrixXd BBcov = BB.adjoint() * BB;
+
+				//and then perform the eigendecomposition:
+
+		SelfAdjointEigenSolver<MatrixXd> eigB(BBcov);
+
+
+		//eigenvalues
+
+		std::cout << "eig.eigenvalues() \n"<< eigB.eigenvalues() << std::endl;
+
+		std::cout << "SCALE ESTIMATED WITH EIGEN VALUES \n"<<  std::endl;
+        Vector3d eigenValuesB=eigB.eigenvalues() ;
+		scalaX = sqrt(eigenValuesB(0)  / eigenValuesA(0)) ;
+		scalaY = sqrt(eigenValuesB(1)  / eigenValuesA(1)) ;
+		scalaZ = sqrt(eigenValuesB(2)  / eigenValuesA(2)) ;
+
+		std::cout <<"scalaX="<<scalaX <<std::endl;
+		std::cout <<"scalaY="<<scalaY <<std::endl;
+		std::cout <<"scalaZ="<<scalaZ <<std::endl;
+
+
+
+
+
+
 
 	}
 }
