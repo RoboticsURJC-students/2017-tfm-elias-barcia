@@ -17,6 +17,162 @@ using namespace Eigen;
 
 //#include "Eigen/Dense"
 
+FindScala::FindScala(){
+	std::cout<< "constructor por defecto" <<std::endl;
+}
+void FindScala::getScalaRansac(MatrixXd A, MatrixXd B, int contLin) {
+	int maxIterations = 10;
+	int iterations = 0;
+
+    Vector3d prevScala(-1,-1,-1);
+    int contScala=0;
+	while (iterations < maxIterations) { //startin Ransac Algorithm
+		 iterations ++;
+		//std::cout << "B "<<B<<std::endl;
+		int nvalores = 20;
+		// Select 30 points inliers,
+		MatrixXd mInliersA (nvalores,3);
+		MatrixXd mInliersB (nvalores,3);
+		int i=0;
+		bool visitados[contLin] ={ false};
+		int aInlierIdx =0;
+		while (i < nvalores) { // Seleccionamos aleatoriamente los primeros supuestos inliers
+			            aInlierIdx=1+(int) (3000.0*rand()/(RAND_MAX+1.0));
+					//if (visitados[aInlierIdx]==false) {
+						visitados[aInlierIdx]=true;
+						//std::cout<<i << " aInlierIdx "<< aInlierIdx	<<std::endl;
+						mInliersA.row(i)= A.row(aInlierIdx);
+						mInliersB.row(i)= B.row(aInlierIdx);
+						i++;
+					//}
+
+		}
+		//Hallar escala
+
+		MatrixXd AA = mInliersA.rowwise() - mInliersA.colwise().mean();
+		MatrixXd BB = mInliersB.rowwise() - mInliersB.colwise().mean();
+		Vector3d myScala = getScalaEigenValues( AA,  BB);
+		std::cout <<"scalaX="<<myScala(0) <<"preScalaX="<<prevScala(0)<<std::endl;
+		std::cout <<"scalaY="<<myScala(1) <<"preScalaY="<<prevScala(1)<<std::endl;
+		std::cout <<"scalaZ="<<myScala(2) <<"preScalaZ="<<prevScala(2)<<std::endl;
+		double dif0 = myScala(0)- prevScala(0);
+		double dif1 = myScala(1)- prevScala(1);
+		double dif2 = myScala(2)- prevScala(2);
+
+		if ((dif0 < 0.0001)  && (dif1 < 0.0001)  && (dif2 < 0.0001)){
+			contScala ++;
+
+		} else {
+			prevScala=myScala;
+			contScala=0;
+		}
+
+		if (contScala == 5){
+			std::cout<<i << " ++++++++++++++++++++++++++He encontrado  coincidencias de scala "<< contScala	<<std::endl;
+			iterations = maxIterations ; // salgo del bucle
+
+		}
+		//quedarnos con el mejor resultado
+
+
+	}
+	std::cout<< " ++++++++++++++++++++++++++FinBucle "<< contScala	<<std::endl;
+	return;
+
+}
+
+Vector3d FindScala::getScalaEigenValues(MatrixXd AA, MatrixXd BB){
+	/// method eigen values
+
+		//MatrixXd centered = mat.rowwise() - mat.colwise().mean();
+		//MatrixXd cov = centered.adjoint() * centered;
+		MatrixXd AAcov = AA.adjoint() * AA;
+
+		//and then perform the eigendecomposition:
+
+		SelfAdjointEigenSolver<MatrixXd> eigA(AAcov);
+
+
+		//eigenvalues
+
+		std::cout << "eig.eigenvalues() \n"<< eigA.eigenvalues() << std::endl;
+		Vector3d eigenValuesA=eigA.eigenvalues() ;
+
+		MatrixXd BBcov = BB.adjoint() * BB;
+
+				//and then perform the eigendecomposition:
+
+		SelfAdjointEigenSolver<MatrixXd> eigB(BBcov);
+
+
+		//eigenvalues
+
+		std::cout << "eig.eigenvalues() \n"<< eigB.eigenvalues() << std::endl;
+
+		std::cout << "Function getScalaEigenValues that estimates Scale WITH EIGEN VALUES \n"<<  std::endl;
+		Vector3d eigenValuesB=eigB.eigenvalues() ;
+		double scalaX = sqrt(eigenValuesB(0)  / eigenValuesA(0)) ;
+		double scalaY = sqrt(eigenValuesB(1)  / eigenValuesA(1)) ;
+		double scalaZ = sqrt(eigenValuesB(2)  / eigenValuesA(2)) ;
+
+		std::cout <<"scalaX="<<scalaX <<std::endl;
+		std::cout <<"scalaY="<<scalaY <<std::endl;
+		std::cout <<"scalaZ="<<scalaZ <<std::endl;
+		Vector3d myScala (scalaX,scalaY,scalaZ);
+		return myScala;
+
+
+
+}
+
+Vector3d FindScala::getScalaSVD(MatrixXd AA, MatrixXd BB){
+
+	//JacobiSVD<MatrixXd> svd(AA,ComputeFullU | ComputeFullV);
+	JacobiSVD<MatrixXd> svd(AA,Eigen::ComputeThinV);
+			//MatrixXd W = svd.matrixV().leftCols(3);
+		//	MatrixXd V1 = svd.matrixV();
+	    //	std::cout << "V1 \n"<< V1 << std::endl;
+		//	MatrixXd U1 = svd.matrixU();
+			//std::cout << "U1 \n"<< U1 << std::endl;
+			MatrixXd S1 = svd.singularValues();
+			std::cout << "S1 \n"<< S1 << std::endl;
+			//MatrixXd W = svd.matrixV().leftCols(3);
+			//std::cout << "W \n"<< W << std::endl;
+			//MatrixXd R1 = V1*S1;
+		//	MatrixXd R1 = V1.transpose()*S1;
+		//	std::cout << "R1 \n"<< R1 << std::endl;
+			//MatrixXd X1 = U1*S1;
+			//std::cout << "X1 \n"<< X1 << std::endl;
+
+			//JacobiSVD<MatrixXd> svd2(BB,ComputeFullU | ComputeFullV);
+			JacobiSVD<MatrixXd> svd2(BB,Eigen::ComputeThinV);
+			//MatrixXd Z = svd2.matrixV().leftCols(3);
+		//	MatrixXd V2 = svd2.matrixV();
+		//	std::cout << "V2 \n"<< V2 << std::endl;
+		//	MatrixXd U2 = svd2.matrixU();
+			//std::cout << "U2 \n"<< U2 << std::endl;
+			MatrixXd S2 = svd2.singularValues();
+			std::cout << "S2 \n"<< S2 << std::endl;
+			//MatrixXd Z = svd2.matrixV().leftCols(3);
+			//std::cout << "Z \n"<< Z << std::endl;
+
+			//MatrixXd R2 = V2*S2.transpose();
+		//   MatrixXd R2 = V2.transpose()*S2;
+		//	std::cout << "R2 \n"<< R2 << std::endl;
+
+			std::cout << "SCALE ESTIMATED WITH SDV \n"<<  std::endl;
+
+			double scalaX = S2(0)  / S1(0) ;
+			double scalaY = S2(1)  / S1(1) ;
+			double scalaZ = S2(2)  / S1(2) ;
+
+			std::cout <<"scalaX="<<scalaX <<std::endl;
+			std::cout <<"scalaY="<<scalaY <<std::endl;
+			std::cout <<"scalaZ="<<scalaZ <<std::endl;
+			Vector3d myScala (scalaX,scalaY,scalaZ);
+			return myScala;
+}
+
 int main( int argc, char** argv )
 {
 	//std::cout << std::setprecision(6) << std::fixed;
@@ -113,8 +269,11 @@ int main( int argc, char** argv )
 			mCentroidB.row(j) << centroidBX ,centroidBY,centroidBZ ;
 
 		}
-		AA= A - mCentroidA;
-		BB= B - mCentroidB;
+		//AA= A - mCentroidA;
+		//BB= B - mCentroidB;
+
+		AA = A.rowwise() - A.colwise().mean();
+		BB = B.rowwise() - B.colwise().mean();
 		//std::cout << "A \n"<< A <<std:: endl;
 		std::cout <<"centroidA" <<std::endl;
 		std::cout <<centroidA <<std::endl;
@@ -164,6 +323,7 @@ int main( int argc, char** argv )
 
 		AA = A.rowwise() - A.colwise().mean();
 		BB = B.rowwise() - B.colwise().mean();
+	/*
 		//JacobiSVD<MatrixXd> svd(AA,ComputeThinV);
 		JacobiSVD<MatrixXd> svd(AA,ComputeFullU | ComputeFullV);
 		//MatrixXd W = svd.matrixV().leftCols(3);
@@ -220,6 +380,7 @@ int main( int argc, char** argv )
 		MatrixXd S1_1 = svd.singularValues();
 		std::cout << "S1_1 \n"<< S1_1 << std::endl;
 
+
 		/// method eigen values
 
 		//MatrixXd centered = mat.rowwise() - mat.colwise().mean();
@@ -256,9 +417,11 @@ int main( int argc, char** argv )
 		std::cout <<"scalaX="<<scalaX <<std::endl;
 		std::cout <<"scalaY="<<scalaY <<std::endl;
 		std::cout <<"scalaZ="<<scalaZ <<std::endl;
-
-
-
+        */
+        FindScala myFindScala;
+        myFindScala.getScalaSVD(AA,BB);
+        myFindScala.getScalaEigenValues(AA,BB);
+        myFindScala.getScalaRansac(A,B,contLin);
 
 
 
