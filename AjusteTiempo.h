@@ -14,7 +14,9 @@ public:
    void demoPresentaMatriz(); // Constructor with default arguments
    void rigid_transform_3D (MatrixXd A, MatrixXd B, MatrixXd& R, MatrixXd& t);
    void getScalaRansac(MatrixXd AA, MatrixXd BB, int ContLin);
-   void genera2Series(double proporcionFrecuencia,double offset, MatrixXd& A, MatrixXd& B);
+   void genera2Series(int maxLine, double proporcionFrecuencia,double offset, MatrixXd& A, MatrixXd& B);
+   void calcularAutocorrelacion(int maxLine,int intervalo, double offset, MatrixXd&A, MatrixXd&B);
+   void calcularAutocorrelacion2(int maxLine,int intervalo, double offset, MatrixXd&A, MatrixXd&B);
    Vector3d getScalaEigenValues(MatrixXd AA, MatrixXd BB);
    Vector3d getScalaSVD(MatrixXd AA, MatrixXd BB);
 
