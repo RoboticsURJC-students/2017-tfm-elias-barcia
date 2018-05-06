@@ -91,8 +91,9 @@ x2= np.asarray(x2_ok)
 
 
 #plt.plot(t, x, 'r--', t, x**2, 'bs', t, x**3, 'g^')
-#plt.plot(t, x, 'r--', t2, x2, 'b--')
-plt.plot(t, x, 'r', t2, x2, 'b')
+#plt.plot(t, x, 'r--', t2, x2, 'b--
+#plt.plot(t, x, 'r', t2, x2, 'b')
+plt.plot(t, x, 'r.', t2, x2, 'b.')
 
 plt.show()
 

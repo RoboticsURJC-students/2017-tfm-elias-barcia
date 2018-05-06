@@ -523,7 +523,123 @@ void AjusteTiempo::calcularAutocorrelacion3(char coordinate, int maxLine, int in
 
 }
 
+double AjusteTiempo::calcularAutocorrelacion4(int maxLine, int intervalo,double delay, MatrixXd& A, MatrixXd& B)
 
+{
+	//-2018abr18
+	// This will be used with interpolation, calculate regression for 2 series
+	// offset: Defines how to separate de second serie. B + offset
+	// intervalo: defines la amplitud de la ventana desde la que buscaremos la correlación
+	// maxLine : numero máximo de líneas
+	// MatrixXd A and B is type ( time,x,y,z)
+
+
+
+
+
+	double mediaTiempoA, mediaTiempoB, meanXSerieA, meanXSerieB;
+	std::cout <<"Inside calcularAutocorrelacion4"<<std::endl;
+	//int miOffset=5;
+    //double miOffset = offset;
+    double newContLin = 0;
+    //std::cout <<"miOffset="<<miOffset<<std::endl;
+    // initialize random seed:
+    srand (time(NULL));
+	//while ( (infile >> timestamp >> rx >> ry >> rz >> q1 >> q2 >> q3 >> q4) && contLin<maxLine ){
+    double aleatorio =0, valueToB=0;
+
+
+	//contLin=maxLine;
+	//std::cout <<"contLin="<<contLin<<std::endl;
+	//Calcular autoCorrelacion
+
+	meanXSerieA = A.row(1).mean(); // Takes the xA coordinate
+	std::cout <<"	meanXSerieA="<<	meanXSerieA<<std::endl;
+
+	meanXSerieB = B.row(1).mean(); // takes the xB coordinate
+	std::cout <<"	meanXSerieB="<<	meanXSerieB<<std::endl;
+
+
+	//Serie
+	VectorXd centeredSA,centeredSB,totalCenteredS;
+		//for (int i=0; i < contLin ; i++){
+			//centeredTA.row(contLin)<< vTiempoA.array() - mediaTiempoA;
+
+		//}
+	//centeredSA = A.row(1).array() - meanXSerieA;
+	centeredSA = A.col(1).array() - meanXSerieA;
+	//std::cout <<"	centeredSA="<<	centeredSA<<std::endl;
+
+	centeredSB = B.col(1).array() - meanXSerieB;
+	//std::cout <<"	centeredSB="<<	centeredSB<<std::endl;
+
+	double denom=0,sx=0,sy=0;
+	std::cout <<"Inside calcularAutocorrelacion4:Antes BucleA"<<std::endl;
+	for ( int i=0; i < A.rows(); i++){
+			//sx += centeredTA(i)*centeredTA(i);
+			//sy += centeredTB(i)*centeredTB(i);
+		sx += centeredSA(i)*centeredSA(i);
+
+	}
+	std::cout <<"Inside calcularAutocorrelacion4:Antes BucleB"<<std::endl;
+	for (int i=0; i< B.rows(); i ++){
+		sy += centeredSB(i)*centeredSB(i);
+	}
+
+	denom = sqrt(sx*sy);
+
+	// Calculate the correlation
+	std::cout <<"Inside calcularAutocorrelacion4:Antes de empezar a calcular la correlacion"<<std::endl;
+       double sxy=0, rMax=0;
+       int j = 0,delayMax=0;
+
+       std::cout <<"Inside calcularAutocorrelacion4:A.rows()="<<A.rows()<<std::endl;
+       std::cout <<"Inside calcularAutocorrelacion4:B.rows()="<<B.rows()<<std::endl;
+	  sxy = 0;
+	  sx=0;
+	  sy=0;
+	  int maxRowsA = A.rows();
+	  int maxRowsB = B.rows();
+	  //for (int i=0;i<maxRows;i++) {
+	  int i =0;
+
+	  while (i < maxRowsA && j < maxRowsB){
+
+
+		 j = i + delay;
+		 if (j < 0 || j >= maxRowsB)
+			continue;
+		 else
+			//sxy += (vTiempoA[i] - mx) * (vTiempoB[j] - my);
+			 //sxy += centeredTA[i] * centeredTB[j];
+			 //sxy += centeredSA[i] * centeredSB[j];
+			 sxy += ((A.row(i))(1) - meanXSerieA) * ((B.row(j))(1) - meanXSerieB);
+			 //sx += centeredSA(i)*centeredSA(i);
+			 //sy += centeredSB(j)*centeredSB(j);
+		 i++;
+	  }
+
+
+
+	  double r = sxy / denom;
+	  //double r = sxy / sqrt(sx*sy);
+
+	  // r is the correlation coefficient at "delay"
+	  std::cout <<"r ="<<fabs(r)<<std::endl;
+	  std::cout <<"delay ="<<delay<<std::endl;
+      return r;
+	  //std::cout <<"i="<<i<<std::endl;
+
+
+
+
+}
+
+
+
+
+
+/*
 int main( int argc, char** argv )
 {
 	//std::cout << std::setprecision(6) << std::fixed;
@@ -537,9 +653,9 @@ int main( int argc, char** argv )
 		double offset = 28;
 		int maxLine = 2500;
 		int intervalo = 200;		//micorrelador.calcularAutocorrelacion( maxLine,intervalo, offset, A,  B);
-		//micorrelador.calcularAutocorrelacion2( maxLine,intervalo, offset, A,  B);
+		micorrelador.calcularAutocorrelacion2( maxLine,intervalo, offset, A,  B);
 
-		micorrelador.calcularAutocorrelacion3( 'z',maxLine,intervalo, offset, A,  B);
+		//micorrelador.calcularAutocorrelacion3( 'z',maxLine,intervalo, offset, A,  B);
 		//micorrelador.calcularAutocorrelacion3( 'y',maxLine,intervalo, offset, A,  B);
 		//micorrelador.calcularAutocorrelacion3( 'z',maxLine,intervalo, offset, A,  B);
 
@@ -549,4 +665,4 @@ int main( int argc, char** argv )
 }
 
 //create sequence 1, two variables , T (time), X
-
+*/

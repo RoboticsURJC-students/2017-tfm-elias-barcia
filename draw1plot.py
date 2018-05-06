@@ -80,7 +80,8 @@ x= np.asarray(x_ok)
 
 #plt.plot(t, x, 'r--', t, x**2, 'bs', t, x**3, 'g^')
 #plt.plot(t, x, 'r--', t2, x2, 'b--')
-plt.plot(x, t, 'r' )
+#plt.plot(x, t, 'r' )
+plt.plot(t, x, 'r.' )
 
 plt.show()
 
