@@ -26,6 +26,7 @@ public:
    void modifyTime (double valueToAdd, MatrixXd& aMatrix);
    void interpolate2SeriesB(int maxLine, MatrixXd& A, MatrixXd& B);
    MatrixXd interpolateAoverB(MatrixXd& A, MatrixXd& B);
+   void interpolateSerieToFrequency(float frequency, MatrixXd& B);
 
 
 

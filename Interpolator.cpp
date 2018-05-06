@@ -204,6 +204,124 @@ MatrixXd Interpolator::interpolateAoverB(MatrixXd& A, MatrixXd& B) {
 }
 
 
+
+void Interpolator::interpolateSerieToFrequency(float frequency, MatrixXd& B){
+
+	/*
+	 * This method interpolates a matrix with a given frequency
+	 * For instance: Matrix 1,2,3,4,5
+	 * Given frequency: 05
+	 * Result of interpolation : Matrix 1, 1.5 , 2 , 2.5, 3 , 3.5 , 4 , 4.5 , 5
+	 */
+
+	double AntValueB=0,ActValueA=0,ActValueB=0;
+	int contA=0,contB = 0, newContB=0;
+
+	AntValueB=B.row(0)(0);
+	//ActValueA += frequency;
+	ActValueB=B.row(1)(0);
+	ActValueA = ActValueB;//the frequency starts with the same value that the first element of the serie B. Later it will be increased by frequency
+
+	contB=1;
+
+	double newValue=0;
+	MatrixXd newBMatrix (3*B.rows(),B.cols());
+	newBMatrix.row(newContB)<< B.row(0);
+	newContB++;
+	int interpolated=0,endInterpolate = 0;
+	long actB,actA,antB;
+	//while ( (contB) <= B.rows() && (contA ) < A.rows()){// begin while 1
+	while ( !endInterpolate &&  contB < B.rows()){
+		interpolated = 0;
+		std::cout<< "1 ActValueA="<<ActValueA<<"ActValueB="<<ActValueB<<"AntValueB="<<AntValueB<<std::endl;
+        //while ((float(ActValueA)< float(ActValueB)) && (float(ActValueA) > float(AntValueB))  ) { //begin while 2
+		//while (((ActValueB - ActValueA) > 0 ) && ((ActValueA - AntValueB) >0)  ) { //begin while 2
+
+		actB = ActValueB*10000;
+		actA = ActValueA*10000;
+		antB = AntValueB*10000;
+		std::cout<< "1 actB="<<actB<<"actA="<<actA<<"antB="<<antB<<std::endl;
+		while (actA < actB && actA > antB ) { //begin while 2
+			std::cout<< "2 ActValueA="<<ActValueA<<"ActValueB="<<ActValueB<<"AntValueB="<<AntValueB<<std::endl;
+			double y2= (B.row(contB-1))(1);
+			double x = (ActValueA);
+			double x2= (B.row(contB-1))(0);
+			double y3= (B.row(contB))(1);
+			double x3= (B.row(contB))(0);
+			double xCoordinate = this->interpolateValue(x,x2,y2,x3,y3);
+			//std::cout<< "interpolo X"<<std::endl;
+			//interpolate Y coordinate
+			y2= (B.row(contB-1))(2);
+			x = (ActValueA);
+			x2= (B.row(contB-1))(0);
+			y3= (B.row(contB))(2);
+			x3= (B.row(contB))(0);
+			double yCoordinate = this->interpolateValue(x,x2,y2,x3,y3);
+			//std::cout<< "interpolo Y"<<std::endl;
+			//interpolate Z coordinate
+			y2= (B.row(contB-1))(3);
+			x = (ActValueA);
+			x2= (B.row(contB-1))(0);
+			y3= (B.row(contB))(3);
+			x3= (B.row(contB))(0);
+			double zCoordinate = this->interpolateValue(x,x2,y2,x3,y3);
+			//std::cout<< "interpolo X,y,Z"<<std::endl;
+			Vector4d myNewVector(x,xCoordinate,yCoordinate,zCoordinate);
+
+			std::cout<< "myNewVector="<<myNewVector.transpose()<<std::endl;
+
+			//contAddedValues++;
+			newBMatrix.row(newContB)<< myNewVector.transpose();
+			newContB ++;
+
+			ActValueA += frequency;
+
+			interpolated = true;
+			//actB = ActValueB*10000;
+			actA = ActValueA*10000;
+			//antB = AntValueB*10000;
+		} //end while 2
+		if ( ! interpolated ) {
+
+					//if  ( ActValueA <= AntValueB) {
+			        if (actA <= antB){
+							//AntValueA=ActValueA;
+						    std::cout<< "ActValueA <= AntValueB"<<std::endl;
+						    ActValueA +=frequency;
+						    std::cout<< "ActValueA="<< ActValueA<<std::endl;
+
+
+					  // } else if ( ActValueA >= ActValueB ){
+					   } else if ( actA >= actB ){
+					  //	if ( ActValueA >= ActValueB ){
+						  std::cout<< "ActValueA > ActValueB"<<std::endl;
+						   newBMatrix.row(newContB) << B.row(contB);
+						   std::cout<< "added B.row="<<B.row(contB)<<std::endl;
+						   //std::cout<< "newBMatrix="<<newBMatrix<<std::endl;
+						   newContB++;
+						   std::cout<< "newContB="<<newContB<<std::endl;
+		                   AntValueB=ActValueB;
+		                   std::cout<< "AntValueB="<<AntValueB<<std::endl;
+						   contB++;
+						   std::cout<< "contB++="<<contB<<std::endl;
+						   if (contB < B.rows()){
+							   std::cout<< "B.row(contB)(0)="<<B.row(contB)(0)<<std::endl;
+							   ActValueB=B.row(contB)(0);
+						   }else{
+								   endInterpolate = 1;
+							   }
+
+
+						   }
+
+
+				}
+
+	}
+	B= newBMatrix.block(0,0,newContB,4);
+
+
+}
 void Interpolator::interpolate2SeriesB(int maxLine, MatrixXd& A, MatrixXd& B){
 
 	// Supposed B less values than A
@@ -221,11 +339,16 @@ void Interpolator::interpolate2SeriesB(int maxLine, MatrixXd& A, MatrixXd& B){
 	newBMatrix.row(newContB)<< B.row(0);
 	newContB++;
     int interpolated=0,endInterpolate = 0;
+    long actB,actA,antB;
 	//while ( (contB) <= B.rows() && (contA ) < A.rows()){// begin while 1
     while ( !endInterpolate && contA  < A.rows() && contB < B.rows()){// begin while 1
 		//std::cout<<"Brows="<<B.rows()<<"ActValueA="<<ActValueA<<" ActValueB="<<ActValueB<<" AntValueB="<<AntValueB<< " contB="<<contB<<" contA="<<contA<<" newContB="<<newContB<<std::endl;
 		interpolated = 0;
-		while (ActValueA < ActValueB && ActValueA > AntValueB  && (contA ) < A.rows()) { //begin while 2
+		actB = ActValueB*10000;
+		actA = ActValueA*10000;
+		antB = AntValueB*10000;
+		//while (ActValueA < ActValueB && ActValueA > AntValueB  && (contA ) < A.rows()) { //begin while 2
+		while (actA < actB && actA > antB  && (contA ) < A.rows()) { //begin while 2
 			double y2= (B.row(contB-1))(1);
 			double x = (A.row(contA-1))(0);
 			double x2= (B.row(contB-1))(0);
@@ -256,13 +379,15 @@ void Interpolator::interpolate2SeriesB(int maxLine, MatrixXd& A, MatrixXd& B){
             newContB ++;
 
             ActValueA=A.row(contA)(0);
+            actA = ActValueA*10000;
             contA++;
             interpolated = true;
 		} //end while 2
 
 		if ( ! interpolated && contA < A.rows()) {
 
-			if  ( ActValueA <= AntValueB) {
+			//if  ( ActValueA <= AntValueB) {
+			if  ( actA <= antB) {
 					//AntValueA=ActValueA;
 				    //std::cout<< "ActValueA <= AntValueB"<<std::endl;
 				    if (contA < A.rows()){
@@ -305,7 +430,8 @@ void Interpolator::interpolate2SeriesB(int maxLine, MatrixXd& A, MatrixXd& B){
 
                */
 
-			   else if ( ActValueA >= ActValueB ){
+			   //else if ( ActValueA >= ActValueB ){
+			 else if ( actA >= actB ){
 			  //	if ( ActValueA >= ActValueB ){
 				   //std::cout<< "ActValueA > ActValueB"<<std::endl;
 				   newBMatrix.row(newContB) << B.row(contB);
@@ -682,30 +808,30 @@ int main(){
     //Read Files for sequence A and Sequence B
 
 	std::cout <<"1="<<std::endl;
-	std::cout << std::setprecision(6) << std::fixed;
+	std::cout << std::setprecision(4) << std::fixed;
 	std::ifstream infileA( "/home/tfm3/workspace/Interpolator/miEntradaA.txt" );
 	//inputFile >> std::setprecision(6) >> std::fixed;
-	std::cout << std::setprecision(6) << std::fixed;
+	std::cout << std::setprecision(4) << std::fixed;
 	std::ifstream infileB( "/home/tfm3/workspace/Interpolator/miEntradaB.txt" );
 	//inputFile >> std::setprecision(6) >> std::fixed;
 	std::cout <<"2="<<std::endl;
-	std::cout << std::setprecision(6) << std::fixed;
+	std::cout << std::setprecision(4) << std::fixed;
 	std::ofstream outA( "/home/tfm3/workspace/Interpolator/miSalidaA.txt" );
-	outA << std::setprecision(6) << std::fixed;
-	std::cout << std::setprecision(6) << std::fixed;
+	outA << std::setprecision(4) << std::fixed;
+	std::cout << std::setprecision(4) << std::fixed;
 
 	std::ofstream outB( "/home/tfm3/workspace/Interpolator/miSalidaB.txt" );
-	outB << std::setprecision(6) << std::fixed;
+	outB << std::setprecision(4) << std::fixed;
 
 	std::ofstream outBbeforeInterpolate( "/home/tfm3/workspace/Interpolator/myOutputBbeforeInterpolate.txt" );
-	outBbeforeInterpolate << std::setprecision(6) << std::fixed;
+	outBbeforeInterpolate << std::setprecision(4) << std::fixed;
 
 	std::ofstream outAbeforeInterpolate( "/home/tfm3/workspace/Interpolator/myOutputAbeforeInterpolate.txt" );
-	outAbeforeInterpolate << std::setprecision(6) << std::fixed;
+	outAbeforeInterpolate << std::setprecision(4) << std::fixed;
 
-	std::cout << std::setprecision(6) << std::fixed;
+	std::cout << std::setprecision(4) << std::fixed;
 	std::ofstream outRegresion( "/home/tfm3/workspace/Interpolator/miSalidaRegresion.txt" );
-	outRegresion << std::setprecision(6) << std::fixed;
+	outRegresion << std::setprecision(4) << std::fixed;
 	std::cout <<"3="<<std::endl;
 
 	double timestamp,rx,ry,rz,q1,q2,q3,q4=0;
@@ -757,12 +883,17 @@ int main(){
 
     //myInterpolator.insertRowInSequence(m,v,2);
     //std::cout <<"m="<<m<<std::endl;
+
+	//REDUCING , SHRINKING DATA
     //int valuesToReduce =1250;
 	//myInterpolator.reduceSequence(maxLine,B, valuesToReduce);
+
 	myInterpolator.reduceSequence(2,B);
 
 	//int valuesToReduce2 = 1000;
 	//myInterpolator.reduceSequence(maxLine,A, valuesToReduce2);
+
+	//myInterpolator.interpolateSerieToFrequency(0.005,A);
 
     std::cout <<"before interpolate"<<std::endl;
 
@@ -808,7 +939,7 @@ int main(){
     */
 
 
-
+    //calculating regresion
     for (double i =-limit;i<limit;i+=step){
 
         //Start calculating crossCorrelation
@@ -855,6 +986,8 @@ int main(){
     std::cout <<"b.rows()="<<B.rows()<<std::endl;
     std::cout <<"a.rows()="<<A.rows()<<std::endl;
     outRegresion.close();
+
+    // end calculating REGRESSION
 
     //Save data A
 	for (int i= 0; i< A.rows(); i++){
