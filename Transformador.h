@@ -2,6 +2,10 @@
 
 class Transformador {
 private:
+	int contCosmicNoise=0;
+	double initTime = 0.0; // I will store the initial value for the timestamp
+	double frequency=0.0;// It will store the value for the frequency. Example 0.3  then timestamp will be 1.3 , 1.6 , 1.9
+	double offset = 0.0;// It will store the value of the offset. Example initTime + offset
 
 	double timestamp,rx,ry,rz,q1,q2,q3,q4;
 	//Point3D myPoint3D (3.0,3.0,3.0);
@@ -48,6 +52,7 @@ private:
 		    {0.0},
 		    {0.0} };
 
+
 public:
 	void createMatRotTrasla ( char eje , float angulo, Point3D trasla) ;
 	void createMatRot ( char eje , float angulo) ;
@@ -59,7 +64,13 @@ public:
 	void displayMatriz (double matriz [4][4], int matriz_rows, int matriz_cols);
 	void displayMatrizRotTrasla ();
 	double generateGaussianNoise(double mu, double sigma);
-
+	void createMatRotTraslaEscala ( char eje , float angulo, Point3D aPoint3D,Point3D aScala );
+	void setFrequency(double myFrequency);
+    double getFrequency();
+    double getOffset();
+    void setOffset(double myOffset);
+    void setInitTime(double initialValue);
+    double getInitTime();
 
 
 };
