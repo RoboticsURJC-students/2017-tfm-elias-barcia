@@ -1,0 +1,51 @@
+\select@language {spanish}
+\contentsline {figure}{\numberline {1}{\ignorespaces El primer smartphone compatible con Tango de Lenovo(a). El primer Smartphone compatible con Tango y DayDream de ASUS (b).Esquema de prototipo de smartphone Tango (c).Generaci\IeC {\'o}n de mapa 1 (d). Generaci\IeC {\'o}n de mapa 2 (e)}}{4}{figure.0.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{4}{figure.0.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{4}{figure.0.1}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{4}{figure.0.1}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{4}{figure.0.1}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {}}}{4}{figure.0.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces La pantalla de un smartphone utilizando Magic Plan. }}{5}{figure.0.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{5}{figure.0.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Pix4D c\IeC {\'a}lculo de volumen(a). Flujo de datos de Pix4D(b). Trayectorias que pueden seguir los drones con Pix4DCapture(c). C\IeC {\'a}mara multiesprectral Parrot Sequoia (d)}}{7}{figure.0.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{7}{figure.0.3}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{7}{figure.0.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{7}{figure.0.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{7}{figure.0.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Recreaci\IeC {\'o}n del Coliseo de Roma. }}{8}{figure.0.4}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{8}{figure.0.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces El sensor de profundidad Structure para Ipad. }}{9}{figure.0.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{9}{figure.0.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces El Robot Gita siguiendo a su due\IeC {\~n}o (a) El cintur\IeC {\'o}n con c\IeC {\'a}maras est\IeC {\'e}reo (b) La capacidad de carga del robot Gita (c)}}{11}{figure.0.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{11}{figure.0.6}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{11}{figure.0.6}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{11}{figure.0.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces Robot Dyson 360 Eye (a) Robot Roomba 966 (b) Robot Hombot de LG (c).}}{13}{figure.0.7}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{13}{figure.0.7}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{13}{figure.0.7}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{13}{figure.0.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Dron equipado con dispositivo compatible con Tango}}{13}{figure.0.8}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{13}{figure.0.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Diferencias entre Rolling Shutter y Global Shutter (a)}}{15}{figure.0.9}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{15}{figure.0.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Mapa de clasificaci\IeC {\'o}n de los principales algoritmos de Visual SLAM (a). Diferencia entre mapas generados por distintos algoritmo de Visual SLAM (b)}}{19}{figure.0.10}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{19}{figure.0.10}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{19}{figure.0.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Inicializaci\IeC {\'o}n de MonoSLAM con 4 puntos conocidos.}}{20}{figure.0.11}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{20}{figure.0.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces Ejemplo de puntos caracter\IeC {\'\i }sticos tomados con MonoSLAM.}}{21}{figure.0.12}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{21}{figure.0.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces Nube de puntos caracter\IeC {\'\i }sticos tomados con PTAM.}}{23}{figure.0.13}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{23}{figure.0.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Ejemplo de mapa generado con DTAM. Todos los puntos forman parte del mapa.}}{23}{figure.0.14}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{23}{figure.0.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Mapa generado con un dron utilizando la t\IeC {\'e}cnica SVO.}}{24}{figure.0.15}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{24}{figure.0.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces Mapa generado con LSD-SLAM y c\IeC {\'a}mara est\IeC {\'e}reo}}{25}{figure.0.16}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{25}{figure.0.16}
+\contentsline {figure}{\numberline {17}{\ignorespaces Localizaci\IeC {\'o}n de puntos caracter\IeC {\'\i }sticos en 2 im\IeC {\'a}genes con ORB }}{27}{figure.0.17}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{27}{figure.0.17}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{27}{figure.0.17}
+\contentsline {figure}{\numberline {18}{\ignorespaces Mapa generado con DSO (a) Ligero error en la posici\IeC {\'o}n al volver al punto de partida (b).}}{30}{figure.0.18}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{30}{figure.0.18}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{30}{figure.0.18}

@@ -1,0 +1,124 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Arribas}{2016}]{Arribas16}
+Victor Arribas.
+\newblock Análisis de algoritmos de visualslam: un entorno integral para su
+  evaluación.
+\newblock {\em Trabajo Fin de Máster. Universidad Rey Juan Carlos}, 2016.
+
+\bibitem[\protect\citeauthoryear{Bodin \bgroup \em et al.\egroup
+  }{2018}]{Bodin2018}
+Bruno Bodin, Harry Wagstaff, Sajad Saeedi, Luigi Nardi, Emanuele Vespa, {John
+  H} Mayer, Andy Nisbet, Mikel Luján, Steve Furber, {Andrew J} Davison, {Paul
+  H.J.} Kelly, and Michael O'Boyle.
+\newblock Slambench2: Multi-objective head-to-head benchmarking for visual
+  slam.
+\newblock In {\em {IEEE Intl. Conf. on Robotics and Automation (ICRA)}}, May
+  2018.
+
+\bibitem[\protect\citeauthoryear{Civera \bgroup \em et al.\egroup
+  }{2010}]{civera20101}
+Javier Civera, Oscar~G Grasa, Andrew~J Davison, and JMM Montiel.
+\newblock 1-point ransac for extended kalman filtering: Application to
+  real-time structure from motion and visual odometry.
+\newblock {\em Journal of Field Robotics}, 27(5):609--631, 2010.
+
+\bibitem[\protect\citeauthoryear{Davison \bgroup \em et al.\egroup
+  }{2007}]{Davison2007monoslam}
+Andrew~J Davison, Ian~D Reid, Nicholas~D Molton, and Olivier Stasse.
+\newblock Monoslam: Real-time single camera slam.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
+  29(6), 2007.
+
+\bibitem[\protect\citeauthoryear{Engel \bgroup \em et al.\egroup
+  }{2014}]{Engel2014lsd}
+Jakob Engel, Thomas Sch{\"o}ps, and Daniel Cremers.
+\newblock Lsd-slam: Large-scale direct monocular slam.
+\newblock In {\em European Conference on Computer Vision}, pages 834--849.
+  Springer, 2014.
+
+\bibitem[\protect\citeauthoryear{Engel \bgroup \em et al.\egroup
+  }{2016}]{Engel2016direct}
+Jakob Engel, Vladlen Koltun, and Daniel Cremers.
+\newblock Direct sparse odometry.
+\newblock {\em arXiv preprint arXiv:1607.02565}, 2016.
+
+\bibitem[\protect\citeauthoryear{Forster \bgroup \em et al.\egroup
+  }{2017}]{Forster2017svo}
+Christian Forster, Zichao Zhang, Michael Gassner, Manuel Werlberger, and Davide
+  Scaramuzza.
+\newblock Svo: Semidirect visual odometry for monocular and multicamera
+  systems.
+\newblock {\em IEEE Transactions on Robotics}, 33(2):249--265, 2017.
+
+\bibitem[\protect\citeauthoryear{G{\'a}lvez-L{\'o}pez and
+  Tardos}{2012}]{galvez2012bags}
+Dorian G{\'a}lvez-L{\'o}pez and Juan~D Tardos.
+\newblock Bags of binary words for fast place recognition in image sequences.
+\newblock {\em IEEE Transactions on Robotics}, 28(5):1188--1197, 2012.
+
+\bibitem[\protect\citeauthoryear{Geiger \bgroup \em et al.\egroup
+  }{2012}]{Geiger2012CVPR}
+Andreas Geiger, Philip Lenz, and Raquel Urtasun.
+\newblock Are we ready for autonomous driving? the kitti vision benchmark
+  suite.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, 2012.
+
+\bibitem[\protect\citeauthoryear{Hernández}{2014}]{Hernandez14}
+Alejandro Hernández.
+\newblock Autolocalización visual aplicada a la realidad aumentada.
+\newblock {\em Trabajo Fin de Máster. Universidad Rey Juan Carlos}, 2014.
+
+\bibitem[\protect\citeauthoryear{Jakob \bgroup \em et al.\egroup
+  }{2016}]{Engel16}
+Engel Jakob, Vladlen Koltun, and Daniel Cremers.
+\newblock Direct sparse odometry.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  Septiembre 2016.
+
+\bibitem[\protect\citeauthoryear{Klein and Murray}{2007}]{Klein2007parallel}
+Georg Klein and David Murray.
+\newblock Parallel tracking and mapping for small ar workspaces.
+\newblock In {\em Mixed and Augmented Reality, 2007. ISMAR 2007. 6th IEEE and
+  ACM International Symposium on}, pages 225--234. IEEE, 2007.
+
+\bibitem[\protect\citeauthoryear{Mur-Artal \bgroup \em et al.\egroup
+  }{2015}]{Mur2015orb}
+Raul Mur-Artal, Jose Maria~Martinez Montiel, and Juan~D Tardos.
+\newblock Orb-slam: a versatile and accurate monocular slam system.
+\newblock {\em IEEE Transactions on Robotics}, 31(5):1147--1163, 2015.
+
+\bibitem[\protect\citeauthoryear{Newcombe \bgroup \em et al.\egroup
+  }{2011}]{Newcombe2011dtam}
+Richard~A Newcombe, Steven~J Lovegrove, and Andrew~J Davison.
+\newblock Dtam: Dense tracking and mapping in real-time.
+\newblock In {\em Computer Vision (ICCV), 2011 IEEE International Conference
+  on}, pages 2320--2327. IEEE, 2011.
+
+\bibitem[\protect\citeauthoryear{Perdices~García}{2017}]{Perdices17}
+Eduardo Perdices~García.
+\newblock Técnicas para la localización visual robusta de robots en tiempo
+  real con y sin mapas.
+\newblock {\em Tesis Doctoral. Universidad Rey Juan Carlos}, 2017.
+
+\bibitem[\protect\citeauthoryear{Sturm \bgroup \em et al.\egroup
+  }{2012}]{sturm12iros}
+J.~Sturm, N.~Engelhard, F.~Endres, W.~Burgard, and D.~Cremers.
+\newblock A benchmark for the evaluation of rgb-d slam systems.
+\newblock In {\em Proc. of the International Conference on Intelligent Robot
+  Systems (IROS)}, Oct. 2012.
+
+\bibitem[\protect\citeauthoryear{Takafumi~Taketomi}{2017}]{Takafumi17}
+Sei~Ikeda Takafumi~Taketomi, Hideaki~Uchiyama.
+\newblock Visual slam algorithms: a survey from 2010 to 2016.
+\newblock {\em IPSJ Transactions on Computer Vision and Applications}, Junio
+  2017.
+
+\bibitem[\protect\citeauthoryear{Zhang and Scaramuzza}{2018}]{Zhang18iros}
+Zichao Zhang and Davide Scaramuzza.
+\newblock A tutorial on quantitative trajectory evaluation for
+  visual(-inertial) odometry.
+\newblock In {\em IEEE/RSJ Int. Conf. Intell. Robot. Syst. (IROS)}, 2018.
+
+\end{thebibliography}

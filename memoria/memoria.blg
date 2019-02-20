@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: memoria.aux
+A level-1 auxiliary file: portada.aux
+A level-1 auxiliary file: resumen.aux
+A level-1 auxiliary file: 1-introduccion.aux
+A level-1 auxiliary file: 2-objetivos.aux
+A level-1 auxiliary file: 3-problemavslam.aux
+A level-1 auxiliary file: 4-estadoarte.aux
+A level-1 auxiliary file: 5-conclusiones.aux
+The style file: named.bst
+Database file #1: bibliografia.bib
+You've used 18 entries,
+            2439 wiz_defined-function locations,
+            672 strings with 8102 characters,
+and the built_in function-call counts, 7286 in all, are:
+= -- 739
+> -- 340
+< -- 3
++ -- 118
+- -- 116
+* -- 579
+:= -- 1189
+add.period$ -- 57
+call.type$ -- 18
+change.case$ -- 130
+chr.to.int$ -- 18
+cite$ -- 18
+duplicate$ -- 295
+empty$ -- 525
+format.name$ -- 137
+if$ -- 1495
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 18
+newline$ -- 93
+num.names$ -- 54
+pop$ -- 127
+preamble$ -- 1
+purify$ -- 148
+quote$ -- 0
+skip$ -- 237
+stack$ -- 0
+substring$ -- 308
+swap$ -- 72
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 144
+warning$ -- 0
+while$ -- 53
+width$ -- 21
+write$ -- 229

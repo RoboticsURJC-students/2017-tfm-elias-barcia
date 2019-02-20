@@ -1,0 +1,47 @@
+\section{Objetivos} \label{s:objeticos}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+En el siguiente apartado se detallaran los objetivos que se pretenden alcanzar en este Trabajo Fin de Master.
+
+Desde la existencia de Visual SLAM , se están desarrollando algoritmos que permitan a los robots estimar su posición , para poder generar un mapa en 3D del entorno y así poder navegar por el espacio que le rodea. Estos algoritmos son complejos y estan compuestos de múltiples etapas, a menudo un ligero cambio en alguna de estas etapas puede hacer que los resultados del algoritmo mejoren significativamente o por el contrario empeoren. Sería muy util y conveniente contar con una herramienta que permitiese analizar o estimar la bondad de los nuevos algoritmos visual SLAM, por tanto el objetivo de este proyecto es presentar un conjunto de herramientas que permitan comparar el rendimiento de los algoritmos visual SLAM.
+
+Esta herramienta permitirá comparar el rendimiento de los nuevos algoritmos de visual Slam así como estudiar adaptaciones y mejoras en los algoritmos ya existentes.
+
+En el marco de este TFM nos hemos centrado en una plataforma que permita medir la exactitud de las estimaciones de posición sin tener en cuenta la generación de mapas, es decir se ha puesto toda la atención en comparar las mediciones de tracking dejando el mapping para futuros proyectos. 
+
+Entenderemos que un algoritmo A es mejor que otro B cuando el algoritmo A sea capaz de estimar la posición con mayor exactitud que otro algoritmo B en el menor tiempo posible, por lo tanto en los algoritmos de visualSlam se medirá la precisión de las estimaciones de posición y la agilidad entendiendose esta como el tiempo de proceso dedicado a realizar dichas estimaciones de posición. 
+
+La herramienta comparará los ficheros de datos generados en entornos 3D
+
+\subsection {Requisitos}
+
+Los requisitos principales de este TFM han sido:
+
+	R1. La herramienta debe restrigirse a la comparación de algoritmos VisualSLAM que utilizan como sensor de visión una cámara. Así quedan descartados los algoritmos que emplean cámaras RGBD
+
+	R2. Se restringirá solo a los algoritmos VisualSLAM que empleen una sóla cámara.
+
+	R3. La herramienta debe ser extensible a los resultados de nuevos algoritmos de VisualSLAM.
+
+	R4. Facilidad de uso.
+
+	R7. Debe ofrecer una única métrica cuantitativa para la comparación entre varios algoritmos de VisualSLAM.
+
+	R8. Debe ofrecer resultados fácilmente legibles y reconocibles para el usuario.
+
+2.3. Metodología y plan de trabajo
+Como metodología no se ha seguido al pié de la letra ninguna concreta, aunque se han segui do las indicaciones del modelo de ciclo de vida en espiral. Esto es una de las primeras lecciones que se aprenden de las metodologías ágiles, la metodología debe adaptarse al proyecto y no al revés. Dicha premisa cobra más importancia en un proyecto realizado por una sola persona.
+
+Por consiguiente, y enmarcándolo dentro de la metodología en espiral, primero se ha realizado un estudio previo muy amplio que sirve para obtener una visión completa del problema y detectar puntos críticos, y luego se ha ido acotando hasta llegar al desarrollo principal, el cual ha sido revisado y validado en cada iteración. Esta amplitud inicial es importante ya que no sólo nos permite avanzar en todas las vías en paralelo, sino porque ofrece una prueba de concepto para las ramificaciones que se han paralizado en favor del desarrollo troncal.
+
+El proceso de desarrollo ha sido supervisado por los tutores mediante tres herramientas de trabajo: reuniones semanales, definición de hitos y diario de trabajo.
+Durante las reuniones se debían definir varios hitos de corto o medio plazo en los que se trabajaría esa semana. Este progreso se puede ver en la página web habilitada para tal uso:
+\url{https://jderobot.org/Elias-tfm}
+Así mismo, el código fuente desarrollado puede encontrarse en:
+
+\url{https://github.com/ FALTA URL}
+
+El plan de trabajo sería dividido en cinco hitos. El primero implicaría el aprendizaje del
+
