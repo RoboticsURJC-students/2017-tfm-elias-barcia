@@ -1,0 +1,58 @@
+DESCRIPCION DE SLAMTESTBED
+
+Es una herramienta gráfica para comparar resultados de algoritmos SLAM
+Mediante un interfaz gráfico permite realizar transformaciones a un conjunto de datos de entrada:
+Estas transformaciones permiten hacer cambios en 
+ESCALA
+TRASLACIONES en ejes X,Y,Z
+ROTACIONES en ejes X,Y,Z
+Offset de tiempo
+Interpolación
+Ruido gaussiano
+Ruido Cosmico
+
+El formato del conjunto de datos ground-trouth será timestamp, posición x, posición y, posición z
+
+Posteriormente tras aplicar las transformaciones definidas en el interfaz gráfico sobre el ground truth, la herramienta devolverá los resultados de estimar dichas transformaciones.
+Las transformaciones se pueden estimar en 2 sentidos.
+	Desde el groundtrouth estimar que transformaciones se han aplicado para llegar a la secuencia de datos transformadados
+	Desde la secuencia transformada estimar las transformaciónes para obtener el groundtrouth
+
+El interfaz gráfico ha sido desarrollado en C++ con el entorno QT y la librería Eigen.
+Podemos hacer zoom sobre los puntos y girar la imagen
+
+Acontinuación describiremos en detalle las transformaciones permitidas por la herramienta
+
+ESCALA. Permite modificar los datos de entrada a nivel de escala. La escala siempre será mayor que cero y se admitirán numeros con reales
+
+Traslaciones. Se podrán definir traslaciones sobre cada uno de los 3 ejes de coordenadas. 
+La traslación admite numeros reales positivos y negativos.
+
+rotaciones. Se podrán definir rotaciones sobre cada unos de los 3 ejes de coordenadas. El valor de cada rotación se insertará en Radianes. Los valores admitidos serán numeros reales tanto positivos como negativos
+
+Offset de tiempo. Con el offset de tiempo podremos introducir un gap en los valores de timestamp del fichero de entrada que más tarde podremos estimar. La exactitud del offset será de centésimas, es decir con 2 decimales
+
+Interpolación: Se podrán realizar 3 tipos de interpolación de los datos.
+	Interpolación a la frecuencia máxima
+	Interpolación a la frecuencia mínima
+	Interpolación a frecuencia personalizada
+
+Ruido Gaussiano: Una de las transformaciones que podremos aplicar sobre el conjunto de datos del groundtrouth es aplicar un ruido gaussiano a los datos transformados
+
+Ruido Cosmico: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido cósmico
+
+Menu de estimaciones:
+Una vez hemos aplicado las transformaciones sobre el groundtrouh, se generará como resultado un nuevo dataset, el transformado.
+El menú gráfico nos permitirá estimar que transformaciones se han realizado, y se podrán estimar en 2 sentidos de aplicación.
+
+	Desde el groundtrouth estimar que transformaciones se han aplicado para llegar a la secuencia de datos transformadados
+
+	Desde la secuencia transformada estimar las transformaciónes para obtener el groundtrouth
+
+Otras particularidades del menú gráfico.
+	Unir todos los puntos del dataset 
+        o visualizarlos como datos individuales
+	visualizar sólo los datos estimados.
+
+
+

@@ -1,0 +1,88 @@
+\documentclass[oneside,a4paper,12pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage{geometry}
+\usepackage{named}
+\usepackage[normalsize]{subfigure}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{html} % quitar para imprimir
+\usepackage{hthtml} % quitar para imprimir
+\usepackage{hyperref} % quitar para imprimir
+%\usepackage{titlesec}
+\usepackage{float}
+\usepackage{array}
+
+
+\renewcommand{\thesection}{\arabic{section}}
+%\renewcommand\section{\@startsection{section}{1}{\z@}{-10\p@ \@plus -4\p@ \@minus -4\p@}{5\p@ \@plus 4\p@ \@minus 4\p@}{\normalfont\large\bfseries\boldmath\rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+
+%\titlespacing*{\section}{0pt}{1.1\baselineskip}{\baselineskip}
+%  \makeatletter
+%  \newcommand\npar{\@startsection{subsection}{2}{\z@}{-2\p@ \@plus -4\p@ \@minus -4\p@}{-0.5em \@plus -0.22em \@minus -0.1em}{\n ormalfont\normalsize\bfseries}}
+%  \makeatother
+
+
+
+\pretolerance=10000
+%Para que no corte las palabras al final de la linea.
+
+\DeclareGraphicsExtensions{.png,.jpg,.pdf,.eps}
+\usepackage{geometry}
+\geometry{a4paper, left=2.6cm, right=2.2cm, top=3.0cm, bottom=3.0cm}
+
+\linespread{1.3}
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+%\author{Eduardo Perdices Garcia\\
+% (eperdes@gsyc.es)}
+%\title{Localizacion robot nao}
+%\date{Version 0.1}
+
+\begin{document}
+
+\include{portada}
+
+%\clearpage
+%\thispagestyle{empty}
+
+\vspace{5cm}
+%\makebox[15cm][r]{
+
+%}
+
+\include{resumen}
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+
+% Para que salga la bibliografia en el indice
+
+\let\OLDthebibliography=\thebibliography
+\def\thebibliography#1{\OLDthebibliography{#1}%
+  \addcontentsline{toc}{chapter}{\bibname}}
+
+\tableofcontents
+%\listoffigures
+\clearpage
+\begingroup
+\renewcommand{\clearpage}{}
+\include{1-introduccion}
+\include{2-objetivos}
+%\include{3-problemavslam}
+\include{4-estadoarte}
+\include{5-descripcion}
+\include{6-conclusiones}
+\endgroup
+
+\nocite{*}
+
+\bibliographystyle{named}
+\bibliography{bibliografia}
+
+\end{document}

@@ -1,11 +1,11 @@
-%\chapter{Técnicas de Visual SLAM} \label{cap:tecnicas}
-\section{Estado del Arte} \label{s:estado}
+\chapter{Estado del Arte} \label{cap:Estado del Arte}
+%\section{Estado del Arte} \label{s:estado}
 
 En esta sección explicaremos varios de los algoritmos SLAM más significativos , como MonoSLAM, PTAM, DTAM, SVO,LSD-SLAM,ORB-SLAM,DSO,SDVL y RGBD SLAM.
 Tambien se describirán brevemente las distintas herramientas que existen en la actualidad para comparar las estimaciones de los algoritmos SLAM , comenzaremos por TUM, seguido de rgb trayectory evaluation , también describiremos la herramienta SLAMBENCH y por último daremos algunos detalles sobre The Kitti Vision Benchmark Suite.
 
 
-\subsection{MonoSLAM}
+\section{MonoSLAM}
 El algoritmo de  MonoSLAM (\textit{Monocular SLAM}) \cite{Davison2007monoslam} utiliza solamente una cámara RGB para la localización y mapeo de entornos desconocidos. Fue desarrollado en el año 2002  por Andrew Robinson. Para estimar la posición de la cámara utiliza un filtro extendido de Kalman (EKF) y la posición de una serie de puntos 3D. Este método requiere de una inicialización con al menos 4 puntos 3D conocidos que utilizará para calcular la posición de la cámara y la generación de nuevos puntos para el mapa.
 %\begin{figure}[htbp]
 \begin{figure}[H]
@@ -33,7 +33,7 @@ MonoSLAM es recomendable para mapas con pocos puntos. Es muy sensible a movimien
 \clearpage
 
 
-\subsection{PTAM}
+\section{PTAM}
 \textit{Parallel Tracking and \textit{Mapping}}. Es un algoritmo creado en 2007 por George Klein \cite{Klein2007parallel} que también calcula el Tracking y el \textit{Mapping} como en MonoSLAM pero para ello utiliza 2 \textit{Threads}, uno para calcular el posicionamiento de la cámara (Tracking ) y el segundo para la generación del mapa (\textit{Mapping}). Esta separación en dos hilos de ejecución se debe a que el Tracking necesita ser calculado en tiempo real para obtener una localización precisa, mientras que el \textit{Mapping} puede demorarse más tiempo sin perjudicar a la localización de la cámara. 
 
 Con las imágenes captadas en secuencia se van generando \textit{Keyframes} o fotogramas clave. Se genera un nuevo \textit{Keyframe} a medida que la cámara se va desplazando. Los \textit{Keyframes} se utilizan para la localización y para ir generando el mapa de puntos.
@@ -52,7 +52,7 @@ Se suele utilizar en entornos cerrados y pequeños y utiliza técnicas SFM. Muy 
 
 
 
-\subsection{DTAM}
+\section{DTAM}
 \textit {Dense Tracking and Mapping}. Es un método de reconstrucción de tipo denso que emplea el error fotométrico para poder trabajar en el dominio de la imagen 
 \cite{Newcombe2011dtam}.
 
@@ -80,7 +80,7 @@ Para conseguir un buen rendimiento en tiempo real DTAM necesitará el uso GPU.
 \caption{Ejemplo de mapa generado con DTAM. Todos los puntos forman parte del mapa.}
 \end{figure}
 
-\subsection{SVO}
+\section{SVO}
 \textit{FAST Semi-Direct Monocular Visual Odometry}.
 Permite ser utilizado en ordenadores con poca potencia de computo debido a la rapidez del algoritmo.
 Es un método híbrido entre los métodos de extracción de características y métodos directos
@@ -105,7 +105,7 @@ Un nuevo frame tiene posibilidad de convertirse en \textit{Keyframe} si diverge 
 \end{figure}
 
 
-\subsection{LSD-SLAM} 
+\section{LSD-SLAM} 
 \textit {Large-Scale Direct Monocular SLAM}
 La principal característica de este modelo es que trata de generar mapas del entorno a gran escala y consistentes.
 Utiliza para ello métodos directos. A demás de tener 2 hilos como PTAM uno para Tracking y otro para \textit{Mapping}, existe un tercer componente encargado de estimar la profundidad del mapa.\cite{Engel2014lsd}
@@ -124,7 +124,7 @@ Este método es capaz de funcionar en tiempo real en un PC, pero  no funciona mu
 
 \clearpage
 
-\subsection{ORB-SLAM}
+\section{ORB-SLAM}
 Es un algoritmo basado en extracción y emparejamiento de píxeles característicos mediante descriptores ORB, estos descriptores son más fiables que los parches tradicionales y por tanto permiten obtener mapas robustos y precisos tanto en escenarios de grandes dimensiones como en zonas pequeñas, sin embargo para su funcionamiento en tiempo real requiere la utilización de ordenadores con alta capacidad de proceso \cite{Mur2015orb}.
 Puede ser utilizado con una cámara o dos e incluso con cámaras de profundidad RGBD. Para cierres de bucle y relocalización utiliza un modelo de bolsa de palabras \cite{galvez2012bags}.
 Utiliza 3 \textit{Threads}, el primero para Tracking, el segundo para \textit{Mapping} y un tercero para detectar cierres de bucle. 
@@ -148,7 +148,7 @@ En el proceso de Looping, se comprobará si se ha producido un cierre de bucle. 
 
 \clearpage
 
-\subsection{DSO}
+\section{DSO}
 \textit{Direct Sparse Model}.
 Está basado en optimizaciones continuas del error fotométrico sobre una ventana de frames recientes\cite{Engel2016direct}.
 El inicio del Tracking, cuando se crea un nuevo \textit{Keyframe}, todos los puntos activos son proyectados en el y ligeramente dilatados, creando así un mapa de profundidad semi denso. Nuevos frames son creados con respecto a este frame utilizando alineamiento directo de 2 frames, una pirámide multi escala y un modelo de movimiento constante a inicializar. 
@@ -185,14 +185,27 @@ Por último, la activación de puntos candidatos, cuando un conjunto de puntos a
 
 \clearpage
 
-\subsection{SDVL}
+\section{LDSO}
+\textit{LDSO: Direct Sparse Odometry with Loop Closure}. Este método es una extensión del algoritmo DSO (Direct Sparse Odometry). LDSO incorpora detección de cierre de bucle y optimización de posición y mapeo. Al ser un método directo, DSO puede utilizar cualquier pixel de la imagen con suficiente gradiente de intensidad, lo cual lo hace más robusto incluso en áreas donde apenas se pueden obtener puntos característicos. LDSO mantiene esta robusted, mientras que al mismo tiempo asegura la repetibilidad  sobre alguno de esos puntos prestando más atención sobre esquinas características en el proceso de tracking. Estas repetibilidad de puntos característicos permite detectar de forma fiable los candidatos de cierres de bucle utilizando la técnica basada en carácterísticas de bag-of-words. 
+Los candidatos a cierre de bucle son verificados geométricamente y restricciones de pose relativa son estimadas minizando en conjunto errores geométricos 2D y 3D.
+Selección de puntos de características Repetibles, DSO utiliza un grid dinamico para detectar suficientes pixels incluso en entornos con pocas texturas. Más especificamente, todavía se toma un numero determinado de pixeles ( por defecto 2000 en DSO), de los cuales algunos son esquinas. Manteniendo el número de esquinas pequeño se calculan los descriptores ORB y los empaquetamos en BoW. El algoritmo  utiliza ambos tipos de pixeles de esquinas y no esquinas para obtener el tracking, y la carga del thread para obtener el cierre de bucle permanece al mínimo.
+En un frame capturado mediante DSO hay pocos elementos repetibles y por tanto es dificil buscar emparejamiento de imágenes usando esos puntos para cierre bucle. Pero en LDSO se utilizan ambos esquinas y otros pixeles con alto gradiente, donde las esquinas se utilizan para construir modelos BoW (Bag of Words) y para tracking, mientras que los no esquinas sólo se utilizan para tracking. De esta forma podemos hallar la posición en entornos con pocas texturas y tambien encontrar caracteristicas comunes entre keyframes si lo necesitasemos.
+Cada vez que calculamos descriptores ORB para cada keyframe, una base de datos BoW es construida. Los candidatos a cierre de bucle son propuestos para el keyframe actual mediante consultas a la base de datos y solo se toman aquellos que están fuera de la actual ventana. Para cada candidato intentamos machear sus características ORB a aquellos del keyframe actual, y entonces ejecutamos RANSAC PnP para computarla estimación inicial de la transformación. Despues se optimiza la transformación usando el método de Gauss-Newton mediante la minimización de restricciones geométricas 3D y 2D.
+\begin{figure}[H]
+\begin{center}
+\subfigure[]{\label{fig:LDSO}\includegraphics[height=6.0cm]{img/cap4/LDSO.png}}
+\end{center}
+\caption{diferencias entre puntos escogidos con DSO y LDSO.}
+\end{figure}
+
+\section{SDVL}
 \textit{Semi-Direct Visual Localization}. Al igual que PTAM este método tiene 2 \textit{Threads} .
 El primer \textit{Thread} se utiliza para Tracking. Calcula el desplazamiento de la cámara entre dos observaciones utilizando el mapa 3D y las imágenes capturadas. Al ser un método híbrido, calculará los desplazamientos basándose en técnicas de métodos directos y píxeles característicos. El sistema cuenta también con un sistema de rechazo de espurios que ayudará a identificar y eliminar puntos 3D mal posicionados \cite{Perdices17}.
 El segundo \textit{Thread} se utiliza para el \textit{Mapping}.  Se encarga de crear y actualizar el mapa del entorno del robot. Almacenará P puntos 3D  en varias imágenes desde las que se pueden observar los P puntos 3D. Sólo pasarán a ser parte del mapa aquellos fotogramas que cumplan ciertos requisitos, aquellos que sean considerados fotogramas clave o \textit{Keyframes}.
 El mapa inicial se obtiene por Homografía. Es un método capaz de manejar miles de puntos en el mapa, aunque no es considerado un mapa denso, por lo que el mapa generado no contiene muchos detalles y no es capaz tampoco de generar mapas grandes. En caso de perdida de la posición de la cámara, es capaz de realizar relocalización aunque no es capaz de detectar bucle cerrado.
 
 
-\subsection{RGB-D Visual SLAM}
+\section{RGB-D Visual SLAM}
 Las cámaras RGB-D, utilizadas en dispositivos como Kinect o smartphones en el Proyecto Tango, son capaces de proporcionar información 3D del entorno en tiempo real y por tanto estas cámaras también son utilizadas en Visual SLAM.
 
 A diferencia con los algoritmos del tipo monocular VisualSLAM, la escala del sistema de coordenadas es conocida para las cámaras RGB-D ya que son capaces de obtener las medidas y dimensiones de los objetos en 3D del entorno que le rodea.
@@ -205,7 +218,7 @@ Pose-graph se utiliza para reducir el error acumulativo. Pose-graph es muy simil
 En contraste con otros algoritmos, la estimación de mapa también está refinada. La optimización por Deformation Graph es muy utilizada para ciertos frames y la localización de la cámara es estimada con emparejamientos entre las imágenes RGB-D y el modelo reconstruido.
 Las APIs para RGB-D SLAM vienen incorporadas en dispositivos como Google Tango y Structure Sensor. Especialmente, Google Tango proporciona una estimación de resultado estable combinando también la información proporcionada por otros sensores internos del dispositivo.
 
-\subsection{Herramientas para realizar evaluaciones comparativas de algoritmos SLAM}
+\section{Herramientas para realizar evaluaciones comparativas de algoritmos SLAM}
 En este apartado trataremos sobre varias herramientas que podemos utilizar para hacer benchmarking sobre los resultados de algoritmos SLAM y evaluar y comparar dichos resultados
 
 \begin {enumerate}
@@ -283,7 +296,7 @@ Para todas las secuencias de test, su evaluador estima los errores de traslació
 \end {enumerate}
 
 
-\subsection{Comparativa de los algoritmos más representativos} 
+\section{Comparativa de los algoritmos más representativos} 
 A continuación se presenta una tabla que muestra las características principales de cada algoritmo. Esta tabla es similar a la que aparece en \cite{Perdices17} pero en este caso se ha añadido el algoritmo DSO.
 
 \begin{center}

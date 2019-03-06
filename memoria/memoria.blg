@@ -5,14 +5,14 @@ A level-1 auxiliary file: portada.aux
 A level-1 auxiliary file: resumen.aux
 A level-1 auxiliary file: 1-introduccion.aux
 A level-1 auxiliary file: 2-objetivos.aux
-A level-1 auxiliary file: 3-problemavslam.aux
 A level-1 auxiliary file: 4-estadoarte.aux
-A level-1 auxiliary file: 5-conclusiones.aux
+A level-1 auxiliary file: 5-descripcion.aux
+A level-1 auxiliary file: 6-conclusiones.aux
 The style file: named.bst
 Database file #1: bibliografia.bib
 You've used 18 entries,
             2439 wiz_defined-function locations,
-            672 strings with 8102 characters,
+            672 strings with 8100 characters,
 and the built_in function-call counts, 7286 in all, are:
 = -- 739
 > -- 340
