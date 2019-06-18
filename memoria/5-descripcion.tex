@@ -159,5 +159,307 @@ La barra de menu de SLAMTestbed, tambien tiene el elemento \textbf{View}. Este e
 Las opciones del menú View tambien permiten sólo visualizar los puntos 3D resultado de las transformaciones estimadas.
 
     
-    
+La explicación del algoritmo:
+En este apartado explicaremos los pasos seguidos para hacer los calculos que nos permitiran estimar las transformaciones requeridas para pasar de un dataset A a otro dataSet B
+Las principales funciones o módulos de los que constará la herramienta será:
+\begin{description}
+\item [Cálculo de PCA]: Nos permitirá reducir el dataset a  sus componentes principales
+\item [Estimación de Escala]: Estimará la diferencia de escala entre los dos datasets
+\item [Estimación de Offset]: Con este módulo podremos hallar la diferencia entre marcas de tiempos de los 2 datasets
+\item [Interpolación para igualar frecuencias de muestreo]: Con la interpolación podremos igualar en frecuencias los dos datasets
+\item [Operaciones de Registro para estimar la Rotación y Traslación]: Permitirá estimar las traslación y rotación necesarias para pasar de un datasetA a un datasetB
+\end{description}
+
+
+\begin{figure}[H]
+\begin{center}
+\subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap5/esquemaTFM.PNG}}
+\hspace{0.5cm}
+
+\end{center}
+
+\caption{Esquema del algoritmo seguido para estimar las transformaciones.}
+\end{figure}
+
+ESCRITURA DE LOS ALGORITMOS
+
+
+Cuando tengamos un DatasetA y un DataSetB, el algoritmo que seguiremos para estimar las transformaciones desde el DatasetA al DataSetB serán las siguientes.
+
+Calcular PCA para cada dataset, con estos nuevos datasets, calularemos la escala. Posteriormente estimaremos el offset de tiempo entre los dos datasets y unificaremos las 
+frecuencias
+
+Con los datos dataSetApca y dataSetBpca estimaremos el offset de tiempo que hay entre las 2 secuencias de datos o datasets
+Posteriormente corregiremos el offset en el dataset B, para ello sumaremos el valor del offset a los valores de tiempo del datasetB
+Una vez tengamos calculado el offset, unificaremos las frecuencias de los 2 datasets mediante interpolación.
+Cuando tengamos unificada la frecuencia para los dos datasets, obtendremos de nuevo PCA de cada dataset y por último obtendremos la escala.
+
+Posteriormente estimaremos  la transformaciones de rotación y traslación para pasar del datasetA al datasetB
+Aplicaremos dichas transformaciones sobre el datasetA , lo que nos dará como resultado un nuevo dataset, el dataset Estimado que pintaremos en pantalla de color rojo
+
+Cálculo del offset:
+Este módulo se encarga de estimar el offset o diferencia de tiempo entre los dos datasets. Es el algoritmo más pesado ya que incluye múltiples cálculos para interpolar y calcular 
+la correlación cruzada entre los dos datasets.
+
+Este algoritmo será iterativo en el que utilizaremos un dataset como base de tiempo fijo y otro dataset B que se deslizará en el tiempo desde -T hasta +T . El datasetB se irá 
+deslizando en pequeños espacios de tiempo o steps en cada iteración. Para cada step calcularemos la correlación cruzada entre el dataset deslizante y el dataset original(que se 
+mantiene fijo en el tiempo). Para un step determinado la correlación debe ser máxima entre los 2 datasets y cuando hallemos la correlación máxima, el step de esa iteración nos 
+indicará el offset. Como hemos comentado, moveremos el datasetB a -T y por cada iteración iremos deslizando en el tiempo el datasetB un incremento de tiempo step , hasta el final 
+del bucle que terminaremos de deslizar datasetB hasta +T. En cada iteracción calcularemos la interpolación en los puntos que coincidan que esten dentro de los límites de los dos 
+datasets.Una vez interpoladas los puntos comunes de las 2 series tendremos 2 series nuevas, Para las cuales calcularemos la crosscorrelación cruzada aplicando el algoritmo típico 
+para 2 series temporales.Pero antes, y como cada serie temporal tiene 3 coordenadas (x,y,z para cada punto 3d), debemos transformar estas 3 coordenadas en un sólo valor para cada 
+punto 3D de cad serie, para ello para cada punto 3D calcularemos su distancia al origen , y por tanto la correlación cruzada se calculará sobre las 2 datasets convertidos a 
+distancias al origen de coordenadas.
+
+\begin{figure}[H]
+\begin{center}
+\subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap5/correlacionCruzada.png}}
+\hspace{0.5cm}
+
+\end{center}
+
+\caption{Gráfico que muestra el desfase del offset entre dos series temporales y el resultado de la correlación cruzada.}
+\end{figure}
+
+Acontinuación describiremos cada unos de los módulos que componen la herramienta SLAMTestBed.
+\begin{enumerate}%for small alpha-characters within brackets.
+
+
+\item \textbf{El módulo Ajuste de Tiempo:}
+
+	Con este módulo podremos calcular el offset de tiempo entre los 2 datasets.
+	El método principal utilizado para calcular el offset se realiza mediante el calculo de la Cross Correlación Cruzada
+	Para ello previamente , calcularemos la distancia al origen para cada punto 3D de los 2 datasets
+	Para un punto 3d (x,y,z), la distancia 3d se calculará 
+	\begin{math}
+	\sqrt{(x-0)^2 +(y-0)^2+(z-0)^2}
+	\end{math}
+	una vez calculadas las distancias , aplicaremos el siguiente algoritmo de calculo de correlación cruzada
+	                                
+	
+									   dataA = CalcularDistancia( dataSetA)
+
+									   dataB = CalcularDistancia( dataSetB)
+
+									   mA = CalcularMedia(dataA)
+
+									   mB = CalularMedia(dataB)
+
+									   Para cada fila
+
+									   		sx = dataA(i) - mA
+
+									   		sy = dataB(i) - mB
+
+								       denom = \begin{math}\sqrt{sx*sy}\end{math};
+
+									   step = 0.01		
+
+								       Desde i=-T hasta i = T
+
+								            Si ( dataB.t < dataB.t )
+
+								            	j=j+1
+
+								            	continuar
+
+								            sino si (dataB.t > dataA.t)
+
+								            	i=i+1
+
+								            	continuar
+
+								            	sino si (dataB.t == dataA.t)
+
+								            		sxy=(dataA -mA) * (dataB-mB)
+
+								            		i++
+
+								            		j++
+
+								       
+
+								       r = (sxy) / denom;
+
+								       r= fabs(r);
+
+
+	   	
+	
+
+\item \textbf{El módulo Generator PCA:}
+
+	Con el módulo PCA obtendremos las componentes principales de un dataset, generando un nuevo dataset.
+
+	A partir de los nuevos datasets generados podremos calcular la escala y la diferencia de tiempos entre los 2 datasets.
+
+	Se implementan 2 métodos de cálculo de PCA, el segundo utilizando el método SVD (utilizando la librería Eigen), que describiremos acontinuación.
+
+		
+		\textit{mX= media (dataset.x)}
+
+		\textit{mY= media (dataset.y)}
+
+		\textit{mZ= media (dataset.z)}
+
+	    \textit{restar la media a cada componente x, y z}
+
+	    \textit{dataset.x = dataset.x - mX } 
+
+	    \textit{dataset.y = dataset.y - mY }
+
+	    \textit{dataset.z = dataset.z - mZ }
+
+	    \textit{cov = obtenerMatrizCovarianza(dataset)}
+
+	    \textit{svd = CalularSVD(cov )}
+
+	    \textit{pca =  Matriz V del resultado svd}
+
+	    \textit{datasetResultado = dataset * Matriz (svd.V)}
+	    
+
+		
+
+
+\item \textbf{El módulo Interpolador:}
+
+	El módulo de interpolación se utiliza para sincronizar a igual frecuencia 2 datasets.
+	Entre las distintas funciones , permite sincronización a la frecuencia mayor de los 2 datasets, sincronización a la frecuencia menor de los 2 datasets o incluso consigue sincronizar las 2 series a una frecuencia deseada. La interpolación se realiza sobre las secuencias temporales de los 2 datasets, pero tambien se calcula la interpolación para las coordenadas X,Y y Z de cada punto 3D y se realiza tambien interpolación para los quaternios. La función \textit{slerp} de la librería Eigen nos permite calcular la interpolación entre quaternios. La función slerp recibe como parámetro una marca de tiempo y un quaternio.
+
+\item \textbf{El módulo Escala:}
+
+Nos permitirá calcular la diferencia de escala entre los dos datasets.
+El algoritmo utilizado será utilizando los valores singulares de cada datasets.
+        
+	
+		\textit{S1 = svd(dataSet1).valoresSingulares}
+
+	    \textit{S2 = svd(dataSet2).valoresSingulares}
+
+	    \textit{scalaX = S2(0)  / S1(0) }
+
+	    \textit{scalaY = S2(1)  / S1(1) }
+
+		\textit{scalaZ = S2(2)  / S1(2) }
+		
+
+
+
+\item \textbf{El módulo Registrador:}
+
+El módulo Registrador nos permitirá estimar las transformaciones (Rotación y Traslación) para pasar del dataSetA al dataSetB y viceversa
+Entre las funciones que nos permitirá este módulo destancan:
+    \begin{description}
+	\item [Hallar la matrices de rotación y traslación] .
+
+		El algoritmo para esta funcionalidad sería el siguiente:
+
+        \textit{
+		- Hallar los centroides de las coordenadas X,Y,Z de cada dataset
+		  centA = centroides (A)
+          centB = centroides (B)
+        }
+
+        \textit{
+        - Restar los centroides a sus respectivas matrices
+          A= A-centA
+          B= B-centB
+        }
+
+        \textit{
+        - Calcular el producto de las matrices}
+
+        \textit{
+          H = A.traspuesta * B
+        }
+
+        \textit{
+        - Obtener la descomposición en valores singulares de la matriz H
+        }
+
+        \textit{
+          S,U,V = svd(H) }
+        
+        \textit{
+        - Obtener la matriz de Rotación}
+
+        \textit{
+          R = V*U.traspuesta}
+
+        \textit{
+        - Obtener la matriz de Traslación}
+
+        \textit{ 
+          t= -R * centA + centB;  
+        }
+
+	\item[Transformar un dataset en otro aplicando las matrices de Rotación y Traslación previamenete estimadas]
+
+		Este método tomará un dataset , lo multiplicará por la matriz de rotación y le sumará la matriz de traslación.
+
+	\item[Transformar los cuaternios aplicando la matriz Rotación.]
+
+		Con este método conseguimos transformar los cuarternios del dataSetA al dataSetB.
+		Para ello convertiremos la matriz de rotación en un cuaternio que llamaremos "q".
+		Por último multiplicaremos cara quaternio p de la siguiente forma.
+		  q * p * q.inverso 
+
+	\item[Estimar las matrices de rotación y traslación mediante la técnica de RANSAC.]
+
+		Estimaremos las matrices de Rotación y Traslación utilizando los datos de los 2 datasets.
+
+		El algoritmo seguido ha sido el siguiente:
+         
+	        \textit{Mientras no alcancemos el número máximo de iteraciones hacer}
+
+		    	\textit{		Seleccionar n inliers}
+
+				\textit{		Estimar una primera matriz de Rotación , traslación}
+
+		        \textit{		aplicar transformación sobre un subconjunto de puntos No Inliers}
+
+		        \textit{		Si el error < threshhold}
+
+					\textit{			añadir cadidato a inliers}
+
+				\textit{		medir el error tras aplicar transformaciones sobre inliers y no inliers}
+
+				\textit{		seleccionar menor error}
+
+			 	\textit{		incrementar iteracción}
+
+
+	        
+	        \textit{Devolveremos las matrices de Rotación Traslación que menor error hayan dado}     
+	        
+
+    \end{description}
+
+
+\item \textbf{El módulo Transformador:}
+	Con este nos permitirá crear a partir de un dataset original , un segundo dataset modificado, que será el resultado de realizar varias transformaciones sobre el primer dataset
+	Con la función createContaninatedSequence podremos realizar todas o algunas de las siguientes modificaciones sobre el dataset original
+		- Cambio de escala
+
+		- aplicar una Rotación
+
+		- aplicar una Trasalación
+
+		- aplicar un desplazamineto en el tiempo, (offset)
+
+        - Realizar cambios en la frecuencia
+
+        - Introducir ruido Gaussiano en los datos
+
+        - Introducir ruido Cósmico
+
+
+\item \textbf{El módulo Estadísticas:}
+
+	Este módulo permite calcular el Error Cuadrático Medio (Root Mean Square Error) entre 2 datasets.
+
+\end{enumerate}
+
+
 
