@@ -1,16 +1,213 @@
 \newpage
-\chapter{Descripción} \label{cap:Descripcion}
+%\chapter{Descripción} \label{cap:Herramienta SLAMTestBed}
+\chapter{Herramienta SLAMTestBed} \label{cap:Herramienta SLAMTestBed} %chapter 4
+\setcounter{section}{4}
+
+\subsection{Diseño}
+Diseño de caja Blanca
+
+Diseño de caja Negra
+
+\subsection{Estimador PCA y Cálculo de Escala}
+
+	Con el módulo PCA obtendremos las componentes principales de un dataset, generando un nuevo dataset.
+
+	A partir de los nuevos datasets generados podremos calcular la escala y la diferencia de tiempos entre los 2 datasets.
+
+	Se implementan 2 métodos de cálculo de PCA, el segundo utilizando el método SVD (utilizando la librería Eigen), que describiremos acontinuación.
+
+	\begin{lstlisting}
+		
+		mX= media (dataset.x)
+		mY= media (dataset.y)
+		mZ= media (dataset.z)
+
+		restar la media a cada componente x, y z
+
+		dataset2.x = dataset.x - mX
+		dataset2.y = dataset.y - mY
+		dataset2.z = dataset.z - mZ
+
+		cov = obtenerMatrizCovarianza(dataset2)
+		svd = CalularSVD(cov )
+		pca =  Matriz V del resultado svd
+		datasetResultado = dataset * Matriz (svd.V)
+
+	\end{lstlisting}
+
+    En cuanto al cálculo de la Escala, nos permitirá calcular la diferencia de escala entre los dos datasets, y así al tener los datasets en la misma escala, ya tendríamos el primer paso del registro espacial. El algoritmo utilizado estará basado en la utilización de los valores singulares de cada datasets.
+        
+	\begin{lstlisting}
+		S1 = svd(dataSet1).valoresSingulares
+		S2 = svd(dataSet2).valoresSingulares
+		scalaX = S2(0)  / S1(0)
+		scalaY = S2(1)  / S1(1)
+		scalaZ = S2(2)  / S1(2)
+	\end{lstlisting}
+
+\subsection{Registro Espacial}
+
+Con el registro espacial conseguiremos estimar la matriz de rotación y traslación para aplicarlas sobre el segundo dataset , intentando conseguir la operación de registro de los 2 datasets
+
+
+
+\begin{description}
+	\item [Hallar la matrices de rotación y traslación] .
+
+		El algoritmo para esta funcionalidad sería el siguiente:
+        \begin{lstlisting}
+        - Hallar los centroides de las coordenadas X,Y,Z de cada dataset
+        	centA = centroides (A)
+        	centB = centroides (B)
+        
+
+        - Restar los centroides a sus respectivas matrices
+          	A= A-centA
+          	B= B-centB
+        
+        - Calcular el producto de las matrices
+        	H = A.traspuesta * B
+
+        - Obtener valores singulares de la matriz H
+        	S,U,V = svd(H)
+        
+        - Obtener la matriz de Rotacion
+          	R = V*U.traspuesta
+
+        - Obtener la matriz de Traslacion
+        	t= -R * centA + centB;  
+        \end{lstlisting}
+
+	\item[Transformar un dataset en otro aplicando las matrices de Rotación y Traslación previamenete estimadas]
+
+		Este método tomará un dataset , lo multiplicará por la matriz de rotación y le sumará la matriz de traslación.
+
+	\item[Transformar los cuaternios aplicando la matriz Rotación.]
+
+		Con este método conseguimos transformar los cuarternios del dataSetA al dataSetB.
+		Para ello convertiremos la matriz de rotación en un cuaternio que llamaremos "q".
+		Por último multiplicaremos cara quaternio p de la siguiente forma.
+		  q * p * q.inverso 
+
+	\item[Estimar las matrices de rotación y traslación mediante la técnica de RANSAC.]
+
+		Estimaremos las matrices de Rotación y Traslación utilizando los datos de los 2 datasets.
+
+		El algoritmo seguido ha sido el siguiente:
+            \begin{lstlisting}
+            	Mientras no alcancemos el numero maximo de iteraciones hacer
+            			Seleccionar n inliers
+            			Estimar una primera matriz de Rotacion , Traslacion
+            			aplicar transformacion sobre un subconjunto de puntos No Inliers
+            			Si el error < threshhold
+            				aniadir cadidato a inliers
+            			medir el error tras aplicar transformaciones sobre inliers y no inliers
+            			seleccionar menor error
+            			incrementar iteraccion
+            	Devolveremos las matrices de Rotacion Traslacion que menor error hayan dado
+            \end{lstlisting}
+	        
+
+    \end{description}
+
+
+\subsection{Estimador Offset}
+
+	Con este módulo podremos calcular el offset de tiempo entre los 2 datasets.
+	El método principal utilizado para calcular el offset se realiza mediante el calculo de la Cross Correlación Cruzada
+	Para ello previamente , calcularemos la distancia al origen para cada punto 3D de los 2 datasets
+	Para un punto 3d (x,y,z), la distancia 3d se calculará 
+	\begin{math}
+	\sqrt{(x-0)^2 +(y-0)^2+(z-0)^2}
+	\end{math}
+	una vez calculadas las distancias , aplicaremos el siguiente algoritmo de calculo de correlación cruzada
+	                                
+	\begin{lstlisting}
+	dataA = CalcularDistancia( dataSetA)
+	dataB = CalcularDistancia( dataSetB)
+	mA = CalcularMedia(dataA)
+	mB = CalularMedia(dataB)
+
+	Para cada fila
+
+   		sx = dataA(i) - mA
+
+   		sy = dataB(i) - mB
+
+   	denom = sqrt(sx*sy);
+   	step = 0.01
+   	Desde i=-T hasta i = T
+   		Si ( dataB.t < dataB.t )
+			j=j+1
+    		continuar
+
+    	sino si (dataB.t > dataA.t)
+    		i=i+1
+    		continuar
+
+    	sino si (dataB.t == dataA.t)
+    		sxy=(dataA -mA) * (dataB-mB)
+        	i++
+        	j++
+
+
+   
+
+   r = (sxy) / denom;
+
+   r= fabs(r);
+    \end{lstlisting}
+
+
+
+\subsection{Interpolador}
+
+	El módulo de interpolación se utiliza para sincronizar a igual frecuencia 2 datasets.
+	Entre las distintas funciones , permite sincronización a la frecuencia mayor de los 2 datasets, sincronización a la frecuencia menor de los 2 datasets o incluso consigue sincronizar las 2 series a una frecuencia deseada. La interpolación se realiza sobre las secuencias temporales de los 2 datasets, pero tambien se calcula la interpolación para las coordenadas X,Y y Z de cada punto 3D y se realiza tambien interpolación para los quaternios. La función \textit{slerp} de la librería Eigen nos permite calcular la interpolación entre quaternios. La función slerp recibe como parámetro una marca de tiempo y un quaternio.
+
+\subsection{Cálculo de Estadísticas}
+
+Este módulo permite calcular el Error Cuadrático Medio (Root Mean Square Error) entre 2 datasets.
+
+
+\subsection{GUI}
+
+La herramienta SLAMTestBed tiene tambien un entorno gráfico para realizar comparaciones sobre datasets obtenidos tras aplicar algoritmos SLAM. 
+Nos permitirá medir la exactitud de los resultados de la aplicación de un algoritmo con los resultados de otro algoritmo o comparar varios resultados de un mismo algoritmo en el que se han aplicado distintos parámetros de ejecución.
+Este interfáz gráfico de usuario de 3 dimensiones ha sido desarrollado en C++ con el entorno QT y la librería Eigen. La libería Eigen es una librería Open Source realizada en C++, para cálculos de Álgebra lineal, operaciones con Matrices y vectores, Transformaciones Geométricas. 
+La aplicación sofware muestra al usuario un interfaz gráfico que permite:
+Leer un archivo de datos con puntos 3D y mostrarlo en pantalla como una nube de puntos 3D. Este archivo podriamos denominarlo groundTruth.
+Con el ratón podremos girar en 3 dimensiones la nube de puntos, acercarnos a el (Zoom in) o alejarnos (Zoom Out),
+tambien permite leer un segundo conjunto de puntos 3D y estimar las transformaciones ( rotaciones , traslaciones, escala etc)  necesarias para pasar desde el conjunto de datos ground truth hasta este segundo conjunto de datos. El conjunto de datos resultante tras aplicar las estimaciones será visulalizado en pantalla como otra nube de puntos 3D
+
+Esta herramienta poseé varios modulos accesibles desde el interfaz gráfico. Entre estos módulos podríamos destacar el \textbf{Módulo Transformador}.
+Como se ha comentado anteriormente, el módulo Transformador permite realizar transformaciones sobre el conjunto de puntos 3D groundTruth, de tal forma que se obtendrá como resultado una segunda nube de puntos transformados.
+Los diversos parámetros del módulo transformador serán accesible por el interfaz gráfico de la pantalla.
+
+A continuación describiremos en detalle las transformaciones permitidas por la herramienta:
+
+\textbf{Escala}. Permite modificar los datos de entrada a nivel de escala. La escala siempre será mayor que cero y se admitirán números con reales
+
+\textbf{Traslaciones}. Se podrán definir traslaciones sobre cada uno de los 3 ejes de coordenadas. 
+La traslación admite números reales positivos y negativos.
+
+\textbf{Rotaciones}. Se podrán definir rotaciones sobre cada unos de los 3 ejes de coordenadas. El valor de cada rotación se insertará en Radianes. Los valores admitidos serán números reales tanto positivos como negativos
+
+\textbf{Offset de tiempo}. Con el offset de tiempo podremos introducir un gap en los valores de timestamp del fichero de entrada que más tarde podremos estimar. La exactitud del offset será de centésimas, es decir con 2 decimales
+
+\textbf{Interpolación}: Se podrán realizar 3 tipos de interpolación de los datos.
+	Interpolación a la frecuencia máxima
+	Interpolación a la frecuencia mínima
+	Interpolación a frecuencia personalizada
+
+\textbf{Ruido Gaussiano}: Una de las transformaciones que podremos aplicar sobre el conjunto de datos del groundtrouth es aplicar un ruido gaussiano a los datos transformados
+
+\textbf{Ruido Cósmico}: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido cósmico
+
 
 %\section{Descripción de la herramienta SLAM-Test-Bed} \label{s:descripcionHerramienta}
 En este capítulo describiremos en detalle el funcionamiento de la herramienta SLAM-Test-Bed
 
-La herramienta SLAM-Test-Bed consta de un entorno gráfico para realizar comparaciones sobre datasets obtenidos tras aplicar algoritmos SLAM. 
-Nos permitirá medir la exactitud de los resultados de la aplicación de un algoritmo con los resultados de otro algoritmo o comparar varios resultados de un mismo algoritmo en el que se han aplicado distintos parámetros de ejecución.
-La herramienta cuenta de un interfaz gráfico en 3D desarrollado en C++ con el entorno QT y la librería Eigen.
-
-
-La aplicación sofware muestra al usuario un interfaz gráfico que permite:
-Leer un archivo de datos con puntos 3D y mostrarlo en pantalla como una nube de puntos 3D. Este archivo podriamos denominarlo groundTruth.
 \begin{figure}[H]
 \begin{center}
 \subfigure[]{\label{fig:Open File}\includegraphics[height=2.0cm,width=6.0cm]{img/cap5/openFile.png}}

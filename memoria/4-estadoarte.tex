@@ -1,11 +1,12 @@
-\chapter{Estado del Arte} \label{cap:Estado del Arte}
+\chapter{Estado del Arte} \label{cap:Estado del Arte} % chapter 3
 %\section{Estado del Arte} \label{s:estado}
+\setcounter{section}{3}
 
 En esta sección explicaremos varios de los algoritmos SLAM más significativos , como MonoSLAM, PTAM, DTAM, SVO,LSD-SLAM,ORB-SLAM,DSO,SDVL y RGBD SLAM.
 Tambien se describirán brevemente las distintas herramientas que existen en la actualidad para comparar las estimaciones de los algoritmos SLAM , comenzaremos por TUM, seguido de rgb trayectory evaluation , también describiremos la herramienta SLAMBENCH y por último daremos algunos detalles sobre The Kitti Vision Benchmark Suite.
 
 
-\section{MonoSLAM}
+\subsection{MonoSLAM}
 El algoritmo de  MonoSLAM (\textit{Monocular SLAM}) \cite{Davison2007monoslam} utiliza solamente una cámara RGB para la localización y mapeo de entornos desconocidos. Fue desarrollado en el año 2002  por Andrew Robinson. Para estimar la posición de la cámara utiliza un filtro extendido de Kalman (EKF) y la posición de una serie de puntos 3D. Este método requiere de una inicialización con al menos 4 puntos 3D conocidos que utilizará para calcular la posición de la cámara y la generación de nuevos puntos para el mapa.
 %\begin{figure}[htbp]
 \begin{figure}[H]
@@ -33,7 +34,7 @@ MonoSLAM es recomendable para mapas con pocos puntos. Es muy sensible a movimien
 \clearpage
 
 
-\section{PTAM}
+\subsubsection{PTAM}
 \textit{Parallel Tracking and \textit{Mapping}}. Es un algoritmo creado en 2007 por George Klein \cite{Klein2007parallel} que también calcula el Tracking y el \textit{Mapping} como en MonoSLAM pero para ello utiliza 2 \textit{Threads}, uno para calcular el posicionamiento de la cámara (Tracking ) y el segundo para la generación del mapa (\textit{Mapping}). Esta separación en dos hilos de ejecución se debe a que el Tracking necesita ser calculado en tiempo real para obtener una localización precisa, mientras que el \textit{Mapping} puede demorarse más tiempo sin perjudicar a la localización de la cámara. 
 
 Con las imágenes captadas en secuencia se van generando \textit{Keyframes} o fotogramas clave. Se genera un nuevo \textit{Keyframe} a medida que la cámara se va desplazando. Los \textit{Keyframes} se utilizan para la localización y para ir generando el mapa de puntos.
@@ -54,7 +55,7 @@ Se suele utilizar en entornos cerrados y pequeños y utiliza técnicas SFM. Muy 
 
 \clearpage
 
-\section{ORB-SLAM}
+\subsection{ORB-SLAM}
 Es un algoritmo basado en extracción y emparejamiento de píxeles característicos mediante descriptores ORB, estos descriptores son más fiables que los parches tradicionales y por tanto permiten obtener mapas robustos y precisos tanto en escenarios de grandes dimensiones como en zonas pequeñas, sin embargo para su funcionamiento en tiempo real requiere la utilización de ordenadores con alta capacidad de proceso \cite{Mur2015orb}.
 Puede ser utilizado con una cámara o dos e incluso con cámaras de profundidad RGBD. Para cierres de bucle y relocalización utiliza un modelo de bolsa de palabras \cite{galvez2012bags}.
 Utiliza 3 \textit{Threads}, el primero para Tracking, el segundo para \textit{Mapping} y un tercero para detectar cierres de bucle. 
@@ -78,8 +79,8 @@ En el proceso de Looping, se comprobará si se ha producido un cierre de bucle. 
 
 \clearpage
 
-\section{DSO}
-\textit{Direct Sparse Model}.
+\subsection{DSO y LDSO}
+\textit{DSO: Direct Sparse Model}.
 Está basado en optimizaciones continuas del error fotométrico sobre una ventana de frames recientes\cite{Engel2016direct}.
 El inicio del Tracking, cuando se crea un nuevo \textit{Keyframe}, todos los puntos activos son proyectados en el y ligeramente dilatados, creando así un mapa de profundidad semi denso. Nuevos frames son creados con respecto a este frame utilizando alineamiento directo de 2 frames, una pirámide multi escala y un modelo de movimiento constante a inicializar. 
 Para la relocalización, se podrán trazar hasta 27 rotaciones pequeñas en diferentes direcciones. Esta recuperación de posición se consigue en el nivel más pequeño de la pirámide de la imagen.
@@ -115,7 +116,6 @@ Por último, la activación de puntos candidatos, cuando un conjunto de puntos a
 
 \clearpage
 
-\section{LDSO}
 \textit{LDSO: Direct Sparse Odometry with Loop Closure}. Este método es una extensión del algoritmo DSO (Direct Sparse Odometry). LDSO incorpora detección de cierre de bucle y optimización de posición y mapeo. Al ser un método directo, DSO puede utilizar cualquier pixel de la imagen con suficiente gradiente de intensidad, lo cual lo hace más robusto incluso en áreas donde apenas se pueden obtener puntos característicos. LDSO mantiene esta robusted, mientras que al mismo tiempo asegura la repetibilidad  sobre alguno de esos puntos prestando más atención sobre esquinas características en el proceso de tracking. Estas repetibilidad de puntos característicos permite detectar de forma fiable los candidatos de cierres de bucle utilizando la técnica basada en carácterísticas de bag-of-words. 
 Los candidatos a cierre de bucle son verificados geométricamente y restricciones de pose relativa son estimadas minizando en conjunto errores geométricos 2D y 3D.
 Selección de puntos de características Repetibles, DSO utiliza un grid dinamico para detectar suficientes pixels incluso en entornos con pocas texturas. Más especificamente, todavía se toma un numero determinado de pixeles ( por defecto 2000 en DSO), de los cuales algunos son esquinas. Manteniendo el número de esquinas pequeño se calculan los descriptores ORB y los empaquetamos en BoW. El algoritmo  utiliza ambos tipos de pixeles de esquinas y no esquinas para obtener el tracking, y la carga del thread para obtener el cierre de bucle permanece al mínimo.

@@ -11,14 +11,23 @@
 \BOOKMARK [0][-]{chapter.2}{Objetivos}{}% 11
 \BOOKMARK [1][-]{section.2.1}{Requisitos}{chapter.2}% 12
 \BOOKMARK [0][-]{chapter.3}{Estado del Arte}{}% 13
-\BOOKMARK [1][-]{section.3.1}{MonoSLAM}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.2}{PTAM}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.3}{ORB-SLAM}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.4}{DSO}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.5}{LDSO}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.6}{Herramientas para realizar evaluaciones comparativas de algoritmos SLAM}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.7}{Comparativa de los algoritmos m\341s representativos}{chapter.3}% 20
-\BOOKMARK [0][-]{chapter.4}{Descripci\363n}{}% 21
-\BOOKMARK [0][-]{chapter.5}{Experimentos}{}% 22
-\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 23
-\BOOKMARK [0][-]{chapter*.3}{Bibliograf\355a}{}% 24
+\BOOKMARK [1][-]{subsection.3.3.1}{MonoSLAM}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.3.2}{ORB-SLAM}{subsection.3.3.1}% 15
+\BOOKMARK [2][-]{subsection.3.3.3}{DSO y LDSO}{subsection.3.3.1}% 16
+\BOOKMARK [1][-]{section.3.4}{Herramientas para realizar evaluaciones comparativas de algoritmos SLAM}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.5}{Comparativa de los algoritmos m\341s representativos}{chapter.3}% 18
+\BOOKMARK [0][-]{chapter.4}{Herramienta SLAMTestBed}{}% 19
+\BOOKMARK [1][-]{subsection.4.4.1}{Dise\361o}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.4.2}{Estimador PCA y C\341lculo de Escala}{subsection.4.4.1}% 21
+\BOOKMARK [2][-]{subsection.4.4.3}{Registro Espacial}{subsection.4.4.1}% 22
+\BOOKMARK [2][-]{subsection.4.4.4}{Estimador Offset}{subsection.4.4.1}% 23
+\BOOKMARK [2][-]{subsection.4.4.5}{Interpolador}{subsection.4.4.1}% 24
+\BOOKMARK [2][-]{subsection.4.4.6}{C\341lculo de Estad\355sticas}{subsection.4.4.1}% 25
+\BOOKMARK [2][-]{subsection.4.4.7}{GUI}{subsection.4.4.1}% 26
+\BOOKMARK [0][-]{chapter.5}{Experimentos}{}% 27
+\BOOKMARK [1][-]{subsection.5.5.1}{M\363dulo Transformador}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.5.2}{Pruebas de transformaciones individuales}{subsection.5.5.1}% 29
+\BOOKMARK [2][-]{subsection.5.5.3}{Pruebas de transformaciones en parejas}{subsection.5.5.1}% 30
+\BOOKMARK [2][-]{subsection.5.5.4}{Pruebas de transformaciones combinadas}{subsection.5.5.1}% 31
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 32
+\BOOKMARK [0][-]{chapter*.4}{Bibliograf\355a}{}% 33
