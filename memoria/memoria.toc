@@ -19,17 +19,18 @@
 \contentsline {section}{\numberline {4}Herramientas para realizar evaluaciones comparativas de algoritmos SLAM}{28}{section.3.4}
 \contentsline {section}{\numberline {5}Comparativa de los algoritmos m\IeC {\'a}s representativos}{33}{section.3.5}
 \contentsline {chapter}{\numberline {4}Herramienta SLAMTestBed}{35}{chapter.4}
-\contentsline {subsection}{\numberline {4.1}Dise\IeC {\~n}o}{35}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.2}Estimador PCA y C\IeC {\'a}lculo de Escala}{35}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.3}Registro Espacial}{36}{subsection.4.4.3}
-\contentsline {subsection}{\numberline {4.4}Estimador Offset}{37}{subsection.4.4.4}
-\contentsline {subsection}{\numberline {4.5}Interpolador}{39}{subsection.4.4.5}
-\contentsline {subsection}{\numberline {4.6}C\IeC {\'a}lculo de Estad\IeC {\'\i }sticas}{39}{subsection.4.4.6}
-\contentsline {subsection}{\numberline {4.7}GUI}{39}{subsection.4.4.7}
-\contentsline {chapter}{\numberline {5}Experimentos}{54}{chapter.5}
-\contentsline {subsection}{\numberline {5.1}M\IeC {\'o}dulo Transformador}{54}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.2}Pruebas de transformaciones individuales}{55}{subsection.5.5.2}
-\contentsline {subsection}{\numberline {5.3}Pruebas de transformaciones en parejas}{59}{subsection.5.5.3}
-\contentsline {subsection}{\numberline {5.4}Pruebas de transformaciones combinadas}{70}{subsection.5.5.4}
-\contentsline {chapter}{\numberline {6}Conclusiones}{76}{chapter.6}
-\contentsline {chapter}{Bibliograf\'{\i }a}{78}{chapter*.4}
+\contentsline {subsection}{\numberline {4.1}Dise\IeC {\~n}o de Caja Negra}{35}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.2}Dise\IeC {\~n}o de caja Blanca}{36}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.3}Estimador PCA y C\IeC {\'a}lculo de Escala}{38}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4}Registro Espacial}{39}{subsection.4.4.4}
+\contentsline {subsection}{\numberline {4.5}Estimador Offset}{40}{subsection.4.4.5}
+\contentsline {subsection}{\numberline {4.6}Interpolador}{42}{subsection.4.4.6}
+\contentsline {subsection}{\numberline {4.7}C\IeC {\'a}lculo de Estad\IeC {\'\i }sticas}{43}{subsection.4.4.7}
+\contentsline {subsection}{\numberline {4.8}GUI}{43}{subsection.4.4.8}
+\contentsline {chapter}{\numberline {5}Experimentos}{46}{chapter.5}
+\contentsline {subsection}{\numberline {5.1}M\IeC {\'o}dulo Transformador}{46}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.2}Pruebas de transformaciones individuales}{47}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.3}Pruebas de transformaciones en parejas}{51}{subsection.5.5.3}
+\contentsline {subsection}{\numberline {5.4}Pruebas de transformaciones combinadas}{62}{subsection.5.5.4}
+\contentsline {chapter}{\numberline {6}Conclusiones}{68}{chapter.6}
+\contentsline {chapter}{Bibliograf\'{\i }a}{70}{chapter*.4}

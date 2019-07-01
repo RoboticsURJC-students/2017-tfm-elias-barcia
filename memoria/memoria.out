@@ -17,17 +17,18 @@
 \BOOKMARK [1][-]{section.3.4}{Herramientas para realizar evaluaciones comparativas de algoritmos SLAM}{chapter.3}% 17
 \BOOKMARK [1][-]{section.3.5}{Comparativa de los algoritmos m\341s representativos}{chapter.3}% 18
 \BOOKMARK [0][-]{chapter.4}{Herramienta SLAMTestBed}{}% 19
-\BOOKMARK [1][-]{subsection.4.4.1}{Dise\361o}{chapter.4}% 20
-\BOOKMARK [2][-]{subsection.4.4.2}{Estimador PCA y C\341lculo de Escala}{subsection.4.4.1}% 21
-\BOOKMARK [2][-]{subsection.4.4.3}{Registro Espacial}{subsection.4.4.1}% 22
-\BOOKMARK [2][-]{subsection.4.4.4}{Estimador Offset}{subsection.4.4.1}% 23
-\BOOKMARK [2][-]{subsection.4.4.5}{Interpolador}{subsection.4.4.1}% 24
-\BOOKMARK [2][-]{subsection.4.4.6}{C\341lculo de Estad\355sticas}{subsection.4.4.1}% 25
-\BOOKMARK [2][-]{subsection.4.4.7}{GUI}{subsection.4.4.1}% 26
-\BOOKMARK [0][-]{chapter.5}{Experimentos}{}% 27
-\BOOKMARK [1][-]{subsection.5.5.1}{M\363dulo Transformador}{chapter.5}% 28
-\BOOKMARK [2][-]{subsection.5.5.2}{Pruebas de transformaciones individuales}{subsection.5.5.1}% 29
-\BOOKMARK [2][-]{subsection.5.5.3}{Pruebas de transformaciones en parejas}{subsection.5.5.1}% 30
-\BOOKMARK [2][-]{subsection.5.5.4}{Pruebas de transformaciones combinadas}{subsection.5.5.1}% 31
-\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 32
-\BOOKMARK [0][-]{chapter*.4}{Bibliograf\355a}{}% 33
+\BOOKMARK [1][-]{subsection.4.4.1}{Dise\361o de Caja Negra}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.4.2}{Dise\361o de caja Blanca}{subsection.4.4.1}% 21
+\BOOKMARK [2][-]{subsection.4.4.3}{Estimador PCA y C\341lculo de Escala}{subsection.4.4.1}% 22
+\BOOKMARK [2][-]{subsection.4.4.4}{Registro Espacial}{subsection.4.4.1}% 23
+\BOOKMARK [2][-]{subsection.4.4.5}{Estimador Offset}{subsection.4.4.1}% 24
+\BOOKMARK [2][-]{subsection.4.4.6}{Interpolador}{subsection.4.4.1}% 25
+\BOOKMARK [2][-]{subsection.4.4.7}{C\341lculo de Estad\355sticas}{subsection.4.4.1}% 26
+\BOOKMARK [2][-]{subsection.4.4.8}{GUI}{subsection.4.4.1}% 27
+\BOOKMARK [0][-]{chapter.5}{Experimentos}{}% 28
+\BOOKMARK [1][-]{subsection.5.5.1}{M\363dulo Transformador}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.5.2}{Pruebas de transformaciones individuales}{subsection.5.5.1}% 30
+\BOOKMARK [2][-]{subsection.5.5.3}{Pruebas de transformaciones en parejas}{subsection.5.5.1}% 31
+\BOOKMARK [2][-]{subsection.5.5.4}{Pruebas de transformaciones combinadas}{subsection.5.5.1}% 32
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 33
+\BOOKMARK [0][-]{chapter*.4}{Bibliograf\355a}{}% 34
