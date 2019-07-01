@@ -3,61 +3,65 @@
 %\pagenumbering{arabic}
 %\setcounter{page}{1}
 
+\setcounter{section}{2}
 
-En el siguiente apartado se detallaran los objetivos que se pretenden alcanzar en este Trabajo Fin de Máster.
+En el siguiente capítulo se detallarán las metas concretas que se pretenden alcanzar en este Trabajo Fin de Máster.
 
-Desde la existencia de Visual SLAM , se están desarrollando algoritmos que permitan a los robots estimar su posición , para poder generar un mapa en 3D del entorno y así poder navegar por el espacio que le rodea. Estos algoritmos son complejos y están compuestos de múltiples etapas, a menudo un ligero cambio en alguna de estas etapas puede hacer que los resultados del algoritmo mejoren significativamente o por el contrario empeoren. Sería muy útil y conveniente contar con una herramienta que permitiese analizar o estimar la bondad de los nuevos algoritmos visual SLAM, por tanto el objetivo de este proyecto es presentar un conjunto de herramientas que permitan comparar el rendimiento de los algoritmos visual SLAM.
+\subsection{Objetivos}
+Desde el nacimiento de Visual SLAM , se están desarrollando algoritmos que permitan a los robots estimar su posición, o con una cámara localizar una imagen en tiempo real en 3D para aplicaciones de realidad aumentada. Estos algoritmos son complejos y están compuestos de múltiples etapas, a menudo un ligero cambio en alguna de estas etapas puede hacer que los resultados del algoritmo mejoren significativamente o por el contrario empeoren. Sería muy útil y conveniente contar con una herramienta que permitiese analizar o estimar la bondad de los nuevos algoritmos visual SLAM. El objetivo principal de este proyecto es presentar una herramienta que permitan comparar cuantitativamente el rendimiento de los algoritmos visual SLAM y la calidad de sus estimaciones.
+Esta herramienta permitirá comparar el rendimiento de los diferentes algoritmos de Visual SLAM así como estudiar más facilmente que modificaciones o mejoras se podrían aplicar en los algoritmos ya existentes.
 
-Esta herramienta permitirá comparar el rendimiento de los nuevos algoritmos de visual SLAM así como estudiar adaptaciones y mejoras en los algoritmos ya existentes.
+En  este TFM nos hemos centrado en medir la exactitud de las estimaciones de posición sin tener en cuenta la generación de mapas, es decir se ha puesto toda la atención en comparar las mediciones de tracking dejando el mapping para futuros proyectos. 
 
-En el marco de este TFM nos hemos centrado en una plataforma que permita medir la exactitud de las estimaciones de posición sin tener en cuenta la generación de mapas, es decir se ha puesto toda la atención en comparar las mediciones de tracking dejando el mapping para futuros proyectos. 
+Entenderemos que un algoritmo A es mejor que otro B cuando el algoritmo A sea capaz de estimar la posición con mayor exactitud que otro algoritmo B en el menor tiempo posible y de manera robusta. La herramienta a desarrollar medirá la precisión de las estimaciones de posición y la agilidad entendiéndose esta como el tiempo de proceso dedicado a realizar dichas estimaciones de posición. 
 
-Entenderemos que un algoritmo A es mejor que otro B cuando el algoritmo A sea capaz de estimar la posición con mayor exactitud que otro algoritmo B en el menor tiempo posible, por lo tanto en los algoritmos de VisualSLAM se medirá la precisión de las estimaciones de posición y la agilidad entendiéndose esta como el tiempo de proceso dedicado a realizar dichas estimaciones de posición. 
+Típicamente esta herramienta permitirá comparar dos secuencias de posiciones 3D, la estimada por un algoritmo de VisualSLAM y la secuencia de posiciones verdaderas. La diferencia entre ambas mide el error del algoritmo SLAM a la hora de estimar correctamente las posiciones de la cámara.
+Este objetivo principal lo hemos articulaod en los siguientes subobjetivos:
+
+\begin {enumerate}
+\item \textbf{Conseguir un Registrador Espacial:} Este registrador espacial debe permitir registrar 2 secuencias de puntos 3D en el espacio, estimando rotación, traslación y escala para poder realizar el registro espacial entre las 2 nubes de puntos.
 
 
-Objetivos principales: 
-Por tanto como objetivo principal será crear una herramienta para poder comparar 2 datasetd de Visual SLAM
-para ello deberemos conseguir un registrador Espacial que permita registrar 2 datasets en el espacio, estimando rotación, traslación y escala para poder realizar el reigistro espacial entre 2 datasets
+\item \textbf{Registrador Temporal:} Que permita sincronizar las 2 seuencias de puntos 3D. Para ello deberemos ajustar los 2 secuencias a la misma frecuencia de muestreo, (utilizaremos interpolación) y también calcular el offset temporal entre ambas. El offset temporal sería la diferencia de tiempo entre 2 secuencias, 
+
+\item \textbf{La herramienta de medición se validará experimentalmente:} Para comprobar que funciona correctamente realizaremos experimentos donde comprobaremos el error estimado entre el groundtrouth y una secuencia transformada de la que se conoce exactamente el registro temporal y espacial. Se creará un Módulo de Transformación que permitirá realizar tanto alteraciones temporales como esapaciales a una secuencia dada generando como resultado una nueva secuencia transformada.
+
+\end {enumerate}
+
+\subsection {Requisitos}
+
+La solución que se desarrolle para alcanzar los objetivos deberá satisfacer además estos requisitos:
 
 
-un Registrador Temporal: Con este registrador conseguiremos sincronizar los 2 datasets. Para ello deberemos ajustar los 2 datasets a la misma frecuencia de muestreo, (utilizaremos interpolación) y también calcular el offset entre los 2 datasets. El offset temporal sería la diferencia de tiempo entre 2 secuencias, 
-Ejemplo: De una forma sencilla, si la secuencia t1 es 2,4,8 y la secuencia t2 es 3,5,7, el offset entre las 2 secuencias sería de 1 segundo.
+	\textbf{R1}. La herramienta debe restringirse a la comparación de algoritmos VisualSLAM que utilizan como sensor de visión una cámara RGB. Así quedan descartados los algoritmos que emplean cámaras RGBD
 
-Como objetivo secundario:
-Validación con Experimentos:
-Para comprobar que los 2 módulos funcionan correctamente, realizaremos experimentos donde mediremos el error entre el groundtrouth y el nuevo dataset estimado.
+	\textbf{R2}. Se restringirá solo a los algoritmos VisualSLAM que empleen \textit{una sola} cámara.
 
-Modulo de Transformación:
-A modo de ayuda , para poder realizar pruebas más ágiles contando con un sólo dataset, la herramienta contará con un módulo de transformación que nos permitirá realizar tanto alteraciones temporales como espaciales en un dataset, dando como resultado un nuevo dataset.
+	\textbf{R3}. La herramienta debe ser aplicable a nuevos algoritmos de VisualSLAM.
 
-\section {Requisitos}
+	\textbf{R4}. Facilidad de uso.
 
-Los requisitos principales de este TFM han sido:
+	\textbf{R7}. Debe ofrecer una única métrica cuantitativa para la comparación entre varios algoritmos de VisualSLAM.
 
-	R1. La herramienta debe restringirse a la comparación de algoritmos VisualSLAM que utilizan como sensor de visión una cámara. Así quedan descartados los algoritmos que emplean cámaras RGBD
+	\textbf{R8}. Debe ofrecer resultados fácilmente legibles y reconocibles para el usuario.
 
-	R2. Se restringirá solo a los algoritmos VisualSLAM que empleen una sola cámara.
+	\textbf{R9}. El software generado debe ser abierto y estar públicamente disponible.
 
-	R3. La herramienta debe ser extensible a los resultados de nuevos algoritmos de VisualSLAM.
+\subsection{Metodología y plan de trabajo}
 
-	R4. Facilidad de uso.
+En cuanto a la metodología utilizada para desarrollar este TFM, se ha seguido el modelo de ciclo de vida en espiral. Una de las primeras lecciones que se aprenden de las metodologías ágiles es que la metodología debe adaptarse al proyecto y no al revés. Dicha premisa cobra más importancia en un proyecto realizado por una sola persona.
 
-	R7. Debe ofrecer una única métrica cuantitativa para la comparación entre varios algoritmos de VisualSLAM.
+Por consiguiente, y enmarcándolo dentro de la metodología en espiral, primero se ha realizado un estudio previo muy amplio que sirve para obtener una visión completa del problema de Visual SLAM y detectar puntos críticos. Segundo se ha ido acotando hasta el primer prototipo del desarrollo principal, el cual ha sido revisado y validado en varias iteraciones. Este prototipo inicial es importante ya que no sólo nos permite avanzar en todas las vías en paralelo, sino porque ofrece una prueba de concepto para las ramificaciones que se han paralizado en favor del desarrollo troncal.
 
-	R8. Debe ofrecer resultados fácilmente legibles y reconocibles para el usuario.
-
-2.3. Metodología y plan de trabajo
-
-En cuanto a la metodología utilizada para desarrollar la aplicación, se ha seguido el modelo de ciclo de vida en espiral. Esto es una de las primeras lecciones que se aprenden de las metodologías ágiles, la metodología debe adaptarse al proyecto y no al revés. Dicha premisa cobra más importancia en un proyecto realizado por una sola persona.
-
-Por consiguiente, y enmarcándolo dentro de la metodología en espiral, primero se ha realizado un estudio previo muy amplio que sirve para obtener una visión completa del problema y detectar puntos críticos, y luego se ha ido acotando hasta llegar al desarrollo principal, el cual ha sido revisado y validado en cada iteración. Esta amplitud inicial es importante ya que no sólo nos permite avanzar en todas las vías en paralelo, sino porque ofrece una prueba de concepto para las ramificaciones que se han paralizado en favor del desarrollo troncal.
-
-El proceso de desarrollo ha sido supervisado por los tutores mediante tres herramientas de trabajo: reuniones semanales, definición de hitos y diario de trabajo.
+El proceso de desarrollo ha sido supervisado por los tutores mediante tres herramientas: reuniones semanales, definición de hitos y diario de trabajo.
 Durante las reuniones se debían definir varios hitos de corto o medio plazo en los que se trabajaría esa semana. Este progreso se puede ver en la página web habilitada para tal uso:
-\url{https://jderobot.org/Elias-tfm}
-Así mismo, el código fuente desarrollado puede encontrarse en:
+\footnote{https://jderobot.org/Elias-tfm}
 
-\url{https://github.com/ FALTA URL}
+Así mismo, el código fuente desarrollado puede encontrarse en:
+\footnote{https://github.com/JdeRobot/slam-Testbed}
+
+y la memoria en 
+\footnote{https://github.com/RoboticsURJC-students/2017-tfm-elias-barcia}
 
 \clearpage
 \newpage
