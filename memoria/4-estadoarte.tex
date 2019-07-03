@@ -1,10 +1,17 @@
 \chapter{Estado del Arte} \label{cap:Estado del Arte} % chapter 3
 %\section{Estado del Arte} \label{s:estado}
-\setcounter{section}{3}
+%\setcounter{section}{3}
 
-En esta sección explicaremos varios de los algoritmos SLAM más significativos , como MonoSLAM, PTAM, DTAM, SVO,LSD-SLAM,ORB-SLAM,DSO,SDVL y RGBD SLAM.
-Tambien se describirán brevemente las distintas herramientas que existen en la actualidad para comparar las estimaciones de los algoritmos SLAM , comenzaremos por TUM, seguido de rgb trayectory evaluation , también describiremos la herramienta SLAMBENCH y por último daremos algunos detalles sobre The Kitti Vision Benchmark Suite.
+En este capítulo explicaremos varios de los algoritmos SLAM más significativos, como MonoSLAM, PTAM,ORB-SLAM,DSO.
+Tambien se describirán brevemente las distintas herramientas que existen en la actualidad para comparar las estimaciones de los algoritmos SLAM , comenzaremos por TUM, seguido de rgb trayectory evaluation , también describiremos la herramienta SLAMBENCH.
+Por último daremos algunos detalles sobre The Kitti Vision Benchmark Suite.
 
+\section{Algoritmos de VisualSLAM}
+
+En este apartado describiremos 4 de los algoritmos más importantes en VisualSLAM.
+%MonoSLAM, PTAM por ser los algoritmos pioneros y ORB_SLAM y LDSO por su buena calidad y por ser de los más utilizados en la actualidad.
+%En este apartado describiremos 4 de los algoritmos más importantes en VisualSLAM.
+%MonoSLAM y PTAM por ser los primeros algoritmos de VisualSLAM y ORB_SLAM y LDSO por su calidad %y buen rendimiento.
 
 \subsection{MonoSLAM}
 El algoritmo de  MonoSLAM (\textit{Monocular SLAM}) \cite{Davison2007monoslam} utiliza solamente una cámara RGB para la localización y mapeo de entornos desconocidos. Fue desarrollado en el año 2002  por Andrew Robinson. Para estimar la posición de la cámara utiliza un filtro extendido de Kalman (EKF) y la posición de una serie de puntos 3D. Este método requiere de una inicialización con al menos 4 puntos 3D conocidos que utilizará para calcular la posición de la cámara y la generación de nuevos puntos para el mapa.
@@ -34,7 +41,7 @@ MonoSLAM es recomendable para mapas con pocos puntos. Es muy sensible a movimien
 \clearpage
 
 
-\subsubsection{PTAM}
+\subsection{PTAM}
 \textit{Parallel Tracking and \textit{Mapping}}. Es un algoritmo creado en 2007 por George Klein \cite{Klein2007parallel} que también calcula el Tracking y el \textit{Mapping} como en MonoSLAM pero para ello utiliza 2 \textit{Threads}, uno para calcular el posicionamiento de la cámara (Tracking ) y el segundo para la generación del mapa (\textit{Mapping}). Esta separación en dos hilos de ejecución se debe a que el Tracking necesita ser calculado en tiempo real para obtener una localización precisa, mientras que el \textit{Mapping} puede demorarse más tiempo sin perjudicar a la localización de la cámara. 
 
 Con las imágenes captadas en secuencia se van generando \textit{Keyframes} o fotogramas clave. Se genera un nuevo \textit{Keyframe} a medida que la cámara se va desplazando. Los \textit{Keyframes} se utilizan para la localización y para ir generando el mapa de puntos.

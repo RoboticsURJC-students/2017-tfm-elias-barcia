@@ -1,11 +1,11 @@
 \newpage
 %\chapter{Descripción} \label{cap:Herramienta SLAMTestBed}
 \chapter{Herramienta SLAMTestBed} \label{cap:Herramienta SLAMTestBed} %chapter 4
-\setcounter{section}{4}
+%\setcounter{section}{4}
 En este capítulo se detallará el diseño de la herramienta SLAMTestBed, una herramienta diseñada para comparar algoritmos SLAM. El diseño de algoritmos SLAM es todavía una disciplina abierta en periodo de expansión. En la navegación autónoma de robots y drones es donde mayor importancia alcanza la utilización de los algoritmos SLAM. Pero algoritmos hay muchos y se necesitan herramientas que nos permitan medir la bondad de cada algoritmo.
 Comenzaremos explicando el diseño desde un punto de vista de Caja Negra, explicando las entradas y las salidas. Se continuará con la explicación del diseño en Caja Blanca y se finalizará explicando cada uno de los componentes principales de la herramienta , como los distintos módulos que permiten calcular el Registro Espacial ( Escala, Traslación y Rotación) y el Registro Temporal (interpolación de frecuencias y cálculo de Offset o Desplazamiento Temporal)
 
-\subsection{Diseño de Caja Negra}
+\section{Diseño de Caja Negra}
 
 En esta sección no entraremos en los detalles de la implementación de la herramienta SLAMTestBed, si no que lo trataremos como una \textit{caja negra}.
 De un lado tendremos las entradas al sistema, que serán 2 datasets.
@@ -22,7 +22,7 @@ Una vez procesados los 2 datasets por la caja negra, obtendremos a la salida, la
 \caption{ En la imagen superior, el diseño de Caja Negra de la herramienta SLAMTestBed }
 \end{figure}
 
-\subsection{Diseño de caja Blanca}
+\section{Diseño de caja Blanca}
 En esta sección explicaremos con más detalle la implementación de la herramienta SLAMTestBed.
 Las entradas y salidas del sistema serán las mismas que las explicadas en la sección anterior (Diseño de Caja Negra).
 
@@ -57,7 +57,7 @@ Posteriormente estimaremos  la transformaciones de rotación y traslación para 
 Más adelante se explicarán con más detalle cada uno de estos módulos.
 
 
-\subsection{Estimador PCA y Cálculo de Escala}
+\section{Estimador PCA y Cálculo de Escala}
 
 	Con el módulo PCA obtendremos las componentes principales de un dataset, generando un nuevo dataset.
 
@@ -94,7 +94,7 @@ Más adelante se explicarán con más detalle cada uno de estos módulos.
 		scalaZ = S2(2)  / S1(2)
 	\end{lstlisting}
 
-\subsection{Registro Espacial}
+\section{Registro Espacial}
 
 Con el registro espacial conseguiremos estimar la matriz de rotación y traslación para aplicarlas sobre el segundo dataset, intentando conseguir la operación de registro de los 2 datasets.
 
@@ -160,7 +160,7 @@ Con el registro espacial conseguiremos estimar la matriz de rotación y traslaci
     \end{description}
 
 
-\subsection{Estimador Offset}
+\section{Estimador Offset}
 
 	Con este módulo podremos calcular el offset o desplazamiento en el tiempo entre los 2 datasets.
 	El método principal utilizado para calcular el offset se realiza mediante el calculo de la Correlación Cruzada.
@@ -227,12 +227,12 @@ indicará el offset. Como hemos comentado, moveremos el datasetB hasta llegar a 
 
 
 
-\subsection{Interpolador}
+\section{Interpolador}
 
 	El módulo de interpolación se utiliza para sincronizar a igual frecuencia 2 datasets.
 	Entre las distintas funciones , permite sincronización a la frecuencia mayor de los 2 datasets, sincronización a la frecuencia menor de los 2 datasets o incluso consigue sincronizar las 2 series a una frecuencia deseada. La interpolación se realiza sobre las secuencias temporales de los 2 datasets, pero tambien se calcula la interpolación para las coordenadas X,Y y Z de cada punto 3D y se realiza tambien interpolación para los quaternios. La función \textit{slerp} de la librería Eigen nos permite calcular la interpolación entre quaternios. La función slerp recibe como parámetro una marca de tiempo y un quaternio.
 
-\subsection{Cálculo de Estadísticas}
+\section{Cálculo de Estadísticas}
 
 Para medir el erro cometido entre el dataset Groundtruth y el dataset Estimado utilizaremos el módulo de Cálculo de Estadísticas.
 Este módulo permite calcular el Error Cuadrático Medio (Root Mean Square Error) entre 2 datasets.
@@ -240,7 +240,7 @@ Cuanto menor sea el RMSE , mejor será el dataset Estimado.
 También nos permite hallar la media, mediana , máximo y mínimo valor de un dataset.
 
 
-\subsection{GUI}
+\section{GUI. Interfaz Gráfico de Usuario}
 
 Para la herramienta SLAMTestBed tambien se ha diseñado y creado un Interfaz de Usuario Gráfico (GUI) que permita pintar los puntos 3D de cada dataset en pantalla así como invocar comandos (a través de clicks de ratón) para ejecutar los distintos módulos que contiene la herramienta SLAMTestBed.
 Nos permitirá medir la exactitud de los resultados de la aplicación de un algoritmo con los resultados de otro algoritmo o comparar varios resultados de un mismo algoritmo en el que se han aplicado distintos parámetros de ejecución.

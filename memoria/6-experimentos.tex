@@ -1,6 +1,6 @@
 \chapter{Experimentos} \label{cap:experimentos}
 %\section{Conclusiones} \label{s:conclusiones}
-\setcounter{section}{5}
+%\setcounter{section}{5}
 En este capitulo mostraremos las pruebas realizadas con la herramienta SLAMTESTBED.
 Para comprobar los resultados podremos utilizar la ventana que muestra el resultado de las estimaciones una vez han terminado los cálculos. Gracias a la visualización gráfica de los datasets (incluido el dataset estimado) la evaluación de los resultados será más sencilla y fiable, ya que si los puntos 3D del dataset estimado no se aproximan al dataset destino, el desajuste entre los puntos 3d de ambos dataset será perceptible a simple vista.
 
@@ -10,7 +10,7 @@ Se han realizado varias pruebas, en cada una de ellas se han activado un subconj
 
 En cada captura de pantalla aparecerá de forma gráfica , el dataset original (en verde), el dataset transformado (en azul), y el dataset estimado (en rojo), junto con otras 3 pantallas que indicarán los valores de los parámetros de las transformaciones realizadas, y otras 2 pantallas con los valores de la estimaciones calculadas (tanto si la estimación ha sido calculada del datasetA al datasetB o del datasetB al datasetA).
 
-\subsection{Módulo Transformador}
+\section{Módulo Transformador}
 Esta herramienta poseé varios modulos accesibles desde el interfaz gráfico. Entre estos módulos podríamos destacar el \textbf{Módulo Transformador}.
 Como se ha comentado anteriormente, el módulo Transformador permite realizar transformaciones sobre el conjunto de puntos 3D groundTruth, de tal forma que se obtendrá como resultado una segunda nube de puntos transformados. De esta forma se han podido realizar pruebas teniendo un sólo datasets para comprobar que los calculos estimados de Traslación , Rotación y escala son fiables y tienen un error mínimo.
 
@@ -37,7 +37,7 @@ La traslación admite números reales positivos y negativos.
 \textbf{Ruido Cósmico}: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido cósmico
 
 
-\subsection{Pruebas de transformaciones individuales}
+\section{Pruebas de transformaciones individuales}
 
 En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones indivicuales y se han estimado dichas transformaciones.
 En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
@@ -80,7 +80,7 @@ En la captura de pantalla anterior, podremos observar el dataset original en ver
 
 
 
-\subsection{Pruebas de transformaciones en parejas}
+\section{Pruebas de transformaciones en parejas}
 
 \begin{figure}[H]
 \begin{center}
@@ -243,7 +243,7 @@ En este caso, se ha aplicado sobre el dataset original un cambio de rotación m�
 
 
 
-\subsection{Pruebas de transformaciones combinadas}
+\section{Pruebas de transformaciones combinadas}
 
 En este apartado mostraremos los resultados de las estimaciones tras realizar varias transformaciones combinadas. En todas se utiliza la interpolación de tiempo a 0.005 segundos
 

@@ -6,29 +6,32 @@
 \BOOKMARK [2][-]{subsection.1.2.1}{Aplicaciones en VisualSLAM}{section.1.2}% 6
 \BOOKMARK [2][-]{subsection.1.2.2}{Conceptos}{section.1.2}% 7
 \BOOKMARK [2][-]{subsection.1.2.3}{Problemas abiertos en Visual SLAM}{section.1.2}% 8
-\BOOKMARK [0][-]{chapter.2}{Objetivos}{}% 9
-\BOOKMARK [1][-]{subsection.2.2.1}{Objetivos}{chapter.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.2}{Requisitos}{subsection.2.2.1}% 11
-\BOOKMARK [2][-]{subsection.2.2.3}{Metodolog\355a y plan de trabajo}{subsection.2.2.1}% 12
-\BOOKMARK [0][-]{chapter.3}{Estado del Arte}{}% 13
-\BOOKMARK [1][-]{subsection.3.3.1}{MonoSLAM}{chapter.3}% 14
-\BOOKMARK [2][-]{subsection.3.3.2}{ORB-SLAM}{subsection.3.3.1}% 15
-\BOOKMARK [2][-]{subsection.3.3.3}{DSO y LDSO}{subsection.3.3.1}% 16
-\BOOKMARK [1][-]{section.3.4}{Herramientas para realizar evaluaciones comparativas de algoritmos SLAM}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.5}{Comparativa de los algoritmos m\341s representativos}{chapter.3}% 18
-\BOOKMARK [0][-]{chapter.4}{Herramienta SLAMTestBed}{}% 19
-\BOOKMARK [1][-]{subsection.4.4.1}{Dise\361o de Caja Negra}{chapter.4}% 20
-\BOOKMARK [2][-]{subsection.4.4.2}{Dise\361o de caja Blanca}{subsection.4.4.1}% 21
-\BOOKMARK [2][-]{subsection.4.4.3}{Estimador PCA y C\341lculo de Escala}{subsection.4.4.1}% 22
-\BOOKMARK [2][-]{subsection.4.4.4}{Registro Espacial}{subsection.4.4.1}% 23
-\BOOKMARK [2][-]{subsection.4.4.5}{Estimador Offset}{subsection.4.4.1}% 24
-\BOOKMARK [2][-]{subsection.4.4.6}{Interpolador}{subsection.4.4.1}% 25
-\BOOKMARK [2][-]{subsection.4.4.7}{C\341lculo de Estad\355sticas}{subsection.4.4.1}% 26
-\BOOKMARK [2][-]{subsection.4.4.8}{GUI}{subsection.4.4.1}% 27
-\BOOKMARK [0][-]{chapter.5}{Experimentos}{}% 28
-\BOOKMARK [1][-]{subsection.5.5.1}{M\363dulo Transformador}{chapter.5}% 29
-\BOOKMARK [2][-]{subsection.5.5.2}{Pruebas de transformaciones individuales}{subsection.5.5.1}% 30
-\BOOKMARK [2][-]{subsection.5.5.3}{Pruebas de transformaciones en parejas}{subsection.5.5.1}% 31
-\BOOKMARK [2][-]{subsection.5.5.4}{Pruebas de transformaciones combinadas}{subsection.5.5.1}% 32
-\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 33
-\BOOKMARK [0][-]{chapter*.4}{Bibliograf\355a}{}% 34
+\BOOKMARK [1][-]{section.1.3}{Estructura del documento}{chapter.1}% 9
+\BOOKMARK [0][-]{chapter.2}{Objetivos}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Objetivos}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.2}{Requisitos}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.3}{Metodolog\355a y plan de trabajo}{chapter.2}% 13
+\BOOKMARK [0][-]{chapter.3}{Estado del Arte}{}% 14
+\BOOKMARK [1][-]{section.3.1}{Algoritmos de VisualSLAM}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.1.1}{MonoSLAM}{section.3.1}% 16
+\BOOKMARK [2][-]{subsection.3.1.2}{PTAM}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.3}{ORB-SLAM}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.4}{DSO y LDSO}{section.3.1}% 19
+\BOOKMARK [1][-]{section.3.2}{Herramientas para realizar evaluaciones comparativas de algoritmos SLAM}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.3}{Comparativa de los algoritmos m\341s representativos}{chapter.3}% 21
+\BOOKMARK [0][-]{chapter.4}{Herramienta SLAMTestBed}{}% 22
+\BOOKMARK [1][-]{section.4.1}{Dise\361o de Caja Negra}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.2}{Dise\361o de caja Blanca}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.3}{Estimador PCA y C\341lculo de Escala}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.4}{Registro Espacial}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.5}{Estimador Offset}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.6}{Interpolador}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.7}{C\341lculo de Estad\355sticas}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.8}{GUI. Interfaz Gr\341fico de Usuario}{chapter.4}% 30
+\BOOKMARK [0][-]{chapter.5}{Experimentos}{}% 31
+\BOOKMARK [1][-]{section.5.1}{M\363dulo Transformador}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.2}{Pruebas de transformaciones individuales}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.3}{Pruebas de transformaciones en parejas}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.4}{Pruebas de transformaciones combinadas}{chapter.5}% 35
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 36
+\BOOKMARK [0][-]{chapter*.3}{Bibliograf\355a}{}% 37
