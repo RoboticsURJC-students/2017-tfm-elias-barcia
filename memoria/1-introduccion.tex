@@ -2,12 +2,12 @@
 %\section{Introducción} \label{s:introduccion}
 \pagenumbering{arabic}
 \setcounter{page}{1}
-El presente TFM se encuadra dentro de la Visión Artificial y en particular en el campo de la Autolocalización Visual, que tiene numeroas aplicacione entre las que descan la robótica y la realicad aumentada.
+El presente TFM se encuadra dentro de la Visión Artificial y en particular en el campo de la Autolocalización Visual, que tiene numerosas aplicaciones entre las que destacan la robótica y la realidad aumentada.
 Actualmente la investigación y desarrollo en robótica móvil está en pleno auge. Los robots modernos están equipados con múltiples sensores y uno de los más utilizados son las cámaras, ya que permiten al robot captar en imágenes todo el entorno que le rodea. En contra partida, el procesado de imágenes conlleva una carga notable de CPU debido a la enorme cantidad de información que puede aportar cada imagen.
 
-Una de las funcionalidades más importantes que se persigue, es que los robots móviles puedan desplazarse por su entorno y navegar desde la posición A a la posición B de forma autónoma y para ello una habilidad fundamental es la autolocalización. 
+Una de las funcionalidades más importantes que se persigue, es que los robots móviles puedan desplazarse por su entorno y navegar desde la posición A a la posición B de forma autónoma y para ello una habilidad fundamental es la Autolocalización. 
 Esta tarea no resulta muy complicada en entornos estructurados, donde el robot conoce de antemano el terreno por el que se mueve o sabe de la existencia de alguna baliza que le dé pistas de su posición.
-Pero en entornos no estructurados, donde el robot desconoce por completo el terreno, carece de mapas y no existe a priori ningún tipo de marca o baliza que pueda guiar al robot, la autolocalización resulta mucho más compleja.
+Pero en entornos no estructurados, donde el robot desconoce por completo el terreno, carece de mapas y no existe a priori ningún tipo de marca o baliza que pueda guiar al robot, la Autolocalización resulta mucho más compleja.
 
 
 Visual SLAM (\textit{Simultaneous Localization and Mapping}) es una técnica utilizada principalmente con robots móviles equipados con cámaras y que aporta al robot la capacidad de autolocalizarse y generar mapas del entorno que le rodea en tiempo real gracias al procesamiento de imágenes. Gracias a ese mapa y principalmente a esa autolocalización se pueden utilizar las técnicas de navegación autónoma, que requieren inevitablemente de una estimación de posición propia fiable. 
@@ -44,9 +44,9 @@ La mayoría de sistemas de visión artificial o visión por computador están co
     \begin{enumerate}
 		\item{Preproceso}: Durante esta fase la imagen puede ser adaptada para extraer mejor la información requerida por los algoritmos o métodos usados. El principal objetivo de esta fase es obtener una mejor calidad de la imagen de entrada , usando técnicas como filtrados de ruidos, convolución, resaltado de bordes etc
 
-		\item{Segmentacion}: En esta fase la imagen es dividida en áreas de interés. Por ejemplo diferenciando objetos cuadrados de objetos esféricos o seleccionando las líneas de la carretera obviando el resto de la imagen. Para este propósito se pueden utilizar varias técnicas: umbrales, discontinuidades, crecimiento de regiones, filtros de color, detección de movimiento, etc
+		\item{Segmentación}: En esta fase la imagen es dividida en áreas de interés. Por ejemplo diferenciando objetos cuadrados de objetos esféricos o seleccionando las líneas de la carretera obviando el resto de la imagen. Para este propósito se pueden utilizar varias técnicas: umbrales, discontinuidades, crecimiento de regiones, filtros de color, detección de movimiento, etc
 
-		\item{Clasificacion}: Una vez la imagen ha sido dividida por regiones de interés (Regions of Interest), se pueden extraer las características específicas de cada una. Esto puede realizarse por análisis morfológico , por texturas o usando técnicas de clasificación de color.
+		\item{Clasificación}: Una vez la imagen ha sido dividida por regiones de interés (Regions of Interest), se pueden extraer las características específicas de cada una. Esto puede realizarse por análisis morfológico , por texturas o usando técnicas de clasificación de color.
 	\end{enumerate}
 
 	\textbf{- Sistemas Periféricos}: Se trata de los elementos receptores de información, incluyendo monitores, dispositivos que usan la información par tomar decisiones etc.
@@ -62,7 +62,7 @@ Actualmente, la visión artificial se utiliza en muchos procesos científicos, i
 
 	\textbf{Reconocimiento de caracteres (OCR)}:  Una de las aplicaciones más populares para la visión artificial es el reconocimiento de caracteres (OCR). El propósito de estos sistemas son la identificación de caracteres, por ejemplo hay aplicaciones que te permiten sacar una foto a la lista de componentes de un producto envasado y la aplicación gracias al OCR puede revisar todos los ingredientes del alimento y avisar si el producto contiene algún elemento al que pueda ser alérgico el usuario, como por ejemplo el gluten.
 
-	\textbf{Aplicaciones de realidad aumentada}: gracias a la Visión Artificial es posible capturar imágenes del mundo real y procesarlas añadiendo la posibilidad de introducir en estas imágenes elementos artificiales nuevos (gráficos 3D) que encajarían en las dimensiones de las imágenes capturadas. Por ejemplo podríamos captar imágenes de una habitación de la casa a través de la cámara del movil y mediante realidad aumentada añadir mobiliario nuevo virtual que sólo sería observable desde la pantalla del smartphone.
+	\textbf{Aplicaciones de realidad aumentada}: gracias a la Visión Artificial es posible capturar imágenes del mundo real y procesarlas añadiendo la posibilidad de introducir en estas imágenes elementos artificiales nuevos (gráficos 3D) que encajarían en las dimensiones de las imágenes capturadas. Por ejemplo podríamos captar imágenes de una habitación de la casa a través de la cámara del móvil y mediante realidad aumentada añadir mobiliario nuevo virtual que sólo sería observable desde la pantalla del smartphone.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -88,7 +88,7 @@ Todos los sistemas Visual SLAM están constantemente trabajando para minimizar e
 
 
 
-\subsection{Aplicaciones en VisualSLAM} 
+\subsection{Aplicaciones en Visual SLAM} 
 
 Visual SLAM es todavía una tecnología emergente, pero con muchísimo potencial. Es una parte importante en aplicaciones de realidad aumentada, ya que esta tecnología es capaz de mapear el mundo físico con gran exactitud. También se utilizará en una gran variedad de robots, por ejemplo, los robots que se envían a Marte utilizan sistemas de Visual SLAM para navegar de forma autónoma. De la misma manera drones y robots en agricultura pueden utilizar esta misma tecnología para moverse por campos de cultivo, incluso los vehículos autónomos podrían utilizar sistemas Visual SLAM para mapear y entender el mundo a su alrededor. Otro gran potencial del Visual SLAM es que permite reemplazar el GPS en ciertos entornos, ya que el GPS no es muy útil en interiores y en grandes ciudades , donde el GPS tiene una exactitud de metros mientras que con Visual SLAM no existirían estos problemas y además tiene mayor exactitud.
 A continuación se expondrán varios ejemplos de aplicaciones, desde teléfonos móviles hasta robots aspiradora.
@@ -130,7 +130,7 @@ Con estas 3 cámaras el smartphone podrá crear una modelo tridimensional del en
 
 Magic Plan es una aplicación que permite de forma interactiva obtener planos de habitaciones o del interior de un edificio, utilizando para ello la cámara de nuestra tablet o smartphone, sólo es necesario sacar fotos. Esta aplicación es gratuita, aunque si se desea obtener el plano en formato digital (pdf, jpg, csv y otros) será necesario pagar una pequeña cantidad de dinero.
 Es muy sencilla de utilizar y en cuestión de minutos se obtiene un plano fiable sin necesidad de medir, dibujar, mover muebles  y sin necesidad de ser un experto.
-La aplicación utiliza técnicas de VisualSLAM y se apoya también en la información de los giroscopios de los dispositivos. Es compatible con Android y dispositivos Apple.
+La aplicación utiliza técnicas de Visual SLAM y se apoya también en la información de los giroscopios de los dispositivos. Es compatible con Android y dispositivos Apple.
 
 En el caso de Android, actualmente la última versión es compatible con el sistema Tango, por tanto el procedimiento de captura es mucho más sencillo, robusto y preciso  ya que  permite detectar con mayor exactitud todas las paredes de la habitación, visualizarlas en 3D y aplicar realidad aumentada.
 
@@ -171,7 +171,7 @@ Con la aplicación Pix4DCapture podremos controlar un dron desde nuestro smartph
 
 PhotoTourism o Photo Synth es un software inicialmente creado por la universidad de  Washington en colaboración con Microsoft. Es un sistema que toma grupos de conjuntos de fotografías disponibles online sobre un lugar en concreto, normalmente sobre un monumento turístico mundialmente conocido (como NotreDame, el Coliseo ( Figura \ref{fig:Coliseo}), La Fontana de Trevi) y es capaz de reconstruir puntos 3D de los monumentos y también calcular o estimar la posición de la cámara desde donde se tomaron las fotografías. Proporciona una nueva forma de navegar a través de fotografías de un destino turístico y una nueva forma de hacer visitas virtuales a monumentos.
 Este sistema utiliza la técnica de \textit {Structure From Motion} SFM. SFM encuentra coincidencias de  puntos característicos entre distintas fotografías de un mismo lugar y que han sido tomadas desde distintos puntos de vista y así es capaz de calcular la localización 3D de dichos puntos característicos y también la localización 3D desde donde se tomaron las fotografías.
-A diferencia de VisualSLAM, el procesamiento de estas fotografía es offline, sin necesidad de tiempo real, por lo que pueden ser ejecutadas desde un PC que por lo general tiene una capacidad de computación mucho mayor que una tablet o teléfono móvil.
+A diferencia de Visual SLAM, el procesamiento de estas fotografía es offline, sin necesidad de tiempo real, por lo que pueden ser ejecutadas desde un PC que por lo general tiene una capacidad de computación mucho mayor que una tablet o teléfono móvil.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -200,7 +200,7 @@ Canvas \footnote{https://canvas.io/ } es una herramienta de escaneo 3D enfocada 
 
 
 \item \textbf{Robot Aspirador:}
-Recientemente ha entrado en los hogares el uso de VisualSLAM gracias a los últimos modelos de aspiradora equipados con cámaras.
+Recientemente ha entrado en los hogares el uso de Visual SLAM gracias a los últimos modelos de aspiradora equipados con cámaras.
 Estos aspiradores robotizados disponen de cámaras que le permiten obtener un mapa de la habitación o planta del edificio y gracias a este mapa son capaces de aspirar toda la superficie del suelo de la habitación de manera eficiente, sin dejar ninguna zona de la planta sin limpiar.Además están equipados con sensores de proximidad, que les permiten esquivar obstáculos y aunque tengan que modificar su recorrido momentáneamente son capaces de seguir limpiando ya que pueden utilizar el mapa para continuar su ruta. Entre los distintos aspiradores estarían:
 Aspirador Dyson 360 Eye (Figura \ref{fig:Dyson})\footnote{http://www.dyson.come}, Aspirador Roomba 966 (Figura \ref{fig:roomba})\footnote{http://www.irobot.es/robots-domesticos/aspiracion}, Aspirador LG-Hombot \footnote{http://www.lg.com/es/aspiradoras/lg-VR64702LVMT}
 
@@ -222,7 +222,7 @@ en cambio el modelo de LG utiliza una doble cámara, y es capaz de aspirar la ca
 
 \item \textbf{Drones:}
 
-Por último no podemos olvidar los drones, robots voladores equipados con cámara que también pueden obtener mapas de su entorno con VisualSLAM. Existen también proyectos para equipar a drones con dispositivos compatibles con Tango para que sean capaces de obtener mapas de interiores con mayor precisión, robustez y velocidad \footnote{http://spectrum.ieee.org/automaton/robotics/drones/autonomous-quadrotor-flight-based-on-google-project-tango}.
+Por último no podemos olvidar los drones, robots voladores equipados con cámara que también pueden obtener mapas de su entorno con Visual SLAM. Existen también proyectos para equipar a drones con dispositivos compatibles con Tango para que sean capaces de obtener mapas de interiores con mayor precisión, robustez y velocidad \footnote{http://spectrum.ieee.org/automaton/robotics/drones/autonomous-quadrotor-flight-based-on-google-project-tango}.
 
 
 %\begin{figure}[htbp]
@@ -241,11 +241,11 @@ Por último no podemos olvidar los drones, robots voladores equipados con cámar
 
 Conviene explicar una serie de conceptos relacionados con Visual SLAM ya que aparecerán más adelante cuando expliquemos en profundidad los algoritmos más importantes que existen hoy en día para localización visual.
 
-\textbf{Calidad}: La calidad del algoritmo de VisualSLAM dependerá de tres factores. La eficiencia temporal, la precisión espacial en la estimación de la posición y la robustez del algoritmo.
+\textbf{Calidad}: La calidad del algoritmo de Visual SLAM dependerá de tres factores. La eficiencia temporal, la precisión espacial en la estimación de la posición y la robustez del algoritmo.
 
 \textbf{Eficiencia}: Mediremos la eficiencia como el tiempo de ejecución de cada iteración del algoritmo. Los algoritmos deberán ser capaces de procesar al menos 30 fotogramas por segundo
 
-\textbf{Precisión}:  El error lineal y error angular entre la posición estimada y la posición lineal determinará la precisión. Mediremos el error lineal como la distancia euclidea entre las dos posiciones, mientras que el error angular vendrá determinado por la diferencia entre las 2 orientaciones.
+\textbf{Precisión}:  El error lineal y error angular entre la posición estimada y la posición lineal determinará la precisión. Mediremos el error lineal como la distancia euclídea entre las dos posiciones, mientras que el error angular vendrá determinado por la diferencia entre las 2 orientaciones.
 
 \textbf{Robustez}: Diremos que el algoritmo de localización es robusto siempre que pueda seguir funcionando con normalidad tras encontrarse con una situación imprevista (como una oclusión, secuestros, movimiento de objetos en la escena, mala calidad de imagen, etc)
 
@@ -257,7 +257,7 @@ Conviene explicar una serie de conceptos relacionados con Visual SLAM ya que apa
 
 \textbf{Localización Incremental}:  En entornos con mapa desconocido, la localización del robot se establecerá de forma incremental respecto de posiciones previas pasadas ( por ejemplo en el instante anterior), lo que dará lugar a un error en la localización incremental que aumentará con el tiempo.
 
-\textbf{Cierre de bucle}: Se produce cuando el robot vuelva a pasar por una zona del mundo que ya haya visitado anteriormente. Si se vuelve a pasar por el punto de origen se puede determinar el error que se ha producido comparando la posición real en el origen con la estimada por el algotirmo de localización.
+\textbf{Cierre de bucle}: Se produce cuando el robot vuelva a pasar por una zona del mundo que ya haya visitado anteriormente. Si se vuelve a pasar por el punto de origen se puede determinar el error que se ha producido comparando la posición real en el origen con la estimada por el algoritmo de localización.
 
 \textbf{Relocalización}: Si tras un secuestro, el robot consigue recuperarse y estima correctamente la posición absoluta del robot dentro del mapa.
 
@@ -268,10 +268,10 @@ Actualmente las técnicas de Visual SLAM presentan algunos problemas o inconveni
 \begin {enumerate}
 \item \textbf{Inicialización del Mapa:}
 
-Si en Visual SLAM queremos conseguir una estimación lo más exacta posible de la posición de la cámara es necesario contar con una buena inicialización del Mapa. Se debe contar con un sistema de coordenadas globales definido, y se tomarań puntos de referencia del entorno como puntos iniciales del mapa en el sistema global de coordenadas. Utilizando este método podemos inicializar VisualSLAM en un sistema de coordenadas global en la tierra. La transformación de estos puntos iniciales al sistema de referencia global se realizará mediante homografía.
+Si en Visual SLAM queremos conseguir una estimación lo más exacta posible de la posición de la cámara es necesario contar con una buena inicialización del Mapa. Se debe contar con un sistema de coordenadas globales definido, y se tomarań puntos de referencia del entorno como puntos iniciales del mapa en el sistema global de coordenadas. Utilizando este método podemos inicializar Visual SLAM en un sistema de coordenadas global en la tierra. La transformación de estos puntos iniciales al sistema de referencia global se realizará mediante homografía.
 
 Objetos de referencia como objetos 3D también se han utilizado para obtener un sistema global de coordenadas, posiciones iniciales de la cámara son estimadas gracias al seguimiento de objetos de referencia.
-En MonoSLAM (cap 3,sec 1), por ejemplo, se utilizan al menos 4 puntos 3D (que se corresponden con las esquinas de un folio) como objetos de referencia.
+En Mono SLAM (cap 3,sec 1), por ejemplo, se utilizan al menos 4 puntos 3D (que se corresponden con las esquinas de un folio) como objetos de referencia.
 
 \item \textbf{Ambigüedad en la escala:}
 
@@ -280,14 +280,14 @@ En algunas aplicaciones con Visual SLAM se necesita información de escala absol
 
 \item \textbf{Dificultad para operar en entornos con pocas texturas:}
 
-Visual SLAM utiliza el emparejamiento de píxeles o puntos característicos entre varios frames consecutivos. El emparejamiento suele fijarse en esquinas, bordes  o puntos distintivos que fácilmente podrán localizarse entre frames. Pero cuando en el entorno hay pocas texturas o presenta una alta monotonía de texturas,  el emparejamiento es difícil de realizar ya que un punto en un fotograma podría corresponder con N puntos en el siguiente fotograma y por tanto se dispararía el error de posición. Quizá este sea uno de los problemas más difíciles de solucionar con VisualSLAM
+Visual SLAM utiliza el emparejamiento de píxeles o puntos característicos entre varios frames consecutivos. El emparejamiento suele fijarse en esquinas, bordes  o puntos distintivos que fácilmente podrán localizarse entre frames. Pero cuando en el entorno hay pocas texturas o presenta una alta monotonía de texturas,  el emparejamiento es difícil de realizar ya que un punto en un fotograma podría corresponder con N puntos en el siguiente fotograma y por tanto se dispararía el error de posición. Quizá este sea uno de los problemas más difíciles de solucionar con Visual SLAM
 \cite{Takafumi17}.
 
 \section{Estructura del documento}
 El presente documento está dividido en 6 secciones y trata de describir este TFM, cuya temática  es la creación de una herramienta de evaluación de algoritmos de Visual SLAM. 
-El primer capítulo es una introducción a la Visión Artificial y Visual SLAM, donde se explica en que consiste Visual SLAM, sus aplicaciones y cuales son las principales dificultades que debemos solventar a la hora de implementar un algoritmo de VisualSLAM. 
+El primer capítulo es una introducción a la Visión Artificial y Visual SLAM, donde se explica en que consiste Visual SLAM, sus aplicaciones y cuales son las principales dificultades que debemos solventar a la hora de implementar un algoritmo de Visual SLAM. 
 El capítulo 2 será una descripción detallada de los principales objetivos del TFM.
-El capítulo 3 estará dedicado al Estado del Arte de los algoritmos Visual SLAM, y tambien se expondrán las herramientas más conocidas hoy en día para la evaluación de algoritmos Visual SLAM. 
+El capítulo 3 estará dedicado al Estado del Arte de los algoritmos Visual SLAM, y también se expondrán las herramientas más conocidas hoy en día para la evaluación de algoritmos Visual SLAM. 
 En el capitulo 4 hablaremos de SLAMTestBed, una herramienta software creada precisamente en este TFM para evaluación de algoritmos Visual SLAM.
 En el capítulo 5 se expondrán los distintos experimentos y tests realizados para evaluar la herramienta SLAMTestBed.
 Y por último, el capitulo 6, donde se muestran las conclusiones del TFM.

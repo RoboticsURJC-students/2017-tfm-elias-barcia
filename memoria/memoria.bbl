@@ -83,6 +83,12 @@ Georg Klein and David Murray.
 \newblock In {\em Mixed and Augmented Reality, 2007. ISMAR 2007. 6th IEEE and
   ACM International Symposium on}, pages 225--234. IEEE, 2007.
 
+\bibitem[\protect\citeauthoryear{{Konolige} and
+  {Agrawal}}{2008}]{BundleAdjust08}
+K.~{Konolige} and M.~{Agrawal}.
+\newblock Frameslam: From bundle adjustment to real-time visual mapping.
+\newblock {\em IEEE Transactions on Robotics}, 24(5):1066--1077, Oct 2008.
+
 \bibitem[\protect\citeauthoryear{Mur-Artal \bgroup \em et al.\egroup
   }{2015}]{Mur2015orb}
 Raul Mur-Artal, Jose Maria~Martinez Montiel, and Juan~D Tardos.
@@ -102,6 +108,13 @@ Eduardo Perdices~García.
   real con y sin mapas.
 \newblock {\em Tesis Doctoral. Universidad Rey Juan Carlos}, 2017.
 
+\bibitem[\protect\citeauthoryear{Stiller \bgroup \em et al.\egroup
+  }{2008}]{AnnieWay08}
+Christoph Stiller, Sören Kammel, Benjamin Pitzer, Julius Ziegler, Moritz
+  Werling, Tobias Gindele, and Daniel Jagszent.
+\newblock Team annieway's autonomous system.
+\newblock pages 248--259, 02 2008.
+
 \bibitem[\protect\citeauthoryear{Sturm \bgroup \em et al.\egroup
   }{2012}]{sturm12iros}
 J.~Sturm, N.~Engelhard, F.~Endres, W.~Burgard, and D.~Cremers.
@@ -114,6 +127,11 @@ Sei~Ikeda Takafumi~Taketomi, Hideaki~Uchiyama.
 \newblock Visual slam algorithms: a survey from 2010 to 2016.
 \newblock {\em IPSJ Transactions on Computer Vision and Applications}, Junio
   2017.
+
+\bibitem[\protect\citeauthoryear{Trajkovic and Hedley}{1998}]{FastCorner98}
+Miroslav Trajkovic and Mark Hedley.
+\newblock Fast corner detection.
+\newblock {\em Image and Vision Computing}, 16:75--87, 02 1998.
 
 \bibitem[\protect\citeauthoryear{Zhang and Scaramuzza}{2018}]{Zhang18iros}
 Zichao Zhang and Davide Scaramuzza.

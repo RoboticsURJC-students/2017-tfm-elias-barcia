@@ -11,13 +11,13 @@ En el siguiente capítulo se detallarán las metas concretas que se pretenden al
 Desde el nacimiento de Visual SLAM, se están desarrollando algoritmos que permitan a los robots estimar su posición, o con una cámara localizar una imagen en tiempo real en 3D para aplicaciones de realidad aumentada. Estos algoritmos son complejos y están compuestos de múltiples etapas, a menudo un ligero cambio en alguna de estas etapas puede hacer que los resultados del algoritmo mejoren significativamente o por el contrario empeoren. Sería muy útil y conveniente contar con una herramienta que permitiese analizar o estimar la bondad de los nuevos algoritmos visual SLAM.
 
 \textbf{El objetivo principal de este proyecto es presentar una herramienta que permitan comparar cuantitativamente el rendimiento de los algoritmos Visual SLAM y la calidad de sus estimaciones}.
-Esta herramienta permitirá comparar el rendimiento de los diferentes algoritmos de Visual SLAM así como estudiar más facilmente que modificaciones o mejoras se podrían aplicar en los algoritmos ya existentes.
+Esta herramienta permitirá comparar el rendimiento de los diferentes algoritmos de Visual SLAM así como estudiar más fácilmente que modificaciones o mejoras se podrían aplicar en los algoritmos ya existentes.
 
 En  este TFM nos hemos centrado en medir la exactitud de las estimaciones de posición sin tener en cuenta la generación de mapas, es decir se ha puesto toda la atención en comparar las mediciones de \textit{tracking} dejando el \textit{mapping} para futuros proyectos. 
 
 Entenderemos que un algoritmo A es mejor que otro B cuando el algoritmo A sea capaz de estimar la posición con mayor exactitud que otro algoritmo B en el menor tiempo posible y de manera robusta. La herramienta a desarrollar medirá la precisión de las estimaciones de posición y la agilidad entendiéndose esta como el tiempo de proceso dedicado a realizar dichas estimaciones de posición. 
 
-Típicamente esta herramienta permitirá comparar dos secuencias de posiciones 3D, la estimada por un algoritmo de VisualSLAM y la secuencia de posiciones verdaderas. La diferencia entre ambas mide el error del algoritmo SLAM a la hora de estimar correctamente las posiciones de la cámara.
+Típicamente esta herramienta permitirá comparar dos secuencias de posiciones 3D, la estimada por un algoritmo de Visual SLAM y la secuencia de posiciones verdaderas. La diferencia entre ambas mide el error del algoritmo SLAM a la hora de estimar correctamente las posiciones de la cámara.
 Este objetivo principal lo hemos articulado en los siguientes subobjetivos:
 
 \begin {enumerate}
@@ -26,7 +26,7 @@ Este objetivo principal lo hemos articulado en los siguientes subobjetivos:
 
 \item \textbf{Registrador Temporal:} Que permita sincronizar las 2 secuencias de puntos 3D. Para ello deberemos ajustar los 2 secuencias a la misma frecuencia de muestreo, (utilizaremos interpolación) y también calcular el offset temporal entre ambas. El offset temporal sería la diferencia de tiempo entre 2 secuencias. 
 
-\item \textbf{La herramienta de medición se validará experimentalmente:} Para comprobar que funciona correctamente realizaremos experimentos donde comprobaremos el error estimado entre la verdad absoluta (groundtrouth) y una secuencia transformada de la que se conoce exactamente el registro temporal y espacial. Se creará un Módulo de Transformación que permitirá realizar tanto alteraciones temporales como esapaciales a una secuencia dada generando como resultado una nueva secuencia transformada.
+\item \textbf{La herramienta de medición se validará experimentalmente:} Para comprobar que funciona correctamente realizaremos experimentos donde comprobaremos el error estimado entre la verdad absoluta (groundtrouth) y una secuencia transformada de la que se conoce exactamente el registro temporal y espacial. Se creará un Módulo de Transformación que permitirá realizar tanto alteraciones temporales como espaciales a una secuencia dada generando como resultado una nueva secuencia transformada.
 
 \end {enumerate}
 
@@ -35,19 +35,19 @@ Este objetivo principal lo hemos articulado en los siguientes subobjetivos:
 La solución que se desarrolle para alcanzar los objetivos deberá satisfacer además estos requisitos:
 
 
-	\textbf{R1}. La herramienta debe restringirse a la comparación de algoritmos VisualSLAM que utilizan como sensor de visión una cámara RGB. Así quedan descartados los algoritmos que emplean cámaras RGBD.
+	\textbf{R1}. La herramienta debe restringirse a la comparación de algoritmos Visual SLAM que utilizan como sensor de visión una cámara RGB. Así quedan descartados los algoritmos que emplean cámaras RGBD.
 
-	\textbf{R2}. Se restringirá solo a los algoritmos VisualSLAM que empleen \textit{una sola} cámara.
+	\textbf{R2}. Se restringirá solo a los algoritmos Visual SLAM que empleen \textit{una sola} cámara.
 
-	\textbf{R3}. La herramienta debe ser aplicable a nuevos algoritmos de VisualSLAM.
+	\textbf{R3}. La herramienta debe ser aplicable a nuevos algoritmos de Visual SLAM.
 
 	\textbf{R4}. Facilidad de uso.
 
-	\textbf{R7}. Debe ofrecer una única métrica cuantitativa para la comparación entre varios algoritmos de VisualSLAM.
+	\textbf{R5}. Debe ofrecer una única métrica cuantitativa para la comparación entre varios algoritmos de Visual SLAM.
 
-	\textbf{R8}. Debe ofrecer resultados fácilmente legibles y reconocibles para el usuario.
+	\textbf{R6}. Debe ofrecer resultados fácilmente legibles y reconocibles para el usuario.
 
-	\textbf{R9}. El software generado debe ser abierto y estar públicamente disponible.
+	\textbf{R7}. El software generado debe ser abierto y estar públicamente disponible.
 
 \section{Metodología y plan de trabajo}
 
@@ -57,7 +57,7 @@ En cuanto a la metodología utilizada para desarrollar este TFM, se ha seguido e
 \begin{center}
 \subfigure[]{\label{fig:espiral}\includegraphics[height=6.0cm]{img/cap2/modeloEspiral.png}}
 \end{center}
-\caption{Inicialización de MonoSLAM con 4 puntos conocidos.}
+\caption{Inicialización de Mono SLAM con 4 puntos conocidos.}
 \end{figure}
 
 
