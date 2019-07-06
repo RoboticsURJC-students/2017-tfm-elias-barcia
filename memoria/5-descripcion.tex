@@ -2,14 +2,18 @@
 %\chapter{Descripción} \label{cap:Herramienta SLAMTestBed}
 \chapter{Herramienta SLAMTestBed} \label{cap:Herramienta SLAMTestBed} %chapter 4
 %\setcounter{section}{4}
-En este capítulo se detallará el diseño de la herramienta SLAMTestBed, una herramienta diseñada para comparar algoritmos SLAM. El diseño de algoritmos SLAM es todavía una disciplina abierta en periodo de expansión. En la navegación autónoma de robots y drones es donde mayor importancia alcanza la utilización de los algoritmos SLAM. Pero algoritmos hay muchos y se necesitan herramientas que nos permitan medir la bondad de cada algoritmo.
-Comenzaremos explicando el diseño desde un punto de vista de Caja Negra, explicando las entradas y las salidas. Se continuará con la explicación del diseño en Caja Blanca y se finalizará explicando cada uno de los componentes principales de la herramienta , como los distintos módulos que permiten calcular el Registro Espacial ( Escala, Traslación y Rotación) y el Registro Temporal (interpolación de frecuencias y cálculo de Offset o Desplazamiento Temporal)
+En este capítulo se detallará el diseño de la herramienta SLAMTestBed, una herramienta diseñada y creada para comparar cuantitativamente algoritmos SLAM. El diseño de algoritmos SLAM es todavía una disciplina abierta en periodo de expansión y es en la navegación de vehículos autónomos donde mayor importancia alcanza la utilización de los algoritmos SLAM. Pero algoritmos hay muchos y se necesitan herramientas que nos permitan medir la precisión, robustez y velocidad de cada algoritmo.
+Comenzaremos explicando el diseño de la herramienta SLAMTestBed desde un punto de vista de Caja Negra, explicando las entradas y las salidas. Se continuará con la explicación del diseño en Caja Blanca y se finalizará profundizando en cada uno de los componentes principales de la herramienta, como los distintos módulos que permiten calcular el Registro Espacial ( Escala, Traslación y Rotación) y el Registro Temporal (interpolación de frecuencias y cálculo de Offset o Desplazamiento Temporal)
 
 \section{Diseño de Caja Negra}
 
 En esta sección no entraremos en los detalles de la implementación de la herramienta SLAMTestBed, si no que lo trataremos como una \textit{caja negra}.
-De un lado tendremos las entradas al sistema, que serán 2 datasets.
-Una vez procesados los 2 datasets por la caja negra, obtendremos a la salida, las transformaciones estimadas por la herramienta, junto con un dataset estimado que utilizaremos para medir el error cometido en las estimaciones.
+En la entrada del sistema tendremos dos datasets de puntos 3D.
+Recordemos que los datasets procesados por esta herramienta serán ficheros de textos cuyos registros tendrán los siguientes 8 campos:
+\textit{Timestamp, X, Y, Z, qx,qy,qz,qw}
+
+Uno de los dataset será la verdad absoluta, y el segundo dataset será los puntos 3d obtenidos tras aplicar un algoritmo VisulSlam, donde cada punto 3D del dataset indicará una posición de la cámara.
+Una vez procesados los dos datasets por la caja negra, obtendremos a la salida, las transformaciones estimadas por la herramienta, junto con un dataset estimado que utilizaremos para medir el error cometido en los cálculos y así poder medir la precisión de los algoritmos.
 
 
 \begin{figure}[H]
@@ -27,10 +31,10 @@ En esta sección explicaremos con más detalle la implementación de la herramie
 Las entradas y salidas del sistema serán las mismas que las explicadas en la sección anterior (Diseño de Caja Negra).
 
 \textbf{La explicación del algoritmo:}
-En este apartado explicaremos los pasos seguidos para hacer los cálculos que nos permitiran estimar las transformaciones requeridas para pasar de un dataset A a otro dataSet B. 
+En este apartado explicaremos los pasos seguidos para hacer los cálculos que nos permitirán calcular las operaciones requeridas para estimar las transformaciones necesarias para aplicar a un dataset A cuyo resultado sea un dataset estimado lo más parecido posible al dataSet B. 
 Las principales funciones o módulos de los que constará la herramienta será:
 \begin{description}
-\item [Cálculo de PCA]: Nos permitirá reducir el dataset a  sus componentes principales.
+\item [Cálculo de PCA]: Nos permitirá reducir el dataset a sus componentes principales.
 \item [Estimación de Escala]: Estimará la diferencia de escala entre los dos datasets.
 \item [Estimación de Offset]: Con este módulo podremos hallar la diferencia entre marcas de tiempos de los 2 datasets.
 \item [Interpolación para igualar frecuencias de muestreo]: Con la interpolación podremos igualar en frecuencias los dos datasets.
@@ -40,7 +44,7 @@ Las principales funciones o módulos de los que constará la herramienta será:
 
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\label{fig:Open File}\includegraphics[height=8.0cm,width=12.0cm]{img/cap5/EsquemaTFM_CajaBlanca_Transformaciones.png}}
+\subfigure[]{\label{fig:Open File}\includegraphics[height=10.0cm,width=14.0cm]{img/cap5/EsquemaTFM_CajaBlanca_Transformaciones.png}}
 \hspace{0.5cm}
 %\subfigure[]{\label{fig:LG_hombot}\includegraphics[height=6.0cm]{img/cap2/LG_hombot.jpg}}
 \end{center}
@@ -48,22 +52,22 @@ Las principales funciones o módulos de los que constará la herramienta será:
 \caption{ En la imagen superior, el diseño de Caja Blanca de la herramienta SLAMTestBed }
 \end{figure}
 
-Básicamente el flujo de datos que sigue la imagen superior es el siguiente:
+La explicación al flujo de datos seguido en la imagen superior sería el siguiente:
 
-Se calculará la descomponsición en componentes principales (PCA) para cada dataset, con estos nuevos datasets, calularemos la escala. Posteriormente estimaremos el offset de tiempo entre los dos datasets y unificaremos las frecuencias. 
+Se calculará la descomposición en componentes principales (PCA) para cada uno de los dataset obteniendo como resultado dataSetA' y dataSetB', con estos nuevos datasets, calcularemos la escala. Posteriormente estimaremos el offset de tiempo entre los dos datasets y unificaremos las frecuencias. 
 
-Con los datos dataSetApca y dataSetBpca estimaremos el offset de tiempo que exista entre las 2 secuencias de datos o datasets. Posteriormente corregiremos el offset en el dataset B, para ello sumaremos el valor del offset a los valores de tiempo del datasetB. Una vez tengamos calculado el offset, unificaremos las frecuencias de los 2 datasets mediante interpolación. Cuando tengamos unificada la frecuencia para los dos datasets, obtendremos de nuevo PCA de cada dataset y por último obtendremos la escala.
-Posteriormente estimaremos  la transformaciones de rotación y traslación para pasar del datasetA al datasetB. Aplicaremos dichas transformaciones sobre el datasetA, que como resultado nos dará un nuevo dataset, el dataset Estimado que pintaremos en pantalla de color rojo.
+Con los datos dataSetA' y dataSetB' estimaremos el offset de tiempo que exista entre las 2 secuencias de datos o datasets. Posteriormente corregiremos el offset en el datasetB, para ello sumaremos el valor del offset a los valores de tiempo del datasetB. Una vez tengamos calculado el offset, unificaremos las frecuencias de los 2 datasets mediante interpolación. Cuando tengamos unificada la frecuencia para los dos datasets, obtendremos de nuevo PCA de cada dataset y por último obtendremos la escala.
+Posteriormente estimaremos la transformaciones de rotación y traslación para pasar del datasetA al datasetB. Aplicaremos dichas transformaciones sobre el datasetA, que como resultado nos dará un nuevo dataset, el dataset Estimado que pintaremos en pantalla de color rojo.
 Más adelante se explicarán con más detalle cada uno de estos módulos.
 
 
 \section{Estimador PCA y Cálculo de Escala}
 
-	Con el módulo PCA obtendremos las componentes principales de un dataset, generando un nuevo dataset.
+	Con el módulo PCA obtendremos las componentes principales de un dataset, generando un nuevo dataset'.
 
 	A partir de los nuevos datasets generados podremos calcular la escala y la diferencia de tiempos entre los 2 datasets.
 
-	Se implementan 2 métodos de cálculo de PCA, el segundo utilizando el método SVD (utilizando la librería Eigen), que describiremos acontinuación.
+	Se implementan 2 métodos de cálculo de PCA, el segundo utilizando el método SVD (utilizando la librería Eigen), que describiremos a continuación.
 
 	\begin{lstlisting}
 		
@@ -84,7 +88,7 @@ Más adelante se explicarán con más detalle cada uno de estos módulos.
 
 	\end{lstlisting}
 
-    En cuanto al cálculo de la Escala, nos permitirá calcular la diferencia de escala entre los dos datasets, y así al tener los datasets en la misma escala, ya tendríamos el primer paso del registro espacial. El algoritmo utilizado estará basado en la utilización de los valores singulares de cada datasets.
+    En cuanto al cálculo de la Escala, nos permitirá calcular la diferencia de escala entre los dos datasets, igualar la escala entre los datasets obteniendo así el primer paso del registro espacial. El algoritmo utilizado estará basado en la utilización de los valores singulares de cada datasets.
         
 	\begin{lstlisting}
 		S1 = svd(dataSet1).valoresSingulares
@@ -97,8 +101,6 @@ Más adelante se explicarán con más detalle cada uno de estos módulos.
 \section{Registro Espacial}
 
 Con el registro espacial conseguiremos estimar la matriz de rotación y traslación para aplicarlas sobre el segundo dataset, intentando conseguir la operación de registro de los 2 datasets.
-
-
 
 \begin{description}
 	\item [Hallar la matrices de rotación y traslación] .
@@ -127,34 +129,35 @@ Con el registro espacial conseguiremos estimar la matriz de rotación y traslaci
         	t= -R * centA + centB;  
         \end{lstlisting}
 
-	\item[Transformar un dataset en otro aplicando las matrices de Rotación y Traslación previamenete estimadas]
+	\item[Transformar un dataset aplicando las matrices de Rotación y Traslación previamente estimadas]
 
-		Este método tomará un dataset , lo multiplicará por la matriz de rotación y le sumará la matriz de traslación.
+		Este método tomará un dataset, lo multiplicará por la matriz de rotación y le sumará la matriz de traslación.
 
 	\item[Transformar los cuaternios aplicando la matriz Rotación.]
 
 		Con este método conseguimos transformar los cuarternios del dataSetA al dataSetB.
 		Para ello convertiremos la matriz de rotación en un cuaternio que llamaremos "q".
-		Por último multiplicaremos cara quaternio p de la siguiente forma.
+		Por último multiplicaremos cara cuaternio p de la siguiente forma.
 		  q * p * q.inverso 
 
 	\item[Estimar las matrices de rotación y traslación mediante la técnica de RANSAC.]
 
 		Estimaremos las matrices de Rotación y Traslación utilizando los datos de los 2 datasets.
 
-		El algoritmo seguido ha sido el siguiente:
-            \begin{lstlisting}
-            	Mientras no alcancemos el numero maximo de iteraciones hacer
-            			Seleccionar n inliers
-            			Estimar una primera matriz de Rotacion , Traslacion
-            			aplicar transformacion sobre un subconjunto de puntos No Inliers
-            			Si el error < threshhold
-            				aniadir cadidato a inliers
-            			medir el error tras aplicar transformaciones sobre inliers y no inliers
-            			seleccionar menor error
-            			incrementar iteraccion
-            	Devolveremos las matrices de Rotacion Traslacion que menor error hayan dado
-            \end{lstlisting}
+	El algoritmo seguido ha sido el siguiente:
+    \begin{lstlisting}
+	Mientras n < MaxIteracioneso s hacer
+		Seleccionar n inliers
+		Estimar una primera matriz de R*T
+		aplicar R*T sobre subconjunto NoInliers
+		Si el error < threshhold
+			agregar candidato a inliers
+		aplicar RT sobre inliers, NoInliers
+		medir el error 
+		seleccionar menor error
+		incrementar iteraccion
+	Devolveremos las matrices de R*T que menor error hayan dado
+	\end{lstlisting}
 	        
 
     \end{description}
@@ -163,21 +166,18 @@ Con el registro espacial conseguiremos estimar la matriz de rotación y traslaci
 \section{Estimador Offset}
 
 	Con este módulo podremos calcular el offset o desplazamiento en el tiempo entre los 2 datasets.
-	El método principal utilizado para calcular el offset se realiza mediante el calculo de la Correlación Cruzada.
-	Para ello previamente , calcularemos la distancia al origen para cada punto 3D de los 2 datasets.
+	Anteriormente, los dos datasets deben estar igualados en escala. El método principal utilizado para calcular el offset se realiza mediante el cálculo de la Correlación Cruzada.
+	Para ello previamente, calcularemos la distancia al origen para cada punto 3D de los 2 datasets.
 	Para un punto 3d (x,y,z), la distancia 3d se calculará 
 	\begin{math}
 	\sqrt{(x-0)^2 +(y-0)^2+(z-0)^2}
 	\end{math}
 	una vez calculadas las distancias , aplicaremos el siguiente algoritmo de calculo de correlación cruzada
 
-Este módulo se encarga de estimar el offset o diferencia de tiempo entre los dos datasets. Es el algoritmo más pesado ya que incluye múltiples cálculos para interpolar y calcular 
-la correlación cruzada entre los dos datasets.
-
-Este algoritmo será iterativo y utilizaremos un dataset como base de tiempo fijo y otro dataset B que se deslizará en el tiempo desde -T hasta +T . El datasetB se irá 
-deslizando en pequeños espacios de tiempo o steps en cada iteración. Para cada step calcularemos la correlación cruzada entre el dataset deslizante y el dataset original (que se 
-mantiene fijo en el tiempo). Para un step determinado la correlación debe ser máxima entre los 2 datasets y una vez hallada la correlación máxima, el step de esa iteración nos 
-indicará el offset. Como hemos comentado, moveremos el datasetB hasta llegar a -T y por cada iteración iremos deslizando en el tiempo el datasetB un incremento de tiempo step , hasta el final del bucle que terminaremos de deslizar datasetB hasta llegar a un tiempo +T. En cada iteracción calcularemos la interpolación en los puntos que coincidan que esten dentro de los rangos temporales de los dos datasets. Una vez interpolados los puntos comunes de las 2 series tendremos 2 series nuevas, Para las cuales calcularemos la correlación cruzada aplicando el algoritmo típico para 2 series temporales. Pero antes, y como cada serie temporal tiene 3 coordenadas (x,y,z para cada punto 3d), debemos transformar estas 3 coordenadas en un sólo valor para cada punto 3D de cada serie, para ello calcularemos la distancia al origen de todo punto 3D, y por tanto la correlación cruzada se calculará sobre los 2 datasets convertidos a distancias al origen de coordenadas.
+Es el algoritmo más pesado ya que incluye múltiples cálculos para interpolar y calcular 
+la correlación cruzada entre los dos datasets. Este algoritmo será iterativo y utilizaremos un dataset como base de tiempo fijo y otro dataset B que se deslizará en el tiempo desde -T hasta +T. El datasetB se irá deslizando en pequeños espacios de tiempo, pasos o \textit{steps} en cada iteración. Para cada paso calcularemos la correlación cruzada entre el dataset deslizante y el dataset original (que se mantiene fijo en el tiempo). Para un step determinado la correlación debe ser máxima entre los 2 datasets y una vez hallada la correlación máxima, el step de esa iteración nos 
+indicará el offset.
+Como hemos comentado, moveremos el datasetB hasta llegar a -T y por cada iteración iremos deslizando en el tiempo el datasetB un incremento de tiempo \textit{step} , hasta el final del bucle que terminaremos de deslizar datasetB hasta llegar a un tiempo +T. En cada iteración calcularemos la interpolación para los puntos 3D que estén dentro de la intersección de los rangos temporales de los dos datasets. Una vez interpolados los puntos 3D comunes de las 2 series temporales tendremos 2 series nuevas, para las cuales calcularemos la correlación cruzada aplicando el algoritmo típico para 2 series temporales. Pero antes, y como cada serie temporal tiene 3 coordenadas (x,y,z para cada punto 3d), debemos transformar estas 3 coordenadas en un sólo valor para cada punto 3D de cada serie, para ello tendremos que calcular la distancia al origen de todo punto 3D, y por tanto la correlación cruzada se calculará sobre los 2 datasets convertidos a distancias al origen de coordenadas.
 
 \begin{figure}[H]
 \begin{center}
@@ -190,8 +190,8 @@ indicará el offset. Como hemos comentado, moveremos el datasetB hasta llegar a 
 \end{figure}
 	                                
 	\begin{lstlisting}
-	dataA = CalcularDistancia( dataSetA)
-	dataB = CalcularDistancia( dataSetB)
+	dataA(d) = CalcularDistanciaAlOrigen( dataSetA(x,y,z))
+	dataB(d) = CalcularDistanciaAlOrigen( dataSetB(x,y,z))
 	mA = CalcularMedia(dataA)
 	mB = CalularMedia(dataB)
 
@@ -230,11 +230,11 @@ indicará el offset. Como hemos comentado, moveremos el datasetB hasta llegar a 
 \section{Interpolador}
 
 	El módulo de interpolación se utiliza para sincronizar a igual frecuencia 2 datasets.
-	Entre las distintas funciones , permite sincronización a la frecuencia mayor de los 2 datasets, sincronización a la frecuencia menor de los 2 datasets o incluso consigue sincronizar las 2 series a una frecuencia deseada. La interpolación se realiza sobre las secuencias temporales de los 2 datasets, pero tambien se calcula la interpolación para las coordenadas X,Y y Z de cada punto 3D y se realiza tambien interpolación para los quaternios. La función \textit{slerp} de la librería Eigen nos permite calcular la interpolación entre quaternios. La función slerp recibe como parámetro una marca de tiempo y un quaternio.
+	Entre las distintas funciones, permite sincronización a la frecuencia mayor de los 2 datasets, sincronización a la frecuencia menor de los 2 datasets o incluso consigue sincronizar las 2 series a una frecuencia deseada. La interpolación se realiza sobre las secuencias temporales de los 2 datasets, pero también se calcula la interpolación para las coordenadas X,Y y Z de cada punto 3D y se realiza también interpolación para los cuaternios. La función \textit{slerp} de la librería Eigen nos permite calcular la interpolación entre cuaternios. La función slerp recibe como parámetro una marca de tiempo y un cuaternio.
 
 \section{Cálculo de Estadísticas}
 
-Para medir el erro cometido entre el dataset Groundtruth y el dataset Estimado utilizaremos el módulo de Cálculo de Estadísticas.
+Para medir el error cometido entre el dataset Groundtruth y el dataset Estimado utilizaremos el módulo de Cálculo de Estadísticas.
 Este módulo permite calcular el Error Cuadrático Medio (Root Mean Square Error) entre 2 datasets.
 Cuanto menor sea el RMSE , mejor será el dataset Estimado.
 También nos permite hallar la media, mediana , máximo y mínimo valor de un dataset.
@@ -242,14 +242,14 @@ También nos permite hallar la media, mediana , máximo y mínimo valor de un da
 
 \section{GUI. Interfaz Gráfico de Usuario}
 
-Para la herramienta SLAMTestBed tambien se ha diseñado y creado un Interfaz de Usuario Gráfico (GUI) que permita pintar los puntos 3D de cada dataset en pantalla así como invocar comandos (a través de clicks de ratón) para ejecutar los distintos módulos que contiene la herramienta SLAMTestBed.
+Para la herramienta SLAMTestBed cambien se ha diseñado y creado un Interfaz de Usuario Gráfico (GUI) que permita pintar los puntos 3D de cada dataset en pantalla así como invocar comandos (a través de clicks de ratón) para ejecutar los distintos módulos que contiene la herramienta SLAMTestBed.
 Nos permitirá medir la exactitud de los resultados de la aplicación de un algoritmo con los resultados de otro algoritmo o comparar varios resultados de un mismo algoritmo en el que se han aplicado distintos parámetros de ejecución.
-Este interfáz gráfico de usuario de 3 dimensiones ha sido desarrollado en C++ con el entorno QT y la librería Eigen. La libería Eigen es una librería Open Source realizada en C++, para cálculos de Álgebra lineal, operaciones con Matrices y vectores, Transformaciones Geométricas. 
+Este interfaz gráfico de usuario de 3 dimensiones ha sido desarrollado en C++ con el entorno QT y la librería Eigen. La librería Eigen es una librería Open Source realizada en C++, para cálculos de Álgebra lineal, operaciones con Matrices y vectores, Transformaciones Geométricas. 
 
-La aplicación sofware muestra al usuario un interfaz gráfico que permite:
-Leer un archivo de datos con puntos 3D y mostrarlo en pantalla como una nube de puntos 3D. Este archivo podriamos denominarlo groundTruth.
-Con el ratón podremos girar en 3 dimensiones la nube de puntos, acercarnos a el (Zoom in) o alejarnos (Zoom Out),
-tambien permite leer un segundo conjunto de puntos 3D y estimar las transformaciones ( rotaciones , traslaciones, escala etc)  necesarias para pasar desde el conjunto de datos ground truth hasta este segundo conjunto de datos. El conjunto de datos resultante tras aplicar las estimaciones será visulalizado en pantalla como otra nube de puntos 3D
+La aplicación software muestra al usuario un interfaz gráfico que permite:
+Leer un archivo de datos con puntos 3D y mostrarlo en pantalla como una nube de puntos 3D. Este archivo podríamos denominarlo groundTruth.
+Con el ratón podremos girar en 3 dimensiones la nube de puntos, acercarnos  (Zoom in) o alejarnos (Zoom Out),
+también permite leer un segundo conjunto de puntos 3D y estimar las transformaciones ( rotaciones , traslaciones, escala etc)  necesarias para pasar desde el conjunto de datos \textit{ground truth} hasta este segundo conjunto de datos. El conjunto de datos resultante tras aplicar las estimaciones será visualizado en pantalla como otra nube de puntos 3D
 
 \begin{figure}[H]
 \begin{center}
