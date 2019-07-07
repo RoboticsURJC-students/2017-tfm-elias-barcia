@@ -43,6 +43,13 @@ Jakob Engel, Vladlen Koltun, and Daniel Cremers.
 \newblock Direct sparse odometry.
 \newblock {\em arXiv preprint arXiv:1607.02565}, 2016.
 
+\bibitem[\protect\citeauthoryear{Fischler and
+  Bolles}{1981}]{Fischler:1981:RSC:358669.358692}
+Martin~A. Fischler and Robert~C. Bolles.
+\newblock Random sample consensus: A paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock {\em Commun. ACM}, 24(6):381--395, June 1981.
+
 \bibitem[\protect\citeauthoryear{Forster \bgroup \em et al.\egroup
   }{2017}]{Forster2017svo}
 Christian Forster, Zichao Zhang, Michael Gassner, Manuel Werlberger, and Davide

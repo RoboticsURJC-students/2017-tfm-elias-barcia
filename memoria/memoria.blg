@@ -12,45 +12,45 @@ A level-1 auxiliary file: 7-conclusiones.aux
 The style file: named.bst
 Database file #1: bibliografia.bib
 Warning--empty booktitle in AnnieWay08
-You've used 21 entries,
+You've used 22 entries,
             2439 wiz_defined-function locations,
-            695 strings with 8575 characters,
-and the built_in function-call counts, 8693 in all, are:
-= -- 880
-> -- 404
+            704 strings with 8836 characters,
+and the built_in function-call counts, 9086 in all, are:
+= -- 923
+> -- 417
 < -- 4
-+ -- 140
-- -- 138
-* -- 701
-:= -- 1407
-add.period$ -- 66
-call.type$ -- 21
-change.case$ -- 153
-chr.to.int$ -- 21
-cite$ -- 22
-duplicate$ -- 348
-empty$ -- 626
-format.name$ -- 164
-if$ -- 1791
++ -- 144
+- -- 142
+* -- 738
+:= -- 1469
+add.period$ -- 69
+call.type$ -- 22
+change.case$ -- 159
+chr.to.int$ -- 22
+cite$ -- 23
+duplicate$ -- 362
+empty$ -- 656
+format.name$ -- 170
+if$ -- 1870
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 21
-newline$ -- 108
-num.names$ -- 63
-pop$ -- 147
+missing$ -- 22
+newline$ -- 113
+num.names$ -- 66
+pop$ -- 150
 preamble$ -- 1
-purify$ -- 174
+purify$ -- 181
 quote$ -- 0
-skip$ -- 285
+skip$ -- 297
 stack$ -- 0
-substring$ -- 393
-swap$ -- 87
+substring$ -- 423
+swap$ -- 89
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 168
+type$ -- 176
 warning$ -- 1
-while$ -- 63
-width$ -- 24
-write$ -- 267
+while$ -- 67
+width$ -- 25
+write$ -- 280
 (There was 1 warning)

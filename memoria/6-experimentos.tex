@@ -2,45 +2,54 @@
 \chapter{Experimentos} \label{cap:experimentos}
 %\section{Conclusiones} \label{s:conclusiones}
 %\setcounter{section}{5}
-En este capitulo mostraremos las pruebas realizadas con la herramienta SLAMTESTBED.
-Para comprobar los resultados podremos utilizar la ventana que muestra el resultado de las estimaciones una vez han terminado los cálculos. Gracias a la visualización gráfica de los datasets (incluido el dataset estimado) la evaluación de los resultados será más sencilla y fiable, ya que si los puntos 3D del dataset estimado no se aproximan al dataset destino, el desajuste entre los puntos 3d de ambos dataset será perceptible a simple vista.
+En este capitulo mostraremos las pruebas realizadas con la herramienta SLAMTestBed.
+Para comprobar los resultados podremos utilizar la ventana que muestra el resultado de las estimaciones una vez han terminado los cálculos. Gracias a la visualización gráfica de los datasets (incluido el dataset estimado) la evaluación de los resultados será más sencilla y fiable, ya que si los puntos 3D del dataset estimado no se aproximan al dataset destino, el desajuste entre los puntos 3d de ambos dataset será perceptible a simple vista. 
+Por otro lado tendremos el indicador RMSE, que cuanto más próximo sea su valor a 0 mejor será la estimación realizada.
 
 
 Acontinuación mostraremos las pruebas realizadas para estimar las transformaciones para convertir el dataset A en el datasetB y viceversa, donde el datasetB se obtiene como resultados de aplicar el módulo transformador sobre el datasetA.
-Se han realizado varias pruebas, en cada una de ellas se han activado un subconjunto de parámetros del módulo transformador, es decir que en una prueba se habrá modificado sólo la escala y un traslación , en otras pruebas se habrá realizado cambios en traslación y rotación , etc.
+Se han realizado varias pruebas, en cada una de ellas se han activado un subconjunto de parámetros del módulo transformador, es decir que en una prueba se habrá modificado sólo la escala y un traslación, en otras pruebas se habrá realizado cambios en traslación y rotación , etc.
 
-En cada captura de pantalla aparecerá de forma gráfica , el dataset original (en verde), el dataset transformado (en azul), y el dataset estimado (en rojo), junto con otras 3 pantallas que indicarán los valores de los parámetros de las transformaciones realizadas, y otras 2 pantallas con los valores de la estimaciones calculadas (tanto si la estimación ha sido calculada del datasetA al datasetB o del datasetB al datasetA).
+En cada captura de pantalla aparecerá de forma gráfica , el dataset original (en verde), el dataset transformado (en azul), y el dataset estimado (en rojo), junto con otras 3 pantallas que indicarán:
+\begin{enumerate}
+ \item{los valores de los parámetros de las transformaciones realizadas} 
+ \item{valores de los resultados de transformación de dataset A a dataset B}
+ \item{valores de los resultados de transformación de dataset B a dataset A}
+\end{enumerate}
 
+ 
 \section{Módulo Transformador}
 Esta herramienta poseé varios modulos accesibles desde el interfaz gráfico. Entre estos módulos podríamos destacar el \textbf{Módulo Transformador}.
-Como se ha comentado anteriormente, el módulo Transformador permite realizar transformaciones sobre el conjunto de puntos 3D groundTruth, de tal forma que se obtendrá como resultado una segunda nube de puntos transformados. De esta forma se han podido realizar pruebas teniendo un sólo datasets para comprobar que los calculos estimados de Traslación , Rotación y escala son fiables y tienen un error mínimo.
+Como se ha comentado anteriormente, el módulo Transformador permite realizar transformaciones sobre el conjunto de puntos 3D , de tal forma que se obtendrá como resultado una segunda nube de puntos transformados. De esta forma se han podido realizar pruebas teniendo un sólo datasets para comprobar que los calculos estimados de Traslación, Rotación y Escala son fiables y tienen un error mínimo.
 
 Los diversos parámetros del módulo transformador serán accesible por el interfaz gráfico de la pantalla.
 
 A continuación describiremos en detalle las transformaciones permitidas por la herramienta:
 
-\textbf{Escala}. Permite modificar los datos de entrada a nivel de escala. La escala siempre será mayor que cero y se admitirán números con reales. Por defecto tendrá el valor de 1. 
+\textbf{-Escala}. Permite modificar los datos de entrada a nivel de escala. La escala siempre será mayor que cero y se admitirán números con reales. Por defecto tendrá el valor de 1. 
 
-\textbf{Traslaciones}. Se podrán definir traslaciones sobre cada uno de los 3 ejes de coordenadas. 
+\textbf{-Traslaciones}. Se podrán definir traslaciones sobre cada uno de los 3 ejes de coordenadas. 
 La traslación admite números reales positivos y negativos.
 
-\textbf{Rotaciones}. Se podrán definir rotaciones sobre cada unos de los 3 ejes de coordenadas. El valor de cada rotación se insertará en Radianes. Los valores admitidos serán números reales tanto positivos como negativos. Para indicar rotaciones, los ángulos de rotación se incluirán en Radianes.
+\textbf{-Rotaciones}. Se podrán definir rotaciones sobre cada unos de los 3 ejes de coordenadas. El valor de cada rotación se insertará en radianes. Los valores admitidos serán números reales tanto positivos como negativos. 
 
-\textbf{Offset de tiempo}. Con el offset de tiempo podremos introducir un 'gap' en los valores de timestamp del fichero de entrada que más tarde podremos estimar. La exactitud del offset será de centésimas, es decir con 2 decimales.
+\textbf{-Offset de tiempo}. Con el offset de tiempo podremos introducir un desplazamiento o \textit{gap} en los valores de timestamp del fichero de entrada que más tarde podremos estimar. La exactitud del offset será de centésimas, es decir con 2 decimales.
 
-\textbf{Interpolación}: El módulo de interpolación nos permitirá ajustar a la misma frecuencia los 2 datasets. Se podrán realizar 3 tipos de interpolación de los datos.
-	Interpolación a la frecuencia máxima
-	Interpolación a la frecuencia mínima
-	Interpolación a frecuencia personalizada
+\textbf{-Interpolación}: El módulo de interpolación nos permitirá ajustar a la misma frecuencia los 2 datasets. Se podrán realizar 3 tipos de interpolación de los datos.
+\begin{enumerate}
+	\item{Interpolación a la frecuencia máxima}
+	\item{Interpolación a la frecuencia mínima}
+	\item{Interpolación a frecuencia personalizada}
+\end{enumerate}
 
-\textbf{Ruido Gaussiano}: Una de las transformaciones que podremos aplicar sobre el conjunto de datos del groundtrouth es aplicar un ruido gaussiano a los datos transformados
+\textbf{-Ruido Gaussiano}: Una de las transformaciones que podremos aplicar sobre el conjunto de datos del groundtrouth es aplicar un ruido gaussiano a los datos transformados
 
-\textbf{Ruido Cósmico}: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido cósmico
+\textbf{-Ruido Cósmico}: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido cósmico
 
 
 \section{Pruebas de transformaciones individuales}
 
-En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones indivicuales y se han estimado dichas transformaciones.
+En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones individuales y se han estimado dichas transformaciones.
 En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
 
 \begin{figure}[H]
@@ -82,6 +91,9 @@ En la captura de pantalla anterior, podremos observar el dataset original en ver
 
 
 \section{Pruebas de transformaciones en parejas}
+En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones de parámetros en parejas y se han estimado dichas transformaciones.
+En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
+
 
 \begin{figure}[H]
 \begin{center}
@@ -246,7 +258,8 @@ En este caso, se ha aplicado sobre el dataset original un cambio de rotación m�
 
 \section{Pruebas de transformaciones combinadas}
 
-En este apartado mostraremos los resultados de las estimaciones tras realizar varias transformaciones combinadas. En todas se utiliza la interpolación de tiempo a 0.005 segundos
+En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones combinadas y se han estimado dichas transformaciones.
+En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
 
 
 \begin{figure}[H]
