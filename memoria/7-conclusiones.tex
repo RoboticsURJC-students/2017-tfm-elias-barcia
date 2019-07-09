@@ -4,7 +4,11 @@
 La robótica móvil es ya una realidad gracias a los algoritmos Visual SLAM que permiten estimar con mínimo error la localización y generación de mapas en entornos desconocidos.
 En este documento se han descrito algunos de estos algoritmos que ya están funcionando, pero se sigue investigando en la generación de nuevos métodos de navegación autónoma para conseguir mayor fiabilidad, robustez y exactitud de los cálculos.
 
-Dependiendo de las características del entorno o de los requisitos del problema que estemos tratando será más conveniente utilizar un algoritmo u otro. Por ejemplo si necesitásemos generar un mapa de gran exactitud, lo más conveniente sería utilizar DTAM, si por el contrario el mapa no fuese muy importante y la potencia del hardware fuese muy limitada podríamos utilizar SVO.
+Dependiendo de las características del entorno o de los requisitos del problema que estemos tratando será más conveniente utilizar un algoritmo u otro.
+Por ejemplo si necesitásemos generar un mapa de gran exactitud, lo más conveniente sería
+utilizar ORB-SLAM, si por el contrario el mapa no fuese muy importante y la potencia del hardwar fuese muy limitata podríamos utilizar LDSO.
+
+Demostrada entonces la importancia de los algoritmos Visual SLAM y la necesidad de mejorar sus resultados en cuanto a robustez, exactitud y precisión queda clara la demanda de utilizar herramientas que nos permitan comparar los resultados de los algoritmos y determinar así que algoritmo se comporta mejor en tareas de navegación autonoma. Actualmente ya existen varias herramientas que se encargan de evaluar algoritmos en Visual Slam y que se han descrito en el proyecto 
 
 Por ahora las limitaciones hardware hacen que en robótica móvil se opte por utilizar aquellas técnicas que requieren poca capacidad de cómputo (PTAM,SVO) ya que son fácilmente procesables por los microprocesadores de los actuales robots móviles. En el futuro y a medida que los robots tengan más capacidad de proceso, probablemente se impongan los métodos más robustos que realicen una localización más exacta y cuyos mapas sean muy fiables como podría ser el método ORB-SLAM o DSO.
 

@@ -42,9 +42,9 @@ La traslación admite números reales positivos y negativos.
 	\item{Interpolación a frecuencia personalizada}
 \end{enumerate}
 
-\textbf{-Ruido Gaussiano}: Una de las transformaciones que podremos aplicar sobre el conjunto de datos del groundtrouth es aplicar un ruido gaussiano a los datos transformados
+\textbf{-Ruido Gaussiano}: Una de las transformaciones que podremos aplicar sobre el conjunto de datos del groundtrouth es aplicar un ruido gaussiano a los datos transformados.
 
-\textbf{-Ruido Cósmico}: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido cósmico
+\textbf{-Ruido Cósmico}: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido cósmico.
 
 
 \section{Pruebas de transformaciones individuales}
@@ -52,7 +52,7 @@ La traslación admite números reales positivos y negativos.
 En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones individuales y se han estimado dichas transformaciones.
 En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_abba.png}}
 \hspace{0.5cm}
@@ -64,7 +64,7 @@ En todas las transformaciones se ha realizado la interpolación de frecuencias a
 
 El gráfico superior muestra los resultados de la estimación tras una transformación de un cambio de escala. Se aprecia en la captura de pantalla, como el dataset transformado es más grande que el dataset original. Como se puede observar el RMSE es 0.0 y el valor de la escala estimada coincide con el valor de la transformación de escala, en este caso es 2.0
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Traslation_abba.png}}
 \hspace{0.5cm}
@@ -76,7 +76,7 @@ El gráfico superior muestra los resultados de la estimación tras una transform
 
 La captura de pantalla superior muestra los resultados de la estimación tras realizar una traslación en el dataset original. Como puede observarse el RMSE es 0.0, y gráficamente el dataset transformado y estimado coinciden en cada posición 3D.  Es por este motivo por el que hay ausencia de puntos rojos en la representación 3D. Hay que recordar que el dataset estimado se presenta con puntos rojos. Cuando la estimación no es buena , el dataset transformado y estimado no coincidirán y podremos ver en pantalla los puntos rojos , allí donde precisamente no coincidan dataset estimado. En cuanto a los valores de la traslación estimada puede verse que coinciden con la transformación realizada.
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Rotation_abba.png}}
 \hspace{0.5cm}
@@ -95,7 +95,7 @@ En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado 
 En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Traslacion.png}}
 \hspace{0.5cm}
@@ -112,7 +112,7 @@ En este caso la transformación realizada es de escala y traslación. Se puede c
 
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Rotation.png}}
 \hspace{0.5cm}
@@ -124,7 +124,7 @@ En este caso la transformación realizada es de escala y traslación. Se puede c
 En la imagen superior podemos ver los resultados de aplicar otras 2 transformaciones sobre el dataset original. En este caso se trata de una transformación en escala y rotación.
 Tras realizar la estimación, el error medido entre el dataset estimado y el dataset transformado es 0.0 . Por tanto podemos decir que la estimación es exacta a la transformación realizada sobre el dataset original.
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Offset.png}}
 \hspace{0.5cm}
@@ -137,7 +137,7 @@ Tras realizar la estimación, el error medido entre el dataset estimado y el dat
 En este caso, al dataset original (color verde) se le ha aplicado un par de transformaciones ( en escala y con offset), dando lugar al conjunto azul. En este caso tambien la estimación es buena , ya que el error RMSE da como resultado 0.0 y el cálculo del offset tambien coincide con el valor del offset que se ha aplicado en la transformación, salvo con signo negativo.
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_GaussNoise.png}}
 \hspace{0.5cm}
@@ -149,7 +149,7 @@ En este caso, al dataset original (color verde) se le ha aplicado un par de tran
 
 En la imagen superior, se ha aplicado sobre el dataset original un cambio de escala y además se le ha añadido ruido Gaussiano, como puede verse en el dataset resultante (color azul). Las estimaciones obtenidas son buenas, pero el error RMSE calculado entre el dataset transformado y el dataset estimando ya no es 0.0, sino 0.008. Esta falta de precisión puede apreciarse a simple vista, ya que como el dataset estimado carece de ruido gaussiano, los puntos del dataset estimado no coinciden con los puntos del dataset transformado, y por tanto ahora si podemos ver buena parte de los puntos del dataset estimado (colo rojo).
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_GaussCosmicNoise.png}}
 \hspace{0.5cm}
@@ -161,7 +161,7 @@ En la imagen superior, se ha aplicado sobre el dataset original un cambio de esc
 
 En este caso, se ha aplicado sobre el dataset original un cambio de escala más ruido gaussiano y cósmico. Al tener ahora ruido cósmico, en algunos puntos del dataset transformado aparecen unos valores muy superiores a la media, estos valores desorbitados harán que aumente notablemente el error entre el dataset transformado y el dataset estimado. Para esta experimento , el valor RMSE es de 0.06. Aunque puede observarse que aún así, la posición de los puntos del dataset estimado coincide con la posición de los puntos del dataset transformado.
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Trasla_Rota.png}}
 \hspace{0.5cm}
@@ -176,7 +176,7 @@ La estimación de la traslación y la rotación coinciden con los valores de las
 Podríamos considerarlo como 0.0
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Trasla_Offset.png}}
 \hspace{0.5cm}
@@ -188,7 +188,7 @@ Podríamos considerarlo como 0.0
 En este caso, al dataset original (color verde) se le ha aplicado un par de transformaciones ( en traslación y con offset), dando lugar al dataset transformado (conjunto de puntos de color azul). En este caso tambien la estimación es buena , ya que el error RMSE da como resultado 0.0 y el cálculo del offset tambien coincide con el valor del offset que se ha aplicado en la transformación, salvo con signo negativo.
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Trasla_GaussNoise.png}}
 \hspace{0.5cm}
@@ -200,7 +200,7 @@ En este caso, al dataset original (color verde) se le ha aplicado un par de tran
 En la imagen superior, se ha aplicado sobre el dataset original un cambio de traslación y además se le ha añadido ruido Gaussiano, como puede verse en el dataset resultante (color azul). Las estimaciones obtenidas son buenas, pero el error RMSE calculado entre el dataset transformado y el dataset estimando ya no es 0.0, sino 0.008. Esta falta de precisión puede apreciarse a simple vista en el interfaz gráfico, ya que como el dataset estimado carece de ruido gaussiano , los puntos del dataset estimado no coinciden con los puntos del dataset transformado, y por tanto ahora si podemos ver buena parte de los puntos del dataset estimado (colo rojo).
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Trasla_GaussianCosmicNoise.png}}
 \hspace{0.5cm}
@@ -213,7 +213,7 @@ En este caso, se ha aplicado sobre el dataset original un cambio de traslación 
 
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Rota_Offset.png}}
 \hspace{0.5cm}
@@ -227,7 +227,7 @@ En este caso, al dataset original (color verde) se le ha aplicado un par de tran
 
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Rota_GaussNoise.png}}
 \hspace{0.5cm}
@@ -241,7 +241,7 @@ En la imagen superior, se ha aplicado sobre el dataset original un cambio de rot
 
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Rota_Gauss_Cosmic.png}}
 \hspace{0.5cm}
@@ -262,7 +262,7 @@ En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado 
 En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_abba.png}}
 \hspace{0.5cm}
@@ -278,7 +278,7 @@ Por otra parte el RMSE entre el dataset transformado y el dataset estimado es de
 Además las transformaciones se han calculado en los 2 sentidos, desde el dataSet A  al dataSet B y desde el dataSetB al dataSet A.
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_Offset_abba.png}}
 \hspace{0.5cm}
@@ -294,7 +294,7 @@ Como se puede observar en los resultados de las estimaciones, el offset es estim
 Visualmente, también se puede observar que la precisión ha disminiuido , ya que se aprecian más puntos rojos (dataset estimado) en el gráfico. Esto indica que la estimación sigue siendo muy buena aunque la precisión ha bajado.
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_Offset_GaussNoise_abba.png}}
 \hspace{0.5cm}
@@ -311,7 +311,7 @@ Sin embargo, la precisión aunque es menor, continúa siendo buena, y en el grá
 Observesé que en el dataset estimado no hay ruido gaussiano.
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_Offset_Gauss_CosmicNoise_abba.png}}
 \hspace{0.5cm}
@@ -328,7 +328,7 @@ Aún así, como puede verse en  la representación gráfica del dataset Estimado
 
 
 
-\begin{figure}[H]
+\begin{figure}
 \begin{center}
 \subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap6/LoadTwoDataSets_RANSAC.png}}
 \hspace{0.5cm}
