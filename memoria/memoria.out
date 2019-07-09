@@ -19,7 +19,7 @@
 \BOOKMARK [2][-]{subsection.3.1.4}{DSO y LDSO}{section.3.1}% 19
 \BOOKMARK [2][-]{subsection.3.1.5}{Comparativa de los algoritmos m\341s representativos}{section.3.1}% 20
 \BOOKMARK [1][-]{section.3.2}{Herramientas y datasets para evaluar algoritmos SLAM}{chapter.3}% 21
-\BOOKMARK [0][-]{chapter.4}{Herramienta SLAMTestBed}{}% 22
+\BOOKMARK [0][-]{chapter.4}{Herramienta SLAMTestbed}{}% 22
 \BOOKMARK [1][-]{section.4.1}{Dise\361o}{chapter.4}% 23
 \BOOKMARK [1][-]{section.4.2}{Estimador PCA y C\341lculo de Escala}{chapter.4}% 24
 \BOOKMARK [1][-]{section.4.3}{Estimador Offset Temporal}{chapter.4}% 25
@@ -33,4 +33,6 @@
 \BOOKMARK [1][-]{section.5.3}{Pruebas de transformaciones en parejas}{chapter.5}% 33
 \BOOKMARK [1][-]{section.5.4}{Pruebas de transformaciones combinadas}{chapter.5}% 34
 \BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 35
-\BOOKMARK [0][-]{chapter*.3}{Bibliograf\355a}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.2}{L\355neas Futuras}{chapter.6}% 37
+\BOOKMARK [0][-]{chapter*.3}{Bibliograf\355a}{}% 38
