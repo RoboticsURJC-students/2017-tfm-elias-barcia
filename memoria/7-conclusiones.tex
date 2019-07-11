@@ -5,25 +5,25 @@
 
 Se ha diseñado y programado una aplicación, llamada SLAMTestbed, que estima las relaciones entre dos secuencias de puntos 3D orientados, calculando tanto sus relaciones espaciales ( qué traslación, rotación y escala hay entre ellas) como sus relaciones temporales (qué desfase temporal existe ellas).
 
-Esto lo consigue incluso con dos secuencias de puntos 3D que no están expresadas en el mismo sistema de referencia espacial, ni con la misma escala, ni con la misma frecuencia de muestras, ni con el mismo origen de tiempos. Para ello incluye varios bloques específicos de estimación y encadenando diferentes estimadores, análisis matemáticos y módulos de registro.
+Esto lo consigue incluso con dos secuencias de puntos 3D que no están expresadas en el mismo sistema de referencia espacial, ni con la misma escala, ni con la misma frecuencia de muestras, ni con el mismo origen de tiempos. Para ello, incluye varios bloques específicos de estimación encadenando diferentes estimadores, análisis matemáticos y módulos de registro.
 
 Esta aplicación permite medir objetiva y cuantitativamente el error en las estimaciones de un algoritmo de Visual SLAM cuando se introducen sus estimaciones y la secuencia de posiciones verdaderas en la herramienta SLAMTestbed. En ese caso las diferencias entre ambas secuencias y los estadísticos calculados reflejan la calidad y la exactitud de las estimaciones del algoritmo.
-Además de caracterizar sus calidad objetivamente permite por tanto compararlo con otros algoritmos de Visual SLAM o diferentes variantes.
+Además de caracterizar sus calidad objetivamente permite por tanto compararlo con otros algoritmos de Visual SLAM o diferentes variantes del mismo algoritmo.
 
 
 \section{Conclusiones}
 
 El objetivo principal de este proyecto era ofrecer una herramienta software que permita medir cuantitativamente el rendimiento de los algoritmos Visual SLAM y la calidad de sus estimaciones.
-Este objetivo se ha logrado con el diseño e implementación de un Registrador Temporal y otro Registrador Espacial. 
-Para crear el Registrador Temporal ha sido necesario desarrollar un módulo que calcule el desplazamiento de tiempo entre dos secuencias (capítulo 4.3) y tambien un módulo interpolador (capítulo 4.4) capaz de sincronizar en frecuencia los dos \textit{datasets} de entrada. Para validar el correcto funcionamiento de los Registradores Temporal y Espacial, se ha creado un módulo Transformador tal y como se ha comentado en el capítulo 5.1.
+Este objetivo se ha logrado con el diseño e implementación de un Registrador Temporal (subobjetivo 1) y otro Registrador Espacial (subobjetivo 2). 
+Para crear el Registrador Temporal ha sido necesario desarrollar un módulo que calcule el desplazamiento de tiempo entre dos secuencias (capítulo 4.3) y tambien un módulo interpolador (capítulo 4.4) capaz de sincronizar en frecuencia los dos \textit{datasets} de entrada. Para validar el correcto funcionamiento de los Registradores Temporal y Espacial, se ha creado un módulo Transformador (subobjetivo 3) tal y como se ha comentado en el capítulo 5.1.
 Para validar experimentalmente estos dos módulos de registro se han hecho múltiples pruebas de distinta complejidad como se describe en el capítulo 5.2, 5.3 y 5.4.
 
-La herramienta SLAMTestbed incorpora además un interfaz gráfico que permite al usuario visualizar en 3D las secuencias de datos así como lanzar de una forma tan sencilla como hacer click con el ratón varias operaciones sobre los datasets y visualizar los resultados (capítulo 4.7). Se debe tener en cuenta que no todas las herramientas de algoritmos SLAM que existen actualmente incorporan este interfaz gráfico, como por ejemplo TUM (capítulo 3.2), que a día de hoy sólo permite lanzar comandos desde un terminal, lo cual es una ventaja para SLAMTestbed ya que en las pruebas se ha demostrado la utilidad de este interfaz al comprobar que con un simple vistazo a la pantalla se puede verificar si la estimación es correcta o por el contrario se aleja de la verdad absoluta.
+La herramienta SLAMTestbed incorpora además un interfaz gráfico que permite al usuario visualizar en 3D las secuencias de datos así como lanzar de una forma tan sencilla como hacer click con el ratón varias operaciones sobre los datasets y visualizar los resultados (capítulo 4.7). Se debe tener en cuenta que no todas las herramientas de algoritmos SLAM que existen actualmente incorporan este interfaz gráfico, como por ejemplo TUM (capítulo 3.2), que a día de hoy sólo permite lanzar comandos desde un terminal. Esto es una ventaja para SLAMTestbed, ya que, como se ha demostrado en las pruebas, este interfaz es útil para verificar con un simple vistazo si la estimación es correcta o por el contraio se aleja de la verdad absoluta.
 
 
 \section{Líneas Futuras}
 
-En este subapartado describiremos en que líneas se debería trabajar o profundizar más en el futuro en la herramienta SLAMTestbed
+En este subapartado describiremos en que líneas se debería trabajar o profundizar más en el futuro en la herramienta SLAMTestbed:
 
 \begin{enumerate}
 
@@ -35,10 +35,10 @@ En este subapartado describiremos en que líneas se debería trabajar o profundi
 
 \item{Escritura de un artículo científico que presente esta herramienta a la comunidad investigadora.}
 
-\item{Nuevas opciones y mejoras en el interfaz de usuario para modificar parámetros como la distribución del ruido gaussiano o valores límite para el ruido cósmico}
+\item{Nuevas opciones y mejoras en el interfaz de usuario para modificar parámetros como la distribución del ruido gaussiano, valores límite para el ruido cósmico, o utilización de varios hilos de proceso para que el interfaz no se quede bloqueado mientras realiza cálculos.}
 
-\item{Añadir nuevos algoritmos en el módulo de Registro, como Horn , Horn + RANSAC y posibilidad de que la herramienta seleccione automáticamente el algoritmo de registro que 
-obtenga mejores resultados.}
+\item{Añadir nuevos algoritmos en el módulo de Registro, como Horn, Horn + RANSAC y posibilidad de que la herramienta seleccione automáticamente el algoritmo de registro que 
+mejores resultados obtenga.}
 
 \item{Portabilidad de la herramienta a otros lenguajes de programación (python,Java) o sistemas operativos (Android)}
 

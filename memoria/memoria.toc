@@ -28,12 +28,12 @@
 \contentsline {section}{\numberline {4.5}Registro Espacial}{42}{section.4.5}
 \contentsline {section}{\numberline {4.6}C\IeC {\'a}lculo de Estad\IeC {\'\i }sticas}{44}{section.4.6}
 \contentsline {section}{\numberline {4.7}Interfaz Gr\IeC {\'a}fico de Usuario}{45}{section.4.7}
-\contentsline {chapter}{\numberline {5}Experimentos}{48}{chapter.5}
+\contentsline {chapter}{\numberline {5}Validaci\IeC {\'o}n experimental}{48}{chapter.5}
 \contentsline {section}{\numberline {5.1}M\IeC {\'o}dulo Transformador}{49}{section.5.1}
 \contentsline {section}{\numberline {5.2}Pruebas de transformaciones individuales}{50}{section.5.2}
-\contentsline {section}{\numberline {5.3}Pruebas de transformaciones en parejas}{52}{section.5.3}
-\contentsline {section}{\numberline {5.4}Pruebas de transformaciones combinadas}{65}{section.5.4}
-\contentsline {chapter}{\numberline {6}Conclusiones}{70}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusiones}{70}{section.6.1}
-\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas Futuras}{71}{section.6.2}
-\contentsline {chapter}{Bibliograf\'{\i }a}{73}{chapter*.3}
+\contentsline {section}{\numberline {5.3}Pruebas de transformaciones en parejas}{54}{section.5.3}
+\contentsline {section}{\numberline {5.4}Pruebas de transformaciones combinadas}{66}{section.5.4}
+\contentsline {chapter}{\numberline {6}Conclusiones}{71}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusiones}{71}{section.6.1}
+\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas Futuras}{72}{section.6.2}
+\contentsline {chapter}{Bibliograf\'{\i }a}{74}{chapter*.3}
