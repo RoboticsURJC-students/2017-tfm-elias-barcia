@@ -22,8 +22,9 @@ En cada captura de pantalla aparecerá de forma gráfica , el dataset original (
 
  
 \section{Módulo Transformador}
-La herramienta SLAMtestbed poseé varios módulos accesibles desde el interfaz gráfico. Entre estos módulos podríamos destacar el \textbf{Módulo Transformador} que permite
+La herramienta SLAMtestbed pose varios módulos accesibles desde el interfaz gráfico. Entre estos módulos podríamos destacar el \textbf{Módulo Transformador} que permite
 realizar transformaciones sobre el conjunto de puntos 3D orientados de una secuencia de entrada, de tal forma que se obtendrá como resultado una segunda secuencia transformada. De esta forma se han podido realizar pruebas para comprobar que los cálculos estimados de Traslación, Rotación y Escala son fiables y tienen un error mínimo.
+El Módulo Transformador es una aplicación completa e independiente que  puede ser utilizado fuera de SLAMTestbed. 
 
 Los diversos parámetros del módulo transformador son accesibles desde interfaz gráfico de la pantalla. Las transformaciones permitidas por la herramienta son:
 
@@ -35,310 +36,332 @@ Los diversos parámetros del módulo transformador son accesibles desde interfaz
 
 \textbf{-Offset de tiempo}. Con el offset de tiempo podremos introducir un desplazamiento o \textit{gap} en los valores de sello temporal o \textit{timestamp} del fichero de entrada . La exactitud del offset será de centésimas, es decir con 2 decimales.
 
-\textbf{-Cambio de frecuencia}: ón nos permitirá ajustar a la misma frecuencia los 2 datasets. Se podrán realizar 3 tipos de interpolación de los datos.
-\begin{enumerate}
-	\item{Interpolación a la frecuencia máxima}
-	\item{Interpolación a la frecuencia mínima}
-	\item{Interpolación a frecuencia personalizada}
-\end{enumerate}
+\textbf{-Cambio de frecuencia}: Permitirá hacer cambios en la frecuencia de muestreo del dataset. Si incrementamos la frecuencia generaremos nuevos registros en el dataset mediante interpolación. Si disminuimos la frecuencia desapareceran registros del dataset, aunque puede que sea necesario generar algunos nuevos, por ejemplo si tenemos una secuencia que tiene una muestreo de 0,7 segundos y queremos aumentar la frecuencia de muestreo a 1.0 segundo, desaparecerán registros pero será necesario crear algún registro nuevo.
 
 \textbf{-Ruido Gaussiano}: Una de las transformaciones que podremos aplicar sobre la secuencia de entrada de puntos 3D orientados es un ruido gaussiano a los datos transformados. Sólo se añadiŕa el ruido Gaussiano a las coordenadas X,Y,Z de cada punto 3D.
+El ruido Gaussiano será un ruido leve, que afectará sólo a las coordenadas X,Y,Z, no afectará al tiempo ni a la orientación.
 
-\textbf{-Ruido Cósmico}: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido aleatorio, de intensidad y frecuencia modulables. Cada cierto tiempo aleatorio, con cierta probabilidad, se altera un punto orientado 3D cambiando sus valores de posición y orientación.
+\textbf{-Ruido Cósmico}: Otra transformación a aplicar sobre los datos transformados es la incorporación del ruido aleatorio, de intensidad y frecuencia modulables. Cada cierto tiempo aleatorio, con cierta probabilidad, se altera un punto orientado 3D cambiando sus valores de posición y orientación. Es Ruido Cósmico tendrá una varianza mucho mayor que el ruido Gaussiano, generará outliers en los valores de X,Y,Z pero no afectará ni a la frecuencia de muestreo ni a la orientación.
 
 
 \section{Pruebas de transformaciones individuales}
 
-En este apartado mostraremos imágenes del módulo GUI, donde se han realizado varias transformaciones individuales y se han estimado dichas transformaciones con SLAMtestbed.
-En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 segundos para ambos datasets, es decir que se toma 20Hz como frecuencia desada a la que se llevan las dos secuencias de entrada.
+En este apartado mostraremos imágenes del módulo GUI, donde se han realizado varias transformaciones individuales y se han estimado dichas transformaciones con SLAMTestbed.
+En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.005 segundos para ambos datasets, es decir que se toma 200Hz como frecuencia desada a la que se llevan las dos secuencias de entrada.
 
-\begin{figure}
-\begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_abba.png}}
+\subsection{Pruebas de escala}
+
+\begin{figure}[h]
+%\begin{center}
+\label{fig:escalaTest}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_abba.png}
 \hspace{0.5cm}
 
-\end{center}
+%\end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación tras una transformación de un cambio de escala.}
+\caption{resultados de la estimación tras una transformación de un cambio de escala.}
 \end{figure}
 
-El gráfico superior muestra los resultados de la estimación tras una transformación de un cambio de escala. Se aprecia en la captura de pantalla, como el dataset transformado es más grande que el dataset original. Como se puede observar el RMSE es 0.0 y el valor de la escala estimada coincide con el valor de la transformación de escala, en este caso es 2.0
+La Figura 5.1 muestra los resultados de la estimación tras una transformación de un cambio de escala. Se aprecia en la captura de pantalla, como el dataset transformado es más grande que el dataset original. Como se puede observar el RMSE es 0.0 y el valor de la escala estimada coincide con el valor de la transformación de escala, en este caso es 2.0
 
-\begin{figure}
-\begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Traslation_abba.png}}
+\subsection{Pruebas con traslación}
+
+\begin{figure}[h]
+%\begin{center}
+\label{fig:traslaTest}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Traslation_abba.png}
 \hspace{0.5cm}
 
-\end{center}
+%\end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de traslación.}
+\caption{resultados de la estimación de un cambio de traslación.}
 \end{figure}
 
-La captura de pantalla superior muestra los resultados de la estimación tras realizar una traslación en el dataset original. Como puede observarse el RMSE es 0.0, y gráficamente el dataset transformado y estimado coinciden en cada posición 3D.  Es por este motivo por el que hay ausencia de puntos rojos en la representación 3D. Hay que recordar que el dataset estimado se presenta con puntos rojos. Cuando la estimación no es buena , el dataset transformado y estimado no coincidirán y podremos ver en pantalla los puntos rojos , allí donde precisamente no coincidan dataset estimado. En cuanto a los valores de la traslación estimada puede verse que coinciden con la transformación realizada.
 
-\begin{figure}
-\begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Rotation_abba.png}}
+La Figura 5.2 muestra los resultados de la estimación tras realizar una traslación en el dataset original. Como puede observarse el RMSE es 0.0, y gráficamente el dataset transformado y estimado coinciden en cada posición 3D.  Es por este motivo por el que hay ausencia de puntos rojos en la representación 3D. Hay que recordar que el dataset estimado se presenta con puntos rojos. Cuando la estimación no es buena , el dataset transformado y estimado no coincidirán y podremos ver en pantalla los puntos rojos , allí donde precisamente no coincidan dataset estimado. En cuanto a los valores de la traslación estimada puede verse que coinciden con la transformación realizada.
+
+\subsection{Prueba de rotación}
+
+\begin{figure}[h]
+%\begin{center}
+\label{fig:rotationTest}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Rotation_ab_ba.png}
 \hspace{0.5cm}
 
-\end{center}
+%\end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de rotación.}
+\caption{resultados de la estimación de un cambio de rotación.}
 \end{figure}
 
-En la captura de pantalla anterior, podremos observar el dataset original en verde, y el dataset transformado tras aplicar una rotación. La rotación se especifica en radianes. Como puede observarse, el error (RMSE) es mínimo 0.00001. Se puede comprobar que aunque la rotación realizada en los ejes X,Y,Z en la transformación ha sido respectivamente de 3.0, 2.0 y 1.0 radianes, en la estimación estos valores no coinciden, se ha aplicado otra rotación equivalente en radianes.
+En la Figura 5.3 podremos observar el dataset original en verde, y el dataset transformado tras aplicar una rotación. La rotación se especifica en radianes. Como puede observarse, el error (RMSE) es mínimo 0.00001. Se puede comprobar que la rotación realizada en los ejes X,Y,Z en la transformación ha sido respectivamente de 3.0, 2.0 y 1.0 radianes, y en la estimación estos valores coinciden.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%   TRANSFORMACIONES EN PAREJAS 
 \section{Pruebas de transformaciones en parejas}
-En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones de parámetros en parejas y se han estimado dichas transformaciones.
-En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
+En este apartado mostraremos imágenes del módulo GUI, varias pruebas de dos  transformaciones simultáneas y se han estimado dichas transformaciones con SLAMTestbed.
+En todas las transformaciones se ha realizado la transformación de frecuencias al valor 0.005 para ambos datasets. 
 
+Una vez que en la sección anterior se ha validado el correcto comportamiento de SLAMTestbed cuando se le presentaban ruidos individuales, un paso más para validad su robustez es presentarle varias transformaciones simultaneas que ponen a prueba las posibles interferencias entre sus diferentes módulos de estimación, por si estuvieran acoplados.
 
-\begin{figure}
+\subsection{Pruebas con traslación y escala}
+
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Traslacion.png}}
+\label{fig:traslaEscalaTest}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_Traslacion_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y traslación .}
+\caption{Resultados de la estimación de un cambio de escala y traslación .}
 \end{figure}
 
-En la imagen superior, se muestra en color verde, el dataset groundtruth, y en azul el mismo dataset tras realizarle un par de transformaciones en escala y traslación.
-En la ventana de la derecha se muestran los resultados de la transformación estimada, que coincide con la transformación realizada, además el RMSE es 0.
-El dataset estimado , también se pinta en color rojo, pero en este caso la estimación es tan buena que coincide con el dataset transformado y no se aprecia ningún punto rojo.
+En la Figura 5.4 se muestra en color verde, el dataset groundtruth y en azul el mismo dataset tras realizarle un par de transformaciones en escala y traslación.
+En la ventana de la derecha se muestran los resultados de la transformación estimada, que coincide con la transformación doble realizada, además el RMSE es 0.
+
+El dataset estimado también se pinta en color rojo, pero en este caso la estimación es tan buena que coincide con el dataset transformado y no se aprecia ningún punto rojo.
 En este caso la transformación realizada es de escala y traslación. Se puede comprobar que la estimación realizada es correcta ya que coinciden los valores de la escala y traslación estimados.
 
-
+\subsection{Pruebas con escala y rotación}
 
 \begin{figure}
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Rotation.png}}
+\label{fig:escalaRotationTest}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_Rotation_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y rotación.}
+\caption{Resultados de la estimación de un cambio de escala y rotación.}
 \end{figure}
-En la imagen superior podemos ver los resultados de aplicar otras 2 transformaciones sobre el dataset original. En este caso se trata de una transformación en escala y rotación.
-Tras realizar la estimación, el error medido entre el dataset estimado y el dataset transformado es 0.0 . Por tanto podemos decir que la estimación es exacta a la transformación realizada sobre el dataset original.
+En la Figura 5.5 podemos ver los resultados de aplicar otras 2 transformaciones simultáneas sobre el dataset original. En este caso una transformación en escala y otras de rotación. Tras realizar la estimación, el error medido entre el dataset estimado y el dataset transformado es 0.0 . Por tanto podemos decir que la estimación es exacta a la transformación realizada sobre el dataset original.
 
-\begin{figure}
+\subsection{Pruebas con escala y offset temporal}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Offset.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_Offset_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y offset.}
+\caption{Resultados de la estimación de un cambio de escala y offset.}
 \end{figure}
 
-En este caso, al dataset original (color verde) se le ha aplicado un par de transformaciones ( en escala y con offset), dando lugar al conjunto azul. En este caso tambien la estimación es buena , ya que el error RMSE da como resultado 0.0 y el cálculo del offset tambien coincide con el valor del offset que se ha aplicado en la transformación, salvo con signo negativo.
+En la Figura 5.6, al dataset original (color verde) se le ha aplicado un par de transformaciones ( en escala y con offset), dando lugar al conjunto azul. También la estimación es buena, ya que el error RMSE da como resultado 0.0 y el cálculo del offset estimado coincide con el valor del offset que se ha aplicado en la transformación, salvo con signo negativo.
 
+\subsection{Pruebas con escala y ruido gaussiano}
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_GaussNoise.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_GaussNoise_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y ruido Gaussiano .}
+\caption{resultados de la estimación de un cambio de escala y ruido Gaussiano .}
 \end{figure}
 
-En la imagen superior, se ha aplicado sobre el dataset original un cambio de escala y además se le ha añadido ruido Gaussiano, como puede verse en el dataset resultante (color azul). Las estimaciones obtenidas son buenas, pero el error RMSE calculado entre el dataset transformado y el dataset estimando ya no es 0.0, sino 0.008. Esta falta de precisión puede apreciarse a simple vista, ya que como el dataset estimado carece de ruido gaussiano, los puntos del dataset estimado no coinciden con los puntos del dataset transformado, y por tanto ahora si podemos ver buena parte de los puntos del dataset estimado (colo rojo).
+En la Figura 5.7, se ha aplicado sobre el dataset original un cambio de escala y además se le ha añadido ruido Gaussiano, como puede verse en el dataset resultante (color azul). Las estimaciones obtenidas son buenas, pero el error RMSE calculado entre el dataset transformado y el dataset estimando ya no es 0.0, sino 0.000136. Esta falta de precisión puede apreciarse a simple vista, ya que como el dataset estimado carece de ruido gaussiano, los puntos del dataset estimado no coinciden exactamenet con los puntos del dataset transformado, y por tanto ahora sí podemos ver buena parte de los puntos del dataset estimado (color rojo).
+Tambien se observa, un error mínimo en la estimación de escala, 3.500067 cuando debería ser 3.5, y la traslación en X,Y,Z debería ser 0.0 y sin embargo hay un error mínimo de 4 decimales.
 
-\begin{figure}
+Esta coincidencia valida el funcionamiento de SLAMTestbed en presencia de ruido gaussiano en las secuencias que será lo habitual en el uso real.
+
+\subsection{Pruebas con escala y ruidos gaussiano y cósmico}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_GaussCosmicNoise.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_GaussCosmicNoise_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y traslación .}
+\caption{resultados de la estimación de un cambio de escala con ruido gaussiano y cósmico}
 \end{figure}
 
-En este caso, se ha aplicado sobre el dataset original un cambio de escala más ruido gaussiano y cósmico. Al tener ahora ruido cósmico, en algunos puntos del dataset transformado aparecen unos valores muy superiores a la media, estos valores desorbitados harán que aumente notablemente el error entre el dataset transformado y el dataset estimado. Para esta experimento , el valor RMSE es de 0.06. Aunque puede observarse que aún así, la posición de los puntos del dataset estimado coincide con la posición de los puntos del dataset transformado.
+En la Figura 5.8, se ha aplicado sobre el dataset original un cambio de escala más ruido gaussiano y cósmico. Al tener ahora ruido cósmico, en algunos puntos del dataset transformado aparecen unos valores muy superiores a la media, estos valores desorbitados harán que aumente notablemente el error entre el dataset transformado y el dataset estimado. Para este experimento, el valor RMSE es de 0.06. Aunque puede observarse que aún así, la posición de los puntos del dataset estimado coincide con la posición de los puntos del dataset transformado.
 
-\begin{figure}
+
+\subsection{Pruebas con traslación y orientación simultáneas}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Trasla_Rota.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Trasla_Rota_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de traslación y rotación .}
+\caption{ resultados de la estimación de un cambio de traslación y rotación .}
 \end{figure}
 
-En este test, se han aplicado 2 transformaciones sobre el dataset original, una traslación y una rotación.
-La estimación de la traslación y la rotación coinciden con los valores de las transformaciones. El error calculado entre el dataset estimado y el dataset transformado es 0.000001.
-Podríamos considerarlo como 0.0
+En la Figura 5.9 se han aplicado 2 transformaciones sobre el dataset original: una traslación y una rotación.
+La estimación de la traslación y la rotación coinciden con los valores de las transformaciones. El error calculado entre el dataset estimado y el dataset transformado es 0.0 lo que refleja que SLAMtestbed está estimando correctamente la relación ente las dos secuencias.
 
+\subsection{Pruebas con traslación y offset temporal}
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Trasla_Offset.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Trasla_Offset_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de traslación y offset .}
+\caption{ resultados de la estimación de un cambio de traslación y offset .}
 \end{figure}
-En este caso, al dataset original (color verde) se le ha aplicado un par de transformaciones ( en traslación y con offset), dando lugar al dataset transformado (conjunto de puntos de color azul). En este caso tambien la estimación es buena , ya que el error RMSE da como resultado 0.0 y el cálculo del offset tambien coincide con el valor del offset que se ha aplicado en la transformación, salvo con signo negativo.
+En la Figura 5.10 al dataset original (color verde) se le ha aplicado un par de transformaciones ( traslación y con offset), dando lugar al dataset transformado (conjunto de puntos de color azul). También aquí la estimación es buena, ya que el error RMSE da como resultado 0.0 y el cálculo del offset  coincide con el valor del offset que se ha aplicado en la transformación, salvo con signo negativo.
 
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Trasla_GaussNoise.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Trasla_GaussNoise_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de traslación y ruido gaussiano.}
+\caption{ resultados de la estimación de un cambio de traslación y ruido gaussiano.}
 \end{figure}
-En la imagen superior, se ha aplicado sobre el dataset original un cambio de traslación y además se le ha añadido ruido Gaussiano, como puede verse en el dataset resultante (color azul). Las estimaciones obtenidas son buenas, pero el error RMSE calculado entre el dataset transformado y el dataset estimando ya no es 0.0, sino 0.008. Esta falta de precisión puede apreciarse a simple vista en el interfaz gráfico, ya que como el dataset estimado carece de ruido gaussiano , los puntos del dataset estimado no coinciden con los puntos del dataset transformado, y por tanto ahora si podemos ver buena parte de los puntos del dataset estimado (colo rojo).
+En la Figura 5.11 se ha aplicado sobre el dataset original un cambio de traslación y además se le ha añadido ruido Gaussiano, como puede verse en el dataset resultante (color azul). Las estimaciones obtenidas son buenas, pero el error RMSE calculado entre el dataset transformado y el dataset estimando ya no es 0.0, sino 0.008. Esta falta de precisión puede apreciarse a simple vista en el interfaz gráfico, ya que como el dataset estimado carece de ruido gaussiano, los puntos del dataset estimado no coinciden exactamente con los puntos del dataset transformado, y por tanto ahora si podemos ver buena parte de los puntos del dataset estimado (colo rojo).
+Mientras ese RMSE se mantenga en valores bajos es aceptable puesto que es natural incurrir en cierto error no nulo cuando hay ruido en la secuencia de entrada.
 
+\subsection{Pruebas con traslación y ruidos gaussiano y cósmico}
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Trasla_GaussianCosmicNoise.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Trasla_GaussianCosmicNoise_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de traslación y ruido cósmico y gaussiano.}
+\caption{ resultados de la estimación de un cambio de traslación y ruido cósmico y gaussiano.}
 \end{figure}
-En este caso, se ha aplicado sobre el dataset original un cambio de traslación más ruido gaussiano y cósmico. Al tener ahora ruido cósmico, en algunos puntos del dataset transformado aparecen unos valores muy superiores al rango de valores del dataset , estos valores desorbitados harán que aumente notablemente el error entre el dataset transformado y el dataset estimado. Para esta experimento , el valor RMSE es de 0.12. Aunque puede observarse que aún así, la posición de los puntos del dataset estimado coincide con la posición de los puntos del dataset transformado.
+En la Figura 5.12 se ha aplicado sobre el dataset original un cambio de traslación más ruido gaussiano y cósmico. Al tener ahora además ruido cósmico, en algunos puntos del dataset transformado aparecen unos valores muy superiores al rango de valores del dataset, estos valores desorbitados hacen que aumente notablemente el error entre el dataset transformado y el dataset estimado. Para este experimento, el valor RMSE es de 0.12. Aunque puede observarse que aún así, la posición de los puntos del dataset estimado coincide con la posición de los puntos del dataset transformado.
 
 
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Rota_Offset.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Rota_Offset_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de rotación y offset.}
+\caption{ resultados de la estimación de un cambio de rotación y offset.}
 \end{figure}
 
-En este caso, al dataset original (color verde) se le ha aplicado un par de transformaciones ( en rotación y con offset tenmporal), dando lugar al dataset transformado (conjunto de puntos de color azul). En este caso tambien la estimación es buena , ya que el error RMSE da como resultado 0.0 y el cálculo del offset tambien coincide con el valor del offset que se ha aplicado en la transformación, salvo con signo negativo.
+En la Figura 5.13 al dataset original (color verde) se le ha aplicado un par de transformaciones ( en rotación y con offset temporal), dando lugar al dataset transformado (conjunto de puntos de color azul). También la estimación es buena, ya que el error RMSE da como resultado 0.0 y el cálculo del offset coincide con el valor del offset que se ha aplicado en la transformación, salvo con signo negativo.
 
 
-
-\begin{figure}
+\subsection{Pruebas con rotación y ruido gaussiano}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Rota_GaussNoise.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Rota_GaussNoise_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de rotación y ruido gaussiano.}
+\caption{ resultados de la estimación de un cambio de rotación y ruido gaussiano.}
 \end{figure}
-En la imagen superior, se ha aplicado sobre el dataset original un cambio de rotación y además se le ha añadido ruido Gaussiano, como puede verse en el dataset resultante (color azul). Las estimaciones obtenidas son buenas, pero el error RMSE calculado entre el dataset transformado y el dataset estimado ya no es 0.0, sino 0.008. Esta falta de precisión puede apreciarse a simple vista en el interfaz gráfico, ya que como el dataset estimado carece de ruido gaussiano , los puntos del dataset estimado no coinciden con los puntos del dataset transformado, y por tanto ahora si podemos ver buena parte de los puntos del dataset estimado (colo rojo).
+En la Figura 5.14 se ha aplicado sobre el dataset original un cambio de rotación y además se le ha añadido ruido Gaussiano, como puede verse en el dataset resultante (color azul). Las estimaciones obtenidas son buenas, pero el error RMSE calculado entre el dataset transformado y el dataset estimado ya no es 0.0, sino 0.008. Esta falta de exactitud puede apreciarse a simple vista en el interfaz gráfico, ya que como el dataset estimado carece de ruido gaussiano, los puntos del dataset estimado no coinciden con los puntos del dataset transformado, y por tanto ahora si podemos ver buena parte de los puntos del dataset estimado (colo rojo).
 
 
+\subsection{Pruebas con rotación y ruidos gaussiano y cósmico}
 
-
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Rota_Gauss_Cosmic.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Rota_Gauss_Cosmic_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de rotación y ruido cósmico y gaussiano.}
+\caption{ resultados de la estimación de un cambio de rotación y ruido cósmico y gaussiano.}
 \end{figure}
 
-En este caso, se ha aplicado sobre el dataset original un cambio de rotación más ruido gaussiano y cósmico. Al tener ahora ruido cósmico, en algunos puntos del dataset transformado aparecen unos valores muy superiores al rango de valores del dataset , estos valores desorbitados harán que aumente notablemente el error entre el dataset transformado y el dataset estimado. Para esta experimento, el valor RMSE es de 0.12. Aunque puede observarse que aún así, la posición de los puntos del dataset estimado coincide con la posición de los puntos del dataset transformado.
+En la Figura 5.15 se ha aplicado sobre el dataset original un cambio de rotación más ruido gaussiano y cósmico. Al tener ahora ruido cósmico, en algunos puntos del dataset transformado aparecen unos valores muy superiores al rango de valores del dataset, estos valores desorbitados hacen que aumente notablemente el error entre el dataset transformado y el dataset estimado. Para este experimento, el valor RMSE es de 0.17.  Puede observarse que aún así, la posición de los puntos del dataset estimado coincide con la posición de los puntos del dataset transformado.
+También se observa como el ruido cósmico y gaussiano afectan a la estimación de otros parámetros , como escala y traslación, que en ausencia de ruido se estimaron con máxima exactitud y precisión como se puede ver en la Figura 5.13
 
 
 
+\newpage
+\section{Validación experimental con varias transformaciones simultáneas}
 
-\section{Pruebas de transformaciones combinadas}
+En este apartado mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones combinadas y se han estimado con SLAMTestbed dichas transformaciones entre secuencias.
+En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.005 para ambos datasets.
 
-En este apartado, mostraremos imágenes del módulo GUI, donde se han realizado varias pruebas de transformaciones combinadas y se han estimado dichas transformaciones.
-En todas las transformaciones se ha realizado la interpolación de frecuencias al valor 0.05 para ambos datasets.
+Estos experimentos son los más exigentes para SLAMTesbed ya que ponen a prueba sus estimaciones cuando la relación entre las dos secuencias de entrada es compleja, combina varias transformaciones simultaneamente. Sin embargo son los experimentos más fiables porque son los que más se parecen al uso real de SLAMTesbed evaluando un nuevo algoritmo de visualSLAM. La relación enter las estimaciones de ese algoritmo y las posiciones y estimaciones verdaderas será típicamente compleja e incluirá muchos ruidos y transformaciones.
 
-
-\begin{figure}
+\subsection{Pruebas con cambio de escala, rotación y traslación}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_abba.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_Trasla_Rota_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y traslación .}
+\caption{ resultados de la estimación de un cambio de escala y traslación .}
 \end{figure}
 
-En la imagen superior se realiza la estimación de las transformaciones necesarias para pasar del datasetA al datasetB . En este caso se ha aplicado una transformación combinada de Escala, Traslación y Rotación. En verde puede verse el dataset original y en azul el dataset transformado, en rojo se aprecia el dataset estimado.
-Se puede ver gráficamente como el dataset estimado se ajusta con gran precisión al dataset transformado (azul).
+En la Figura 5.16 se realiza la estimación de las transformaciones que relacionan el datasetA al datasetB. En este caso se ha aplicado una transformación combinada de Escala, Traslación y Rotación. En verde puede verse el dataset original y en azul el dataset transformado, en rojo se aprecia el dataset estimado.
+Se puede ver gráficamente cómo el dataset estimado se ajusta con gran precisión al dataset transformado (azul).
 Por otra parte el RMSE entre el dataset transformado y el dataset estimado es de 0.0
-Además las transformaciones se han calculado en los 2 sentidos, desde el dataSet A  al dataSet B y desde el dataSetB al dataSet A.
+. Además las transformaciones se han calculado en los 2 sentidos, desde el dataSet A  al dataSet B y desde el dataSetB al dataSet A y conciden.
 
-
-\begin{figure}
+\subsection{Pruebas con rotación, traslación, escala y offset temporal simultáneos.}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_Offset_abba.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_Trasla_Rota_Offset_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala, traslación,rotación y offset .}
+\caption{ resultados de la estimación de un cambio de escala, traslación,rotación y offset .}
 \end{figure}
 
-Arriba en la imagen , se presenta el dataset original en verde, el dataset transformado en azul y el dataset estimado en rojo.
-En este caso se ha realizado la siguiente combinación de transformaciónes, Escala, Traslación, Rotación y Offset.
-Como se puede observar en los resultados de las estimaciones, el offset es estimado con total exactitud. Sin embargo el valor del RMSE ya no es de 0.0, si no de 0.0005, aún así el error cometido sigue siendo muy bajo.
-Visualmente, también se puede observar que la precisión ha disminiuido , ya que se aprecian más puntos rojos (dataset estimado) en el gráfico. Esto indica que la estimación sigue siendo muy buena aunque la precisión ha bajado.
+En la Figura 5.17, se presenta el dataset original en verde, el dataset transformado en azul y el dataset estimado en rojo.
+En este caso se ha realizado la combinación de transformaciónes de Escala, Traslación, Rotación y Offset.
+Como se puede observar en los resultados de las estimaciones, el offset es estimado con total exactitud. Sin embargo el valor del RMSE ya no es exactamente 0.0, si no de 0.0005, aún así el error cometido sigue siendo muy bajo.
+Visualmente, también se puede observar que la precisión ha disminiuido, ya que se aprecian más puntos rojos (dataset estimado) en el gráfico. Esto indica que la estimación sigue siendo muy buena aunque la precisión ha bajado.
 
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_Offset_GaussNoise_abba.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_Trasla_Rota_Offset_GaussNoise_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y traslación .}
+\caption{ resultados de la estimación de un cambio de escala y traslación, rotación, offset y ruido gaussiano .}
 \end{figure}
 
-En la imagen superior, podemos ver el dataset original en verde, el dataset transformado en azul y el dataset estimado en rojo.
+En la Figura 5.18, podemos ver el dataset original en verde, el dataset transformado en azul y el dataset estimado en rojo.
 Las transformaciones realizadas en este caso han sido, Escala, Traslación, Rotación, Offset y Ruido Gaussiano.
-En este caso, al incluir ruido Gaussiano en la transformación del dataset original, el dataset estimado pierde precisión, y el RMSE obtenido es de  0.008.
-Sin embargo, la precisión aunque es menor, continúa siendo buena, y en el gráfico puede verse , como el dataset estimado concuerda de manera aceptable con el dataset estimado.
-Observesé que en el dataset estimado no hay ruido gaussiano.
+En este caso, al incluir ruido Gaussiano en la transformación del dataset original, el dataset estimado pierde algo de precisión, y el RMSE obtenido es de  0.008.
+Sin embargo, la precisión aunque es menor, continúa siendo buena, y en el gráfico puede verse cómo el dataset estimado concuerda de manera aceptable con el dataset transformado. Observese que en el dataset estimado no hay ruido gaussiano.
 
-
-\begin{figure}
+\subsection{Pruebas completas con traslación, rotación, escala, offset temporal y ruido gaussiano}
+\begin{figure}[h]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_Offset_Gauss_CosmicNoise_abba.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/Escala_Trasla_Rota_Offset_Gauss_CosmicNoise_abba.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y traslación .}
+\caption{ resultados de la estimación de un cambio de escala y traslación, rotación, offset temporal, ruidos gaussiano y cósmico.}
 \end{figure}
 
-Arriba podemos ver una nueva captura de pantalla, donde se han realizado las siguientes transformaciones, Escala, Traslación, Rotación, Offset, Ruido Gaussiano y Ruido Cósmico.
+En la imagen 5.19 podemos ver una nueva captura de pantalla, donde se han realizado las siguientes transformaciones: Escala, Traslación, Rotación, Offset, Ruido Gaussiano y Ruido Cósmico.
 Como se puede observar, en las estimaciones del dataset A ( verde ) al dataset B (azul), la precisión ha bajado notablemente, con un valor RMSE del 0.06.
-Esta precisión tan baja se debe a la incluisión de ruido Cósmico, que altera notablemente los valores de X, Y , Z  de algunos puntos 3D.
-Aún así, como puede verse en  la representación gráfica del dataset Estimado (rojo) sobre el dataset Transformado ( azul ) se aproxima bastante a la solución óptima.
+Esta precisión tan baja se debe a la inclusión de ruido Cósmico, que altera notablemente los valores de X, Y , Z  de algunos puntos 3D.
+Aún así, como puede verse en  la representación gráfica del dataset Estimado (rojo) sobre el dataset Transformado ( azul ) se aproxima bastante a la solución perfecta.
 
 
 
-\begin{figure}[H]
+\begin{figure}[h][H]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap6/LoadTwoDataSets_RANSAC.png}}
+\label{fig:opciones de View}\includegraphics[height=12.0cm,width=18.0cm]{img/cap6/LoadTwoDataSets_RANSAC.png}
 \hspace{0.5cm}
 
 \end{center}
 
-\caption{Gráfico que muestra los resultados de la estimación de la transformación del datasetA en el datasetB y viceversa, utilizando RANSAC.}
+\caption{ resultados de la estimación  utilizando RANSAC.}
 \end{figure}
 
-En captura de pantalla superior, podremos ver una nueva transformación donde se ha aplicado transformaciónes de Escala, Traslación, Rotación, Offset, Ruido Gaussiano y Cósmico y además se ha utilizado el método RANSAC para calcular el error.
+En la imagen 5.20, podremos ver una nueva transformación donde se ha aplicado transformaciónes de Escala, Traslación, Rotación, Offset, Ruido Gaussiano y Cósmico y además se ha utilizado el método RANSAC para calcular el error.
+
+Los experimentos anteriores han demostrado que la herramienta desarrollada es precisa para todo tipo de transformaciones, obteniendo un error máximo de. Las transformaciones que más perjudican a las estimaciones realizadas son, .... puesto que ...
+
+Aun así, estos errores son lo suficientemente pequeños como para que se utilice esta herramienta para validad la precisión de los algoritmos de Visual SLAM.
 
 \clearpage
 \newpage
@@ -358,7 +381,7 @@ En captura de pantalla superior, podremos ver una nueva transformación donde se
 %\end{figure}
 
 
-%\begin{figure}[H]
+%\begin{figure}[h][H]
 %\begin{center}
 %\subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap6/ScaleTraslaRotaFrec.png}}
 %\hspace{0.5cm}
@@ -381,7 +404,7 @@ En captura de pantalla superior, podremos ver una nueva transformación donde se
 
 
 
-%\begin{figure}[H]
+%\begin{figure}[h][H]
 %\begin{center}
 %\subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap6/ScaleTraslaRotaFrecTimeOffset.png}}
 %\hspace{0.5cm}
@@ -404,7 +427,7 @@ En captura de pantalla superior, podremos ver una nueva transformación donde se
 
 
 
-%\begin{figure}[H]
+%\begin{figure}[h][H]
 %\begin{center}
 %\subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap6/ScaleTraslaRotaFrecTimeOffsetGNoiseCNoise.png}}
 %\hspace{0.5cm}
@@ -430,7 +453,7 @@ En captura de pantalla superior, podremos ver una nueva transformación donde se
 
 %Por último también mostraremos como SLAMTestBed es capaz de operar con 2 datasets diferentes , es decir en este caso , el seguno dataset no será el resultado de aplicar el módulo %de transformación sobre el primer dataset.
 
-%\begin{figure}[H]
+%\begin{figure}[h][H]
 %\begin{center}
 %\subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap6/LoadTwoDataSets.png}}
 %\hspace{0.5cm}

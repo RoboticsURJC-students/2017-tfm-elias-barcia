@@ -30,9 +30,25 @@
 \BOOKMARK [0][-]{chapter.5}{Validaci\363n experimental}{}% 30
 \BOOKMARK [1][-]{section.5.1}{M\363dulo Transformador}{chapter.5}% 31
 \BOOKMARK [1][-]{section.5.2}{Pruebas de transformaciones individuales}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.3}{Pruebas de transformaciones en parejas}{chapter.5}% 33
-\BOOKMARK [1][-]{section.5.4}{Pruebas de transformaciones combinadas}{chapter.5}% 34
-\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 35
-\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.2}{L\355neas Futuras}{chapter.6}% 37
-\BOOKMARK [0][-]{chapter*.3}{Bibliograf\355a}{}% 38
+\BOOKMARK [2][-]{subsection.5.2.1}{Pruebas de escala}{section.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.2.2}{Pruebas con traslaci\363n}{section.5.2}% 34
+\BOOKMARK [2][-]{subsection.5.2.3}{Prueba de rotaci\363n}{section.5.2}% 35
+\BOOKMARK [1][-]{section.5.3}{Pruebas de transformaciones en parejas}{chapter.5}% 36
+\BOOKMARK [2][-]{subsection.5.3.1}{Pruebas con traslaci\363n y escala}{section.5.3}% 37
+\BOOKMARK [2][-]{subsection.5.3.2}{Pruebas con escala y rotaci\363n}{section.5.3}% 38
+\BOOKMARK [2][-]{subsection.5.3.3}{Pruebas con escala y offset temporal}{section.5.3}% 39
+\BOOKMARK [2][-]{subsection.5.3.4}{Pruebas con escala y ruido gaussiano}{section.5.3}% 40
+\BOOKMARK [2][-]{subsection.5.3.5}{Pruebas con escala y ruidos gaussiano y c\363smico}{section.5.3}% 41
+\BOOKMARK [2][-]{subsection.5.3.6}{Pruebas con traslaci\363n y orientaci\363n simult\341neas}{section.5.3}% 42
+\BOOKMARK [2][-]{subsection.5.3.7}{Pruebas con traslaci\363n y offset temporal}{section.5.3}% 43
+\BOOKMARK [2][-]{subsection.5.3.8}{Pruebas con traslaci\363n y ruidos gaussiano y c\363smico}{section.5.3}% 44
+\BOOKMARK [2][-]{subsection.5.3.9}{Pruebas con rotaci\363n y ruido gaussiano}{section.5.3}% 45
+\BOOKMARK [2][-]{subsection.5.3.10}{Pruebas con rotaci\363n y ruidos gaussiano y c\363smico}{section.5.3}% 46
+\BOOKMARK [1][-]{section.5.4}{Validaci\363n experimental con varias transformaciones simult\341neas}{chapter.5}% 47
+\BOOKMARK [2][-]{subsection.5.4.1}{Pruebas con cambio de escala, rotaci\363n y traslaci\363n}{section.5.4}% 48
+\BOOKMARK [2][-]{subsection.5.4.2}{Pruebas con rotaci\363n, traslaci\363n, escala y offset temporal simult\341neos.}{section.5.4}% 49
+\BOOKMARK [2][-]{subsection.5.4.3}{Pruebas completas con traslaci\363n, rotaci\363n, escala, offset temporal y ruido gaussiano}{section.5.4}% 50
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 51
+\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.2}{L\355neas Futuras}{chapter.6}% 53
+\BOOKMARK [0][-]{chapter*.3}{Bibliograf\355a}{}% 54
