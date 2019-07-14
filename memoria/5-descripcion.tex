@@ -14,13 +14,13 @@ Las secuencias procesados por esta herramienta serán ficheros de texto cuyos re
 
 \textit{Timestamp, X, Y, Z, qx,qy,qz,qw}
 
-Uno de los \textit{dataset} será la verdad absoluta, y el segundo dataset será la posición y orientación en 3D obtenidos tras aplicar un algoritmo Visual SLAM, correspondiendo cada registro del \textit{dataset} con una posición de la cámara.
+Uno de los \textit{dataset} será la verdad absoluta, y el segundo\textit{dataset} será la posición y orientación en 3D obtenidos tras aplicar un algoritmo Visual SLAM, correspondiendo cada registro del \textit{dataset} con una posición de la cámara.
 Una vez procesados los dos \textit{datasets} por la herramienta, obtendremos como salida, las transformaciones estimadas por la herramientas entre la verdad absoluta y las posiciones y orientaciones calculadas por el algoritmo de SLAM. Además, se obtendrá un conjunto de estadísticos que miden el error cometido en las estimaciones de SLAM y así poder medir la precisión de los algoritmos.
 
 
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\label{fig:Open File}\includegraphics[height=8.0cm,width=14.0cm]{img/cap5/Esquema_TFM_CajaNegra2.png}}
+\label{fig:Open File}\includegraphics[height=8.0cm,width=14.0cm]{img/cap5/Esquema_TFM_CajaNegra2.png}
 \hspace{0.5cm}
 %\subfigure[]{\label{fig:LG_hombot}\includegraphics[height=6.0cm]{img/cap2/LG_hombot.jpg}}
 \end{center}
@@ -32,9 +32,9 @@ Una vez procesados los dos \textit{datasets} por la herramienta, obtendremos com
 Una vez explicadas las entradas y salidas de la aplicación ahora explicaremos
 con más detalle la implementación de la herramienta SLAMTestbed. 
 
-El objetivo principal de la herramienta desarrollada es calcular el error existente entre una secuencia con las posiciones y orientaciones 3D verdaderas (dataset A) y la trayectoria calculada por el algoritmo de SLAM (dataSetB). Para que esto sea posible, necesitaremos antes eliminar algunas variables que no permiten comparar directamente las dos trayectorias, como son la escala, el offset temporal y la transformación en 3D entre ellas. Por ello, necesitaremos calcular un nuevo dataset (dataset estimado), que sea comparable con el datasetA. 
+El objetivo principal de la herramienta desarrollada es calcular el error existente entre una secuencia con las posiciones y orientaciones 3D verdaderas (\textit{dataset A}) y la trayectoria calculada por el algoritmo de SLAM (\textit{dataSet B}). Para que esto sea posible, necesitaremos antes eliminar algunas variables que no permiten comparar directamente las dos trayectorias, como son la escala, el offset temporal y la transformación en 3D entre ellas. Por ello, necesitaremos calcular un nuevo \textit{dataset} (estimado), que sea comparable con el \textit{dataset A}. 
 
-Las principales funciones o módulos utilizados para obtener el dataset estimado son:
+Las principales funciones o módulos utilizados para obtener el \textit{dataset} estimado son:
 
 \begin{description}
 \item [Cálculo de PCA]:
@@ -45,21 +45,21 @@ El análisis de componentes principales (o PCA), nos permitirá reducir los dos 
 Estima la diferencia de escala entre los dos \textit{datasets} a partir de los datos proporcionados en el cálculo de componentes principales.
 \item [Estimación de Offset temporal]: 
 
-Con este módulo podremos hallar la diferencia entre marcas de tiempos de los 2 datasets, ya que pueden haber comenzado en periodos de tiempo distintos.
+Con este módulo podremos hallar la diferencia entre marcas de tiempos de los 2 \textit{datasets}, ya que pueden haber comenzado en periodos de tiempo distintos.
 \item [Interpolación para igualar frecuencias de muestreo]: 
 
-Con la interpolación podremos igualar en frecuencias los dos datasets, en caso de que éstas sean distintas, que es lo habitual por que el algoritmo SLAM genera estimaciones a diferente ritmo del que vienen las muestras de la secuencia con verdad absoluta.
+Con la interpolación podremos igualar en frecuencias los dos \textit{datasets}, en caso de que éstas sean distintas, que es lo habitual por que el algoritmo SLAM genera estimaciones a diferente ritmo del que vienen las muestras de la secuencia con verdad absoluta.
 
 \item [Operaciones de Registro para estimar la Rotación y Traslación]: 
 
-Permitirá estimar las traslación y rotación existentes entre el datasetA y el datasetB y llevarlas así al mismo sistema de referencia espacial, donde ya son directamente comparables.
+Permitirá estimar las traslación y rotación existentes entre el \textit{dataset A} y el \textit{dataset B} y llevarlas así al mismo sistema de referencia espacial, donde ya son directamente comparables.
 \end{description}
 
 
 %\begin{figure}[H]
 \begin{figure}
 \begin{center}
-\subfigure[]{\label{fig:Open File}\includegraphics[height=18.0cm,width=12.0cm]{img/cap5/EsquemaTFM_CajaBlanca_Transformaciones4.png}}
+\label{fig:Open File}\includegraphics[height=18.0cm,width=12.0cm]{img/cap5/EsquemaTFM_CajaBlanca_Transformaciones4.png}
 \hspace{0.5cm}
 %\subfigure[]{\label{fig:LG_hombot}\includegraphics[height=6.0cm]{img/cap2/LG_hombot.jpg}}
 \end{center}
@@ -70,9 +70,9 @@ Permitirá estimar las traslación y rotación existentes entre el datasetA y el
 La explicación al flujo de datos seguido en la Figura 4.2 es el siguiente:
 
 
-Primero se calcula la descomposición en componentes principales (PCA) para cada uno de los \textit{datasets} obteniendo como resultado dataSetA' y dataSetB'. Posteriormente se estima el \textit{offset} o desplazamiento de tiempo que exista entre las 2 secuencias de datos o \textit{datasets}. Corrigiendo el offset en el datasetB, sumando el valor del \textit{offset} calculado a los valores de tiempo del datasetB así las dos secuencias tienen ya el mismo origen de tiempos. Una vez tengamos calculado el offset, unificaremos las frecuencias de los 2 datasets mediante interpolación. En este proceso de interpolación se generarán nuevas muestras para los datasets'.
-Cuando tengamos unificada la frecuencia para los dos datasets, obtendremos de nuevo PCA de ambos datasets y podremos obtener la escala.
-Posteriormente estimaremos la transformaciones de rotación y traslación para pasar del datasetA al datasetB. Aplicaremos dichas transformaciones sobre el datasetA, para obtener un nuevo dataset, el dataset Estimado que pintaremos en pantalla de color rojo.
+Primero se calcula la descomposición en componentes principales (PCA) para cada uno de los \textit{datasets} obteniendo como resultado \textit{dataSet A'} y \textit{dataSet B'}. Posteriormente se estima el \textit{offset} o desplazamiento de tiempo que exista entre las 2 secuencias de datos o \textit{datasets}. Corrigiendo el offset en el \textit{dataset B}, sumando el valor del \textit{offset} calculado a los valores de tiempo del \textit{dataset B} así las dos secuencias tienen ya el mismo origen de tiempos. Una vez tengamos calculado el offset, unificaremos las frecuencias de los 2 \textit{datasets} mediante interpolación. En este proceso de interpolación se generarán nuevas muestras para los \textit{datasets'}.
+Cuando tengamos unificada la frecuencia para los dos \textit{datasets}, obtendremos de nuevo PCA de ambos \textit{datasets} y podremos obtener la escala.
+Posteriormente estimaremos la transformaciones de rotación y traslación para pasar del \textit{dataset A} al \textit{dataset B}. Aplicaremos dichas transformaciones sobre el \textit{dataset A}, para obtener un nuevo \textit{dataset}, el \textit{dataset} Estimado que pintaremos en pantalla de color rojo.
 
 A continuación se explicarán con más detalle cada uno de estos módulos.
 
@@ -82,8 +82,8 @@ A continuación se explicarán con más detalle cada uno de estos módulos.
 
     Las componentes principales se ordenarán por su Varianza, de esta forma la primera componente principal será la que mayor varianza tenga e identificará un eje. Un segundo eje ortogonal al primero vendrá definido por la segunda componente principal e identificará la segunda mayor varianza. Finalmente obtendremos un tercer eje ortogonal a los dos primeros, definido por la tercera componente principal que identificará la tercera mayor varianza.
 
-    En nuestro caso, este análisis nos permitirá obtener el tamaño de cada dataset en cada una de sus componentes (x,y,z)
-	Este análisis es necesario puesto que los ejes de las dos secuencias de entrada no tienen porqué coincidir. Por ello, con los valores obtenidos con PCA podremos generar dos nuevos datasets cuyos ejes sean comparables, es decir que estén alineados. A partir de los nuevos datasets generados podremos calcular la diferencia de tiempos entre los dos datasets y posteriormente la escala entre ambos.
+    En nuestro caso, este análisis nos permitirá obtener el tamaño de cada \textit{dataset} en cada una de sus componentes (x,y,z)
+	Este análisis es necesario puesto que los ejes de las dos secuencias de entrada no tienen porqué coincidir. Por ello, con los valores obtenidos con PCA podremos generar dos nuevos \textit{datasets} cuyos ejes sean comparables, es decir que estén alineados. A partir de los nuevos \textit{datasets} generados podremos calcular la diferencia de tiempos entre los dos \textit{datasets} y posteriormente la escala entre ambos.
  
 	Se implementan dos métodos de cálculo de PCA, el primero es realizando una descomposición Eigen \textit{eigenDecomposition}, el segundo utilizando el método SVD (utilizando la librería Eigen), que describiremos a continuación en pseudocódigo.
 
@@ -108,7 +108,7 @@ A continuación se explicarán con más detalle cada uno de estos módulos.
 
 	\end{lstlisting}
 
-    Una vez que los ejes de ambos datasets sean comparables, podremos calcular la diferencia de escala entre los dos datasets, lo que permitirá igualar la escala entre los datasets obteniendo así el primer paso del registro espacial. El algoritmo utilizado está basado en la utilización de los valores singulares de cada dataset, como se muestra en el siguiente pseudocódigo:
+    Una vez que los ejes de ambos \textit{datasets} sean comparables, podremos calcular la diferencia de escala entre los dos \textit{datasets}, lo que permitirá igualar la escala entre los \textit{datasets} obteniendo así el primer paso del registro espacial. El algoritmo utilizado está basado en la utilización de los valores singulares de cada \textit{dataset}, como se muestra en el siguiente pseudocódigo:
 
         
 	\begin{lstlisting}[frame=single]
@@ -121,9 +121,9 @@ A continuación se explicarán con más detalle cada uno de estos módulos.
 
 \section{Estimador Offset Temporal}
 
-Este módulo es necesario puesto que los datasets pueden tener un desfase en su inicio, incluso aunque hayan sido obtenidos a partir de la misma secuencia, debido a la propia implementación de los algoritmos SLAM. El método principal utilizado para estimar el offset se realiza mediante el cálculo de la Correlación Cruzada. 
-Este método conlleva una gran carga para la CPU ya que incluye múltiples cálculos para interpolar y calcular la correlación cruzada entre los dos datasets. Este algoritmo es iterativo y utilizaremos un dataset como base de tiempo fijo y otro dataset B que se deslizará en el tiempo desde -T hasta +T en pequeños incrementos de tiempo, pasos o \textit{steps} en cada iteración, calculando para cada paso la correlación cruzada entre el dataset deslizante y el dataset original (que se mantiene fijo en el tiempo). 
-En cada iteración del algoritmo se calculará la correlación para un paso determinado, almacenando la memoria el paso cuya correlación sea mayor, lo que nos indicará el offset temporal entre las dos secuencias. Para ello calcularemos la interpolación para los puntos 3D orientados que estén dentro del rango temporal de los dos datasets. Una vez interpolados los puntos 3D comunes de las dos series temporales tendremos dos series nuevas, para las cuales calcularemos la correlación cruzada aplicando el algoritmo clásico para dos series temporales. Pero antes, y como cada serie temporal tiene 3 coordenadas (x,y,z para cada punto 3d), debemos transformar estas 3 coordenadas en un sólo valor para cada punto 3D de cada serie, para ello tendremos que calcular la distancia al origen de todo punto 3D, y por tanto la correlación cruzada se calculará sobre los 2 datasets convertidos a distancias al origen de coordenadas.
+Este módulo es necesario puesto que los \textit{datasets} pueden tener un desfase en su inicio, incluso aunque hayan sido obtenidos a partir de la misma secuencia, debido a la propia implementación de los algoritmos SLAM. El método principal utilizado para estimar el offset se realiza mediante el cálculo de la Correlación Cruzada. 
+Este método conlleva una gran carga para la CPU ya que incluye múltiples cálculos para interpolar y calcular la correlación cruzada entre los dos \textit{datasets}. Este algoritmo es iterativo y utilizaremos un dataset como base de tiempo fijo y otro dataset B que se deslizará en el tiempo desde -T hasta +T en pequeños incrementos de tiempo, pasos o \textit{steps} en cada iteración, calculando para cada paso la correlación cruzada entre el \textit{dataset} deslizante y el \textit{dataset} original (que se mantiene fijo en el tiempo). 
+En cada iteración del algoritmo se calculará la correlación para un paso determinado, almacenando la memoria el paso cuya correlación sea mayor, lo que nos indicará el offset temporal entre las dos secuencias. Para ello calcularemos la interpolación para los puntos 3D orientados que estén dentro del rango temporal de los dos \textit{datasets}. Una vez interpolados los puntos 3D comunes de las dos series temporales tendremos dos series nuevas, para las cuales calcularemos la correlación cruzada aplicando el algoritmo clásico para dos series temporales. Pero antes, y como cada serie temporal tiene 3 coordenadas (x,y,z para cada punto 3d), debemos transformar estas 3 coordenadas en un sólo valor para cada punto 3D de cada serie, para ello tendremos que calcular la distancia al origen de todo punto 3D, y por tanto la correlación cruzada se calculará sobre los dos \textit{datasets} convertidos a distancias al origen de coordenadas.
 Para un punto 3d (x,y,z), la distancia 3d respecto al origen se calculará:
 \begin{center}
 	\begin{math}
@@ -133,7 +133,7 @@ Para un punto 3d (x,y,z), la distancia 3d respecto al origen se calculará:
 
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap5/correlacionCruzada2.png}}
+\label{fig:opciones de View}\includegraphics[height=8.0cm,width=12.0cm]{img/cap5/correlacionCruzada2.png}
 \hspace{0.5cm}
 
 \end{center}
@@ -182,18 +182,18 @@ Para un punto 3d (x,y,z), la distancia 3d respecto al origen se calculará:
 \section{Interpolador temporal}
 
 	El módulo de interpolación se utiliza para sincronizar a igual frecuencia 2 secuencias, cuyas frecuencias de muestreo no sean iguales, algo que es común entre los algoritmos de SLAM.
-	En este proceso de interpolación se generarán nuevos registros en el dataset a partir de la interpolación de muestras entre dos marcas de tiempo.
+	En este proceso de interpolación se generarán nuevos registros en el \textit{dataset} a partir de la interpolación de muestras entre dos marcas de tiempo.
 	Este interpolador puede configurarse para que tenga distintos comportamientos:
     \begin{enumerate}
 	 
-	 \item{\textbf{Interpolación a la frecuencia menor}} de los dos datasets. Aunque se generarán nuevos registros sincronizados por interpolación, en general se perderán registros del dataset de mayor frecuencia.
+	 \item{\textbf{Interpolación a la frecuencia menor}} de los dos \textit{datasets}. Aunque se generarán nuevos registros sincronizados por interpolación, en general se perderán registros del dataset de mayor frecuencia.
 
-	 \item{\textbf{Interpolación a la frecuencia mayor}} de los dos datasets. En este caso se generarán nuevos registros para el dataset de menor frecuencia.
+	 \item{\textbf{Interpolación a la frecuencia mayor}} de los dos \textit{datasets}. En este caso se generarán nuevos registros para el dataset de menor frecuencia.
 
-	 \item{\textbf{Interpolación a frecuencia común}}, en este caso, los dos datasets se deberán sincronizar a la frecuencia deseada por el usuario.
+	 \item{\textbf{Interpolación a frecuencia común}}, en este caso, los dos \textit{datasets} se deberán sincronizar a la frecuencia deseada por el usuario.
 	 \end{enumerate}
 
-	 En los tres casos, la interpolación se realiza sobre las secuencias temporales de los 2 datasets, pero además se calcula la interpolación para las coordenadas X,Y,Z de cada punto 3D y valores (qx,qy,qz,qw) de cada cuaternio. La función \textit{slerp} de la librería Eigen nos permite calcular la interpolación entre cuaternios, viene de la abreviatura de la definición en inglés \textit{Spherical Linear intERPolation}, creada para animaciones de rotaciones 3D utilizando cuaternios.
+	 En los tres casos, la interpolación se realiza sobre las secuencias temporales de los 2 \textit{datasets}, pero además se calcula la interpolación para las coordenadas X,Y,Z de cada punto 3D y valores (qx,qy,qz,qw) de cada cuaternio. La función \textit{slerp} de la librería Eigen nos permite calcular la interpolación entre cuaternios, viene de la abreviatura de la definición en inglés \textit{Spherical Linear intERPolation}, creada para animaciones de rotaciones 3D utilizando cuaternios.
 
 
 	 La fórmula para la interpolación lineal utilizada sería:
@@ -219,7 +219,7 @@ Para un punto 3d (x,y,z), la distancia 3d respecto al origen se calculará:
 
 
 \section{Registro Espacial}
-Una vez modificados los dos datasets para que tengan la misma escala y la misma frecuencia de muestreo y el mismo origen temporal, el siguiente paso es obtener la rotación y la traslación que existe entre ellos. Esta matriz servirá para transformar el segundo dataset, y así poder calcular el error existente en la trayectoria obtenida por el algoritmo de SLAM.
+Una vez modificados los dos \textit{datasets} para que tengan la misma escala y la misma frecuencia de muestreo y el mismo origen temporal, el siguiente paso es obtener la rotación y la traslación que existe entre ellos. Esta matriz servirá para transformar el segundo \textit{dataset}, y así poder calcular el error existente en la trayectoria obtenida por el algoritmo de SLAM.
 Los pasos necesarios para realizar este registro espacial son los siguientes:
 
 \textbf{Hallar la matrices de rotación y traslación} .
@@ -248,19 +248,19 @@ Los pasos necesarios para realizar este registro espacial son los siguientes:
     	t= -R * centA + centB;  
     \end{lstlisting}
 
-\textbf{Transformar un dataset aplicando las matrices de Rotación y Traslación estimadas}
+\textbf{Transformar un \textit{dataset} aplicando las matrices de Rotación y Traslación estimadas}
 
-Este método tomará un dataset, lo multiplicará por la matriz de rotación y le sumará la matriz de traslación.
+Este método tomará un \textit{dataset}, lo multiplicará por la matriz de rotación y le sumará la matriz de traslación.
 
 \textbf{Transformar los cuaternines aplicando la matriz Rotación.}
 
-Con este método conseguimos transformar los cuarternios del dataSetA al dataSetB.		Para ello convertiremos la matriz de rotación en un cuaternio que llamaremos "q".		Por último multiplicaremos cada cuaternio p de la siguiente forma.
+Con este método conseguimos transformar los cuarternios del \textit{dataSet A} al \textit{dataSet B}. Para ello convertiremos la matriz de rotación en un cuaternio que llamaremos "q". Por último multiplicaremos cada cuaternio p de la siguiente forma.
 \begin{center}
 		\textit{q * p * q.inverso }
 \end{center}
 
 \textbf{Estimar las matrices de rotación y traslación mediante la técnica de RANSAC.}
-Estimaremos las matrices de Rotación y Traslación utilizando los datos de los 2 datasets, eliminando primero los puntos espúreos (outliers) mediante el algoritmo RANSAC \cite{Fischler:1981:RSC:358669.358692}.
+Estimaremos las matrices de Rotación y Traslación utilizando los datos de los dos \textit{datasets}, eliminando primero los puntos espúreos (outliers) mediante el algoritmo RANSAC \cite{Fischler:1981:RSC:358669.358692}.
 Se ha elegido RANSAC por que permite estimar la matríz R*T entre ambas secuencias con robustez, de modo que la estimación es fiable.
 
 
@@ -286,7 +286,7 @@ El algoritmo seguido ha sido el siguiente:
 
 Este bloque mide las diferencias entre dos secuencias pero cuando una de llas es la de posiciones verdaderas y la otra es de posiciones estimadas, entonces esas diferencias se interpretan correctamente como el error en las posiciones etimadas.
 
-Para medir el error cometido entre el dataset con posiciones orientadas verdaderas y el dataset Estimado utilizaremos el módulo de Cálculo de Estadísticas.
+Para medir el error cometido entre el \textit{dataset} con posiciones orientadas verdaderas y el \textit{dataset} Estimado utilizaremos el módulo de Cálculo de Estadísticas.
 Este módulo permite calcular distintos estadísticos, como el error medio, mediano, máximo y mínimo, así como el Error Cuadrático Medio (Root Mean Square Error).
 Cuanto menores sean estos valores, mejor será la estimación.
 
@@ -343,7 +343,7 @@ Con el ratón podremos girar en 3 dimensiones la nube de puntos, acercarnos  (Zo
 
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\label{fig:Transformaciones versus Estimaciones}\includegraphics[height=12.0cm,width=8.0cm]{img/cap5/showTransformationsEstimated.png}}
+\label{fig:Transformaciones versus Estimaciones}\includegraphics[height=12.0cm,width=8.0cm]{img/cap5/showTransformationsEstimated.png}
 \hspace{0.5cm}
 \end{center}
 \caption{Transformaciones realizadas frente Transformaciones estimadas }
@@ -352,7 +352,7 @@ Con el ratón podremos girar en 3 dimensiones la nube de puntos, acercarnos  (Zo
 
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_Offset_Gauss_CosmicNoise_abba.png}}
+\label{fig:opciones de View}\includegraphics[height=10.0cm,width=15.0cm]{img/cap6/Escala_Trasla_Rota_Offset_Gauss_CosmicNoise_abba.png}
 \hspace{0.5cm}
 
 \end{center}
@@ -360,9 +360,9 @@ Con el ratón podremos girar en 3 dimensiones la nube de puntos, acercarnos  (Zo
 \caption{Gráfico que muestra los resultados de la estimación de un cambio de escala y traslación .}
 \end{figure}
 
-En la pantalla gráfica podremos ver tres datasets. Los puntos 3D del primer dataset \textit{groundtrouth} se pintarán en color verde, los puntos del dataset a evaluar o dataset transformado serán de color azul, y por último en color rojo estarán los puntos 3D del dataset estimado.
-En el caso de que el error entre los dos datasets sea pequeño, los puntos 3D correspondientes al dataset estimado solaparán con los puntos correspondientes a la verdad absoluta, lo que significará que la trayectoria calculada por el algoritmo de SLAM es cercana a la realidad y en este caso el punto estimado (en color rojo) quedará invisible. Además el GUI también muestra los valores de transformación estimadas (Figura 4.4)
+En la pantalla gráfica podremos ver tres \textit{datasets}. Los puntos 3D del primer \textit{dataset} \textit{groundtrouth} se pintarán en color verde, los puntos del \textit{dataset} a evaluar o \textit{dataset} transformado serán de color azul, y por último en color rojo estarán los puntos 3D del \textit{dataset} estimado.
+En el caso de que el error entre los dos \textit{datasets} sea pequeño, los puntos 3D correspondientes al \textit{dataset} estimado solaparán con los puntos correspondientes a la verdad absoluta, lo que significará que la trayectoria calculada por el algoritmo de SLAM es cercana a la realidad y en este caso el punto estimado (en color rojo) quedará invisible. Además el GUI también muestra los valores de transformación estimadas (Figura 4.4)
 
 
-\clearpage
+%\clearpage
 

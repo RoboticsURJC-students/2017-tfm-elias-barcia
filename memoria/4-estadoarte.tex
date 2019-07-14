@@ -18,7 +18,7 @@ El algoritmo de  MonoSLAM (\textit{Monocular SLAM}) \cite{Davison2007monoslam} u
 %\begin{figure}[htbp]
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\includegraphics[height=6.0cm]{img/cap4/Initialization4PointsMonoSlam.png}}
+\includegraphics[height=6.0cm]{img/cap4/Initialization4PointsMonoSlam.png}
 \end{center}
 \caption{Inicialización de MonoSLAM con 4 puntos conocidos.}
 \end{figure}
@@ -35,7 +35,7 @@ MonoSLAM sólo es recomendable para mapas con pocos puntos. Algunas de las desve
 %\begin{figure}[htbp]
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\includegraphics[height=5.0cm]{img/cap4/monoslam-300x225.png}}
+\includegraphics[height=5.0cm]{img/cap4/monoslam-300x225.png}
 \end{center}
 \caption{Ejemplo de puntos característicos tomados con MonoSLAM.}
 \end{figure}
@@ -55,7 +55,7 @@ En la actualidad, este algoritmo sólo es adecuado para entornos reducidos, pudi
 %\begin{figure}[htbp]
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\includegraphics[height=6.0cm]{img/cap4/ptam_screenshot-300x243.jpg}}
+\includegraphics[height=6.0cm]{img/cap4/ptam_screenshot-300x243.jpg}
 \end{center}
 \caption{Nube de puntos característicos tomados con PTAM.}
 \end{figure}
@@ -134,7 +134,7 @@ De esta forma, podemos hallar la posición en entornos con pocas texturas y tamb
 
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\label{fig:LDSO}\includegraphics[height=6.0cm]{img/cap4/LDSO.png}}
+\label{fig:LDSO}\includegraphics[height=6.0cm]{img/cap4/LDSO.png}
 \end{center}
 \caption{diferencias entre puntos escogidos con DSO y LDSO.}
 \end{figure}
@@ -179,7 +179,7 @@ A continuación se presenta una tabla que muestra las características principal
 \end{center}
 
 
-\section{Herramientas y datasets para evaluar  algoritmos SLAM}
+\section{Herramientas y \textit{datasets} para evaluar  algoritmos SLAM}
 En este apartado trataremos varias herramientas que podemos utilizar para hacer comparaciones de rendimiento (\textit{benchmarking}) sobre los resultados de algoritmos SLAM y evaluar y comparar dichos algoritmos.
 
 \begin {enumerate}
@@ -215,12 +215,12 @@ Esta herramienta está desarrolla en python e incluye :
 métodos de alineamiento de trayectorias para diferentes modalidades de sensores y métricas de error tales como ATE y \textit{Relative Odometry Error}. \cite{Zhang18iros}
 
 El software ha sido diseñado para uso fácil. Dados dos ficheros de texto donde especificaremos la trayectoria estimada y la verdadera, la herramienta establece automáticamente el emparejamiento de tiempos, realiza alineamiento de trayectoria y calcula distintos errores métricos con una línea de comandos. También se puede utilizar para comparar diferentes algoritmos con múltiples \textit{datasets}. Para que la aplicación pudiese ser utilizada con diferentes formatos, también se proporcionan varios scripts para convertir otros formatos conocidos (e.g., EuRoC, rosbag) al formato utilizado por la herramienta.
-El formato utilizado para los ficheros de datos es el siguiente: \texttt{timestamp tx ty tz qx qy qz qw}, al igual que en la herramienta SLAMTestBed
+El formato utilizado para los ficheros de datos es el siguiente: \texttt{timestamp tx ty tz qx qy qz qw}, al igual que en la herramienta SLAMTestbed
 
 \item \textbf{SLAMBENCH}
 
-SLAMBench es una herramienta de la Universidad de Edimburgo, creada para evaluar sistemas SLAM sobre un conjunto extensible de datasets y métricas. \cite{Bodin2018}
-Actualmente soporta 8 tipos distintos de algoritmos (densos, semi-densos y escasos ) y 3 \textit{dataSets}. Es una herramienta que permite la reproducibilidad de los resultados para los sistemas SLAM actuales y posibilita la integración y evaluación de nuevos resultados SLAM.
+SLAMBench es una herramienta de la Universidad de Edimburgo, creada para evaluar sistemas SLAM sobre un conjunto extensible de \textit{datasets} y métricas. \cite{Bodin2018}
+Actualmente soporta 8 tipos distintos de algoritmos (densos, semi-densos y escasos ) y 3 \textit{datasets}. Es una herramienta que permite la reproducibilidad de los resultados para los sistemas SLAM actuales y posibilita la integración y evaluación de nuevos resultados SLAM.
 
 SLAMBench soporta varios algoritmos diferentes. Entre los algoritmos escasos o poco densos soportaría MonoSLAM, PTAM ,OKVIS y ORB-SLAM2. Entre los métodos densos se soportan KinectFusion, InfiniTAM, ElasticFusion, LSD-SLAM.
 \begin{figure}[H]
@@ -240,25 +240,25 @@ ATE y RPE son calculadas en tiempo de ejecución, con un alineamiento mínimo en
 
 Otras métricas que proporciona SLAMBench es el consumo de energía ,utilización de memoria, velocidad de proceso por fotograma.
 
-SLAMBench también permite elegir entre diferentes sistemas de interfaz de usuario. Métricas de evaluación pueden ser cambiadas y customizadas, así como el interfaz de usuario gráfico (GUI), mientras mantiene independencia de los datasets y algoritmos. Por ejemplo, el visualizador nativo está basado en la librería Pangolin, puede ser reemplazado por un visualizador ROS.
+SLAMBench también permite elegir entre diferentes sistemas de interfaz de usuario. Métricas de evaluación pueden ser cambiadas y customizadas, así como el interfaz de usuario gráfico (GUI), mientras mantiene independencia de los \textit{datasets} y algoritmos. Por ejemplo, el visualizador nativo está basado en la librería Pangolin, puede ser reemplazado por un visualizador ROS.
 
-SLAMBench está siendo una herramienta muy útil en robótica y Sistemas de Realidad Aumentada (AR). Aunque un gran número de algoritmos SLAM han sido presentados, no se ha investigado lo suficiente para tratar de unificar el interface de estos algoritmos, o realizar comparaciones de todas sus capacidades en conjunto. Esto presenta un problema ya que diferentes aplicaciones SLAM pueden tener diferentes requisitos funcionales y no funcionales. Por ejemplo, una solución para Realidad Aumentada desarrollada para móviles tendría que optimizar el consumo de energía, mientras que otra solución diseñada para vehículos de navegación autónoma estaría enfocada a funcionar con la mayor exactitud posible. SLAMBench2 es una herramienta de evaluación que compararía sistemas SLAM actuales y futuros, utilizando una lista extensible de datasets, mientras utiliza una lista comparable de métricas de rendimiento. SLAMBench2 es un software que está disponible de manera pública.\footnote{https://github.com/pamela-project/slambench2} 
+SLAMBench está siendo una herramienta muy útil en robótica y Sistemas de Realidad Aumentada (AR). Aunque un gran número de algoritmos SLAM han sido presentados, no se ha investigado lo suficiente para tratar de unificar el interface de estos algoritmos, o realizar comparaciones de todas sus capacidades en conjunto. Esto presenta un problema ya que diferentes aplicaciones SLAM pueden tener diferentes requisitos funcionales y no funcionales. Por ejemplo, una solución para Realidad Aumentada desarrollada para móviles tendría que optimizar el consumo de energía, mientras que otra solución diseñada para vehículos de navegación autónoma estaría enfocada a funcionar con la mayor exactitud posible. SLAMBench2 es una herramienta de evaluación que compararía sistemas SLAM actuales y futuros, utilizando una lista extensible de \textit{datasets}, mientras utiliza una lista comparable de métricas de rendimiento. SLAMBench2 es un software que está disponible de manera pública.\footnote{https://github.com/pamela-project/slambench2} 
 
 \item \textbf{The Kitti Vision Benchmark Suite }
 
 Este entorno de aplicaciones que utilizan mapas y secuencias grabadas desde la plataforma de coches autónomos Annieway \cite{AnnieWay08} para crear nuevos desafíos o retos en las tareas comparativas o \textit{benchmarking} de Visual SLAM \cite{Geiger2012CVPR}, y están investigando en varios campos como: vision estéreo, flujo óptico, odometría, detección de objetos en 3D y seguimiento de objetos 3D.
 La exactitud de los conjuntos de datos verdadero es medida gracias al scanner láser \textit{Velodyne} y a los sistemas de localización GPS con los que van equipados sus coches autónomos.
-Los datasets han sido grabados en la ciudad de Karslruhe.
+Los \textit{datasets} han sido grabados en la ciudad de Karslruhe.
 
 Además de proporcionar todos los datos en formato \textit{raw}, para cada uno de sus \textit{benchmarks}, también proporcionan una métrica de evaluación y una web de evaluación. En experimentos preliminares se ha comprobado que métodos que obtienen una puntuación alta en algunos \textit{benchmarks}, cuando son aplicados al mundo real obtienen unos resultados por debajo de la media. El objetivo es reducir esta tendencia y completar los benchmarks existentes proporcionando benchmarks en el mundo real con dificultades novedosas para la comunidad. 
 
-Un ejemplo podría ser el benchmark de odometría, que consiste en 22 secuencias estereo, grabadas en formato \textit{png}. En el dataset se proporcionan 11 secuencias con trayectorias verdaderas para entrenar y 11 secuencias sin anotaciones verdaderas para evaluar. Para este benchmark se pueden proporcionar resultados usando una cámara o un sistema de cámaras estereo.
+Un ejemplo podría ser el benchmark de odometría, que consiste en 22 secuencias estereo, grabadas en formato \textit{png}. En el \textit{dataset} se proporcionan 11 secuencias con trayectorias verdaderas para entrenar y 11 secuencias sin anotaciones verdaderas para evaluar. Para este benchmark se pueden proporcionar resultados usando una cámara o un sistema de cámaras estereo.
 La única restricción que se impone es que el método debe ser totalmente automático (no se permite el etiquetado manual de cierre de bucle) y que el mismo conjunto de parámetros es usado para todas las secuencias.
 
 Para todas las secuencias de test, su evaluador estima los errores de traslación y rotación. En una tabla de evaluación se establece un ranking de métodos de acuerdo con la media de esos valores, donde los errores son medidos en porcentaje para la traslación y en grados por metro para la rotación.
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\includegraphics[height=6.0cm]{img/cap4/kittiCar.png}}
+\includegraphics[height=6.0cm]{img/cap4/kittiCar.png}
 \end{center}
 \caption{Coche autónomo Annieway utilizado con Kitti.}
 \end{figure}

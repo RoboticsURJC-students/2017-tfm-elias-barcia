@@ -2,6 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: memoria.aux
 A level-1 auxiliary file: portada.aux
+A level-1 auxiliary file: agradecimientos.aux
 A level-1 auxiliary file: resumen.aux
 A level-1 auxiliary file: 1-introduccion.aux
 A level-1 auxiliary file: 2-objetivos.aux
@@ -14,7 +15,7 @@ Database file #1: bibliografia.bib
 Warning--empty booktitle in AnnieWay08
 You've used 22 entries,
             2439 wiz_defined-function locations,
-            704 strings with 8836 characters,
+            705 strings with 8855 characters,
 and the built_in function-call counts, 9086 in all, are:
 = -- 923
 > -- 417
