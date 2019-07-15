@@ -31,26 +31,28 @@
 \contentsline {chapter}{\numberline {5}Validaci\IeC {\'o}n experimental}{47}{chapter.5}
 \contentsline {section}{\numberline {5.1}M\IeC {\'o}dulo Transformador}{48}{section.5.1}
 \contentsline {section}{\numberline {5.2}Pruebas de transformaciones individuales}{49}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Pruebas de escala}{49}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Pruebas con traslaci\IeC {\'o}n}{50}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Prueba de rotaci\IeC {\'o}n}{51}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Pruebas de transformaciones en parejas}{51}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Pruebas con traslaci\IeC {\'o}n y escala}{52}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Pruebas con escala y rotaci\IeC {\'o}n}{53}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Pruebas con escala y offset temporal}{55}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}Pruebas con escala y ruido gaussiano}{55}{subsection.5.3.4}
-\contentsline {subsection}{\numberline {5.3.5}Pruebas con escala y ruidos gaussiano y c\IeC {\'o}smico}{56}{subsection.5.3.5}
-\contentsline {subsection}{\numberline {5.3.6}Pruebas con traslaci\IeC {\'o}n y orientaci\IeC {\'o}n simult\IeC {\'a}neas}{57}{subsection.5.3.6}
-\contentsline {subsection}{\numberline {5.3.7}Pruebas con traslaci\IeC {\'o}n y offset temporal}{58}{subsection.5.3.7}
-\contentsline {subsection}{\numberline {5.3.8}Pruebas con traslaci\IeC {\'o}n y ruidos gaussiano y c\IeC {\'o}smico}{59}{subsection.5.3.8}
-\contentsline {subsection}{\numberline {5.3.9}Pruebas con rotaci\IeC {\'o}n y ruido gaussiano}{60}{subsection.5.3.9}
-\contentsline {subsection}{\numberline {5.3.10}Pruebas con rotaci\IeC {\'o}n y ruidos gaussiano y c\IeC {\'o}smico}{61}{subsection.5.3.10}
-\contentsline {section}{\numberline {5.4}Validaci\IeC {\'o}n experimental con varias transformaciones simult\IeC {\'a}neas}{63}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Pruebas con cambio de escala, rotaci\IeC {\'o}n y traslaci\IeC {\'o}n}{64}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Pruebas con rotaci\IeC {\'o}n, traslaci\IeC {\'o}n, escala y offset temporal simult\IeC {\'a}neos.}{65}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Pruebas completas con traslaci\IeC {\'o}n, rotaci\IeC {\'o}n, escala, offset temporal y ruido gaussiano}{67}{subsection.5.4.3}
-\contentsline {subsection}{\numberline {5.4.4}Pruebas de transformaciones combinadas usando otra trayectoria.}{71}{subsection.5.4.4}
-\contentsline {chapter}{\numberline {6}Conclusiones}{79}{chapter.6}
-\contentsline {section}{\numberline {6.1}Conclusiones}{79}{section.6.1}
-\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas Futuras}{80}{section.6.2}
-\contentsline {chapter}{Bibliograf\'{\i }a}{82}{chapter*.4}
+\contentsline {subsection}{\numberline {5.2.1}Pruebas de escala}{50}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Pruebas con traslaci\IeC {\'o}n}{51}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Prueba de rotaci\IeC {\'o}n}{52}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Pruebas de transformaciones en parejas}{53}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Pruebas con traslaci\IeC {\'o}n y escala}{54}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Pruebas con escala y rotaci\IeC {\'o}n}{55}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Pruebas con escala y offset temporal}{56}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}Pruebas con escala y ruido gaussiano}{57}{subsection.5.3.4}
+\contentsline {subsection}{\numberline {5.3.5}Pruebas con escala y ruidos gaussiano y c\IeC {\'o}smico}{58}{subsection.5.3.5}
+\contentsline {subsection}{\numberline {5.3.6}Pruebas con traslaci\IeC {\'o}n y orientaci\IeC {\'o}n simult\IeC {\'a}neas}{59}{subsection.5.3.6}
+\contentsline {subsection}{\numberline {5.3.7}Pruebas con traslaci\IeC {\'o}n y offset temporal}{60}{subsection.5.3.7}
+\contentsline {subsection}{\numberline {5.3.8}Pruebas con traslaci\IeC {\'o}n y ruidos gaussiano y c\IeC {\'o}smico}{62}{subsection.5.3.8}
+\contentsline {subsection}{\numberline {5.3.9}Pruebas con rotaci\IeC {\'o}n y ruido gaussiano}{64}{subsection.5.3.9}
+\contentsline {subsection}{\numberline {5.3.10}Pruebas con rotaci\IeC {\'o}n y ruidos gaussiano y c\IeC {\'o}smico}{65}{subsection.5.3.10}
+\contentsline {section}{\numberline {5.4}Validaci\IeC {\'o}n experimental aplicando m\IeC {\'u}ltiples transformaciones simult\IeC {\'a}neas.}{66}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Pruebas con cambio de escala, rotaci\IeC {\'o}n y traslaci\IeC {\'o}n}{67}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Pruebas con rotaci\IeC {\'o}n, traslaci\IeC {\'o}n, escala y offset temporal simult\IeC {\'a}neos.}{68}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Pruebas completas con traslaci\IeC {\'o}n, rotaci\IeC {\'o}n, escala, offset temporal y ruido gaussiano}{69}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.4}Pruebas completas con traslaci\IeC {\'o}n, rotaci\IeC {\'o}n, escala, offset temporal, ruido gaussiano y c\IeC {\'o}smico}{71}{subsection.5.4.4}
+\contentsline {subsection}{\numberline {5.4.5}Pruebas completas con traslaci\IeC {\'o}n, rotaci\IeC {\'o}n, escala, offset temporal, ruido gaussiano, ruido c\IeC {\'o}smico y RANSAC}{72}{subsection.5.4.5}
+\contentsline {subsection}{\numberline {5.4.6}Pruebas de transformaciones combinadas usando otra trayectoria.}{74}{subsection.5.4.6}
+\contentsline {chapter}{\numberline {6}Conclusiones}{83}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusiones}{83}{section.6.1}
+\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas Futuras}{84}{section.6.2}
+\contentsline {chapter}{Bibliograf\'{\i }a}{86}{chapter*.5}

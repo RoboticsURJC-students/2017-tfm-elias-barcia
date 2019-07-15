@@ -1,51 +1,72 @@
 \select@language {spanish}
-\contentsline {figure}{\numberline {1}{\ignorespaces El primer smartphone compatible con Tango de Lenovo(a). El primer Smartphone compatible con Tango y DayDream de ASUS (b).Esquema de prototipo de smartphone Tango (c).Generaci\IeC {\'o}n de mapa 1 (d). Generaci\IeC {\'o}n de mapa 2 (e)}}{4}{figure.0.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{4}{figure.0.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{4}{figure.0.1}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{4}{figure.0.1}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{4}{figure.0.1}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {}}}{4}{figure.0.1}
-\contentsline {figure}{\numberline {2}{\ignorespaces La pantalla de un smartphone utilizando Magic Plan. }}{5}{figure.0.2}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{5}{figure.0.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces Pix4D c\IeC {\'a}lculo de volumen(a). Flujo de datos de Pix4D(b). Trayectorias que pueden seguir los drones con Pix4DCapture(c). C\IeC {\'a}mara multiesprectral Parrot Sequoia (d)}}{7}{figure.0.3}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{7}{figure.0.3}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{7}{figure.0.3}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{7}{figure.0.3}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{7}{figure.0.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces Recreaci\IeC {\'o}n del Coliseo de Roma. }}{8}{figure.0.4}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{8}{figure.0.4}
-\contentsline {figure}{\numberline {5}{\ignorespaces El sensor de profundidad Structure para Ipad. }}{9}{figure.0.5}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{9}{figure.0.5}
-\contentsline {figure}{\numberline {6}{\ignorespaces El Robot Gita siguiendo a su due\IeC {\~n}o (a) El cintur\IeC {\'o}n con c\IeC {\'a}maras est\IeC {\'e}reo (b) La capacidad de carga del robot Gita (c)}}{11}{figure.0.6}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{11}{figure.0.6}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{11}{figure.0.6}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{11}{figure.0.6}
-\contentsline {figure}{\numberline {7}{\ignorespaces Robot Dyson 360 Eye (a) Robot Roomba 966 (b) Robot Hombot de LG (c).}}{13}{figure.0.7}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{13}{figure.0.7}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{13}{figure.0.7}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{13}{figure.0.7}
-\contentsline {figure}{\numberline {8}{\ignorespaces Dron equipado con dispositivo compatible con Tango}}{13}{figure.0.8}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{13}{figure.0.8}
-\contentsline {figure}{\numberline {9}{\ignorespaces Diferencias entre Rolling Shutter y Global Shutter (a)}}{15}{figure.0.9}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{15}{figure.0.9}
-\contentsline {figure}{\numberline {10}{\ignorespaces Mapa de clasificaci\IeC {\'o}n de los principales algoritmos de Visual SLAM (a). Diferencia entre mapas generados por distintos algoritmo de Visual SLAM (b)}}{19}{figure.0.10}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{19}{figure.0.10}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{19}{figure.0.10}
-\contentsline {figure}{\numberline {11}{\ignorespaces Inicializaci\IeC {\'o}n de MonoSLAM con 4 puntos conocidos.}}{20}{figure.0.11}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{20}{figure.0.11}
-\contentsline {figure}{\numberline {12}{\ignorespaces Ejemplo de puntos caracter\IeC {\'\i }sticos tomados con MonoSLAM.}}{21}{figure.0.12}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{21}{figure.0.12}
-\contentsline {figure}{\numberline {13}{\ignorespaces Nube de puntos caracter\IeC {\'\i }sticos tomados con PTAM.}}{23}{figure.0.13}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{23}{figure.0.13}
-\contentsline {figure}{\numberline {14}{\ignorespaces Ejemplo de mapa generado con DTAM. Todos los puntos forman parte del mapa.}}{23}{figure.0.14}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{23}{figure.0.14}
-\contentsline {figure}{\numberline {15}{\ignorespaces Mapa generado con un dron utilizando la t\IeC {\'e}cnica SVO.}}{24}{figure.0.15}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{24}{figure.0.15}
-\contentsline {figure}{\numberline {16}{\ignorespaces Mapa generado con LSD-SLAM y c\IeC {\'a}mara est\IeC {\'e}reo}}{25}{figure.0.16}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{25}{figure.0.16}
-\contentsline {figure}{\numberline {17}{\ignorespaces Localizaci\IeC {\'o}n de puntos caracter\IeC {\'\i }sticos en 2 im\IeC {\'a}genes con ORB }}{27}{figure.0.17}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{27}{figure.0.17}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{27}{figure.0.17}
-\contentsline {figure}{\numberline {18}{\ignorespaces Mapa generado con DSO (a) Ligero error en la posici\IeC {\'o}n al volver al punto de partida (b).}}{30}{figure.0.18}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{30}{figure.0.18}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{30}{figure.0.18}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Robot Shakey. En los albores de la Visi\IeC {\'o}n Artificial}}{3}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Ejemplo de realidad aumentada, el sill\IeC {\'o}n s\IeC {\'o}lo existe en la pantalla del smartphone}}{5}{figure.1.2}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces El primer smartphone compatible con Tango de Lenovo(a). El primer Smartphone compatible con Tango y DayDream de ASUS (b).Esquema de prototipo de smartphone Tango (c).}}{7}{figure.1.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{7}{figure.1.3}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{7}{figure.1.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{7}{figure.1.3}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Generaci\IeC {\'o}n de mapa 1 (d). Generaci\IeC {\'o}n de mapa 2 (e)}}{7}{figure.1.4}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{7}{figure.1.4}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{7}{figure.1.4}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Pix4D c\IeC {\'a}lculo de volumen(a). C\IeC {\'a}mara multiesprectral Parrot Sequoia (b)}}{9}{figure.1.5}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Recreaci\IeC {\'o}n del Coliseo de Roma generado con Photo Tourism. }}{10}{figure.1.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{10}{figure.1.6}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{10}{figure.1.6}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces El sensor de profundidad Structure para Ipad. }}{10}{figure.1.7}
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Robot Dyson 360 Eye (a) Robot Roomba 966 (b) }}{11}{figure.1.8}
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Dron equipado con dispositivo compatible con Tango}}{12}{figure.1.9}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Inicializaci\IeC {\'o}n de Mono SLAM con 4 puntos conocidos.}}{17}{figure.2.1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Inicializaci\IeC {\'o}n de MonoSLAM con 4 puntos conocidos.}}{20}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ejemplo de puntos caracter\IeC {\'\i }sticos tomados con MonoSLAM.}}{21}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Nube de puntos caracter\IeC {\'\i }sticos tomados con PTAM.}}{22}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Localizaci\IeC {\'o}n de puntos caracter\IeC {\'\i }sticos en 2 im\IeC {\'a}genes con ORB }}{23}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Mapa generado con DSO (a) Ligero error en la posici\IeC {\'o}n al volver al punto de partida (b).}}{25}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces diferencias entre puntos escogidos con DSO y LDSO.}}{26}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces captura de la herramienta SLAMBENCH2.}}{30}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Coche aut\IeC {\'o}nomo Annieway utilizado con Kitti.}}{32}{figure.3.8}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces El dise\IeC {\~n}o de Caja Negra de la herramienta SLAMTestbed. }}{34}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagrama de bloques de la herramienta SLAMTestbed }}{36}{figure.4.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{36}{figure.4.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{36}{figure.4.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{36}{figure.4.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{36}{figure.4.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{36}{figure.4.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{36}{figure.4.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{36}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Gr\IeC {\'a}fico que muestra el desfase del offset entre dos series temporales y el resultado de la correlaci\IeC {\'o}n cruzada.}}{39}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Transformaciones realizadas frente Transformaciones estimadas }}{45}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Gr\IeC {\'a}fico que muestra los resultados de la estimaci\IeC {\'o}n de un cambio de escala y traslaci\IeC {\'o}n .}}{46}{figure.4.5}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Resultados de la estimaci\IeC {\'o}n tras una transformaci\IeC {\'o}n de un cambio de escala.}}{50}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces resultados de la estimaci\IeC {\'o}n de un cambio de traslaci\IeC {\'o}n.}}{51}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces resultados de la estimaci\IeC {\'o}n de un cambio de rotaci\IeC {\'o}n.}}{52}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de escala y traslaci\IeC {\'o}n .}}{54}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de escala y rotaci\IeC {\'o}n.}}{55}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de escala y offset.}}{56}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces resultados de la estimaci\IeC {\'o}n de un cambio de escala y ruido Gaussiano .}}{57}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces resultados de la estimaci\IeC {\'o}n de un cambio de escala con ruido gaussiano y c\IeC {\'o}smico}}{58}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces resultados de la estimaci\IeC {\'o}n de un cambio de traslaci\IeC {\'o}n y rotaci\IeC {\'o}n .}}{59}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces resultados de la estimaci\IeC {\'o}n de un cambio de traslaci\IeC {\'o}n y offset .}}{60}{figure.5.10}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces resultados de la estimaci\IeC {\'o}n de un cambio de traslaci\IeC {\'o}n y ruido gaussiano.}}{61}{figure.5.11}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Resultados de la estimacion de un cambio de traslacion, ruido c\IeC {\'o}smico y gaussiano}}{62}{figure.5.12}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de rotaci\IeC {\'o}n y offset.}}{63}{figure.5.13}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de rotaci\IeC {\'o}n y ruido gaussiano.}}{64}{figure.5.14}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de rotaci\IeC {\'o}n y ruido c\IeC {\'o}smico y gaussiano.}}{65}{figure.5.15}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de escala y traslaci\IeC {\'o}n .}}{67}{figure.5.16}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces resultados de la estimaci\IeC {\'o}n de un cambio de escala, traslaci\IeC {\'o}n,rotaci\IeC {\'o}n y offset .}}{68}{figure.5.17}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de escala y traslaci\IeC {\'o}n, rotaci\IeC {\'o}n, offset y ruido gaussiano .}}{69}{figure.5.18}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Resultados de la estimaci\IeC {\'o}n de un cambio de escala y traslaci\IeC {\'o}n, rotaci\IeC {\'o}n, offset temporal, ruidos gaussiano y c\IeC {\'o}smico.}}{71}{figure.5.19}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Resultados de la estimaci\IeC {\'o}n utilizando RANSAC.}}{72}{figure.5.20}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Segunda trayectoria ampliada.}}{74}{figure.5.21}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Configuraci\IeC {\'o}n de transformaciones para la nueva secuencia.}}{75}{figure.5.22}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Resultados de las estimaci\IeC {\'o}nes A to B, sin ruido y con RANSAC.}}{76}{figure.5.23}
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Resultados de las estimaciones B to A, sin ruido y con RANSAC.}}{77}{figure.5.24}
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Resultados de la estimaci\IeC {\'o}n B to A con ruido Gaussiano y RANSAC.}}{78}{figure.5.25}
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Resultados de la estimaci\IeC {\'o}n A to B con ruido Gaussiano y RANSAC.}}{79}{figure.5.26}
+\contentsline {figure}{\numberline {5.27}{\ignorespaces Resultados de la estimaci\IeC {\'o}n A to B con ruido c\IeC {\'o}smico y RANSAC.}}{80}{figure.5.27}
+\contentsline {figure}{\numberline {5.28}{\ignorespaces Resultados de la estimaciones B to A con ruido c\IeC {\'o}smico y RANSAC.}}{81}{figure.5.28}
+\addvspace {10\p@ }
