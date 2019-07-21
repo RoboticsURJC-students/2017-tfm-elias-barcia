@@ -5,7 +5,7 @@
 
 Se ha diseñado y programado una aplicación, llamada SLAMTestbed, que estima las relaciones entre dos secuencias de puntos 3D orientados, calculando tanto sus relaciones espaciales ( qué traslación, rotación y escala hay entre ellas) como sus relaciones temporales (qué desfase temporal existe ellas).
 
-Esto lo consigue incluso con dos secuencias de puntos 3D que no están expresadas en el mismo sistema de referencia espacial, ni con la misma escala, ni con la misma frecuencia de muestras, ni con el mismo origen de tiempos. Para ello, incluye varios bloques específicos de estimación encadenando diferentes estimadores, análisis matemáticos y módulos de registro.
+Esto lo consigue incluso con dos secuencias de puntos 3D que no están expresadas en el mismo sistema de referencia espacial, ni con la misma escala, ni con la misma frecuencia de muestras, ni con el mismo origen de tiempos. Para ello incluye varios bloques específicos de estimación encadenando diferentes estimadores, análisis matemáticos y módulos de registro.
 
 Esta aplicación permite medir objetiva y cuantitativamente el error en las estimaciones de un algoritmo de Visual SLAM cuando se introducen sus estimaciones y la secuencia de posiciones verdaderas en la herramienta SLAMTestbed. En ese caso las diferencias entre ambas secuencias y los estadísticos calculados reflejan la calidad y la exactitud de las estimaciones del algoritmo.
 Además de caracterizar sus calidad objetivamente permite por tanto compararlo con otros algoritmos de Visual SLAM o diferentes variantes del mismo algoritmo.
@@ -13,25 +13,26 @@ Además de caracterizar sus calidad objetivamente permite por tanto compararlo c
 
 \section{Conclusiones}
 
-El objetivo principal de este proyecto es ofrecer una herramienta software que permita medir cuantitativamente el rendimiento de los algoritmos Visual SLAM y la calidad de sus estimaciones.
+El objetivo principal de este proyecto es diseñar y desarrollar una herramienta software que permita medir cuantitativamente el rendimiento de los algoritmos Visual SLAM y la calidad de sus estimaciones.
 Este objetivo se ha logrado con el diseño e implementación de un Registrador Temporal (subobjetivo 1) y otro Registrador Espacial (subobjetivo 2). 
-Para crear el Registrador Temporal ha sido necesario desarrollar un módulo que calcule el desplazamiento de tiempo entre dos secuencias (capítulo 4.3) y tambien un módulo interpolador (capítulo 4.4) capaz de sincronizar en frecuencia los dos \textit{datasets} de entrada. Para validar el correcto funcionamiento de los Registradores Temporal y Espacial, se ha creado un módulo Transformador (subobjetivo 3) tal y como se ha comentado en el capítulo 5.1.
-Para validar experimentalmente estos dos módulos de registro se han hecho múltiples pruebas de distinta complejidad como se describe en el capítulo 5.2, 5.3 y 5.4.
+Para crear el Registrador Temporal ha sido necesario desarrollar un módulo que calcule el desplazamiento de tiempo entre dos secuencias (sección 4.3) y tambien un módulo interpolador (sección 4.4) capaz de sincronizar en frecuencia los dos \textit{datasets} de entrada. Para validar el correcto funcionamiento (subobjetivo 3) de los Registradores Temporal y Espacial, se ha creado un Módulo Transformador tal y como se ha comentado en el sección 5.1.
+Para validar experimentalmente estos dos módulos de registro se han hecho múltiples pruebas de distinta complejidad como se describe en las secciones 5.2, 5.3 y 5.4.
 
-La herramienta SLAMTestbed incorpora además un interfaz gráfico que permite al usuario visualizar en 3D las secuencias de datos así como lanzar operaciones sobre los datasets de una forma tan sencilla como hacer click con el ratón y mostrar los resultados por pantalla (capítulo 4.7). Se debe tener en cuenta que no todas las herramientas de algoritmos SLAM que existen actualmente incorporan este interfaz gráfico, como por ejemplo TUM (capítulo 3.2), que a día de hoy sólo permite lanzar comandos desde un terminal. Esto es una ventaja para SLAMTestbed, ya que, como se ha demostrado en las pruebas, este interfaz es útil para verificar con un simple vistazo si la estimación es correcta o por el contraio se aleja de la verdad absoluta.
+La herramienta SLAMTestbed incorpora además un interfaz gráfico que permite al usuario visualizar en 3D las secuencias de datos así como lanzar operaciones sobre los datasets de una forma tan sencilla como hacer click con el ratón y mostrar los resultados por pantalla (sección 4.7). Se debe tener en cuenta que no todas las herramientas de algoritmos SLAM que existen actualmente incorporan este interfaz gráfico, como por ejemplo TUM (sección 3.2), que a día de hoy sólo permite lanzar comandos desde un terminal. Esto es una ventaja de SLAMTestbed, ya que, como se ha demostrado en las pruebas, este interfaz es útil para verificar con un simple vistazo si la estimación es correcta o por el contraio se aleja de la verdad absoluta.
 
-En cuanto a las pruebas de validación de la herramienta, hemos comprobado que estima con gran exactitud las transformaciones entre datasets. Pero se ha demostrado que la precisión de las estimaciones se degrada de manera considerable ante la presencia de ruido cósmico, ya que genera datos espúreos en los datasets. Para suavizar la presencia de espúreos se ha verificado que la utilización de algoritmos RANSAC mejora los resultados de las estimaciones.
+En cuanto a las pruebas de validación de la herramienta, hemos comprobado que estima con gran exactitud las transformaciones entre datasets. Se ha demostrado también que la precisión de las estimaciones se degrada de manera considerable ante la presencia de ruido cósmico, ya que genera datos espúreos en los datasets. Para suavizar la presencia de espúreos se ha verificado que la utilización de algoritmos RANSAC mejora los resultados de las estimaciones.
 
 
 \section{Líneas Futuras}
 
-En este subapartado describiremos en que líneas se debería trabajar o profundizar más en el futuro en la herramienta SLAMTestbed:
+En este apartado describiremos en qué líneas se podría trabajar o profundizar más en el futuro en la herramienta SLAMTestbed:
 
 \begin{enumerate}
 
 \item{Uso de SLAMTestbed para comparar diferentes algoritmos del estado del arte de Visual SLAM utilizando datasets internacionales de referencia que incluyan verdad absoluta.}
 
-\item{Utilización de SLAMTestbed en el TFM de Javier Martinez para medir si la introducción de sensor inercial mejora o no la calidad de las estimaciones de posición en el algoritmo SD-slam.}
+
+\item{Utilización de SLAMTestbed para comparar la calidad del algoritmo SDSLAM y de su variante IMU-SDSLAM que incorpora datos de unidades inerciales para tratar de mejorar las estimaciones 3D. Con SLAMTestbed se podrá medir objetivamente si mejora o no el resultado del algoritmo tras utilizar la información proporcionada por los sensores inerciales.}
 
 \item{Incorporar más estadísticas y medidas de error que ayuden a evaluar la precisión y robustez del algoritmo, como por ejemplo el porcentaje de tiempo en que la diferencia entre trayectorias es menor que un umbral.}
 
@@ -39,10 +40,8 @@ En este subapartado describiremos en que líneas se debería trabajar o profundi
 
 \item{Nuevas opciones y mejoras en el interfaz de usuario para modificar parámetros como la distribución del ruido gaussiano, valores límite para el ruido cósmico, o utilización de varios hilos de proceso para que el interfaz no se quede bloqueado mientras realiza cálculos.}
 
-\item{Añadir nuevos algoritmos en el módulo de Registro, como Horn, Horn + RANSAC y posibilidad de que la herramienta seleccione automáticamente el algoritmo de registro que 
-mejores resultados obtenga.}
+\item{Añadir nuevos algoritmos en el Módulo de Registro, como Horn, Horn + RANSAC y posibilidad de que la herramienta seleccione automáticamente el algoritmo de registro que mejores resultados obtenga.}
 
-\item{Portabilidad de la herramienta a otros lenguajes de programación (python,Java) o sistemas operativos (Android).}
 
 \end{enumerate}
 
