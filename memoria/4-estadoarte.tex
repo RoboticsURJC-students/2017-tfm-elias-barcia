@@ -6,7 +6,7 @@ En este capítulo explicaremos varios de los algoritmos SLAM más significativos
 También se describirán brevemente las distintas herramientas que existen en la actualidad para comparar las estimaciones de los algoritmos SLAM, comenzaremos por TUM, seguido de \textit{rgb trayectory evaluation}, describiremos la herramienta SLAMBENCH y por último daremos algunos detalles sobre \textit{The Kitti Vision Benchmark Suite}.
 
 \section{Algoritmos de Visual SLAM}
-En la actualidad existen múltiples algoritmos de Visual SLAM, en este apartado describiremos 4 de los algoritmos mas importantes en Visual SLAM, que destacan sobre los demás por su influencia en el estado del arte. Los dos primeros, MonoSLAM Y PTAM, fueron los primeros algoritmos que permitieron utilizar este tipo de técnicas en tiempo real, mientras que los dos últimos, ORB-SLAM y LDSO son los más utilizados en la actualidad por su precisión, eficiencia y robustez.
+En la actualidad existen múltiples algoritmos de Visual SLAM, en este apartado describiremos 4 de los algoritmos mas importantes en Visual SLAM, que destacan sobre los demás por su influencia en el estado del arte. Los dos primeros, MonoSLAM y PTAM, fueron los primeros algoritmos que permitieron utilizar este tipo de técnicas en tiempo real, mientras que los dos últimos, ORB-SLAM y LDSO son los más utilizados en la actualidad por su precisión, eficiencia y robustez.
 
 %En este apartado describiremos 4 de los algoritmos más importantes en Visual SLAM.
 %MonoSLAM, PTAM por ser los algoritmos pioneros y ORB_SLAM y LDSO por su buena calidad y por ser de los más utilizados en la actualidad.
@@ -47,7 +47,7 @@ PTAM son las siglas de \textit{Parallel Tracking and \textit{Mapping}}. Este alg
 
 Otro de los elementos clave de este algoritmo son los \textit{Keyframes} o fotogramas clave. Se genera un nuevo \textit{Keyframe} a medida que la cámara se va desplazando, utilizándose tanto para la localización como para ir generando el mapa de puntos.
 
-Este algoritmo es recomendable para mapas con elevado número de puntos, siendo además capaz de recuperarse fácilmente de un secuestro. Al igual que MonoSLAM, extrae los puntos de interés mediante extracción de características.Para extraer esos puntos se realizará una subdivisión de la imagen a distintas resoluciones, normalmente 4 niveles,(lo que se conoce como pirámide de la imagen) y se pasará un filtro FAST sobre esta pirámide para detectar los puntos más característicos de la imagen.
+Este algoritmo es recomendable para mapas con elevado número de puntos, siendo además capaz de recuperarse fácilmente de un secuestro. Al igual que MonoSLAM, extrae los puntos de interés mediante extracción de características. Para extraer esos puntos se realizará una subdivisión de la imagen a distintas resoluciones, normalmente 4 niveles,(lo que se conoce como pirámide de la imagen) y se pasará un filtro FAST sobre esta pirámide para detectar los puntos más característicos de la imagen.
 Cada \textit{Keyframe} que se genera, contiene  la imagen captada junto su pirámide y sus puntos de interés detectados. Cuando añadimos un \textit{Keyframe}, se intenta localizar en este \textit{Keyframe} los puntos que ya se encuentran en el mapa, en caso de no localizarlos se añaden nuevos puntos al mapa. Mientras no se añadan \textit{Keyframes}, se intentará mejorar el mapa con los \textit{Keyframes} disponibles optimizando el mapa con \textit{Bundle Adjustment \cite{BundleAdjust08}}.
 
 En la actualidad, este algoritmo sólo es adecuado para entornos reducidos, pudiendo utilizarse para pequeñas aplicaciones de realidad aumentada.
@@ -187,9 +187,9 @@ En este apartado trataremos varias herramientas que podemos utilizar para hacer 
 \item\textbf{Computer Vision Group TUM}
 
 Este grupo proporciona varias herramientas para evaluar el rendimiento de algoritmos VSLAM \footnote{https://vision.in.tum.de/data/datasets/rgbd-dataset/tools}, permite evaluar trayectorias y compararlas con la trayectoria \textit{ground truth}.\cite{sturm12iros}
-Utiliza principalmente 2 métodos, el error absoluto de la trayectoria \textit{absolute trajectory error (ATE)} y el error relativo a la posición \textit{relative pose error (RPE)}. Podemos encontrar en la web HERE scripts descargables para ambas métricas.
+Utiliza principalmente 2 métodos, el error absoluto de la trayectoria \textit{absolute trajectory error (ATE)} y el error relativo a la posición \textit{relative pose error (RPE)}. Podemos encontrar en la web scripts descargables para ambas métricas.
 
-Las trayectorias que vayan a ser evaluadas deben ser almacenadas en un archivo de texto, donde cada línea contendrá una única posición con el siguiente formato( 'timestamp tx ty tz qx qy qz qw')
+Las trayectorias que vayan a ser evaluadas deben ser almacenadas en un archivo de texto, donde cada línea contendrá una única posición con el siguiente formato ('timestamp tx ty tz qx qy qz qw')
 
 Donde el campo \textit{timestamp}, proporciona el número de segundos, tx ty tz, dan la posición de la cámara con respecto al origen de coordenadas del mundo real, y el vector qx qy qz qw, dan la orientación de la cámara con respecto al origen de coordenadas del mundo real en formato de quaternio. 
 
@@ -234,7 +234,7 @@ Para medir el rendimiento de algoritmos SLAM se puede utilizar un \textit{framew
 Además SLAMBench ofrece una plataforma con grandes posibilidades para investigaciones futuras, ya sea para diseño de algoritmos como optimizaciones a nivel de implementación. Es una herramienta multiplataforma y se puede utilizar en PCs de sobremesa, portátiles y móviles. Algunos \textit{benchmarks} se han obtenido con Ubuntu, OS y Android.
 También puede ser utilizado con CUDA.
 SLAMBench proporciona, entre otras métricas, medidas de exactitud del algoritmo utilizado. Las medidas de exactitud son determinadas comparando datos estimados con los datos \textit{groundtruth}.
-Absolute Trajectory Error (ATE) y Relative Pose Error RPE son utilizadas para medir la exactitud de la trayectoria. Estas métricas de trayectoria junto con una métrica de mapeo, proporcionan comparaciones cuantitativas para varios algoritmos.
+\textit{Absolute Trajectory Error} (ATE) y \textit{Relative Pose Error} RPE son utilizadas para medir la exactitud de la trayectoria. Estas métricas de trayectoria junto con una métrica de mapeo, proporcionan comparaciones cuantitativas para varios algoritmos.
 
 ATE y RPE son calculadas en tiempo de ejecución, con un alineamiento mínimo entre la primera posición más cercana de \textit{groundtruth} y la posición estimada ( en términos de \textit{timestamp}). Ya \textit{off-line}, técnicas más complejas de alineamiento pueden ser usadas para comparar técnicas densas y semidensas cuando el mapeo de escalas no funciona. RER (\textit{Reconstruction Error}) se calcula mediante la ejecución del algoritmo \textit{Iterative Closest Point (ICP)} de los modelos de la nube de puntos de la reconstrucción y del groundtruth. Como este proceso consume mucha CPU, esta evaluación es también ejecutada off-line.
 
@@ -246,7 +246,7 @@ SLAMBench está siendo una herramienta muy útil en robótica y Sistemas de Real
 
 \item \textbf{The Kitti Vision Benchmark Suite }
 
-Este entorno de aplicaciones que utilizan mapas y secuencias grabadas desde la plataforma de coches autónomos Annieway \cite{AnnieWay08} para crear nuevos desafíos o retos en las tareas comparativas o \textit{benchmarking} de Visual SLAM \cite{Geiger2012CVPR}, y están investigando en varios campos como: vision estéreo, flujo óptico, odometría, detección de objetos en 3D y seguimiento de objetos 3D.
+Es un entorno de aplicaciones que utilizan mapas y secuencias grabadas desde la plataforma de coches autónomos Annieway \cite{AnnieWay08} para crear nuevos desafíos o retos en las tareas comparativas o \textit{benchmarking} de Visual SLAM \cite{Geiger2012CVPR}, y están investigando en varios campos como: vision estéreo, flujo óptico, odometría, detección de objetos en 3D y seguimiento de objetos 3D.
 La exactitud de los conjuntos de datos verdadero es medida gracias al scanner láser \textit{Velodyne} y a los sistemas de localización GPS con los que van equipados sus coches autónomos.
 Los \textit{datasets} han sido grabados en la ciudad de Karslruhe.
 
