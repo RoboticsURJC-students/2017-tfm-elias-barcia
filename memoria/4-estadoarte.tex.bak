@@ -6,7 +6,7 @@ En este capítulo explicaremos varios de los algoritmos SLAM más significativos
 También se describirán brevemente las distintas herramientas que existen en la actualidad para comparar las estimaciones de los algoritmos SLAM, comenzaremos por TUM, seguido de \textit{rgb trayectory evaluation}, describiremos la herramienta SLAMBENCH y por último daremos algunos detalles sobre \textit{The Kitti Vision Benchmark Suite}.
 
 \section{Algoritmos de Visual SLAM}
-En la actualidad existen múltiples algoritmos de Visual SLAM, en este apartado describiremos 4 de los algoritmos mas importantes en Visual SLAM, que destacan sobre los demás por su influencia en el estado del arte. Los dos primeros, MonoSLAM Y PTAM, fueron los primeros algoritmos que permitieron utilizar este tipo de técnicas en tiempo real, mientras que los dos últimos, ORB-SLAM y LDSO son los más utilizados en la actualidad por su precisión, eficiencia y robustez.
+En la actualidad existen múltiples algoritmos de Visual SLAM, en este apartado describiremos 4 de los algoritmos mas importantes en Visual SLAM, que destacan sobre los demás por su influencia en el estado del arte. Los dos primeros, MonoSLAM y PTAM, fueron los primeros algoritmos que permitieron utilizar este tipo de técnicas en tiempo real, mientras que los dos últimos, ORB-SLAM y LDSO son los más utilizados en la actualidad por su precisión, eficiencia y robustez.
 
 %En este apartado describiremos 4 de los algoritmos más importantes en Visual SLAM.
 %MonoSLAM, PTAM por ser los algoritmos pioneros y ORB_SLAM y LDSO por su buena calidad y por ser de los más utilizados en la actualidad.
@@ -18,7 +18,7 @@ El algoritmo de  MonoSLAM (\textit{Monocular SLAM}) \cite{Davison2007monoslam} u
 %\begin{figure}[htbp]
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\includegraphics[height=6.0cm]{img/cap4/Initialization4PointsMonoSlam.png}}
+\includegraphics[height=6.0cm]{img/cap4/Initialization4PointsMonoSlam.png}
 \end{center}
 \caption{Inicialización de MonoSLAM con 4 puntos conocidos.}
 \end{figure}
@@ -35,7 +35,7 @@ MonoSLAM sólo es recomendable para mapas con pocos puntos. Algunas de las desve
 %\begin{figure}[htbp]
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\includegraphics[height=5.0cm]{img/cap4/monoslam-300x225.png}}
+\includegraphics[height=5.0cm]{img/cap4/monoslam-300x225.png}
 \end{center}
 \caption{Ejemplo de puntos característicos tomados con MonoSLAM.}
 \end{figure}
@@ -47,7 +47,7 @@ PTAM son las siglas de \textit{Parallel Tracking and \textit{Mapping}}. Este alg
 
 Otro de los elementos clave de este algoritmo son los \textit{Keyframes} o fotogramas clave. Se genera un nuevo \textit{Keyframe} a medida que la cámara se va desplazando, utilizándose tanto para la localización como para ir generando el mapa de puntos.
 
-Este algoritmo es recomendable para mapas con elevado número de puntos, siendo además capaz de recuperarse fácilmente de un secuestro. Al igual que MonoSLAM, extrae los puntos de interés mediante extracción de características.Para extraer esos puntos se realizará una subdivisión de la imagen a distintas resoluciones, normalmente 4 niveles,(lo que se conoce como pirámide de la imagen) y se pasará un filtro FAST sobre esta pirámide para detectar los puntos más característicos de la imagen.
+Este algoritmo es recomendable para mapas con elevado número de puntos, siendo además capaz de recuperarse fácilmente de un secuestro. Al igual que MonoSLAM, extrae los puntos de interés mediante extracción de características. Para extraer esos puntos se realizará una subdivisión de la imagen a distintas resoluciones, normalmente 4 niveles,(lo que se conoce como pirámide de la imagen) y se pasará un filtro FAST sobre esta pirámide para detectar los puntos más característicos de la imagen.
 Cada \textit{Keyframe} que se genera, contiene  la imagen captada junto su pirámide y sus puntos de interés detectados. Cuando añadimos un \textit{Keyframe}, se intenta localizar en este \textit{Keyframe} los puntos que ya se encuentran en el mapa, en caso de no localizarlos se añaden nuevos puntos al mapa. Mientras no se añadan \textit{Keyframes}, se intentará mejorar el mapa con los \textit{Keyframes} disponibles optimizando el mapa con \textit{Bundle Adjustment \cite{BundleAdjust08}}.
 
 En la actualidad, este algoritmo sólo es adecuado para entornos reducidos, pudiendo utilizarse para pequeñas aplicaciones de realidad aumentada.
@@ -55,7 +55,7 @@ En la actualidad, este algoritmo sólo es adecuado para entornos reducidos, pudi
 %\begin{figure}[htbp]
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\includegraphics[height=6.0cm]{img/cap4/ptam_screenshot-300x243.jpg}}
+\includegraphics[height=6.0cm]{img/cap4/ptam_screenshot-300x243.jpg}
 \end{center}
 \caption{Nube de puntos característicos tomados con PTAM.}
 \end{figure}
@@ -67,7 +67,7 @@ En la actualidad, este algoritmo sólo es adecuado para entornos reducidos, pudi
 \subsection{Algoritmo ORB-SLAM}
 La característica principal de este algoritmo es la utilización de descriptores ORB para emparejar los puntos en las imágenes. La ventaja principal de estos descriptores es que son más fiables 
 que los parches tradicionales y por tanto permiten obtener mapas robustos y precisos tanto en escenarios de grandes dimensiones como en zonas pequeñas, sin embargo, para su funcionamiento en tiempo real, requiere la utilización de ordenadores con alta capacidad de proceso \cite{Mur2015orb}.
-Este algoritmo puede ser utilizado con una cámara, con dos cámaras en estereo, e incluso con cámaras de profundidad RGBD. ORB-SLAM permite tanto relocalizarse como realizar cierres de bucle, para lo que usa un modelo de bolsa de palabras\cite{galvez2012bags}.
+Este algoritmo puede ser utilizado con una cámara, con dos cámaras en estéreo, e incluso con cámaras de profundidad RGBD. ORB-SLAM permite tanto relocalizarse como realizar cierres de bucle, para lo que usa un modelo de bolsa de palabras\cite{galvez2012bags}.
 Otra de las novedades de este algoritmo es que utiliza 3 hilos,el primero para \textit{Tracking}, el segundo para \textit{Mapping} y un tercero para detectar cierres de bucle. 
 
 En el hilo de \textit{Tracking}, se trata de calcular la posición actual a partir de los emparejamientos encontrados de los puntos 3D en el fotograma anterior, para ello utilizará los descriptores ORB.
@@ -93,12 +93,12 @@ En el hilo de \textit{Looping}, se comprobará si se ha producido un cierre de b
 \textit{DSO: Direct Sparse Model}.
 Al contrario de los métodos anteriores, basados en puntos característicos, está basado en optimizaciones continuas del error fotométrico sobre una ventana de fotogramas recientes\cite{Engel2016direct}.
 
-El inicio del Tracking, cuando se crea un nuevo \textit{Keyframe}, todos los puntos activos son proyectados en el y ligeramente dilatados, creando así un mapa de profundidad semi denso. Nuevos fotogramas son creados con respecto a este fotograma utilizando alineamiento directo de 2 frames, una pirámide multi escala y un modelo de movimiento constante a inicializar. 
+El inicio del Tracking, cuando se crea un nuevo \textit{Keyframe}, todos los puntos activos son proyectados en el y ligeramente dilatados, creando así un mapa de profundidad semi denso. Nuevos fotogramas son creados con respecto a este fotograma utilizando alineamiento directo de 2 fototramas, una pirámide multi escala y un modelo de movimiento constante a inicializar. 
 La creación de \textit{Keyframes} es similar a ORB-SLAM, existiendo 3 criterios para determinar cuando se necesita un nuevo \textit{Keyframe}.
 \begin {enumerate}
 \item Se creará un nuevo \textit{Keyframe} (Figura \ref{fig:mapaDSO}) cuando la imagen de entrada cambie notablemente con respecto al último \textit{Keyframe}, esto se medirá con la diferencias de medias al cuadrado entre los píxeles.
 \item La traslación de la cámara causa oclusiones y des-oclusiones, lo cual indica que se deben generar nuevos \textit{Keyframes}
-\item Si el tiempo de exposición de la cámara cambia significativamente, se deberá tomar un nuevo \textit{Keyframe}. Esto se mide por el factor de brillo relativo entre 2 frames. 
+\item Si el tiempo de exposición de la cámara cambia significativamente, se deberá tomar un nuevo \textit{Keyframe}. Esto se mide por el factor de brillo relativo entre 2 fotogramas. 
 \end {enumerate}
 
 En cuanto al rechazo de \textit{Keyframes}, sigue la siguiente estrategia. Sean $I_1$ \dots $I_n$ un conjunto de \textit{Keyframes} activos, siendo $I_1$ el más nuevo y $I_n$ el más antiguo
@@ -127,14 +127,14 @@ Por último, cuando un conjunto de puntos antiguos son marginados, nuevos puntos
 \clearpage
 
 \textit{LDSO: Direct Sparse Odometry with Loop Closure}. Este método es una extensión del algoritmo DSO, incorporando detección de cierre de bucle y optimización de posición y mapeo. Al ser un método directo, DSO puede utilizar cualquier píxel de la imagen con suficiente gradiente de intensidad, lo cual lo hace más robusto incluso en áreas donde apenas se pueden obtener puntos característicos. LDSO mantiene esta robustez, mientras que al mismo tiempo asegura la repetibilidad  sobre alguno de esos puntos prestando más atención sobre esquinas características en el proceso de \textit{Tracking}. Estas repetibilidad de puntos característicos permite detectar de forma fiable los candidatos de cierres de bucle utilizando la técnica basada en características de \textit{bag-of-words} de forma similar a ORB-SLAM. 
-Los candidatos a cierre de bucle son verificados geométricamente minizando en conjunto errores geométricos 2D y 3D.
+Los candidatos a cierre de bucle son verificados geométricamente minimizando en conjunto errores geométricos 2D y 3D.
 
 Para la selección de puntos de características repetibles, LDSO utiliza un grid dinámico para detectar suficientes puntos incluso en entornos con pocas texturas. Se toma un número determinado de puntos, de los cuales algunos son esquinas de los que se calculan los descriptores ORB y los empaquetamos en BoW. El algoritmo  utiliza ambos tipos de puntos de esquinas y no esquinas para realizar el \textit{Tracking}, mientras que solo los puntos que son esquina se utilizan para el cierre de bucle. 
 De esta forma, podemos hallar la posición en entornos con pocas texturas y también encontrar características comunes entre Keyframes si lo necesitásemos.
 
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\label{fig:LDSO}\includegraphics[height=6.0cm]{img/cap4/LDSO.png}}
+\label{fig:LDSO}\includegraphics[height=6.0cm]{img/cap4/LDSO.png}
 \end{center}
 \caption{diferencias entre puntos escogidos con DSO y LDSO.}
 \end{figure}
@@ -179,7 +179,7 @@ A continuación se presenta una tabla que muestra las características principal
 \end{center}
 
 
-\section{Herramientas y datasets para evaluar  algoritmos SLAM}
+\section{Herramientas y \textit{datasets} para evaluar  algoritmos SLAM}
 En este apartado trataremos varias herramientas que podemos utilizar para hacer comparaciones de rendimiento (\textit{benchmarking}) sobre los resultados de algoritmos SLAM y evaluar y comparar dichos algoritmos.
 
 \begin {enumerate}
@@ -187,9 +187,9 @@ En este apartado trataremos varias herramientas que podemos utilizar para hacer 
 \item\textbf{Computer Vision Group TUM}
 
 Este grupo proporciona varias herramientas para evaluar el rendimiento de algoritmos VSLAM \footnote{https://vision.in.tum.de/data/datasets/rgbd-dataset/tools}, permite evaluar trayectorias y compararlas con la trayectoria \textit{ground truth}.\cite{sturm12iros}
-Utiliza principalmente 2 métodos, el error absoluto de la trayectoria \textit{absolute trajectory error (ATE)} y el error relativo a la posición \textit{relative pose error (RPE)}. Podemos encontrar en la web HERE scripts descargables para ambas métricas.
+Utiliza principalmente 2 métodos, el error absoluto de la trayectoria \textit{absolute trajectory error (ATE)} y el error relativo a la posición \textit{relative pose error (RPE)}. Podemos encontrar en la web scripts descargables para ambas métricas.
 
-Las trayectorias que vayan a ser evaluadas deben ser almacenadas en un archivo de texto, donde cada línea contendrá una única posición con el siguiente formato( 'timestamp tx ty tz qx qy qz qw')
+Las trayectorias que vayan a ser evaluadas deben ser almacenadas en un archivo de texto, donde cada línea contendrá una única posición con el siguiente formato ('timestamp tx ty tz qx qy qz qw')
 
 Donde el campo \textit{timestamp}, proporciona el número de segundos, tx ty tz, dan la posición de la cámara con respecto al origen de coordenadas del mundo real, y el vector qx qy qz qw, dan la orientación de la cámara con respecto al origen de coordenadas del mundo real en formato de quaternio. 
 
@@ -215,12 +215,12 @@ Esta herramienta está desarrolla en python e incluye :
 métodos de alineamiento de trayectorias para diferentes modalidades de sensores y métricas de error tales como ATE y \textit{Relative Odometry Error}. \cite{Zhang18iros}
 
 El software ha sido diseñado para uso fácil. Dados dos ficheros de texto donde especificaremos la trayectoria estimada y la verdadera, la herramienta establece automáticamente el emparejamiento de tiempos, realiza alineamiento de trayectoria y calcula distintos errores métricos con una línea de comandos. También se puede utilizar para comparar diferentes algoritmos con múltiples \textit{datasets}. Para que la aplicación pudiese ser utilizada con diferentes formatos, también se proporcionan varios scripts para convertir otros formatos conocidos (e.g., EuRoC, rosbag) al formato utilizado por la herramienta.
-El formato utilizado para los ficheros de datos es el siguiente: \texttt{timestamp tx ty tz qx qy qz qw}, al igual que en la herramienta SLAMTestBed
+El formato utilizado para los ficheros de datos es el siguiente: \texttt{timestamp tx ty tz qx qy qz qw}, al igual que en la herramienta SLAMTestbed
 
 \item \textbf{SLAMBENCH}
 
-SLAMBench es una herramienta de la Universidad de Edimburgo, creada para evaluar sistemas SLAM sobre un conjunto extensible de datasets y métricas. \cite{Bodin2018}
-Actualmente soporta 8 tipos distintos de algoritmos (densos, semi-densos y escasos ) y 3 \textit{dataSets}. Es una herramienta que permite la reproducibilidad de los resultados para los sistemas SLAM actuales y posibilita la integración y evaluación the nuevos resultados SLAM.
+SLAMBench es una herramienta de la Universidad de Edimburgo, creada para evaluar sistemas SLAM sobre un conjunto extensible de \textit{datasets} y métricas. \cite{Bodin2018}
+Actualmente soporta 8 tipos distintos de algoritmos (densos, semi-densos y escasos ) y 3 \textit{datasets}. Es una herramienta que permite la reproducibilidad de los resultados para los sistemas SLAM actuales y posibilita la integración y evaluación de nuevos resultados SLAM.
 
 SLAMBench soporta varios algoritmos diferentes. Entre los algoritmos escasos o poco densos soportaría MonoSLAM, PTAM ,OKVIS y ORB-SLAM2. Entre los métodos densos se soportan KinectFusion, InfiniTAM, ElasticFusion, LSD-SLAM.
 \begin{figure}[H]
@@ -234,33 +234,33 @@ Para medir el rendimiento de algoritmos SLAM se puede utilizar un \textit{framew
 Además SLAMBench ofrece una plataforma con grandes posibilidades para investigaciones futuras, ya sea para diseño de algoritmos como optimizaciones a nivel de implementación. Es una herramienta multiplataforma y se puede utilizar en PCs de sobremesa, portátiles y móviles. Algunos \textit{benchmarks} se han obtenido con Ubuntu, OS y Android.
 También puede ser utilizado con CUDA.
 SLAMBench proporciona, entre otras métricas, medidas de exactitud del algoritmo utilizado. Las medidas de exactitud son determinadas comparando datos estimados con los datos \textit{groundtruth}.
-Absolute Trajectory Error (ATE) y Relative Pose Error RPE son utilizadas para medir la exactitud de la trayectoria. Estas métricas de trayectoria junto con una métrica de mapeo, proporcionan comparaciones cuantitativas para varios algoritmos.
+\textit{Absolute Trajectory Error} (ATE) y \textit{Relative Pose Error} RPE son utilizadas para medir la exactitud de la trayectoria. Estas métricas de trayectoria junto con una métrica de mapeo, proporcionan comparaciones cuantitativas para varios algoritmos.
 
 ATE y RPE son calculadas en tiempo de ejecución, con un alineamiento mínimo entre la primera posición más cercana de \textit{groundtruth} y la posición estimada ( en términos de \textit{timestamp}). Ya \textit{off-line}, técnicas más complejas de alineamiento pueden ser usadas para comparar técnicas densas y semidensas cuando el mapeo de escalas no funciona. RER (\textit{Reconstruction Error}) se calcula mediante la ejecución del algoritmo \textit{Iterative Closest Point (ICP)} de los modelos de la nube de puntos de la reconstrucción y del groundtruth. Como este proceso consume mucha CPU, esta evaluación es también ejecutada off-line.
 
-Otras métricas que proporciona SLAMBench es el consumo de energía ,utilización de memoria, velocidad de proceso por frame.
+Otras métricas que proporciona SLAMBench es el consumo de energía ,utilización de memoria, velocidad de proceso por fotograma.
 
-SLAMBench también permite elegir entre diferentes sistemas de interfaz de usuario. Métricas de evaluación pueden ser cambiadas y customizadas, así como el interfaz de usuario gráfico (GUI), mientras mantiene independencia de los datasets y algoritmos. Por ejemplo, el visualizador nativo está basado en la librería Pangolin, puede ser reemplazado por un visualizador ROS.
+SLAMBench también permite elegir entre diferentes sistemas de interfaz de usuario. Métricas de evaluación pueden ser cambiadas y customizadas, así como el interfaz de usuario gráfico (GUI), mientras mantiene independencia de los \textit{datasets} y algoritmos. Por ejemplo, el visualizador nativo está basado en la librería Pangolin, puede ser reemplazado por un visualizador ROS.
 
-SLAMBench está siendo una herramienta muy útil en robótica y Sistemas de Realidad Aumentada (AR). Aunque un gran número de algoritmos SLAM han sido presentados, no se ha investigado lo suficiente para tratar de unificar el interface de estos algoritmos, o realizar comparaciones de todas sus capacidades en conjunto. Esto presenta un problema ya que diferentes aplicaciones SLAM pueden tener diferentes requisitos funcionales y no funcionales. Por ejemplo, una solución para Realidad Aumentada desarrollada para móviles tendría que optimizar el consumo de energía, mientras que otra solución diseñada para vehículos de navegación autónoma estaría enfocada a funcionar con la mayor exactitud posible. SLAMBench2 es una herramienta de evaluación que compararía sistemas SLAM actuales y futuros, utilizando una lista extensible de datasets, mientras utiliza una lista comparable de métricas de rendimiento. SLAMBench2 es un software que está disponible de manera pública.\footnote{https://github.com/pamela-project/slambench2} 
+SLAMBench está siendo una herramienta muy útil en robótica y Sistemas de Realidad Aumentada (AR). Aunque un gran número de algoritmos SLAM han sido presentados, no se ha investigado lo suficiente para tratar de unificar el interface de estos algoritmos, o realizar comparaciones de todas sus capacidades en conjunto. Esto presenta un problema ya que diferentes aplicaciones SLAM pueden tener diferentes requisitos funcionales y no funcionales. Por ejemplo, una solución para Realidad Aumentada desarrollada para móviles tendría que optimizar el consumo de energía, mientras que otra solución diseñada para vehículos de navegación autónoma estaría enfocada a funcionar con la mayor exactitud posible. SLAMBench2 es una herramienta de evaluación que compararía sistemas SLAM actuales y futuros, utilizando una lista extensible de \textit{datasets}, mientras utiliza una lista comparable de métricas de rendimiento. SLAMBench2 es un software que está disponible de manera pública.\footnote{https://github.com/pamela-project/slambench2} 
 
 \item \textbf{The Kitti Vision Benchmark Suite }
 
-Este entorno de aplicaciones que utilizan mapas y secuencias grabadas desde la plataforma de coches autónomos Annieway \cite{AnnieWay08} para crear nuevos desafíos o retos en las tareas comparativas o \textit{benchmarking} de Visual SLAM \cite{Geiger2012CVPR}, y están investigando en varios campos como: vision estereo, flujo óptico, odometría, detección de objetos en 3D y seguimiento de objetos 3D.
+Es un entorno de aplicaciones que utilizan mapas y secuencias grabadas desde la plataforma de coches autónomos Annieway \cite{AnnieWay08} para crear nuevos desafíos o retos en las tareas comparativas o \textit{benchmarking} de Visual SLAM \cite{Geiger2012CVPR}, y están investigando en varios campos como: vision estéreo, flujo óptico, odometría, detección de objetos en 3D y seguimiento de objetos 3D.
 La exactitud de los conjuntos de datos verdadero es medida gracias al scanner láser \textit{Velodyne} y a los sistemas de localización GPS con los que van equipados sus coches autónomos.
-Los datasets han sido grabados en la ciudad de Karslruhe.
+Los \textit{datasets} han sido grabados en la ciudad de Karslruhe.
 
 Además de proporcionar todos los datos en formato \textit{raw}, para cada uno de sus \textit{benchmarks}, también proporcionan una métrica de evaluación y una web de evaluación. En experimentos preliminares se ha comprobado que métodos que obtienen una puntuación alta en algunos \textit{benchmarks}, cuando son aplicados al mundo real obtienen unos resultados por debajo de la media. El objetivo es reducir esta tendencia y completar los benchmarks existentes proporcionando benchmarks en el mundo real con dificultades novedosas para la comunidad. 
 
-Un ejemplo podría ser el benchmark de odometría, que consiste en 22 secuencias estereo, grabadas en formato \textit{png}. En el dataset se proporcionan 11 secuencias con trayectorias verdaderas para entrenar y 11 secuencias sin anotaciones verdaderas para evaluar. Para este benchmark se pueden proporcionar resultados usando una cámara o un sistema de cámaras estereo.
+Un ejemplo podría ser el benchmark de odometría, que consiste en 22 secuencias estereo, grabadas en formato \textit{png}. En el \textit{dataset} se proporcionan 11 secuencias con trayectorias verdaderas para entrenar y 11 secuencias sin anotaciones verdaderas para evaluar. Para este benchmark se pueden proporcionar resultados usando una cámara o un sistema de cámaras estereo.
 La única restricción que se impone es que el método debe ser totalmente automático (no se permite el etiquetado manual de cierre de bucle) y que el mismo conjunto de parámetros es usado para todas las secuencias.
 
 Para todas las secuencias de test, su evaluador estima los errores de traslación y rotación. En una tabla de evaluación se establece un ranking de métodos de acuerdo con la media de esos valores, donde los errores son medidos en porcentaje para la traslación y en grados por metro para la rotación.
 \begin{figure}[H]
 \begin{center}
-\subfigure[]{\includegraphics[height=6.0cm]{img/cap4/kittiCar.png}}
+\includegraphics[height=6.0cm]{img/cap4/kittiCar.png}
 \end{center}
-\caption{Coche autónomo Annieway utlizado con Kitti.}
+\caption{Coche autónomo Annieway utilizado con Kitti.}
 \end{figure}
 
 \end {enumerate}

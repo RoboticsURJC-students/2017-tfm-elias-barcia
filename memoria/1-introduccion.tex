@@ -57,7 +57,7 @@ Hoy en día, el número de aplicaciones de visión por computador está creciend
 
 Actualmente, la visión artificial se utiliza en muchos procesos científicos, industriales y militares, por ejemplo para el reconocimiento de objetos o en el seguimiento de éstos:
 
-	\textbf{Reconocimiento de objetos}: Se trata de buscar unas propiedades concretas de un determinado objeto (forma, color o cualquier otro patrón) en una imagen para determinar si un objeto se encuentra o no en ella. Por ejemplo mediante la obtención de píxeles característicos que destaquen en la imagen o utilizándose técnicas de Deep Learning con redes neuronales.
+	\textbf{Reconocimiento de objetos}: Se trata de buscar unas propiedades concretas de un determinado objeto (forma, color o cualquier otro patrón) en una imagen para determinar si un objeto se encuentra o no en ella. Por ejemplo mediante la obtención de píxeles característicos que destaquen en la imagen o utilizándose técnicas de \textit{Deep Learning} con redes neuronales.
 
 	\textbf{Seguimiento de objetos}: Tras ser detectado, se pueden realizar tareas de seguimiento de un objeto. Podrá efectuarse dicho seguimiento teniendo en cuenta sus propiedades (texturas, bordes, etc) o analizando su desplazamiento respecto a imágenes anteriores.
 
@@ -112,7 +112,7 @@ El proyecto Tango es un proyecto colaborativo que trata de equipar a los smartph
 Las posibilidades que ofrecerán este tipo de dispositivos serán muy variadas, desde medir las dimensiones de la habitación, hasta lo más útil como guiar a personas con discapacidades visuales en el interior de edificios. Pero también tendrá utilidades para el entretenimiento como convertir una habitación en el escenario de un juego mediante realidad aumentada.
 
 Al ser una tecnología nueva aún no hay un elevado número de dispositivos que lo soporten. De momento existen 2 móviles compatibles con Tango \footnote{https://get.google.com/tango/}, el Lenovo  Phab 2 pro (Figura \ref{fig:lenovo}) y el Asus Zenfone AR (Figura \ref{fig:zenfone}).
-En el caso del Zenfone AR  estará equipado con 3 cámaras traseras, una para seguir objetos (motion tracking), otra para detectar profundidad y otra de alta resolución de 23 MP.
+En el caso del Zenfone AR  estará equipado con 3 cámaras traseras, una para seguir objetos (\textit{motion tracking}), otra para detectar profundidad y otra de alta resolución de 23 MP.
 Con estas 3 cámaras el smartphone podrá crear una modelo tridimensional del entorno y seguir su movimiento. La cámara de localización permitirá al ZenFone conocer su posición 3D en todo momento mientras se mueve por el entorno. La cámara de profundidad está equipada con un proyector de Infrarrojos que le permite medir distancias hasta los objetos en el mundo real.
 
 \begin{figure}[htbp]
@@ -281,7 +281,7 @@ En algunas aplicaciones con Visual SLAM se necesita información de escala absol
 
 \item \textbf{Dificultad para operar en entornos con pocas texturas:}
 
-Visual SLAM utiliza el emparejamiento de píxeles o puntos característicos entre varios frames consecutivos. El emparejamiento suele fijarse en esquinas, bordes  o puntos distintivos que fácilmente podrán localizarse entre frames. Pero cuando en el entorno hay pocas texturas o presenta una alta monotonía de texturas,  el emparejamiento es difícil de realizar ya que un punto en un fotograma podría corresponder con N puntos en el siguiente fotograma y por tanto se dispararía el error de posición. Quizá este sea uno de los problemas más difíciles de solucionar con Visual SLAM
+Visual SLAM utiliza el emparejamiento de píxeles o puntos característicos entre varios \textit{frames} consecutivos. El emparejamiento suele fijarse en esquinas, bordes  o puntos distintivos que fácilmente podrán localizarse entre frames. Pero cuando en el entorno hay pocas texturas o presenta una alta monotonía de texturas,  el emparejamiento es difícil de realizar ya que un punto en un fotograma podría corresponder con N puntos en el siguiente fotograma y por tanto se dispararía el error de posición. Quizá este sea uno de los problemas más difíciles de solucionar con Visual SLAM
 \cite{Takafumi17}.
 
 \section{Estructura del documento}

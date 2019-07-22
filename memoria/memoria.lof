@@ -25,7 +25,7 @@
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Localizaci\IeC {\'o}n de puntos caracter\IeC {\'\i }sticos en 2 im\IeC {\'a}genes con ORB }}{23}{figure.3.4}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Mapa generado con DSO (a) Ligero error en la posici\IeC {\'o}n al volver al punto de partida (b).}}{25}{figure.3.5}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces diferencias entre puntos escogidos con DSO y LDSO.}}{26}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces captura de la herramienta SLAMBENCH2.}}{30}{figure.3.7}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces captura de la herramienta SLAMBench2.}}{30}{figure.3.7}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Coche aut\IeC {\'o}nomo Annieway utilizado con Kitti.}}{32}{figure.3.8}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces El dise\IeC {\~n}o de caja negra de la herramienta SLAMTestbed. }}{34}{figure.4.1}

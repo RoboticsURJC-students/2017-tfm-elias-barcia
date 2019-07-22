@@ -254,14 +254,14 @@ Este método tomará un \textit{dataset}, lo multiplicará por la matriz de rota
 
 \textbf{Transformar los cuaternios aplicando la matriz Rotación.}
 
-Con este método conseguimos transformar los cuarternios del \textit{dataSet A} al \textit{dataSet B}. Para ello convertiremos la matriz de rotación en un cuaternio que llamaremos "q". Por último multiplicaremos cada cuaternio p de la siguiente forma.
+Con este método conseguimos transformar los cuaternios del \textit{dataSet A} al \textit{dataSet B}. Para ello convertiremos la matriz de rotación en un cuaternio que llamaremos "q". Por último multiplicaremos cada cuaternio p de la siguiente forma.
 \begin{center}
 		\textit{q * p * q.inverso }
 \end{center}
 
 \textbf{Estimar las matrices de rotación y traslación mediante la técnica de RANSAC.}
-Estimaremos las matrices de Rotación y Traslación utilizando los datos de los dos \textit{datasets}, eliminando primero los puntos espúreos \textit{outliers}) mediante el algoritmo RANSAC \cite{Fischler:1981:RSC:358669.358692}.
-Se ha elegido RANSAC por que permite estimar la matríz R*T entre ambas secuencias con robustez, de modo que la estimación es fiable.
+Estimaremos las matrices de Rotación y Traslación utilizando los datos de los dos \textit{datasets}, eliminando primero los puntos espurios \textit{outliers}) mediante el algoritmo RANSAC \cite{Fischler:1981:RSC:358669.358692}.
+Se ha elegido RANSAC por que permite estimar la matriz R*T entre ambas secuencias con robustez, de modo que la estimación es fiable.
 
 
 
@@ -284,7 +284,7 @@ El algoritmo seguido ha sido el siguiente:
 
 \section{Cálculo de Estadísticas}
 
-Este bloque mide las diferencias entre dos secuencias pero cuando una de ellas es la de posiciones verdaderas y la otra es de posiciones estimadas, entonces esas diferencias se interpretan correctamente como el error en las posiciones etimadas.
+Este bloque mide las diferencias entre dos secuencias pero cuando una de ellas es la de posiciones verdaderas y la otra es de posiciones estimadas, entonces esas diferencias se interpretan correctamente como el error en las posiciones estimadas.
 
 Para medir el error cometido entre el \textit{dataset} con posiciones orientadas verdaderas y el \textit{dataset} Estimado utilizaremos el módulo de Cálculo de Estadísticas.
 Este módulo permite calcular distintos estadísticos, como el error medio, mediano, máximo y mínimo, así como el Error Cuadrático Medio (Root Mean Square Error).
@@ -299,13 +299,13 @@ RMSE =\sqrt{\sum{( g - e)^2}/N}
 \end{math}
 \end{center}
 
-donde g es el dataset \textit{groundTruht}
+donde g es el dataset \textit{groundtruth}
 
       e es el dataset Estimado
 
       N es el número de elementos de los datasets
 
-Otro valor de medida de error calculado es la distancia angular entre 2 rotaciones, que nos sirve para medir el grado de error entre la orientación real y la orientación estimada, para ello convertimos la matriz de rotación estimada en un cuaternio usando la libreía Eigen. Los pasos para medir este error angular sería:
+Otro valor de medida de error calculado es la distancia angular entre 2 rotaciones, que nos sirve para medir el grado de error entre la orientación real y la orientación estimada, para ello convertimos la matriz de rotación estimada en un cuaternio usando la librería Eigen. Los pasos para medir este error angular sería:
 \begin{lstlisting}[frame=single]
 convertir matriz de rotacion en cuaternio  q
 convertir matriz de rotacion estimada en cuaternio p
@@ -324,7 +324,7 @@ En caso de no conocer la matriz de rotación de la secuencia verdadera, el vecto
 
 
 \section{Interfaz Gráfico de Usuario}
-Para la herramienta SLAMTestbed también se ha diseñado y creado un Interfaz de Usuario Gráfico (\textit{Graphic User Interface}) que permita pintar los puntos 3D de cada \textit{dataset} tanto los de entrada comos los distintos transformados en pantalla, así como invocar comandos (a través de clicks de ratón) para ejecutar los distintos módulos que contiene la herramienta.
+Para la herramienta SLAMTestbed también se ha diseñado y creado un Interfaz de Usuario Gráfico (\textit{Graphic User Interface}) que permita pintar los puntos 3D de cada \textit{dataset} tanto los de entrada como los distintos transformados en pantalla, así como invocar comandos (a través de clicks de ratón) para ejecutar los distintos módulos que contiene la herramienta.
 
 Esto permite medir la exactitud de los resultados de un algoritmo con los resultados de otro algoritmo o comparar varios resultados de un mismo algoritmo en el que se han aplicado distintos parámetros de ejecución.
 
@@ -358,7 +358,7 @@ Con el ratón podremos girar en 3 dimensiones la nube de puntos, acercarnos  (Zo
 \caption{Resultados de la estimación de un cambio de escala y traslación .}
 \end{figure}
 
-En la interfaz gráfica podemos ver tres \textit{datasets}. Los puntos 3D del primer \textit{dataset} \textit{groundtrouth} se pintarán en color verde, los puntos del \textit{dataset} a evaluar o \textit{dataset} transformado serán de color azul, y por último en color rojo estarán los puntos 3D del \textit{dataset} estimado.
+En la interfaz gráfica podemos ver tres \textit{datasets}. Los puntos 3D del primer \textit{dataset} \textit{groundtruth} se pintarán en color verde, los puntos del \textit{dataset} a evaluar o \textit{dataset} transformado serán de color azul, y por último en color rojo estarán los puntos 3D del \textit{dataset} estimado.
 En el caso de que el error entre los dos \textit{datasets} sea pequeño, los puntos 3D correspondientes al \textit{dataset} estimado solaparán con los puntos correspondientes a la verdad absoluta, lo que significará que la trayectoria calculada por el algoritmo de SLAM es cercana a la realidad y en este caso el punto estimado (en color rojo) quedará invisible. Además el GUI también muestra los valores de transformación estimadas (Figura 4.4)
 
 
