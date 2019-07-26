@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.16)  22 JUL 2019 19:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.16)  27 JUL 2019 00:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -855,7 +855,13 @@ LaTeX Info: Redefining \nameref on input line 50.
 \c@lstlisting=\count144
 \openout2 = `portada.aux'.
 
- (./portada.tex)
+ (./portada.tex
+<img/logo_urjc.jpg, id=241, 525.965pt x 210.7875pt>
+File: img/logo_urjc.jpg Graphic file (type jpg)
+ <use img/logo_urjc.jpg>
+Package pdftex.def Info: img/logo_urjc.jpg used on input line 5.
+(pdftex.def)             Requested size: 525.9637pt x 210.78699pt.
+)
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 53.
 Package babel Info: Redefining spanish shorthand >>
@@ -880,13 +886,15 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 53.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 53.
- [1
+
+[1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/logo_urjc.jpg>]
 \openout2 = `agradecimientos.aux'.
 
- (./agradecimientos.tex)
+
+(./agradecimientos.tex)
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 62.
 Package babel Info: Redefining spanish shorthand >>
@@ -947,8 +955,7 @@ Package babel Info: Redefining spanish shorthand "?
 
 
 
-]
-(./memoria.toc
+] (./memoria.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 Package babel Info: Redefining spanish shorthand <<
@@ -1035,7 +1042,8 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 75.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 75.
- [3] (./memoria.lof
+
+[3] (./memoria.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 Package babel Info: Redefining spanish shorthand <<
@@ -1182,7 +1190,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 19.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 19.
- <img/cap2/RobotShakey.jpg, id=468, 296.60812pt x 365.11406pt>
+ <img/cap2/RobotShakey.jpg, id=469, 296.60812pt x 365.11406pt>
 File: img/cap2/RobotShakey.jpg Graphic file (type jpg)
 
 <use img/cap2/RobotShakey.jpg>
@@ -1283,7 +1291,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 55.
 
-<img/cap2/realidadAumentada.jpg, id=478, 225.84375pt x 135.50626pt>
+<img/cap2/realidadAumentada.jpg, id=479, 225.84375pt x 135.50626pt>
 File: img/cap2/realidadAumentada.jpg Graphic file (type jpg)
 
 <use img/cap2/realidadAumentada.jpg>
@@ -1380,21 +1388,21 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 92.
 
-<img/cap2/lenovo-phab2-pro.jpg, id=489, 390.45876pt x 505.89pt>
+<img/cap2/lenovo-phab2-pro.jpg, id=490, 390.45876pt x 505.89pt>
 File: img/cap2/lenovo-phab2-pro.jpg Graphic file (type jpg)
 
 <use img/cap2/lenovo-phab2-pro.jpg>
 Package pdftex.def Info: img/cap2/lenovo-phab2-pro.jpg used on input line 103.
 (pdftex.def)             Requested size: 98.8239pt x 128.0374pt.
 
-<img/cap2/asus-zenfone-ar.jpg, id=490, 859.21pt x 1065.9825pt>
+<img/cap2/asus-zenfone-ar.jpg, id=491, 859.21pt x 1065.9825pt>
 File: img/cap2/asus-zenfone-ar.jpg Graphic file (type jpg)
 
 <use img/cap2/asus-zenfone-ar.jpg>
 Package pdftex.def Info: img/cap2/asus-zenfone-ar.jpg used on input line 105.
 (pdftex.def)             Requested size: 103.19252pt x 128.0374pt.
 
-<img/cap2/prototipo_Tango_smartPhone.png, id=491, 646.415pt x 405.515pt>
+<img/cap2/prototipo_Tango_smartPhone.png, id=492, 646.415pt x 405.515pt>
 File: img/cap2/prototipo_Tango_smartPhone.png Graphic file (type png)
 
 <use img/cap2/prototipo_Tango_smartPhone.png>
@@ -1428,7 +1436,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 117.
  [6]
-<img/cap2/Proyecto_Tango_genera_mapa.png, id=502, 856.19875pt x 335.2525pt>
+<img/cap2/Proyecto_Tango_genera_mapa.png, id=503, 856.19875pt x 335.2525pt>
 File: img/cap2/Proyecto_Tango_genera_mapa.png Graphic file (type png)
 
 <use img/cap2/Proyecto_Tango_genera_mapa.png>
@@ -1436,7 +1444,7 @@ Package pdftex.def Info: img/cap2/Proyecto_Tango_genera_mapa.png used on input
 line 120.
 (pdftex.def)             Requested size: 217.99464pt x 85.35826pt.
 
-<img/cap2/tangoDeviceMakingMap.png, id=503, 756.8275pt x 400.49625pt>
+<img/cap2/tangoDeviceMakingMap.png, id=504, 756.8275pt x 400.49625pt>
 File: img/cap2/tangoDeviceMakingMap.png Graphic file (type png)
 
 <use img/cap2/tangoDeviceMakingMap.png>
@@ -1484,7 +1492,7 @@ l.135
        <./img/cap2/lenovo-phab2-pro.jpg> <./img/cap2/asus-zenfone-ar.jpg> <./im
 g/cap2/prototipo_Tango_smartPhone.png> <./img/cap2/Proyecto_Tango_genera_mapa.p
 ng> <./img/cap2/tangoDeviceMakingMap.png>]
-<img/cap2/pix4d_volumen_calculo.png, id=520, 795.97375pt x 432.61626pt>
+<img/cap2/pix4d_volumen_calculo.png, id=521, 795.97375pt x 432.61626pt>
 File: img/cap2/pix4d_volumen_calculo.png Graphic file (type png)
 
 <use img/cap2/pix4d_volumen_calculo.png>
@@ -1492,7 +1500,7 @@ Package pdftex.def Info: img/cap2/pix4d_volumen_calculo.png used on input line
 158.
 (pdftex.def)             Requested size: 157.04216pt x 85.35826pt.
 
-<img/cap2/parrotSequoia.png, id=521, 422.57875pt x 414.54875pt>
+<img/cap2/parrotSequoia.png, id=522, 422.57875pt x 414.54875pt>
 File: img/cap2/parrotSequoia.png Graphic file (type png)
 
 <use img/cap2/parrotSequoia.png>
@@ -1525,7 +1533,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 169.
  [8]
-<img/cap2/PhotoTourism.jpg, id=531, 677.53125pt x 376.40625pt>
+<img/cap2/PhotoTourism.jpg, id=532, 677.53125pt x 376.40625pt>
 File: img/cap2/PhotoTourism.jpg Graphic file (type jpg)
 
 <use img/cap2/PhotoTourism.jpg>
@@ -1564,7 +1572,7 @@ Package babel Info: Redefining spanish shorthand "?
                                                   \fi \fi 
 l.191 
        <./img/cap2/pix4d_volumen_calculo.png> <./img/cap2/parrotSequoia.png>]
-<img/cap2/structureSensorCanvas.jpg, id=542, 280.04625pt x 181.67876pt>
+<img/cap2/structureSensorCanvas.jpg, id=543, 280.04625pt x 181.67876pt>
 File: img/cap2/structureSensorCanvas.jpg Graphic file (type jpg)
 
 <use img/cap2/structureSensorCanvas.jpg>
@@ -1610,14 +1618,14 @@ l.207
                                                   \fi \fi 
 l.207 
        <./img/cap2/PhotoTourism.jpg> <./img/cap2/structureSensorCanvas.jpg>]
-<img/cap2/Dyson_360.jpg, id=555, 636.3775pt x 798.985pt>
+<img/cap2/Dyson_360.jpg, id=556, 636.3775pt x 798.985pt>
 File: img/cap2/Dyson_360.jpg Graphic file (type jpg)
 
 <use img/cap2/Dyson_360.jpg>
 Package pdftex.def Info: img/cap2/Dyson_360.jpg used on input line 214.
 (pdftex.def)             Requested size: 135.9737pt x 170.71652pt.
 
-<img/cap2/roomba_966.jpg, id=556, 249.93375pt x 202.7575pt>
+<img/cap2/roomba_966.jpg, id=557, 249.93375pt x 202.7575pt>
 File: img/cap2/roomba_966.jpg Graphic file (type jpg)
 
 <use img/cap2/roomba_966.jpg>
@@ -1629,7 +1637,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 226--226
 mous-quadrotor-flight-based-on-google-
  []
 
-<img/cap2/droneTango.jpg, id=558, 313.17pt x 161.60374pt>
+<img/cap2/droneTango.jpg, id=559, 313.17pt x 161.60374pt>
 File: img/cap2/droneTango.jpg Graphic file (type jpg)
 
 <use img/cap2/droneTango.jpg>
@@ -1906,7 +1914,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 53.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 53.
- <img/cap2/modeloEspiral.png, id=599, 691.58376pt x 522.95375pt>
+ <img/cap2/modeloEspiral.png, id=600, 691.58376pt x 522.95375pt>
 File: img/cap2/modeloEspiral.png Graphic file (type png)
 
 <use img/cap2/modeloEspiral.png>
@@ -2012,7 +2020,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 16.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 16.
-<img/cap4/Initialization4PointsMonoSlam.png, id=616, 198.7425pt x 150.5625pt>
+<img/cap4/Initialization4PointsMonoSlam.png, id=617, 198.7425pt x 150.5625pt>
 File: img/cap4/Initialization4PointsMonoSlam.png Graphic file (type png)
 
 <use img/cap4/Initialization4PointsMonoSlam.png>
@@ -2044,7 +2052,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 25.
  [19]
-<img/cap4/monoslam-300x225.png, id=624, 301.125pt x 225.84375pt>
+<img/cap4/monoslam-300x225.png, id=625, 301.125pt x 225.84375pt>
 File: img/cap4/monoslam-300x225.png Graphic file (type png)
 
 <use img/cap4/monoslam-300x225.png>
@@ -2128,7 +2136,7 @@ Package babel Info: Redefining spanish shorthand "?
                                                   \fi \fi 
 l.54 
       <./img/cap4/monoslam-300x225.png>]
-<img/cap4/ptam_screenshot-300x243.jpg, id=642, 301.125pt x 243.91125pt>
+<img/cap4/ptam_screenshot-300x243.jpg, id=643, 301.125pt x 243.91125pt>
 File: img/cap4/ptam_screenshot-300x243.jpg Graphic file (type jpg)
 
 <use img/cap4/ptam_screenshot-300x243.jpg>
@@ -2180,14 +2188,14 @@ Package babel Info: Redefining spanish shorthand "?
                                                   \fi \fi 
 l.77 
       <./img/cap4/ptam_screenshot-300x243.jpg>]
-<img/cap4/ORB_localization.png, id=655, 553.06625pt x 435.6275pt>
+<img/cap4/ORB_localization.png, id=656, 553.06625pt x 435.6275pt>
 File: img/cap4/ORB_localization.png Graphic file (type png)
 
 <use img/cap4/ORB_localization.png>
 Package pdftex.def Info: img/cap4/ORB_localization.png used on input line 83.
 (pdftex.def)             Requested size: 198.6733pt x 156.49014pt.
 
-<img/cap4/ORB_SLAM.png, id=656, 369.38pt x 290.08376pt>
+<img/cap4/ORB_SLAM.png, id=657, 369.38pt x 290.08376pt>
 File: img/cap4/ORB_SLAM.png Graphic file (type png)
 
 <use img/cap4/ORB_SLAM.png>
@@ -2239,14 +2247,14 @@ Package babel Info: Redefining spanish shorthand "?
 l.100 \item L
              a traslación de la cámara causa oclusiones y des-oclusiones, ...
  <./img/cap4/ORB_localization.png> <./img/cap4/ORB_SLAM.png>]
-<img/cap4/mapaDSO.png, id=668, 645.41125pt x 322.20375pt>
+<img/cap4/mapaDSO.png, id=669, 645.41125pt x 322.20375pt>
 File: img/cap4/mapaDSO.png Graphic file (type png)
 
 <use img/cap4/mapaDSO.png>
 Package pdftex.def Info: img/cap4/mapaDSO.png used on input line 120.
 (pdftex.def)             Requested size: 341.9777pt x 170.71652pt.
 
-<img/cap4/fotogramaDSO.png, id=669, 645.41125pt x 322.20375pt>
+<img/cap4/fotogramaDSO.png, id=670, 645.41125pt x 322.20375pt>
 File: img/cap4/fotogramaDSO.png Graphic file (type png)
 
 <use img/cap4/fotogramaDSO.png>
@@ -2313,7 +2321,7 @@ Package babel Info: Redefining spanish shorthand "?
 l.132 P
        ara la selección de puntos de características repetibles, LDSO util...
  <./img/cap4/mapaDSO.png> <./img/cap4/fotogramaDSO.png>]
-<img/cap4/LDSO.png, id=687, 807.015pt x 323.2075pt>
+<img/cap4/LDSO.png, id=688, 807.015pt x 323.2075pt>
 File: img/cap4/LDSO.png Graphic file (type png)
  <use img/cap4/LDSO.png>
 Package pdftex.def Info: img/cap4/LDSO.png used on input line 137.
@@ -2527,7 +2535,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 215.
  [28]
-<img/cap4/slambench.jpg, id=712, 932.48375pt x 394.47375pt>
+<img/cap4/slambench.jpg, id=713, 932.48375pt x 394.47375pt>
 File: img/cap4/slambench.jpg Graphic file (type jpg)
 
 <use img/cap4/slambench.jpg>
@@ -2624,7 +2632,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 254.
  [31]
-<img/cap4/kittiCar.png, id=741, 306.14375pt x 260.975pt>
+<img/cap4/kittiCar.png, id=742, 306.14375pt x 260.975pt>
 File: img/cap4/kittiCar.png Graphic file (type png)
 
 <use img/cap4/kittiCar.png>
@@ -2715,7 +2723,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 19.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 19.
-[33] <img/cap5/Esquema_TFM_CajaNegra2.png, id=750, 554.07pt x 284.06125pt>
+[33] <img/cap5/Esquema_TFM_CajaNegra2.png, id=751, 554.07pt x 284.06125pt>
 File: img/cap5/Esquema_TFM_CajaNegra2.png Graphic file (type png)
 
 <use img/cap5/Esquema_TFM_CajaNegra2.png>
@@ -2761,7 +2769,7 @@ Underfull \hbox (badness 1158) in paragraph at lines 43--44
  []
 
 
-<img/cap5/EsquemaTFM_CajaBlanca_Transformaciones4.png, id=756, 593.21625pt x 79
+<img/cap5/EsquemaTFM_CajaBlanca_Transformaciones4.png, id=757, 593.21625pt x 79
 6.9775pt>
 File: img/cap5/EsquemaTFM_CajaBlanca_Transformaciones4.png Graphic file (type p
 ng)
@@ -2920,7 +2928,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 129.
  [38]
-<img/cap5/correlacionCruzada2.png, id=798, 441.65pt x 346.29375pt>
+<img/cap5/correlacionCruzada2.png, id=799, 441.65pt x 346.29375pt>
 File: img/cap5/correlacionCruzada2.png Graphic file (type png)
 
 <use img/cap5/correlacionCruzada2.png>
@@ -3152,7 +3160,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 341.
  [44]
-<img/cap5/showTransformationsEstimated2.png, id=910, 648.4225pt x 1005.7575pt>
+<img/cap5/showTransformationsEstimated2.png, id=911, 648.4225pt x 1005.7575pt>
 File: img/cap5/showTransformationsEstimated2.png Graphic file (type png)
 
 <use img/cap5/showTransformationsEstimated2.png>
@@ -3160,7 +3168,7 @@ Package pdftex.def Info: img/cap5/showTransformationsEstimated2.png used on inp
 ut line 344.
 (pdftex.def)             Requested size: 341.43611pt x 455.24165pt.
 
-<img/cap6/Escala_Trasla_Rota_Offset_Gauss_CosmicNoise_abba.png, id=911, 1499.60
+<img/cap6/Escala_Trasla_Rota_Offset_Gauss_CosmicNoise_abba.png, id=912, 1499.60
 25pt x 850.17625pt>
 File: img/cap6/Escala_Trasla_Rota_Offset_Gauss_CosmicNoise_abba.png Graphic fil
 e (type png)
@@ -3348,7 +3356,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 53.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 53.
- <img/cap6/Escala_abba.png, id=932, 1492.57625pt x 838.13126pt>
+ <img/cap6/Escala_abba.png, id=933, 1492.57625pt x 838.13126pt>
 File: img/cap6/Escala_abba.png Graphic file (type png)
 
 <use img/cap6/Escala_abba.png>
@@ -3407,7 +3415,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 67.
 
-<img/cap6/Traslation_abba.png, id=937, 1498.59875pt x 840.13875pt>
+<img/cap6/Traslation_abba.png, id=938, 1498.59875pt x 840.13875pt>
 File: img/cap6/Traslation_abba.png Graphic file (type png)
 
 <use img/cap6/Traslation_abba.png>
@@ -3472,7 +3480,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 82.
 
-<img/cap6/Rotation_ab_ba.png, id=942, 1842.885pt x 1046.91125pt>
+<img/cap6/Rotation_ab_ba.png, id=943, 1842.885pt x 1046.91125pt>
 File: img/cap6/Rotation_ab_ba.png Graphic file (type png)
 
 <use img/cap6/Rotation_ab_ba.png>
@@ -3588,7 +3596,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 125.
 
-<img/cap6/Escala_Traslacion_abba.png, id=952, 1848.9075pt x 1050.92625pt>
+<img/cap6/Escala_Traslacion_abba.png, id=953, 1848.9075pt x 1050.92625pt>
 File: img/cap6/Escala_Traslacion_abba.png Graphic file (type png)
 
 <use img/cap6/Escala_Traslacion_abba.png>
@@ -3639,7 +3647,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 143.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 143.
- <img/cap6/Escala_Rotation_abba.png, id=958, 1846.9pt x 1046.91125pt>
+ <img/cap6/Escala_Rotation_abba.png, id=959, 1846.9pt x 1046.91125pt>
 File: img/cap6/Escala_Rotation_abba.png Graphic file (type png)
 
 <use img/cap6/Escala_Rotation_abba.png>
@@ -3698,7 +3706,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 156.
 
-<img/cap6/Escala_Offset_abba.png, id=963, 1851.91875pt x 1046.91125pt>
+<img/cap6/Escala_Offset_abba.png, id=964, 1851.91875pt x 1046.91125pt>
 File: img/cap6/Escala_Offset_abba.png Graphic file (type png)
 
 <use img/cap6/Escala_Offset_abba.png>
@@ -3759,7 +3767,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 169.
 
-<img/cap6/Escala_GaussNoise_abba.png, id=968, 1846.9pt x 1050.92625pt>
+<img/cap6/Escala_GaussNoise_abba.png, id=969, 1846.9pt x 1050.92625pt>
 File: img/cap6/Escala_GaussNoise_abba.png Graphic file (type png)
 
 <use img/cap6/Escala_GaussNoise_abba.png>
@@ -3853,7 +3861,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 186.
 
-<img/cap6/Escala_GaussCosmicNoise_abba.png, id=977, 1854.93pt x 1052.93375pt>
+<img/cap6/Escala_GaussCosmicNoise_abba.png, id=978, 1854.93pt x 1052.93375pt>
 File: img/cap6/Escala_GaussCosmicNoise_abba.png Graphic file (type png)
 
 <use img/cap6/Escala_GaussCosmicNoise_abba.png>
@@ -3911,7 +3919,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 201.
 
-<img/cap6/Trasla_Rota_abba.png, id=983, 1853.92625pt x 1054.94125pt>
+<img/cap6/Trasla_Rota_abba.png, id=984, 1853.92625pt x 1054.94125pt>
 File: img/cap6/Trasla_Rota_abba.png Graphic file (type png)
 
 <use img/cap6/Trasla_Rota_abba.png>
@@ -3968,7 +3976,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 215.
 
-<img/cap6/Trasla_Offset_abba.png, id=988, 1851.91875pt x 1046.91125pt>
+<img/cap6/Trasla_Offset_abba.png, id=989, 1851.91875pt x 1046.91125pt>
 File: img/cap6/Trasla_Offset_abba.png Graphic file (type png)
 
 <use img/cap6/Trasla_Offset_abba.png>
@@ -4027,7 +4035,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 228.
 
-<img/cap6/Trasla_GaussNoise_abba.png, id=993, 1847.90375pt x 1042.89626pt>
+<img/cap6/Trasla_GaussNoise_abba.png, id=994, 1847.90375pt x 1042.89626pt>
 File: img/cap6/Trasla_GaussNoise_abba.png Graphic file (type png)
 
 <use img/cap6/Trasla_GaussNoise_abba.png>
@@ -4085,7 +4093,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 242.
 
-<img/cap6/Trasla_GaussianCosmicNoise_abba.png, id=998, 1852.9225pt x 1044.90375
+<img/cap6/Trasla_GaussianCosmicNoise_abba.png, id=999, 1852.9225pt x 1044.90375
 pt>
 File: img/cap6/Trasla_GaussianCosmicNoise_abba.png Graphic file (type png)
  <use img/cap6/Trasla_GaussianCosmicNoise_abba.png>
@@ -4146,7 +4154,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 256.
 
-<img/cap6/Rota_Offset_abba.png, id=1003, 1855.93375pt x 1045.9075pt>
+<img/cap6/Rota_Offset_abba.png, id=1004, 1855.93375pt x 1045.9075pt>
 File: img/cap6/Rota_Offset_abba.png Graphic file (type png)
 
 <use img/cap6/Rota_Offset_abba.png>
@@ -4203,7 +4211,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 270.
 
-<img/cap6/Rota_GaussNoise_abba.png, id=1008, 1846.9pt x 1043.9pt>
+<img/cap6/Rota_GaussNoise_abba.png, id=1009, 1846.9pt x 1043.9pt>
 File: img/cap6/Rota_GaussNoise_abba.png Graphic file (type png)
 
 <use img/cap6/Rota_GaussNoise_abba.png>
@@ -4261,7 +4269,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 283.
 
-<img/cap6/Rota_Gauss_Cosmic_abba.png, id=1014, 1851.91875pt x 1048.91875pt>
+<img/cap6/Rota_Gauss_Cosmic_abba.png, id=1015, 1851.91875pt x 1048.91875pt>
 File: img/cap6/Rota_Gauss_Cosmic_abba.png Graphic file (type png)
 
 <use img/cap6/Rota_Gauss_Cosmic_abba.png>
@@ -4334,7 +4342,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 315.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 315.
-<img/cap6/Escala_Trasla_Rota_abba.png, id=1019, 1500.60625pt x 854.19125pt>
+<img/cap6/Escala_Trasla_Rota_abba.png, id=1020, 1500.60625pt x 854.19125pt>
 File: img/cap6/Escala_Trasla_Rota_abba.png Graphic file (type png)
 
 <use img/cap6/Escala_Trasla_Rota_abba.png>
@@ -4386,7 +4394,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 331.
 
-<img/cap6/Escala_Trasla_Rota_Offset_abba.png, id=1024, 1503.6175pt x 851.18pt>
+<img/cap6/Escala_Trasla_Rota_Offset_abba.png, id=1025, 1503.6175pt x 851.18pt>
 File: img/cap6/Escala_Trasla_Rota_Offset_abba.png Graphic file (type png)
 
 <use img/cap6/Escala_Trasla_Rota_Offset_abba.png>
@@ -4477,7 +4485,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 349.
 
-<img/cap6/Escala_Trasla_Rota_Offset_GaussNoise_abba.png, id=1033, 1504.62125pt 
+<img/cap6/Escala_Trasla_Rota_Offset_GaussNoise_abba.png, id=1034, 1504.62125pt 
 x 850.17625pt>
 File: img/cap6/Escala_Trasla_Rota_Offset_GaussNoise_abba.png Graphic file (type
  png)
@@ -4625,7 +4633,7 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 376.
 
-<img/cap6/RANSAC_ScaleTraslaRotaGausCosmicNoise_ab.png, id=1047, 1847.90375pt x
+<img/cap6/RANSAC_ScaleTraslaRotaGausCosmicNoise_ab.png, id=1048, 1847.90375pt x
  1047.915pt>
 File: img/cap6/RANSAC_ScaleTraslaRotaGausCosmicNoise_ab.png Graphic file (type 
 png)
@@ -4720,7 +4728,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 415--415
 g / trunk / rgbd _ benchmark / rgbd _ benchmark _ tools /
  []
 
-<img/cap6/segundaTrayectoria.png, id=1058, 1852.9225pt x 1048.91875pt>
+<img/cap6/segundaTrayectoria.png, id=1059, 1852.9225pt x 1048.91875pt>
 File: img/cap6/segundaTrayectoria.png Graphic file (type png)
 
 <use img/cap6/segundaTrayectoria.png>
@@ -4732,7 +4740,7 @@ Overfull \hbox (51.20769pt too wide) in paragraph at lines 419--421
  [] 
  []
 
-<img/cap6/newData_Transformations.png, id=1059, 1738.495pt x 972.63374pt>
+<img/cap6/newData_Transformations.png, id=1060, 1738.495pt x 972.63374pt>
 File: img/cap6/newData_Transformations.png Graphic file (type png)
 
 <use img/cap6/newData_Transformations.png>
@@ -4781,7 +4789,7 @@ Package babel Info: Redefining spanish shorthand "?
 l.435 L
        a Figura 5.22, a la izquierda muestra la configuración de transforma...
  <./img/cap6/segundaTrayectoria.png>]
-<img/cap6/newData_EscalaTraslaRota_aB.png, id=1068, 1738.495pt x 984.67876pt>
+<img/cap6/newData_EscalaTraslaRota_aB.png, id=1069, 1738.495pt x 984.67876pt>
 File: img/cap6/newData_EscalaTraslaRota_aB.png Graphic file (type png)
 
 <use img/cap6/newData_EscalaTraslaRota_aB.png>
@@ -4830,7 +4838,7 @@ Package babel Info: Redefining spanish shorthand "?
 l.446 E
        n la Figura 5.23 pueden comprobarse los resultados de estimar las tra...
  <./img/cap6/newData_Transformations.png>]
-<img/cap6/newData_EscalaTraslaRota_BA.png, id=1073, 1733.47626pt x 980.66376pt>
+<img/cap6/newData_EscalaTraslaRota_BA.png, id=1074, 1733.47626pt x 980.66376pt>
 File: img/cap6/newData_EscalaTraslaRota_BA.png Graphic file (type png)
 <use img/cap6/newData_EscalaTraslaRota_BA.png>
 Package pdftex.def Info: img/cap6/newData_EscalaTraslaRota_BA.png used on input
@@ -4907,7 +4915,7 @@ Package babel Info: Redefining spanish shorthand "?
                                                   \fi \fi 
 l.466 
        <./img/cap6/newData_EscalaTraslaRota_BA.png>]
-<img/cap6/newData_EscalaTraslaRotaGauss_ab.png, id=1083, 1744.5175pt x 981.6675
+<img/cap6/newData_EscalaTraslaRotaGauss_ab.png, id=1084, 1744.5175pt x 981.6675
 pt>
 File: img/cap6/newData_EscalaTraslaRotaGauss_ab.png Graphic file (type png)
  <use img/cap6/newData_EscalaTraslaRotaGauss_ab.png>
@@ -4920,7 +4928,7 @@ Overfull \hbox (51.21805pt too wide) in paragraph at lines 469--471
  []
 
 
-<img/cap6/newData_EscalaTraslaRotaGauss_ba.png, id=1084, 1738.495pt x 980.66376
+<img/cap6/newData_EscalaTraslaRotaGauss_ba.png, id=1085, 1738.495pt x 980.66376
 pt>
 File: img/cap6/newData_EscalaTraslaRotaGauss_ba.png Graphic file (type png)
  <use img/cap6/newData_EscalaTraslaRotaGauss_ba.png>
@@ -4966,7 +4974,7 @@ Package babel Info: Redefining spanish shorthand "?
 l.493 E
        n la Figura 5.26, se ha añadido ruido gaussiano a las transformacion...
  <./img/cap6/newData_EscalaTraslaRotaGauss_ab.png>]
-<img/cap6/newData_EscalaTraslaRotaGaussCosmic_ab.png, id=1089, 1738.495pt x 980
+<img/cap6/newData_EscalaTraslaRotaGaussCosmic_ab.png, id=1090, 1738.495pt x 980
 .66376pt>
 File: img/cap6/newData_EscalaTraslaRotaGaussCosmic_ab.png Graphic file (type pn
 g)
@@ -5016,7 +5024,7 @@ Package babel Info: Redefining spanish shorthand "?
 l.506 E
        n la Figura 5.27, se ha añadido ruido gaussiano y ruido cósmico a l...
  <./img/cap6/newData_EscalaTraslaRotaGauss_ba.png>]
-<img/cap6/newData_EscalaTraslaRotaGaussCosmic_ba.png, id=1094, 1735.48375pt x 9
+<img/cap6/newData_EscalaTraslaRotaGaussCosmic_ba.png, id=1095, 1735.48375pt x 9
 78.65625pt>
 File: img/cap6/newData_EscalaTraslaRotaGaussCosmic_ba.png Graphic file (type pn
 g)
@@ -5364,10 +5372,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 95.
  ) 
 Here is how much of TeX's memory you used:
- 10340 strings out of 493029
- 149081 string characters out of 6136233
+ 10346 strings out of 493029
+ 149185 string characters out of 6136233
  255890 words of memory out of 5000000
- 13216 multiletter control sequences out of 15000+600000
+ 13220 multiletter control sequences out of 15000+600000
  11683 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,10n,34p,1158b,1921s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -5387,10 +5395,10 @@ usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria.pdf (97 pages, 9433567 bytes).
+Output written on memoria.pdf (97 pages, 9484172 bytes).
 PDF statistics:
- 1289 PDF objects out of 1440 (max. 8388607)
+ 1290 PDF objects out of 1440 (max. 8388607)
  1103 compressed objects within 12 object streams
  397 named destinations out of 1000 (max. 500000)
- 758 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 763 words of extra memory for PDF output out of 10000 (max. 10000000)
 
