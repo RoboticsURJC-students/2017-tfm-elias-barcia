@@ -10,6 +10,6 @@ Author: Elias Barcia
 
 Academic Year: 2017/2018
 
-Degree: Computer Vision Master
+Master: Computer Vision Master
 
 Tags: SLAM, JdeRobot 
